@@ -9,7 +9,7 @@
 			"type": "INDEPENDENT",
 			"application": {
 				"weight": 1024,
-				"restriction": "PRIMARY",
+				"restriction": "SECONDARY",
 				"whitelistedBy": ["ARMOR_WITH_ARMOR_CLASS"],
 				"blacklistedBy": ["PROPERTY_CHANGE"],
 				"applies": ["PROPERTY_CHANGE"]
