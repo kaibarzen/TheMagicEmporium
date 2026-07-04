@@ -1468,7 +1468,7 @@
 					"min": 0,
 					"flavor": {
 						"title": "Reckless Abandon",
-						"description": "Your reckless attacks deal bonus damage equal to your Strength modifier",
+						"description": "Your reckless attacks deal bonus damage equal to half your Strength modifier (floored)",
 						"disclaimer": null
 					},
 					"activeEffects": [],
