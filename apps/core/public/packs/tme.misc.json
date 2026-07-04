@@ -58,12 +58,8 @@
 					"value": 1
 				},
 				{
-					"min": 0.7,
+					"min": 0.8,
 					"value": 2
-				},
-				{
-					"min": 0.95,
-					"value": 3
 				}
 			],
 			"activeEffects": [],
