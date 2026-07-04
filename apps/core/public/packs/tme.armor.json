@@ -45,7 +45,7 @@
 			},
 			"flavor": {
 				"title": "Misty Sidestep",
-				"description": "{amount} times per long rest, as a reaction to being hit, you can misty step 30ft",
+				"description": "{amount} times per long rest, as a reaction to being hit and taking damage, you can misty step 30ft",
 				"disclaimer": null
 			},
 			"breakpoints": [
