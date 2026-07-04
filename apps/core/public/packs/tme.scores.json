@@ -115,7 +115,7 @@
 					"feats": [
 						{
 							"type": "FEAT",
-							"description": "Once per long rest, use an action to gain advantage on all Charisma checks for 10 minute",
+							"description": "Once per long rest, use an action to gain advantage on all Charisma checks for 1 minute",
 							"system": {
 								"activation": {
 									"type": "action",

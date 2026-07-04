@@ -2111,7 +2111,7 @@
 					"min": 8,
 					"flavor": {
 						"title": "Supreme Medical Professional",
-						"description": "Your Medicine skill increases by 6. Once per long rest, as an action, perform field surgery on a creature you touch: it regains 2d6 + your Medicine bonus HP",
+						"description": "Your Medicine skill increases by 6. Three times per long rest, as an action, perform field surgery on a creature you touch: it regains 2d6 + your Medicine bonus HP",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/medicalProfessional.jpg"
 					},
