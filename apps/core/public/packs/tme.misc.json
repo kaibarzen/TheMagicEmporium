@@ -599,10 +599,6 @@
 				{
 					"min": 0.7,
 					"value": 2
-				},
-				{
-					"min": 0.9,
-					"value": 3
 				}
 			],
 			"activeEffects": [],
