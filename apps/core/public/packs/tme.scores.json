@@ -1007,7 +1007,7 @@
 					"min": 8,
 					"flavor": {
 						"title": "Cataclysmic Earthshaker",
-						"description": "Your strength score increases by 6. Once per long rest, as an action, strike the ground to cause an earthquake effect in a 30-foot radius to deal quadruple your level force damage to each creature",
+						"description": "Your strength score increases by 6. Once per long rest, as an action, strike the ground to cause an earthquake effect in a 30ft radius to deal quadruple your level force damage to each creature",
 						"disclaimer": "AOE centered on self. Dex saving throw against your strength save dc otherwise half damage. You are immune to your own earthquake damage"
 					},
 					"activeEffects": [
@@ -1027,7 +1027,7 @@
 						{
 							"type": "FEAT",
 							"title": "Earthshaker",
-							"description": "Once per long rest, as an action, strike the ground to cause an earthquake effect in a 30-foot radius to deal quadruple your level force damage to each creature",
+							"description": "Once per long rest, as an action, strike the ground to cause an earthquake effect in a 30ft radius to deal quadruple your level force damage to each creature",
 							"disclaimer": "AOE centered on self. Dex saving throw against your strength save dc otherwise half damage. You are immune to your own earthquake damage",
 							"system": {
 								"activation": {

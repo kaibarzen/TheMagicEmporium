@@ -1041,7 +1041,7 @@
 			},
 			"flavor": {
 				"title": "Rapture",
-				"description": "As an action, you can cast Reverse Gravity at will, it's always centered on yourself, with a radius of {amount} feet",
+				"description": "As an action, you can cast Reverse Gravity at will, it's always centered on yourself, with a radius of {amount}ft",
 				"disclaimer": null
 			},
 			"breakpoints": [

@@ -424,7 +424,7 @@
 			},
 			"flavor": {
 				"title": "Backstabby",
-				"description": "Once per long rest, as a bonus action, you can teleport behind a creature within {amount} feet",
+				"description": "Once per long rest, as a bonus action, you can teleport behind a creature within {amount}ft",
 				"disclaimer": null
 			},
 			"breakpoints": [
@@ -648,7 +648,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Redistribution",
-						"description": "If a tagged hostile is killed, distribute 1d8 healing to any creatures within 15 feet of the killed creature",
+						"description": "If a tagged hostile is killed, distribute 1d8 healing to any creatures within 15ft of the killed creature",
 						"disclaimer": null
 					},
 					"activeEffects": [],
@@ -707,7 +707,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Sacred Redistribution",
-						"description": "If a tagged hostile is killed, distribute 2d8 healing to any creatures within 20 feet of the killed creature",
+						"description": "If a tagged hostile is killed, distribute 2d8 healing to any creatures within 20ft of the killed creature",
 						"disclaimer": null
 					},
 					"activeEffects": [],
@@ -766,7 +766,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Divine Redistribution",
-						"description": "If a tagged hostile is killed, distribute 3d8 healing to any creatures within 30 feet of the killed creature",
+						"description": "If a tagged hostile is killed, distribute 3d8 healing to any creatures within 30ft of the killed creature",
 						"disclaimer": null
 					},
 					"activeEffects": [],
@@ -1345,7 +1345,7 @@
 			},
 			"flavor": {
 				"title": "Warpath",
-				"description": "If you moved at least 15 feet before making an attack roll, gain +{amount} to the next attack roll",
+				"description": "If you moved at least 15ft before making an attack roll, gain +{amount} to the next attack roll",
 				"disclaimer": null
 			},
 			"breakpoints": [
@@ -1502,7 +1502,7 @@
 			},
 			"flavor": {
 				"title": "Lone Wolf",
-				"description": "While no ally is within 15 feet of you, gain +{amount} to attack and damage rolls",
+				"description": "While no ally is within 15ft of you, gain +{amount} to attack and damage rolls",
 				"disclaimer": null
 			},
 			"breakpoints": [

@@ -748,7 +748,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Find Snail",
-						"description": "Once per long rest, as an action, summon a giant rideable snail to aid you. The snail has 2d10+4 HP and 30 ft movement speed",
+						"description": "Once per long rest, as an action, summon a giant rideable snail to aid you. The snail has 2d10+4 HP and 30ft movement speed",
 						"disclaimer": "Works like 'Find Steed' with the stats of a warhorse"
 					},
 					"activeEffects": [],
@@ -822,7 +822,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Find Greater Snail",
-						"description": "Once per long rest, as an action, summon a giant rideable snail to aid you. The snail has 4d10+6 HP and 45 ft movement speed",
+						"description": "Once per long rest, as an action, summon a giant rideable snail to aid you. The snail has 4d10+6 HP and 45ft movement speed",
 						"disclaimer": "Works like 'Find Steed' with the stats of a warhorse"
 					},
 					"activeEffects": [],
@@ -896,7 +896,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Find Elder Snail",
-						"description": "Once per long rest, as an action, summon a giant rideable snail to aid you. The snail has 6d10+8 HP and 60 ft movement speed",
+						"description": "Once per long rest, as an action, summon a giant rideable snail to aid you. The snail has 6d10+8 HP and 60ft movement speed",
 						"disclaimer": "Works like 'Find Steed' with the stats of a warhorse"
 					},
 					"activeEffects": [],
@@ -1338,7 +1338,7 @@
 					"min": 0,
 					"flavor": {
 						"title": "Revenant",
-						"description": "Once per long rest, as a bonus action, you can shadow step from one area of dim light or darkness to another within 60 feet",
+						"description": "Once per long rest, as a bonus action, you can shadow step from one area of dim light or darkness to another within 60ft",
 						"disclaimer": null
 					},
 					"activeEffects": [],
