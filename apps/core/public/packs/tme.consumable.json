@@ -1,6 +1,6 @@
 {
 	"id": "tme.consumable",
-	"name": "TME, Consumable Modifiers",
+	"name": "TME - Consumable Modifiers",
 	"description": "Built-in consumable modifiers. One-time-use effects that trigger when the item is consumed.",
 	"enabled": true,
 	"modifiers": [

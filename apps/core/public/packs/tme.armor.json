@@ -1,6 +1,6 @@
 {
 	"id": "tme.armor",
-	"name": "TME \u2014 Armor Modifiers",
+	"name": "TME - Armor Modifiers",
 	"description": "Built-in armor modifiers. Affects defensive stats, armor properties, and armor-bound abilities.",
 	"enabled": true,
 	"modifiers": [

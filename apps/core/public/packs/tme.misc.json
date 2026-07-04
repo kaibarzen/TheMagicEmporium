@@ -1,6 +1,6 @@
 {
 	"id": "tme.misc",
-	"name": "TME \u2014 Miscellaneous Modifiers",
+	"name": "TME - Miscellaneous Modifiers",
 	"description": "Built-in miscellaneous modifiers. General-purpose effects that don't fit a specific category.",
 	"enabled": true,
 	"modifiers": [
