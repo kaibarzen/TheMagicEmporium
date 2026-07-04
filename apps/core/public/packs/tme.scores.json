@@ -33,7 +33,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Charm of the Heart",
-						"description": "Your charisma score increases by 1",
+						"description": "Your Charisma score increases by 1",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -54,7 +54,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Greater Charm of the Heart",
-						"description": "Your charisma score increases by 2",
+						"description": "Your Charisma score increases by 2",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -75,7 +75,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Superior Charm of the Heart",
-						"description": "Your charisma score increases by 3",
+						"description": "Your Charisma score increases by 3",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -96,13 +96,13 @@
 					"min": 8,
 					"flavor": {
 						"title": "Radiant Charm of the Heart",
-						"description": "Your charisma score increases by 6. Once per long rest, use an action to gain advantage on all charisma checks for 1 minute",
+						"description": "Your Charisma score increases by 6. Once per long rest, use an action to gain advantage on all Charisma checks for 1 minute",
 						"disclaimer": null
 					},
 					"activeEffects": [
 						{
 							"type": "ACTIVE_EFFECT",
-							"description": "Your charisma score increases by 6",
+							"description": "Your Charisma score increases by 6",
 							"changes": [
 								{
 									"key": "system.abilities.cha.value",
@@ -115,7 +115,7 @@
 					"feats": [
 						{
 							"type": "FEAT",
-							"description": "Once per long rest, use an action to gain advantage on all charisma checks for 10 minute",
+							"description": "Once per long rest, use an action to gain advantage on all Charisma checks for 10 minute",
 							"system": {
 								"activation": {
 									"type": "action",
@@ -191,7 +191,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Endless Endurance",
-						"description": "Your constitution score increases by 1",
+						"description": "Your Constitution score increases by 1",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -212,7 +212,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Greater Endless Endurance",
-						"description": "Your constitution score increases by 2",
+						"description": "Your Constitution score increases by 2",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -233,7 +233,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Superior Endless Endurance",
-						"description": "Your constitution score increases by 3",
+						"description": "Your Constitution score increases by 3",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -254,13 +254,13 @@
 					"min": 8,
 					"flavor": {
 						"title": "Truly Endless Endurance",
-						"description": "Your constitution score increases by 6. Twice per long rest, use an action to gain temporary HP equal to your constitution score",
+						"description": "Your Constitution score increases by 6. Twice per long rest, use an action to gain temporary HP equal to your Constitution score",
 						"disclaimer": null
 					},
 					"activeEffects": [
 						{
 							"type": "ACTIVE_EFFECT",
-							"description": "Your constitution score increases by 6",
+							"description": "Your Constitution score increases by 6",
 							"changes": [
 								{
 									"key": "system.abilities.con.value",
@@ -355,7 +355,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Might of Phoenix",
-						"description": "Your constitution score increases by 1",
+						"description": "Your Constitution score increases by 1",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -376,7 +376,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Greater Might of Phoenix",
-						"description": "Your constitution score increases by 2",
+						"description": "Your Constitution score increases by 2",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -397,7 +397,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Superior Might of Phoenix",
-						"description": "Your constitution score increases by 3",
+						"description": "Your Constitution score increases by 3",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -418,14 +418,14 @@
 					"min": 8,
 					"flavor": {
 						"title": "Ascendant Might of Phoenix",
-						"description": "Your constitution score increases by 6. Twice per long rest, use an action to regain HP equal to your constitution score",
+						"description": "Your Constitution score increases by 6. Twice per long rest, use an action to regain HP equal to your Constitution score",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/mightOfPhoenix.jpg"
 					},
 					"activeEffects": [
 						{
 							"type": "ACTIVE_EFFECT",
-							"description": "Your constitution score increases by 6",
+							"description": "Your Constitution score increases by 6",
 							"changes": [
 								{
 									"key": "system.abilities.con.value",
@@ -520,7 +520,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Redshift",
-						"description": "Your dexterity score increases by 1",
+						"description": "Your Dexterity score increases by 1",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -541,7 +541,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Greater Redshift",
-						"description": "Your dexterity score increases by 2",
+						"description": "Your Dexterity score increases by 2",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -562,7 +562,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Superior Redshift",
-						"description": "Your dexterity score increases by 3",
+						"description": "Your Dexterity score increases by 3",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -583,14 +583,14 @@
 					"min": 8,
 					"flavor": {
 						"title": "Relativistic Redshift",
-						"description": "Your dexterity score increases by 6. You can freely take one hit die damage to gain an additional 4d6 movement speed",
+						"description": "Your Dexterity score increases by 6. You can freely take one hit die damage to gain an additional 4d6 movement speed",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/redshift.jpg"
 					},
 					"activeEffects": [
 						{
 							"type": "ACTIVE_EFFECT",
-							"description": "Your dexterity score increases by 6",
+							"description": "Your Dexterity score increases by 6",
 							"changes": [
 								{
 									"key": "system.abilities.dex.value",
@@ -673,7 +673,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Annihilation",
-						"description": "Your intelligence score increases by 1",
+						"description": "Your Intelligence score increases by 1",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -694,7 +694,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Greater Annihilation",
-						"description": "Your intelligence score increases by 2",
+						"description": "Your Intelligence score increases by 2",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -715,7 +715,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Superior Annihilation",
-						"description": "Your intelligence score increases by 3",
+						"description": "Your Intelligence score increases by 3",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -736,14 +736,14 @@
 					"min": 8,
 					"flavor": {
 						"title": "Total Annihilation",
-						"description": "Your intelligence score increases by 6. Upon casting a spell, gain for each spell level spent two magic missile bolts to distribute, gain a single bolt for a cantrip",
+						"description": "Your Intelligence score increases by 6. Upon casting a spell, gain for each spell level spent two magic missile bolts to distribute, gain a single bolt for a cantrip",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/annihilation.jpg"
 					},
 					"activeEffects": [
 						{
 							"type": "ACTIVE_EFFECT",
-							"description": "Your intelligence score increases by 6",
+							"description": "Your Intelligence score increases by 6",
 							"changes": [
 								{
 									"key": "system.abilities.int.value",
@@ -798,7 +798,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Magic Reservoir",
-						"description": "Your intelligence score increases by 1",
+						"description": "Your Intelligence score increases by 1",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -819,7 +819,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Greater Magic Reservoir",
-						"description": "Your intelligence score increases by 2",
+						"description": "Your Intelligence score increases by 2",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -840,7 +840,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Superior Magic Reservoir",
-						"description": "Your intelligence score increases by 3",
+						"description": "Your Intelligence score increases by 3",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -861,14 +861,14 @@
 					"min": 8,
 					"flavor": {
 						"title": "Overflowing Magic Reservoir",
-						"description": "Your intelligence score increases by 6. Upon casting a spell roll a d6. On a 6 the spell slot is not consumed. On a 5 regain half (ceiled) of the spell level back",
+						"description": "Your Intelligence score increases by 6. Upon casting a spell roll a d6. On a 6 the spell slot is not consumed. On a 5 regain half (ceiled) of the spell level back",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/magicReservoir.jpg"
 					},
 					"activeEffects": [
 						{
 							"type": "ACTIVE_EFFECT",
-							"description": "Your intelligence score increases by 6",
+							"description": "Your Intelligence score increases by 6",
 							"changes": [
 								{
 									"key": "system.abilities.int.value",
@@ -944,7 +944,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Earthshaker",
-						"description": "Your strength score increases by 1",
+						"description": "Your Strength score increases by 1",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -965,7 +965,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Greater Earthshaker",
-						"description": "Your strength score increases by 2",
+						"description": "Your Strength score increases by 2",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -986,7 +986,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Superior Earthshaker",
-						"description": "Your strength score increases by 3",
+						"description": "Your Strength score increases by 3",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1007,13 +1007,13 @@
 					"min": 8,
 					"flavor": {
 						"title": "Cataclysmic Earthshaker",
-						"description": "Your strength score increases by 6. Once per long rest, as an action, strike the ground to cause an earthquake effect in a 30ft radius to deal quadruple your level force damage to each creature",
-						"disclaimer": "AOE centered on self. Dex saving throw against your strength save dc otherwise half damage. You are immune to your own earthquake damage"
+						"description": "Your Strength score increases by 6. Once per long rest, as an action, strike the ground to cause an earthquake effect in a 30ft radius to deal quadruple your level force damage to each creature",
+						"disclaimer": "AOE centered on self. Dex saving throw against your Strength save dc otherwise half damage. You are immune to your own earthquake damage"
 					},
 					"activeEffects": [
 						{
 							"type": "ACTIVE_EFFECT",
-							"description": "Your strength score increases by 6",
+							"description": "Your Strength score increases by 6",
 							"changes": [
 								{
 									"key": "system.abilities.str.value",
@@ -1028,7 +1028,7 @@
 							"type": "FEAT",
 							"title": "Earthshaker",
 							"description": "Once per long rest, as an action, strike the ground to cause an earthquake effect in a 30ft radius to deal quadruple your level force damage to each creature",
-							"disclaimer": "AOE centered on self. Dex saving throw against your strength save dc otherwise half damage. You are immune to your own earthquake damage",
+							"disclaimer": "AOE centered on self. Dex saving throw against your Strength save dc otherwise half damage. You are immune to your own earthquake damage",
 							"system": {
 								"activation": {
 									"type": "action",
@@ -1130,7 +1130,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Olympian's Favor",
-						"description": "Your strength score increases by 1",
+						"description": "Your Strength score increases by 1",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1151,7 +1151,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Greater Olympian's Favor",
-						"description": "Your strength score increases by 2",
+						"description": "Your Strength score increases by 2",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1172,7 +1172,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Superior Olympian's Favor",
-						"description": "Your strength score increases by 3",
+						"description": "Your Strength score increases by 3",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1193,13 +1193,13 @@
 					"min": 8,
 					"flavor": {
 						"title": "Divine Olympian's Favor",
-						"description": "Your strength score increases by 6. Twice per long rest, as a bonus action, perform a feat of strength that doubles your strength score and tenfolds lifting capacity and carrying capacity for 3 turns",
+						"description": "Your Strength score increases by 6. Twice per long rest, as a bonus action, perform a feat of strength that doubles your Strength score and tenfolds lifting capacity and carrying capacity for 3 turns",
 						"disclaimer": null
 					},
 					"activeEffects": [
 						{
 							"type": "ACTIVE_EFFECT",
-							"description": "Your strength score increases by 6",
+							"description": "Your Strength score increases by 6",
 							"changes": [
 								{
 									"key": "system.abilities.str.value",
@@ -1287,7 +1287,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Harmony",
-						"description": "Your wisdom score increases by 1",
+						"description": "Your Wisdom score increases by 1",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1308,7 +1308,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Greater Harmony",
-						"description": "Your wisdom score increases by 2",
+						"description": "Your Wisdom score increases by 2",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1329,7 +1329,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Superior Harmony",
-						"description": "Your wisdom score increases by 3",
+						"description": "Your Wisdom score increases by 3",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1350,14 +1350,14 @@
 					"min": 8,
 					"flavor": {
 						"title": "Perfect Harmony",
-						"description": "Your wisdom score increases by 6. You can stack advantages and disadvantages. Four times per long rest you can grant your ability and skill checks advantage",
+						"description": "Your Wisdom score increases by 6. You can stack advantages and disadvantages. Four times per long rest you can grant your ability and skill checks advantage",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/harmony.jpg"
 					},
 					"activeEffects": [
 						{
 							"type": "ACTIVE_EFFECT",
-							"description": "Your wisdom score increases by 6",
+							"description": "Your Wisdom score increases by 6",
 							"changes": [
 								{
 									"key": "system.abilities.wis.value",
@@ -1460,7 +1460,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Visionary Foresight",
-						"description": "Your wisdom score increases by 1",
+						"description": "Your Wisdom score increases by 1",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1481,7 +1481,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Greater Visionary Foresight",
-						"description": "Your wisdom score increases by 2",
+						"description": "Your Wisdom score increases by 2",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1502,7 +1502,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Superior Visionary Foresight",
-						"description": "Your wisdom score increases by 3",
+						"description": "Your Wisdom score increases by 3",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1523,13 +1523,13 @@
 					"min": 8,
 					"flavor": {
 						"title": "Prophetic Visionary Foresight",
-						"description": "Your wisdom score increases by 6. You can swap your d20s with each other that you rolled during your turn. Two times per long rest you can reroll any d20 you roll",
+						"description": "Your Wisdom score increases by 6. You can swap your d20s with each other that you rolled during your turn. Two times per long rest you can reroll any d20 you roll",
 						"disclaimer": null
 					},
 					"activeEffects": [
 						{
 							"type": "ACTIVE_EFFECT",
-							"description": "Your wisdom score increases by 6",
+							"description": "Your Wisdom score increases by 6",
 							"changes": [
 								{
 									"key": "system.abilities.wis.value",
@@ -1632,7 +1632,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Temporal",
-						"description": "Your dexterity score increases by 1",
+						"description": "Your Dexterity score increases by 1",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1653,7 +1653,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Greater Temporal",
-						"description": "Your dexterity score increases by 2",
+						"description": "Your Dexterity score increases by 2",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1674,7 +1674,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Superior Temporal",
-						"description": "Your dexterity score increases by 3",
+						"description": "Your Dexterity score increases by 3",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1695,14 +1695,14 @@
 					"min": 8,
 					"flavor": {
 						"title": "Recursive Temporal",
-						"description": "Your dexterity score increases by 6. As an action you can teleport back to a place you occupied up to the start of your previous turn",
+						"description": "Your Dexterity score increases by 6. As an action you can teleport back to a place you occupied up to the start of your previous turn",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/temporal.jpg"
 					},
 					"activeEffects": [
 						{
 							"type": "ACTIVE_EFFECT",
-							"description": "Your dexterity score increases by 6",
+							"description": "Your Dexterity score increases by 6",
 							"changes": [
 								{
 									"key": "system.abilities.dex.value",

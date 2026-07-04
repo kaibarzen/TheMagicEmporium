@@ -19,7 +19,7 @@
 					"min": 0,
 					"flavor": {
 						"title": "Zen",
-						"description": "Once per long rest, as an action, meditate and empower this weapon with +1 to attack and damage rolls for 3 rounds.",
+						"description": "Once per long rest, as an action, meditate and empower this weapon with +1 to attack and damage rolls for 3 rounds",
 						"disclaimer": "Not automatically applied as of now"
 					},
 					"changes": [],
@@ -47,7 +47,7 @@
 					"min": 0.5,
 					"flavor": {
 						"title": "Inner Harmony",
-						"description": "Once per long rest, as an action, meditate and empower this weapon with +2 to attack and damage rolls for 4 rounds.",
+						"description": "Once per long rest, as an action, meditate and empower this weapon with +2 to attack and damage rolls for 4 rounds",
 						"disclaimer": "Not automatically applied as of now"
 					},
 					"changes": [],
@@ -75,7 +75,7 @@
 					"min": 0.8,
 					"flavor": {
 						"title": "Transcendence",
-						"description": "Once per long rest, as an action, meditate and empower this weapon with +3 to attack and damage rolls for 6 rounds.",
+						"description": "Once per long rest, as an action, meditate and empower this weapon with +3 to attack and damage rolls for 6 rounds",
 						"disclaimer": "Not automatically applied as of now"
 					},
 					"changes": [],
@@ -147,7 +147,7 @@
 			"flavor": {
 				"title": "Crimson Harvest",
 				"description": "Gain {amount}d4 temporary HP on direct creature kill",
-				"disclaimer": "Temporary HP do not stack - only the highest value applies."
+				"disclaimer": "Temporary HP do not stack, only the highest value applies"
 			},
 			"breakpoints": [
 				{
@@ -555,7 +555,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Determined",
-						"description": "You can reroll 1's on your weapon induced damage dice, 1 reroll. The new rolls must be used",
+						"description": "You can reroll 1s on your weapon induced damage dice, 1 reroll. The new rolls must be used",
 						"disclaimer": null,
 						"background": "{backgroundPath}/tertiary/determined.jpg"
 					},
@@ -566,7 +566,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Fiercely Determined",
-						"description": "You can reroll 1-2's on your weapon induced damage dice, up to 2 rerolls. The new rolls must be used",
+						"description": "You can reroll 1s and 2s on your weapon induced damage dice, up to 2 rerolls. The new rolls must be used",
 						"disclaimer": null,
 						"background": "{backgroundPath}/tertiary/determined.jpg"
 					},
@@ -577,7 +577,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Relentlessly Determined",
-						"description": "You can reroll 1-3's on your weapon induced damage dice, up to 3 rerolls. The new rolls must be used",
+						"description": "You can reroll 1s, 2s and 3s on your weapon induced damage dice, up to 3 rerolls. The new rolls must be used",
 						"disclaimer": null,
 						"background": "{backgroundPath}/tertiary/determined.jpg"
 					},

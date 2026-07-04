@@ -448,7 +448,7 @@
 					"min": 1,
 					"flavor": {
 						"title": "Overcharged",
-						"description": "You can reroll 1's on your spell induced damage dice, 1 reroll. The new rolls must be used",
+						"description": "You can reroll 1s on your spell induced damage dice, 1 reroll. The new rolls must be used",
 						"disclaimer": null,
 						"background": "{backgroundPath}/tertiary/overcharged.jpg"
 					},
@@ -459,7 +459,7 @@
 					"min": 2,
 					"flavor": {
 						"title": "Severely Overcharged",
-						"description": "You can reroll 1-2's on your spell induced damage dice, 2 rerolls. The new rolls must be used",
+						"description": "You can reroll 1s and 2s on your spell induced damage dice, 2 rerolls. The new rolls must be used",
 						"disclaimer": null,
 						"background": "{backgroundPath}/tertiary/overcharged.jpg"
 					},
@@ -470,7 +470,7 @@
 					"min": 4,
 					"flavor": {
 						"title": "Wildly Overcharged",
-						"description": "You can reroll 1-3's on your spell induced damage dice, 3 rerolls. The new rolls must be used",
+						"description": "You can reroll 1s, 2s and 3s on your spell induced damage dice, 3 rerolls. The new rolls must be used",
 						"disclaimer": null,
 						"background": "{backgroundPath}/tertiary/overcharged.jpg"
 					},
@@ -549,7 +549,7 @@
 			},
 			"flavor": {
 				"title": "Certified Therapist",
-				"description": "+{amount} bonus to charisma checks and saving throws when gaslighting creatures"
+				"description": "+{amount} bonus to Charisma checks and saving throws when gaslighting creatures"
 			},
 			"breakpoints": [
 				{
