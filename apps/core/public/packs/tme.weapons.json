@@ -1436,7 +1436,7 @@
 			"feats": []
 		},
 		{
-			"identifier": "TME.ECHO_STRIKE",
+			"identifier": "TME.BACKSWING",
 			"type": "UNIQUE",
 			"application": {
 				"weight": 1024,
@@ -1449,7 +1449,7 @@
 				{
 					"min": 0,
 					"flavor": {
-						"title": "Echo Strike",
+						"title": "Backswing",
 						"description": "When you miss with a melee attack, your next melee attack before the end of your turn deals an additional 1d4 damage",
 						"disclaimer": null
 					},
@@ -1466,7 +1466,7 @@
 								"activities": [
 									{
 										"type": "damage",
-										"name": "Echo Strike",
+										"name": "Backswing",
 										"activation": {
 											"type": "special",
 											"override": false,
