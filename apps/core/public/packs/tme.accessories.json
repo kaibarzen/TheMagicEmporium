@@ -538,7 +538,7 @@
 			]
 		},
 		{
-			"identifier": "TME.SURELY_A_THERAPIST",
+			"identifier": "TME.CERTIFIED_THERAPIST",
 			"type": "LINEAR",
 			"application": {
 				"weight": 1024,

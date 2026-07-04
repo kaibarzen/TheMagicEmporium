@@ -327,7 +327,7 @@
 			]
 		},
 		{
-			"identifier": "TME.MASTER_MIND",
+			"identifier": "TME.MASTERMIND",
 			"type": "TIERED",
 			"application": {
 				"weight": 256,

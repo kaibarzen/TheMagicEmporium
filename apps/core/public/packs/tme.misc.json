@@ -1636,7 +1636,7 @@
 			]
 		},
 		{
-			"identifier": "TME.SHIELD_HOOK",
+			"identifier": "TME.SHIELDHOOK",
 			"type": "INDEPENDENT",
 			"application": {
 				"weight": 1024,
