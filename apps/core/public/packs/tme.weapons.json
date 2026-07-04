@@ -1165,7 +1165,7 @@
 						"title": "Escalating Edge",
 						"description": "This weapon deals 1 extra damage for each consecutive turn it has been unsheathed",
 						"disclaimer": "Bonus resets when the weapon is sheathed, combat ends or the weapon is unequipped in any way",
-						"background": "{backgroundPath}/tertiary/escelatingEdge.jpg"
+						"background": "{backgroundPath}/tertiary/escalatingEdge.jpg"
 					},
 					"changes": [],
 					"activities": []
@@ -1282,7 +1282,7 @@
 				"title": "Glass Cannon",
 				"description": "Deal +{amount} flat bonus damage, but also take +{amount} damage from all sources",
 				"disclaimer": null,
-				"background": "{backgroundPath}/tertiary/glassCanon.jpg"
+				"background": "{backgroundPath}/tertiary/glassCannon.jpg"
 			},
 			"breakpoints": [
 				{
