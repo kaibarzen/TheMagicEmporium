@@ -2089,7 +2089,7 @@
 			"feats": []
 		},
 		{
-			"identifier": "TME.STRUCTURAL_DISINTEGRY",
+			"identifier": "TME.STRUCTURAL_DISINTEGRITY",
 			"type": "TIERED",
 			"application": {
 				"weight": 1024,
@@ -2112,7 +2112,7 @@
 				{
 					"min": 1,
 					"flavor": {
-						"title": "Structural Disintegry",
+						"title": "Structural Disintegrity",
 						"description": "Your attacks deal double damage to objects, structures, and non living constructs.",
 						"disclaimer": null
 					},
@@ -2122,7 +2122,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Greater Structural Disintegry",
+						"title": "Greater Structural Disintegrity",
 						"description": "Your attacks deal quadruple damage to objects, structures, and non living constructs.",
 						"disclaimer": null
 					},
@@ -2132,10 +2132,10 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Total Structural Disintegry",
+						"title": "Total Structural Disintegrity",
 						"description": "Your attacks deal octuple damage to objects, structures, and non living constructs.",
 						"disclaimer": null,
-						"background": "{backgroundPath}/secondary/structuralDisintegry.jpg"
+						"background": "{backgroundPath}/secondary/structuralDisintegrity.jpg"
 					},
 					"activeEffects": [],
 					"feats": []
