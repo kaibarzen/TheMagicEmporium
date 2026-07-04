@@ -1279,7 +1279,7 @@
 					"min": 8,
 					"flavor": {
 						"title": "Supreme Divination",
-						"description": "Your religion skill increases by 6. As a reaction to an tagged foe being killed, grant an ally in sight 4d12 temporary HP, up to three times per short rest",
+						"description": "Your religion skill increases by 6. As a reaction to an tagged hostile being killed, grant an ally in sight 4d12 temporary HP, up to three times per short rest",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1297,7 +1297,7 @@
 						{
 							"type": "FEAT",
 							"title": "Divination",
-							"description": "As a reaction to an tagged foe being killed, grant an ally in sight 4d12 temporary HP, up to three times per short rest",
+							"description": "As a reaction to an tagged hostile being killed, grant an ally in sight 4d12 temporary HP, up to three times per short rest",
 							"system": {
 								"activation": {
 									"type": "special",
