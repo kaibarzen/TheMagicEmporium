@@ -2122,7 +2122,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Structural Disintegry",
+						"title": "Greater Structural Disintegry",
 						"description": "Your attacks deal quadruple damage to objects, structures, and non living constructs.",
 						"disclaimer": null
 					},
@@ -2132,7 +2132,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Structural Disintegry",
+						"title": "Total Structural Disintegry",
 						"description": "Your attacks deal octuple damage to objects, structures, and non living constructs.",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/structuralDisintegry.jpg"
@@ -3066,7 +3066,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Pyromaniac",
+						"title": "Raging Pyromaniac",
 						"description": "Fire damage you caused deals triple damage to objects and structures"
 					},
 					"activeEffects": [],
@@ -3075,7 +3075,7 @@
 				{
 					"min": 3,
 					"flavor": {
-						"title": "Pyromaniac",
+						"title": "Infernal Pyromaniac",
 						"description": "Fire damage you caused deals quadruple damage to objects and structures"
 					},
 					"activeEffects": [],
@@ -3197,7 +3197,7 @@
 				{
 					"min": 0.9,
 					"flavor": {
-						"title": "Prismatic",
+						"title": "Truly Prismatic",
 						"description": "Its surface constantly shifts through the colors of the rainbow. As a bonus action, you can change the colors it cycles through and how fast they shift"
 					},
 					"changes": [],
@@ -3228,7 +3228,7 @@
 				{
 					"min": 0.9,
 					"flavor": {
-						"title": "Many Fashions",
+						"title": "All Fashions",
 						"description": "As a bonus action, you can change the style, color, apparent material, rough shape, and details of this item"
 					},
 					"changes": [],

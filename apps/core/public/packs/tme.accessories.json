@@ -611,7 +611,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "The Dark Urge",
+						"title": "The Darker Urge",
 						"description": "You have advantage on shove attacks. Your shoves push creatures an additional 10ft",
 						"disclaimer": null
 					},
@@ -621,7 +621,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "The Dark Urge",
+						"title": "The Darkest Urge",
 						"description": "You have advantage on shove attacks and enemies have disadvantage on shoves against you. Your shoves push creatures an additional 15ft",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/theDarkUrge.jpg"
@@ -866,7 +866,7 @@
 				{
 					"min": 0.9,
 					"flavor": {
-						"title": "Overachiever",
+						"title": "Serial Overachiever",
 						"description": "For each damage die that rolls its maximum value, roll one additional die of the same type",
 						"disclaimer": "Those dice can also trigger this effect",
 						"background": "{backgroundPath}/tertiary/overachiever.jpg"
@@ -901,7 +901,7 @@
 				{
 					"min": 0.7,
 					"flavor": {
-						"title": "Shared Burden",
+						"title": "Greater Shared Burden",
 						"description": "As a reaction when an ally within 60ft takes damage, you may redirect up to half of it to yourself",
 						"disclaimer": null,
 						"background": "{backgroundPath}/tertiary/sharedBurden.jpg"
@@ -912,7 +912,7 @@
 				{
 					"min": 0.9,
 					"flavor": {
-						"title": "Shared Burden",
+						"title": "Supreme Shared Burden",
 						"description": "As a reaction when an ally within 90ft takes damage, you may redirect up to half of it to yourself",
 						"disclaimer": null,
 						"background": "{backgroundPath}/tertiary/sharedBurden.jpg"

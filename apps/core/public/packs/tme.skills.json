@@ -52,7 +52,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Identity Thief",
+						"title": "Greater Identity Thief",
 						"description": "Your deception skill increases by 2",
 						"disclaimer": null
 					},
@@ -72,7 +72,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Identity Thief",
+						"title": "Superior Identity Thief",
 						"description": "Your deception skill increases by 3",
 						"disclaimer": null
 					},
@@ -92,7 +92,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Identity Thief",
+						"title": "Supreme Identity Thief",
 						"description": "Your deception skill increases by 6. Once per long rest, as an action, shape shift into any humanoid you have seen for 1 hour, complete with voice and scent",
 						"disclaimer": null
 					},
@@ -206,7 +206,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Legendary Bard",
+						"title": "Greater Legendary Bard",
 						"description": "Your performance skill increases by 2",
 						"disclaimer": null
 					},
@@ -226,7 +226,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Legendary Bard",
+						"title": "Superior Legendary Bard",
 						"description": "Your performance skill increases by 3",
 						"disclaimer": null
 					},
@@ -246,7 +246,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Legendary Bard",
+						"title": "Supreme Legendary Bard",
 						"description": "Your performance skill increases by 6. Once per short rest, as an action, roll a performance check, every creature within 30ft gains temporary HP equal to its value",
 						"disclaimer": null
 					},
@@ -374,7 +374,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Mastermind",
+						"title": "Greater Mastermind",
 						"description": "Your persuasion skill increases by 2",
 						"disclaimer": null
 					},
@@ -394,7 +394,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Mastermind",
+						"title": "Superior Mastermind",
 						"description": "Your persuasion skill increases by 3",
 						"disclaimer": null
 					},
@@ -414,7 +414,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Mastermind",
+						"title": "Supreme Mastermind",
 						"description": "Your persuasion skill increases by 6. Two times per long rest, as an action, implant an idea into a creatures mind as it is their own",
 						"disclaimer": null
 					},
@@ -528,7 +528,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Voice of Ruin",
+						"title": "Greater Voice of Ruin",
 						"description": "Your intimidation skill increases by 2",
 						"disclaimer": null
 					},
@@ -548,7 +548,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Voice of Ruin",
+						"title": "Superior Voice of Ruin",
 						"description": "Your intimidation skill increases by 3",
 						"disclaimer": null
 					},
@@ -568,7 +568,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Voice of Ruin",
+						"title": "Supreme Voice of Ruin",
 						"description": "Your intimidation skill increases by 6. Your words echo with cosmic dread, you can break morale, incite mass panic, or make armies flee by speaking",
 						"disclaimer": null
 					},
@@ -649,7 +649,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Acrobat",
+						"title": "Greater Acrobat",
 						"description": "Your acrobatics skill increases by 2",
 						"disclaimer": null
 					},
@@ -669,7 +669,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Acrobat",
+						"title": "Superior Acrobat",
 						"description": "Your acrobatics skill increases by 3",
 						"disclaimer": null
 					},
@@ -689,7 +689,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Acrobat",
+						"title": "Supreme Acrobat",
 						"description": "Your acrobatics skill increases by 6. Three times per short rest, perform an acrobatic feat to gain a D8 bonus on your next D20",
 						"disclaimer": null
 					},
@@ -807,7 +807,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Perfect Touch",
+						"title": "Flawless Touch",
 						"description": "Your sleight of hand skill increases by 2",
 						"disclaimer": null
 					},
@@ -827,7 +827,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Perfect Touch",
+						"title": "Masterful Touch",
 						"description": "Your sleight of hand skill increases by 3",
 						"disclaimer": null
 					},
@@ -847,7 +847,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Perfect Touch",
+						"title": "Phantom Touch",
 						"description": "Your sleight of hand skill increases by 6. You can pickpocket and reverse pickpocket equipped items",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/perfectTouch.jpg"
@@ -929,7 +929,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Redacted",
+						"title": "Heavily Redacted",
 						"description": "Your stealth skill increases by 2",
 						"disclaimer": null
 					},
@@ -949,7 +949,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Redacted",
+						"title": "Fully Redacted",
 						"description": "Your stealth skill increases by 3",
 						"disclaimer": null
 					},
@@ -969,7 +969,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Redacted",
+						"title": "[REDACTED]",
 						"description": "Your stealth skill increases by 6. Twice per long rest, as an action, you can retcon all memories of your existence that happened in the last minute",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/redacted.jpg"
@@ -1084,7 +1084,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Arcane Font",
+						"title": "Greater Arcane Font",
 						"description": "Your arcana skill increases by 2",
 						"disclaimer": null
 					},
@@ -1104,7 +1104,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Arcane Font",
+						"title": "Superior Arcane Font",
 						"description": "Your arcana skill increases by 3",
 						"disclaimer": null
 					},
@@ -1124,7 +1124,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Arcane Font",
+						"title": "Supreme Arcane Font",
 						"description": "Your arcana skill increases by 6. Once per short rest, cast any spell in existence, upon your max spell slot, no verbal, somatic, or material requirements",
 						"disclaimer": null
 					},
@@ -1238,7 +1238,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Divination",
+						"title": "Greater Divination",
 						"description": "Your religion skill increases by 2",
 						"disclaimer": null
 					},
@@ -1258,7 +1258,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Divination",
+						"title": "Superior Divination",
 						"description": "Your religion skill increases by 3",
 						"disclaimer": null
 					},
@@ -1278,7 +1278,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Divination",
+						"title": "Supreme Divination",
 						"description": "Your religion skill increases by 6. As a reaction to an tagged foe being killed, grant an ally in sight 4d12 temporary HP, up to three times per short rest",
 						"disclaimer": null
 					},
@@ -1399,7 +1399,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Historian",
+						"title": "Greater Historian",
 						"description": "Your history skill increases by 2",
 						"disclaimer": null
 					},
@@ -1419,7 +1419,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Historian",
+						"title": "Superior Historian",
 						"description": "Your history skill increases by 3",
 						"disclaimer": null
 					},
@@ -1439,7 +1439,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Historian",
+						"title": "Supreme Historian",
 						"description": "Your history skill increases by 6. Once per short rest, as a bonus action, use a flashback to see echoes of the past",
 						"disclaimer": null
 					},
@@ -1553,7 +1553,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Naturalist",
+						"title": "Greater Naturalist",
 						"description": "Your nature skill increases by 2",
 						"disclaimer": null
 					},
@@ -1573,7 +1573,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Naturalist",
+						"title": "Superior Naturalist",
 						"description": "Your nature skill increases by 3",
 						"disclaimer": null
 					},
@@ -1593,7 +1593,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Naturalist",
+						"title": "Supreme Naturalist",
 						"description": "Your nature skill increases by 6. You can control and communicate to plants within a 30ft radius at will",
 						"disclaimer": null
 					},
@@ -1674,7 +1674,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Paradox Buster",
+						"title": "Greater Paradox Buster",
 						"description": "Your investigation skill increases by 2",
 						"disclaimer": null
 					},
@@ -1694,7 +1694,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Paradox Buster",
+						"title": "Superior Paradox Buster",
 						"description": "Your investigation skill increases by 3",
 						"disclaimer": null
 					},
@@ -1714,7 +1714,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Paradox Buster",
+						"title": "Supreme Paradox Buster",
 						"description": "Your investigation skill increases by 6. When stumped by a puzzle, riddle or other investigative task, you may ask the DM one yes / no question about the solution, and must get a true answer",
 						"disclaimer": null
 					},
@@ -1795,7 +1795,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Colossal",
+						"title": "Greater Colossal",
 						"description": "Your athletics skill increases by 2",
 						"disclaimer": null
 					},
@@ -1815,7 +1815,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Colossal",
+						"title": "Superior Colossal",
 						"description": "Your athletics skill increases by 3",
 						"disclaimer": null
 					},
@@ -1835,7 +1835,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Colossal",
+						"title": "Supreme Colossal",
 						"description": "Your athletics skill increases by 6. You can wield two handed weapons with a single hand",
 						"disclaimer": null
 					},
@@ -1916,7 +1916,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Animalistic Insight",
+						"title": "Greater Animalistic Insight",
 						"description": "Your animal handling skill increases by 2",
 						"disclaimer": null
 					},
@@ -1936,7 +1936,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Animalistic Insight",
+						"title": "Superior Animalistic Insight",
 						"description": "Your animal handling skill increases by 3",
 						"disclaimer": null
 					},
@@ -1956,7 +1956,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Animalistic Insight",
+						"title": "Supreme Animalistic Insight",
 						"description": "Your animal handling skill increases by 6. Two times per long rest, as an action, you can command any friendly animal in sight. Gaining their senses and controlling them for up to one hour",
 						"disclaimer": null
 					},
@@ -2070,7 +2070,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Medical Professional",
+						"title": "Greater Medical Professional",
 						"description": "Your medicine skill increases by 2",
 						"disclaimer": null
 					},
@@ -2090,7 +2090,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Medical Professional",
+						"title": "Superior Medical Professional",
 						"description": "Your medicine skill increases by 3",
 						"disclaimer": null
 					},
@@ -2110,7 +2110,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Medical Professional",
+						"title": "Supreme Medical Professional",
 						"description": "Your medicine skill increases by 6. Once per long rest, as an action, perform field surgery on a creature you touch: it regains 2d6 + your medicine bonus HP",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/medicalProfessional.jpg"
@@ -2233,7 +2233,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Predatory Focus",
+						"title": "Greater Predatory Focus",
 						"description": "Your perception skill increases by 2",
 						"disclaimer": null
 					},
@@ -2253,7 +2253,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Predatory Focus",
+						"title": "Superior Predatory Focus",
 						"description": "Your perception skill increases by 3",
 						"disclaimer": null
 					},
@@ -2273,7 +2273,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Predatory Focus",
+						"title": "Supreme Predatory Focus",
 						"description": "Your perception skill increases by 6. As an action you can detect invisible creatures, heat signatures and heartbeat sounds",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/predatoryFocus.jpg"
@@ -2355,7 +2355,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Superior Insight",
+						"title": "Exceptional Insight",
 						"description": "Your insight skill increases by 2",
 						"disclaimer": null
 					},
@@ -2375,7 +2375,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Superior Insight",
+						"title": "Piercing Insight",
 						"description": "Your insight skill increases by 3",
 						"disclaimer": null
 					},
@@ -2395,7 +2395,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Superior Insight",
+						"title": "Omniscient Insight",
 						"description": "Your insight skill increases by 6. You gain advantage on all insight checks",
 						"disclaimer": null
 					},
@@ -2476,7 +2476,7 @@
 				{
 					"min": 2,
 					"flavor": {
-						"title": "Survival Instinct",
+						"title": "Greater Survival Instinct",
 						"description": "Your survival skill increases by 2",
 						"disclaimer": null
 					},
@@ -2496,7 +2496,7 @@
 				{
 					"min": 4,
 					"flavor": {
-						"title": "Survival Instinct",
+						"title": "Superior Survival Instinct",
 						"description": "Your survival skill increases by 3",
 						"disclaimer": null
 					},
@@ -2516,7 +2516,7 @@
 				{
 					"min": 8,
 					"flavor": {
-						"title": "Survival Instinct",
+						"title": "Supreme Survival Instinct",
 						"description": "Your survival skill increases by 6. As a bonus action, up to 3 times per short rest, you can eat any item to gain D12 HP",
 						"disclaimer": null
 					},
