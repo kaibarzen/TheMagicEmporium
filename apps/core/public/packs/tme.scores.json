@@ -861,7 +861,7 @@
 					"min": 8,
 					"flavor": {
 						"title": "Overflowing Magic Reservoir",
-						"description": "Your intelligence score increases by 6. Upon casting a spell roll a D6. On a 6 the spell slot is not consumed. On a 5 regain half (ceiled) of the spell level back",
+						"description": "Your intelligence score increases by 6. Upon casting a spell roll a d6. On a 6 the spell slot is not consumed. On a 5 regain half (ceiled) of the spell level back",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/magicReservoir.jpg"
 					},
@@ -898,7 +898,7 @@
 										},
 										"roll": {
 											"formula": "1d6",
-											"name": "D6"
+											"name": "d6"
 										},
 										"consumption": {
 											"scaling": {
@@ -1523,7 +1523,7 @@
 					"min": 8,
 					"flavor": {
 						"title": "Prophetic Visionary Foresight",
-						"description": "Your wisdom score increases by 6. You can swap your d20s with each other that you rolled during your turn. Two times per long rest you can reroll any D20 you roll",
+						"description": "Your wisdom score increases by 6. You can swap your d20s with each other that you rolled during your turn. Two times per long rest you can reroll any d20 you roll",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1556,7 +1556,7 @@
 						{
 							"type": "FEAT",
 							"title": "Visionary Foresight's Insights",
-							"description": "Two times per long rest you can reroll any D20 you roll",
+							"description": "Two times per long rest you can reroll any d20 you roll",
 							"system": {
 								"activation": {
 									"type": "special",

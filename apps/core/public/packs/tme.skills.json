@@ -294,7 +294,7 @@
 											"types": ["temphp"],
 											"custom": {
 												"enabled": true,
-												"formula": "D20 + @skills.prf.total"
+												"formula": "d20 + @skills.prf.total"
 											}
 										},
 										"consumption": {
@@ -690,7 +690,7 @@
 					"min": 8,
 					"flavor": {
 						"title": "Supreme Acrobat",
-						"description": "Your acrobatics skill increases by 6. Three times per short rest, perform an acrobatic feat to gain a D8 bonus on your next D20",
+						"description": "Your acrobatics skill increases by 6. Three times per short rest, perform an acrobatic feat to gain a d8 bonus on your next d20",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -708,7 +708,7 @@
 						{
 							"type": "FEAT",
 							"title": "Acrobat",
-							"description": "Three times per short rest, perform an acrobatic feat to gain a D8 bonus on your next D20",
+							"description": "Three times per short rest, perform an acrobatic feat to gain a d8 bonus on your next d20",
 							"system": {
 								"activation": {
 									"type": "special",
@@ -734,8 +734,8 @@
 											"condition": ""
 										},
 										"roll": {
-											"formula": "D8",
-											"name": "D8"
+											"formula": "d8",
+											"name": "d8"
 										},
 										"consumption": {
 											"scaling": {
@@ -2517,7 +2517,7 @@
 					"min": 8,
 					"flavor": {
 						"title": "Supreme Survival Instinct",
-						"description": "Your survival skill increases by 6. As a bonus action, up to 3 times per short rest, you can eat any item to gain D12 HP",
+						"description": "Your survival skill increases by 6. As a bonus action, up to 3 times per short rest, you can eat any item to gain d12 HP",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -2535,7 +2535,7 @@
 						{
 							"type": "FEAT",
 							"title": "Survival Instinct",
-							"description": "As a bonus action, up to 3 times per short rest, you can eat any item to gain D12 HP",
+							"description": "As a bonus action, up to 3 times per short rest, you can eat any item to gain d12 HP",
 							"system": {
 								"activation": {
 									"type": "bonus",
