@@ -922,7 +922,7 @@
 			},
 			"flavor": {
 				"title": "Running Hot",
-				"description": "Your melee attacks gain bonus fire damage, each 20% of your missing HP grants you +{amount} fire damage",
+				"description": "Your melee attacks gain bonus fire damage, each 25% of your missing HP grants you +{amount} fire damage",
 				"disclaimer": null
 			},
 			"breakpoints": [
