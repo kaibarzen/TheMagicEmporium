@@ -736,7 +736,7 @@
 					"min": 8,
 					"flavor": {
 						"title": "Total Annihilation",
-						"description": "Your Intelligence score increases by 6. Upon casting a spell, gain for each spell level spent two magic missile bolts to distribute, gain a single bolt for a cantrip",
+						"description": "Your Intelligence score increases by 6. Upon casting a spell, gain two magic missile bolts per spell level spent (one bolt for a cantrip), which you may distribute freely",
 						"disclaimer": null,
 						"background": "{backgroundPath}/secondary/annihilation.jpg"
 					},
@@ -1193,7 +1193,7 @@
 					"min": 8,
 					"flavor": {
 						"title": "Divine Olympian's Favor",
-						"description": "Your Strength score increases by 6. Twice per long rest, as a bonus action, perform a feat of strength that doubles your Strength score and tenfolds lifting capacity and carrying capacity for 3 turns",
+						"description": "Your Strength score increases by 6. Twice per long rest, as a bonus action, perform a feat of strength that doubles your Strength score and increases lifting and carrying capacity tenfold for 3 turns",
 						"disclaimer": null
 					},
 					"activeEffects": [

@@ -775,8 +775,8 @@
 			},
 			"flavor": {
 				"title": "Uncertainty",
-				"description": "You gain a portal dice (d20). {amount} times per long rest, you may swap the result of your portal dice with the result of any other d20 roll in the game",
-				"disclaimer": "The portal dice result takes the place of the swapped roll and vice versa, roll the portal dice once upon aquiring this modifier",
+				"description": "You gain a portal die (d20). {amount} times per long rest, you may swap the result of your portal die with the result of any other d20 roll in the game",
+				"disclaimer": "The portal die result takes the place of the swapped roll and vice versa, roll the portal die once upon acquiring this modifier",
 				"background": "{backgroundPath}/tertiary/uncertainty.jpg"
 			},
 			"breakpoints": [

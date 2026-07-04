@@ -260,7 +260,7 @@
 			},
 			"flavor": {
 				"title": "Final Verdict",
-				"description": "If you tag a creature and it has less then {amount} HP, execute it immediately"
+				"description": "If you tag a creature and it has less than {amount} HP, execute it immediately"
 			},
 			"breakpoints": [
 				{
@@ -369,7 +369,7 @@
 					"min": 0,
 					"flavor": {
 						"title": "Consistent",
-						"description": "This base weapon damage die become d4s. Roll twice as many dice on attack",
+						"description": "This weapon's base damage dice become d4s. Roll twice as many dice on attack",
 						"disclaimer": null,
 						"background": "{backgroundPath}/tertiary/consistent.jpg"
 					},
@@ -922,7 +922,7 @@
 			},
 			"flavor": {
 				"title": "Running Hot",
-				"description": "Your Melee attacks gain bonus fire damage, each 20% of your missing HP grant you +{amount} fire damage",
+				"description": "Your melee attacks gain bonus fire damage, each 20% of your missing HP grants you +{amount} fire damage",
 				"disclaimer": null
 			},
 			"breakpoints": [
@@ -1243,8 +1243,8 @@
 			},
 			"flavor": {
 				"title": "Echo",
-				"description": "After each melee attack, roll a d20. On a {amount} or lower, the attack echos a second time against the same target",
-				"disclaimer": "Echoes attacks can also echo",
+				"description": "After each melee attack, roll a d20. On a {amount} or lower, the attack echoes a second time against the same target",
+				"disclaimer": "Echoed attacks can also echo",
 				"background": "{backgroundPath}/tertiary/echo.jpg"
 			},
 			"breakpoints": [
@@ -1411,7 +1411,7 @@
 			},
 			"flavor": {
 				"title": "First Blood",
-				"description": "Your melee hit each combat that deals damage deals +{amount} damage",
+				"description": "The first melee hit you land each combat deals +{amount} bonus damage",
 				"disclaimer": null
 			},
 			"breakpoints": [

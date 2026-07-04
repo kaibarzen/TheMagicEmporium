@@ -415,7 +415,7 @@
 					"min": 8,
 					"flavor": {
 						"title": "Supreme Mastermind",
-						"description": "Your Persuasion skill increases by 6. Two times per long rest, as an action, implant an idea into a creatures mind as it is their own",
+						"description": "Your Persuasion skill increases by 6. Two times per long rest, as an action, implant an idea into a creature's mind as if it were their own",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -433,7 +433,7 @@
 						{
 							"type": "FEAT",
 							"title": "Mastermind",
-							"description": "Two times per long rest, as an action, implant an idea into a creatures mind as it is their own",
+							"description": "Two times per long rest, as an action, implant an idea into a creature's mind as if it were their own",
 							"system": {
 								"activation": {
 									"type": "action",
@@ -1279,7 +1279,7 @@
 					"min": 8,
 					"flavor": {
 						"title": "Supreme Divination",
-						"description": "Your Religion skill increases by 6. As a reaction to an tagged hostile being killed, grant an ally in sight 4d12 temporary HP, up to three times per short rest",
+						"description": "Your Religion skill increases by 6. As a reaction to a tagged hostile being killed, grant an ally in sight 4d12 temporary HP, up to three times per short rest",
 						"disclaimer": null
 					},
 					"activeEffects": [
@@ -1297,7 +1297,7 @@
 						{
 							"type": "FEAT",
 							"title": "Divination",
-							"description": "As a reaction to an tagged hostile being killed, grant an ally in sight 4d12 temporary HP, up to three times per short rest",
+							"description": "As a reaction to a tagged hostile being killed, grant an ally in sight 4d12 temporary HP, up to three times per short rest",
 							"system": {
 								"activation": {
 									"type": "special",
