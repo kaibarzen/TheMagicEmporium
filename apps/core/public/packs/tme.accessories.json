@@ -490,7 +490,7 @@
 				"applies": []
 			},
 			"flavor": {
-				"title": "Rem Sleep",
+				"title": "REM Sleep",
 				"description": "As an action, you can cast Sleep at will. Your total sleep hit point pool per long rest is {amount}",
 				"disclaimer": "Creatures that don't fall asleep because they have more hit points than the remaining pool, or are immune to Sleep, do not consume your pool",
 				"background": "{backgroundPath}/tertiary/remSleep.jpg"
