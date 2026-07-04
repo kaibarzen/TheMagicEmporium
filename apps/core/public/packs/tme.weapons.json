@@ -1519,7 +1519,7 @@
 			"feats": []
 		},
 		{
-			"identifier": "TME.DESPERATE",
+			"identifier": "TME.LAST_RESORT",
 			"type": "UNIQUE",
 			"application": {
 				"weight": 1024,
@@ -1532,7 +1532,7 @@
 				{
 					"min": 0,
 					"flavor": {
-						"title": "Desperate",
+						"title": "Last Resort",
 						"description": "While at 25% or fewer of your maximum HP, your attacks deal +3 bonus damage",
 						"disclaimer": null
 					},
