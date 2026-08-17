@@ -13,7 +13,7 @@ find a +1 sword" for the hundredth time. Roll it, reveal it, gamble for it.
 > - Screen size optimization is a work in progress
 > - No automatic updates
 
-[Live Demo](https://kairosunsupervised.github.io/TheMagicEmporium/iframe.html?id=components-gacha-reveal--default&viewMode=story) - play with the UI in your browser, no install required.
+[Live Demo](https://kaibarzen.github.io/TheMagicEmporium/iframe.html?id=components-gacha-reveal--default&viewMode=story) - play with the UI in your browser, no install required.
 
 ## Features
 
@@ -169,9 +169,9 @@ Here: 9 reveals at moderate visibility, so the player sees each item's name and 
 
 Seen enough? Play with the actual interface, open pulls, inspect items, and explore modifiers, right in your browser:
 
-[Live Demo](https://kairosunsupervised.github.io/TheMagicEmporium/iframe.html?id=components-gacha-reveal--default&viewMode=story)
+[Live Demo](https://kaibarzen.github.io/TheMagicEmporium/iframe.html?id=components-gacha-reveal--default&viewMode=story)
 
-[Modifier Catalogue](https://kairosunsupervised.github.io/TheMagicEmporium/?path=/docs/catalog-modifiers--docs)
+[Modifier Catalogue](https://kaibarzen.github.io/TheMagicEmporium/?path=/docs/catalog-modifiers--docs)
 
 > **DEMO DISCLAIMER**
 >
