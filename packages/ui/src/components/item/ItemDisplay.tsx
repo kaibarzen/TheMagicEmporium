@@ -16,6 +16,26 @@ import { Section } from "./section/Section";
 import { SectionTier } from "./section/tier";
 import { Sparkles } from "./sparkles/Sparkles";
 
+interface BlurStep {
+	blur: number;
+	/** Distance from the card top (px) where this layer starts fading in */
+	fadeStart: number;
+	/** Distance from the card top (px) where this layer is fully opaque */
+	fadeEnd: number;
+}
+
+/**
+ * Background art blur, lightest behind the header and strongest behind the
+ * modifiers. The first step has no fade, so it is the base layer.
+ */
+const BACKGROUND_BLUR_STEPS: BlurStep[] = [
+	{ blur: 1, fadeStart: -1, fadeEnd: 0 },
+	{ blur: 2, fadeStart: 80, fadeEnd: 220 },
+	{ blur: 4, fadeStart: 160, fadeEnd: 340 },
+	{ blur: 8, fadeStart: 260, fadeEnd: 480 },
+	{ blur: 16, fadeStart: 380, fadeEnd: 680 },
+];
+
 export interface ItemDisplayProps {
 	item: AbstractItem;
 	hideFrame?: boolean;
@@ -54,10 +74,21 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 		if (!bg) return null;
 
 		return (
-			<div
-				className={styles.background}
-				style={{ backgroundImage: `url(${bg})` }}
-			>
+			<div className={styles.background} aria-hidden="true">
+				{BACKGROUND_BLUR_STEPS.map((step) => (
+					<div
+						key={step.blur}
+						className={styles.backgroundLayer}
+						style={
+							{
+								backgroundImage: `url(${bg})`,
+								"--blur": `${step.blur}px`,
+								"--fade-start": `${step.fadeStart}px`,
+								"--fade-end": `${step.fadeEnd}px`,
+							} as CSSProperties
+						}
+					/>
+				))}
 				<div className={styles.backgroundFilter} />
 			</div>
 		);
