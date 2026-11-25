@@ -5,7 +5,6 @@ import { type CSSProperties, useEffect, useMemo, useRef } from "react";
 import { resolveAppearance } from "./appearance/resolveAppearance";
 import { ItemBreakout } from "./breakout/ItemBreakout";
 import { useImageExists } from "./breakout/useImageExists";
-import { DEFAULT_CLOUD_VARIANT } from "./clouds/CloudDecoration";
 import { CardCorners, DEFAULT_CORNER_VARIANT } from "./corners/CardCorners";
 import { RARITY_CORNER_DETAIL } from "./corners/cornerDetail";
 import { CardFooter } from "./footer/CardFooter";
@@ -134,11 +133,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 							src={headerImage}
 							alt={props.item.name}
 							rarityColor={rarityColor}
-							cloudVariant={
-								appearance.header.deco === "CLOUDS"
-									? DEFAULT_CLOUD_VARIANT
-									: null
-							}
+							cloudVariant={appearance.header.deco}
 						/>
 					</div>
 				)}

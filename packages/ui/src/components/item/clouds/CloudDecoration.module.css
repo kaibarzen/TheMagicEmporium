@@ -23,8 +23,22 @@
 	}
 }
 
+.twinkle {
+	animation: twinkle 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0.45;
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
-	.drift {
+	.drift,
+	.twinkle {
 		animation: none;
 	}
 }

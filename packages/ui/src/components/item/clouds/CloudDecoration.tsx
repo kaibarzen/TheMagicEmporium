@@ -1,18 +1,18 @@
 import type { JSX } from "react";
 import { CloudBand } from "./variants/CloudBand";
-import { EmberClouds } from "./variants/EmberClouds";
-import { MinimalCurl } from "./variants/MinimalCurl";
+import { DiamondTrail } from "./variants/DiamondTrail";
 import { PuffyClouds } from "./variants/PuffyClouds";
 import { RuyiScrolls } from "./variants/RuyiScrolls";
+import { StarScatter } from "./variants/StarScatter";
 import { WindStreaks } from "./variants/WindStreaks";
 
 export enum CloudVariant {
 	Puffy = "puffy",
 	Ruyi = "ruyi",
 	Band = "band",
-	Minimal = "minimal",
-	Ember = "ember",
 	Wind = "wind",
+	Diamonds = "diamonds",
+	Stars = "stars",
 }
 
 /** The decoration used on item cards until we decide when to swap variants */
@@ -20,8 +20,6 @@ export const DEFAULT_CLOUD_VARIANT = CloudVariant.Puffy;
 
 export interface CloudDecorationProps {
 	variant: CloudVariant;
-	/** Item rarity colour; only the ember variant uses it */
-	rarityColor: string;
 }
 
 /**
@@ -36,11 +34,11 @@ export const CloudDecoration = (props: CloudDecorationProps): JSX.Element => {
 			return <RuyiScrolls />;
 		case CloudVariant.Band:
 			return <CloudBand />;
-		case CloudVariant.Minimal:
-			return <MinimalCurl />;
-		case CloudVariant.Ember:
-			return <EmberClouds color={props.rarityColor} />;
 		case CloudVariant.Wind:
 			return <WindStreaks />;
+		case CloudVariant.Diamonds:
+			return <DiamondTrail />;
+		case CloudVariant.Stars:
+			return <StarScatter />;
 	}
 };

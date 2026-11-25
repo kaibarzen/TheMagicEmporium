@@ -4,6 +4,7 @@ import { Equipment } from "@tme/library/src/item/equipment/equipment.types";
 import { Rarity } from "@tme/library/src/item/item.types";
 import { legendarySkulltakerFixture } from "../../../fixtures/items/legendarySkulltakerFixture";
 import { veryRarePerfectFixture } from "../../../fixtures/items/veryRarePerfectFixture";
+import { CloudVariant } from "../clouds/CloudDecoration";
 import { resolveAppearance } from "./resolveAppearance";
 
 describe("resolveAppearance", () => {
@@ -63,12 +64,45 @@ describe("resolveAppearance", () => {
 		expect(appearance.header.image).toBeNull();
 	});
 
-	it("decorates the header with clouds by default", () => {
-		// ARRANGE & ACT
-		const appearance = resolveAppearance(new AbstractItem());
+	it("decorates the header by rarity when left on AUTO", () => {
+		// ARRANGE
+		const common = new AbstractItem();
+		common.rarity = Rarity.Common;
+		const legendary = new AbstractItem();
+		legendary.rarity = Rarity.Legendary;
+
+		// ACT
+		const commonAppearance = resolveAppearance(common);
+		const legendaryAppearance = resolveAppearance(legendary);
 
 		// ASSERT
-		expect(appearance.header.deco).toBe("CLOUDS");
+		expect(commonAppearance.header.deco).toBeNull();
+		expect(legendaryAppearance.header.deco).toBe(CloudVariant.Puffy);
+	});
+
+	it("decorates the header with the chosen cloud design", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Common;
+		item.appearance = { header: { deco: "RUYI" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.header.deco).toBe(CloudVariant.Ruyi);
+	});
+
+	it("leaves the header line bare when the deco is NONE", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { header: { deco: "NONE" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.header.deco).toBeNull();
 	});
 
 	it("tilts by rarity when left on AUTO", () => {

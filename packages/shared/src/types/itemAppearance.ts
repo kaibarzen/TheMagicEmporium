@@ -7,8 +7,18 @@
 /** "NONE" hides the image, anything else is an image URL */
 export type AppearanceImage = "NONE" | (string & {});
 
-/** Decoration under the header art; only visible when the header has an image */
-export type HeaderDeco = "CLOUDS" | "NONE";
+/**
+ * Cloud design on the golden line under the header art; only visible when the
+ * header has an image. NONE leaves the line bare.
+ */
+export type HeaderDeco =
+	| "PUFFY"
+	| "RUYI"
+	| "BAND"
+	| "WIND"
+	| "DIAMONDS"
+	| "STARS"
+	| "NONE";
 
 /** How far the card tips toward the cursor on hover */
 export type TiltMode = "NONE" | "LIGHT" | "HEAVY";
@@ -21,8 +31,8 @@ export interface ItemAppearance {
 	header?: {
 		/** AUTO looks for a *.cutout.png next to the base item's icon. Defaults to AUTO */
 		image?: "AUTO" | AppearanceImage;
-		/** Defaults to CLOUDS */
-		deco?: HeaderDeco;
+		/** AUTO shows puffy clouds on rare and better cards and a bare line below. Defaults to AUTO */
+		deco?: "AUTO" | HeaderDeco;
 	};
 	effects?: {
 		/** AUTO tilts very rare cards lightly and legendary cards heavily. Defaults to AUTO */

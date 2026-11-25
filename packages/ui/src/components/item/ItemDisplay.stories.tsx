@@ -77,7 +77,7 @@ export const Rare: Story = {
 	args: { item: rareFixture },
 };
 
-/** A rare item whose appearance sets its background, sparkles and heavy tilt, and drops the clouds. */
+/** A rare item whose appearance sets its background, sparkles, heavy tilt and star decoration. */
 export const RareCustomAppearance: Story = {
 	args: { item: rareCustomAppearanceFixture },
 };

@@ -18,9 +18,7 @@ describe("CloudDecoration", () => {
 	it("draws a decoration for every variant", () => {
 		for (const variant of Object.values(CloudVariant)) {
 			// ARRANGE & ACT
-			const view = render(
-				<CloudDecoration variant={variant} rarityColor="#ee7e3e" />,
-			);
+			const view = render(<CloudDecoration variant={variant} />);
 
 			// ASSERT
 			expect(view.container.querySelector("svg")).not.toBeNull();
@@ -30,9 +28,7 @@ describe("CloudDecoration", () => {
 
 	it("mirrors the left side onto the right side", () => {
 		// ARRANGE & ACT
-		const view = render(
-			<CloudDecoration variant={CloudVariant.Ruyi} rarityColor="#ee7e3e" />,
-		);
+		const view = render(<CloudDecoration variant={CloudVariant.Ruyi} />);
 
 		// ASSERT
 		const left = view.container.querySelector('[data-side="left"]');
@@ -43,25 +39,36 @@ describe("CloudDecoration", () => {
 		expect(right?.innerHTML).toBe(left?.innerHTML);
 	});
 
-	it("tints the ember clouds with the rarity colour", () => {
-		// ARRANGE & ACT
-		const view = render(
-			<CloudDecoration variant={CloudVariant.Ember} rarityColor="#b88ce8" />,
-		);
-
-		// ASSERT
-		expect(view.container.innerHTML).toContain("#b88ce8");
-	});
-
 	it("is hidden from assistive technology", () => {
 		// ARRANGE & ACT
-		const view = render(
-			<CloudDecoration variant={CloudVariant.Puffy} rarityColor="#ee7e3e" />,
-		);
+		const view = render(<CloudDecoration variant={CloudVariant.Puffy} />);
 
 		// ASSERT
 		expect(
 			view.container.querySelector("svg")?.getAttribute("aria-hidden"),
 		).toBe("true");
+	});
+
+	it("draws the diamond trail as diamond shapes", () => {
+		// ARRANGE & ACT
+		const view = render(<CloudDecoration variant={CloudVariant.Diamonds} />);
+
+		// ASSERT
+		const left = view.container.querySelector('[data-side="left"]');
+		expect(left?.querySelectorAll("polygon").length).toBeGreaterThan(0);
+	});
+
+	it("makes the stars twinkle out of step", () => {
+		// ARRANGE & ACT
+		const view = render(<CloudDecoration variant={CloudVariant.Stars} />);
+
+		// ASSERT
+		const left = view.container.querySelector('[data-side="left"]');
+		const delays = Array.from(left?.querySelectorAll("path[style]") ?? []).map(
+			(star) => (star as SVGElement).style.animationDelay,
+		);
+		expect(
+			new Set(delays.filter((delay) => delay !== "")).size,
+		).toBeGreaterThan(1);
 	});
 });

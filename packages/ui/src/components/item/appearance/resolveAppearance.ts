@@ -6,6 +6,8 @@ import type {
 	TiltMode,
 } from "@tme/shared/src/types/itemAppearance";
 import { getCutoutUrl } from "../breakout/cutoutUrl";
+import { autoCloud } from "../clouds/autoCloud";
+import { CloudVariant } from "../clouds/CloudDecoration";
 import { autoTilt } from "../tilt/tilt";
 
 /** An item's appearance with every AUTO and missing field turned into a concrete value */
@@ -18,7 +20,8 @@ export interface ResolvedAppearance {
 		 * cut-out is only a guess), so check it loads before showing it.
 		 */
 		image: string | null;
-		deco: HeaderDeco;
+		/** Cloud design on the golden line, or null for a bare line */
+		deco: CloudVariant | null;
 	};
 	effects: {
 		tilt: TiltMode;
@@ -27,6 +30,24 @@ export interface ResolvedAppearance {
 		reveal: boolean;
 	};
 }
+
+const DECO_CLOUD: Record<HeaderDeco, CloudVariant | null> = {
+	PUFFY: CloudVariant.Puffy,
+	RUYI: CloudVariant.Ruyi,
+	BAND: CloudVariant.Band,
+	WIND: CloudVariant.Wind,
+	DIAMONDS: CloudVariant.Diamonds,
+	STARS: CloudVariant.Stars,
+	NONE: null,
+};
+
+const resolveDeco = (item: AbstractItem): CloudVariant | null => {
+	const deco = item.appearance.header?.deco;
+	if (deco === undefined || deco === "AUTO") {
+		return autoCloud(item.rarity);
+	}
+	return DECO_CLOUD[deco];
+};
 
 const resolveImage = (image: AppearanceImage | undefined): string | null => {
 	if (image === undefined || image === "NONE") {
@@ -65,7 +86,7 @@ export const resolveAppearance = (item: AbstractItem): ResolvedAppearance => {
 		background: resolveImage(appearance.background?.image),
 		header: {
 			image: resolveHeaderImage(item),
-			deco: appearance.header?.deco ?? "CLOUDS",
+			deco: resolveDeco(item),
 		},
 		effects: {
 			tilt:

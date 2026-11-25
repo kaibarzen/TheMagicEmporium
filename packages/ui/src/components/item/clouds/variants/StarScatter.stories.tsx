@@ -1,22 +1,22 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { CloudStoryFrame } from "../CloudStoryFrame";
-import { MinimalCurl } from "./MinimalCurl";
+import { StarScatter } from "./StarScatter";
 
 /**
- * Each end of the line finishes in a single curl with a diamond.
+ * Four-pointed stars joined by faint constellation lines, twinkling out of step.
  */
 const meta = {
-	title: "Components/Item/Clouds/MinimalCurl",
-	component: MinimalCurl,
+	title: "Components/Item/Clouds/StarScatter",
+	component: StarScatter,
 	parameters: {
 		layout: "centered",
 	},
 	render: () => (
 		<CloudStoryFrame>
-			<MinimalCurl />
+			<StarScatter />
 		</CloudStoryFrame>
 	),
-} satisfies Meta<typeof MinimalCurl>;
+} satisfies Meta<typeof StarScatter>;
 
 export default meta;
 

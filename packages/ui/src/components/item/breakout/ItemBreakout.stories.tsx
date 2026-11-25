@@ -51,9 +51,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-/** With the rarity-tinted ember clouds */
-export const Ember: Story = {
-	args: { cloudVariant: CloudVariant.Ember },
+/** With the star decoration */
+export const Stars: Story = {
+	args: { cloudVariant: CloudVariant.Stars },
 };
 
 /** No cloud decoration, just the golden line */

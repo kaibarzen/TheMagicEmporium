@@ -11,7 +11,7 @@ export interface ItemBreakoutProps {
 	/** URL of the item's transparent cut-out, cut off along its bottom edge */
 	src: string;
 	alt: string;
-	/** Rarity colour for the glow behind the item and the ember clouds */
+	/** Rarity colour for the glow behind the item */
 	rarityColor: string;
 	/** Cloud design on the golden line; null leaves the line bare */
 	cloudVariant?: CloudVariant | null;
@@ -41,7 +41,7 @@ export const ItemBreakout = (props: ItemBreakoutProps): JSX.Element => {
 			</div>
 			{variant !== null && (
 				<div className={styles.clouds}>
-					<CloudDecoration variant={variant} rarityColor={props.rarityColor} />
+					<CloudDecoration variant={variant} />
 				</div>
 			)}
 		</div>

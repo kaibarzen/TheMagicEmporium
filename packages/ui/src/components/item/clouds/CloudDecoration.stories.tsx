@@ -18,15 +18,13 @@ const meta = {
 	},
 	args: {
 		variant: DEFAULT_CLOUD_VARIANT,
-		rarityColor: "#ee7e3e",
 	},
 	argTypes: {
 		variant: { control: "select", options: Object.values(CloudVariant) },
-		rarityColor: { control: "color" },
 	},
 	render: (args) => (
 		<CloudStoryFrame>
-			<CloudDecoration variant={args.variant} rarityColor={args.rarityColor} />
+			<CloudDecoration variant={args.variant} />
 		</CloudStoryFrame>
 	),
 } satisfies Meta<typeof CloudDecoration>;
@@ -42,8 +40,8 @@ export const Ruyi: Story = { args: { variant: CloudVariant.Ruyi } };
 
 export const Band: Story = { args: { variant: CloudVariant.Band } };
 
-export const Minimal: Story = { args: { variant: CloudVariant.Minimal } };
-
-export const Ember: Story = { args: { variant: CloudVariant.Ember } };
-
 export const Wind: Story = { args: { variant: CloudVariant.Wind } };
+
+export const Diamonds: Story = { args: { variant: CloudVariant.Diamonds } };
+
+export const Stars: Story = { args: { variant: CloudVariant.Stars } };

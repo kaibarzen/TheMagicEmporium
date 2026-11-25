@@ -12,6 +12,12 @@ import styles from "./CloudDecoration.module.css";
 export const VIEW_WIDTH = 488;
 export const VIEW_HEIGHT = 96;
 
+/**
+ * Scales a side up 1.3× while keeping its bottom on the golden line, for
+ * designs drawn smaller than the puffy clouds' footprint.
+ */
+export const GROW_ON_LINE = "translate(0 95) scale(1.3) translate(0 -95)";
+
 const CLOUD_PATH =
 	"M14 42 C3 42 1 31 8 26 C1 18 10 7 21 12 C23 1 40 -1 46 8 C52 -1 68 -1 72 10 C80 3 95 5 95 16 C107 13 117 22 112 32 C119 38 112 44 103 42 Z";
 
