@@ -7,6 +7,7 @@ import { getCutoutUrl } from "./breakout/cutoutUrl";
 import { ItemBreakout } from "./breakout/ItemBreakout";
 import { useImageExists } from "./breakout/useImageExists";
 import { CardCorners, DEFAULT_CORNER_VARIANT } from "./corners/CardCorners";
+import { CardFooter } from "./footer/CardFooter";
 import { Header, RARITY_COLOR } from "./header/Header";
 import styles from "./ItemDisplay.module.css";
 import { Section } from "./section/Section";
@@ -18,6 +19,8 @@ export interface ItemDisplayProps {
 }
 
 export const ItemDisplay = (props: ItemDisplayProps) => {
+	const rarityColor = RARITY_COLOR[props.item.rarity];
+	const rarityStyle = { "--rarity-color": rarityColor } as CSSProperties;
 	const sparkles = props.item.getSparkles();
 	const cardRef = useRef<HTMLDivElement | null>(null);
 
@@ -60,12 +63,13 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.2, ease: "easeOut" }}
 			className={hasCutout ? styles.withArt : undefined}
+			style={rarityStyle}
 		>
 			{hasCutout && (
 				<ItemBreakout
 					src={cutoutUrl}
 					alt={props.item.name}
-					rarityColor={RARITY_COLOR[props.item.rarity]}
+					rarityColor={rarityColor}
 				/>
 			)}
 			<div ref={cardRef} className={styles.card}>
@@ -81,6 +85,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 				<Section kanji="凡" title="FAN" modifiers={props.item.primary} />
 				<Section kanji="灵" title="LING" modifiers={props.item.secondary} />
 				<Section kanji="仙" title="XIAN" modifiers={props.item.tertiary} />
+				<CardFooter rarityColor={rarityColor} />
 			</div>
 		</motion.div>
 	);
@@ -90,12 +95,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 	}
 
 	return (
-		<div
-			className={styles.frame}
-			style={
-				{ "--rarity-color": RARITY_COLOR[props.item.rarity] } as CSSProperties
-			}
-		>
+		<div className={styles.frame} style={rarityStyle}>
 			<div className={styles.aura} aria-hidden="true" />
 			{card}
 		</div>

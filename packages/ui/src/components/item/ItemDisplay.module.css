@@ -77,6 +77,63 @@
 		0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 
+/*
+ * Inner hairline: a second, fainter frame inset from the border, echoing the
+ * double rules used in the section headers. Each side fades out before the
+ * corner ornaments so it never crosses the fret.
+ */
+.card::before {
+	content: "";
+	position: absolute;
+	inset: 8px;
+	pointer-events: none;
+	--hairline-h: linear-gradient(
+		90deg,
+		transparent,
+		rgba(212, 166, 74, 0.28) 14%,
+		rgba(212, 166, 74, 0.28) 86%,
+		transparent
+	);
+	--hairline-v: linear-gradient(
+		180deg,
+		transparent,
+		rgba(212, 166, 74, 0.22) 14%,
+		rgba(212, 166, 74, 0.22) 86%,
+		transparent
+	);
+	background:
+		var(--hairline-h) top / calc(100% - 72px) 1px no-repeat,
+		var(--hairline-h) bottom / calc(100% - 72px) 1px no-repeat,
+		var(--hairline-v) left / 1px calc(100% - 72px) no-repeat,
+		var(--hairline-v) right / 1px calc(100% - 72px) no-repeat;
+}
+
+/*
+ * Rarity light: the top edge catches the rarity colour and spills a soft wash
+ * down into the header, tying the rarity label to the card itself.
+ */
+.card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+	pointer-events: none;
+	border-radius: 4px;
+	background:
+		linear-gradient(
+			90deg,
+			transparent 8%,
+			color-mix(in srgb, var(--rarity-color) 75%, transparent) 50%,
+			transparent 92%
+		)
+		top / 100% 1px no-repeat,
+		radial-gradient(
+			70% 160px at 50% 0,
+			color-mix(in srgb, var(--rarity-color) 14%, transparent),
+			transparent
+		);
+}
+
 /* Room above the card for item art that breaks out of its top edge */
 .withArt {
 	padding-top: 190px;

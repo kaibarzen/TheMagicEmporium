@@ -1,0 +1,9 @@
+.root {
+	display: flex;
+	justify-content: center;
+	margin-top: 18px;
+}
+
+.seal {
+	filter: drop-shadow(0 0 4px var(--rarity-color));
+}
