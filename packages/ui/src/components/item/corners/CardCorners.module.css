@@ -1,0 +1,31 @@
+/* Each ornament is drawn for the top-left corner and rotated into the other three. */
+.corner {
+	position: absolute;
+	width: 48px;
+	height: 48px;
+	overflow: visible;
+	pointer-events: none;
+}
+
+.topLeft {
+	top: -5px;
+	left: -5px;
+}
+
+.topRight {
+	top: -5px;
+	right: -5px;
+	transform: rotate(90deg);
+}
+
+.bottomRight {
+	bottom: -5px;
+	right: -5px;
+	transform: rotate(180deg);
+}
+
+.bottomLeft {
+	bottom: -5px;
+	left: -5px;
+	transform: rotate(270deg);
+}

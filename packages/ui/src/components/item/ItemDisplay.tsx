@@ -6,6 +6,7 @@ import { type CSSProperties, useEffect, useMemo, useRef } from "react";
 import { getCutoutUrl } from "./breakout/cutoutUrl";
 import { ItemBreakout } from "./breakout/ItemBreakout";
 import { useImageExists } from "./breakout/useImageExists";
+import { CardCorners, DEFAULT_CORNER_VARIANT } from "./corners/CardCorners";
 import { Header, RARITY_COLOR } from "./header/Header";
 import styles from "./ItemDisplay.module.css";
 import { Section } from "./section/Section";
@@ -70,6 +71,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 			<div ref={cardRef} className={styles.card}>
 				{background}
 				{sparkles.enabled && <Sparkles amount={sparkles.amount} />}
+				<CardCorners variant={DEFAULT_CORNER_VARIANT} />
 				<Header
 					name={props.item.name}
 					rarity={props.item.rarity}
