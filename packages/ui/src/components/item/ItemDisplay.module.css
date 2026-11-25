@@ -1,35 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@500;600&display=swap");
 
+/*
+ * No box around the card: a soft dark backdrop that fades out at the edges keeps
+ * the card readable over any map, while item art can break out into open space.
+ */
 .frame {
 	position: relative;
+	isolation: isolate;
 	width: 516px;
 	padding: 32px 28px;
 	box-sizing: border-box;
-	background:
-		radial-gradient(
-			120% 60% at 50% -10%,
-			rgba(212, 166, 74, 0.1) 0%,
-			transparent 60%
-		),
-		radial-gradient(
-			80% 50% at 50% 120%,
-			rgba(93, 140, 232, 0.06) 0%,
-			transparent 65%
-		),
-		linear-gradient(180deg, #0e1124 0%, #07091a 100%);
-	overflow: hidden;
 }
 
-.lattice {
+.aura {
 	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: 100%;
-	height: 100%;
-	opacity: 0.06;
+	inset: 0;
+	z-index: -1;
 	pointer-events: none;
+	background:
+		radial-gradient(
+			55% 40% at 50% 28%,
+			color-mix(in srgb, var(--rarity-color) 12%, transparent),
+			transparent 70%
+		),
+		radial-gradient(
+			closest-side,
+			rgba(4, 5, 16, 0.92) 55%,
+			rgba(4, 5, 16, 0.55) 80%,
+			transparent 100%
+		);
 }
 
 .card {

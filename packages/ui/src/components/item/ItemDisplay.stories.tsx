@@ -4,6 +4,7 @@ import { legendaryItemArtFixture } from "../../fixtures/items/legendaryItemArtFi
 import { legendaryModifierBackgroundFixture } from "../../fixtures/items/legendaryModifierBackgroundFixture";
 import { legendaryNoBackgroundFixture } from "../../fixtures/items/legendaryNoBackgroundFixture";
 import { legendaryOverrideBackgroundFixture } from "../../fixtures/items/legendaryOverrideBackgroundFixture";
+import { legendaryWarhammerArtFixture } from "../../fixtures/items/legendaryWarhammerArtFixture";
 import { rareFixture } from "../../fixtures/items/rareFixture";
 import { uncommonFixture } from "../../fixtures/items/uncommonFixture";
 import { veryRareFixture } from "../../fixtures/items/veryRareFixture";
@@ -44,6 +45,11 @@ export const Default: Story = {
 /** Legendary whose base item has a cut-out, so the item art breaks out above the card. */
 export const LegendaryItemArt: Story = {
 	args: { item: legendaryItemArtFixture },
+};
+
+/** Legendary warhammer with a cut-out: a weapon cut only along its handle. */
+export const LegendaryWarhammerArt: Story = {
+	args: { item: legendaryWarhammerArtFixture },
 };
 
 /** Legendary with no background — falls back to the plain rarity frame. */

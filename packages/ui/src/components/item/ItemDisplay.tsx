@@ -16,31 +16,6 @@ export interface ItemDisplayProps {
 	hideFrame?: boolean;
 }
 
-const Defs = () => (
-	<svg
-		width="0"
-		height="0"
-		aria-hidden="true"
-		style={{ position: "absolute", overflow: "hidden" }}
-	>
-		<defs>
-			<pattern
-				id="tme-hex-lat"
-				width="36"
-				height="32"
-				patternUnits="userSpaceOnUse"
-			>
-				<polygon
-					points="18,2 34,16 18,30 2,16"
-					fill="none"
-					stroke="#d4a64a"
-					strokeWidth="0.5"
-				/>
-			</pattern>
-		</defs>
-	</svg>
-);
-
 interface CornerProps {
 	rotation: number;
 	className: string;
@@ -181,18 +156,14 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 	}
 
 	return (
-		<div>
-			<Defs />
-			<div className={styles.frame}>
-				<svg
-					aria-hidden="true"
-					className={styles.lattice}
-					preserveAspectRatio="xMidYMid slice"
-				>
-					<rect width="100%" height="100%" fill="url(#tme-hex-lat)" />
-				</svg>
-				{card}
-			</div>
+		<div
+			className={styles.frame}
+			style={
+				{ "--rarity-color": RARITY_COLOR[props.item.rarity] } as CSSProperties
+			}
+		>
+			<div className={styles.aura} aria-hidden="true" />
+			{card}
 		</div>
 	);
 };
