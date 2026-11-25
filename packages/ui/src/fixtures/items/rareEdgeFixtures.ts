@@ -3,11 +3,14 @@ import type { ItemAppearance } from "@tme/shared/src/types/itemAppearance";
 import blood from "./edges/blood.png";
 import darkIce from "./edges/darkIce.png";
 import darkTentacles from "./edges/darkTentacles.png";
+import desperation from "./edges/desperation.png";
 import destruction from "./edges/destruction.png";
+import eyeballs from "./edges/eyeballs.png";
 import ice from "./edges/ice.png";
 import mistRuins from "./edges/mistRuins.png";
 import skulls from "./edges/skulls.png";
 import tentacles from "./edges/tentacles.png";
+import whiteSkulls from "./edges/whiteSkulls.png";
 import { rareShatteredFixture } from "./rareShatteredFixture";
 
 /** The example edge strips generated with the background-edge ComfyUI workflows */
@@ -15,11 +18,14 @@ export const edgeImages = {
 	blood,
 	darkIce,
 	darkTentacles,
+	desperation,
 	destruction,
+	eyeballs,
 	mistRuins,
 	ice,
 	skulls,
 	tentacles,
+	whiteSkulls,
 };
 
 /** The custom appearance rare item with a different background, renamed so seeded effects differ */
@@ -92,6 +98,24 @@ export const rareDestructionEdgeFixture = withBackground(
 export const rareMistRuinsEdgeFixture = withBackground(
 	{ bottom: { image: mistRuins } },
 	"Rare Robes of the Hollow Deep",
+);
+
+/** Two huge, bloodshot eyes staring over the bottom edge */
+export const rareDesperationEdgeFixture = withBackground(
+	{ bottom: { image: desperation } },
+	"Rare Robes of the Watcher Below",
+);
+
+/** A mound of bloody eyeballs, all staring, along the bottom edge */
+export const rareEyeballsEdgeFixture = withBackground(
+	{ bottom: { image: eyeballs } },
+	"Rare Robes of the Thousand Gazes",
+);
+
+/** Stark black-and-white skulls piled along the bottom edge */
+export const rareWhiteSkullsEdgeFixture = withBackground(
+	{ bottom: { image: whiteSkulls } },
+	"Rare Robes of the Bleached Crypt",
 );
 
 /** Blood from the top and skulls along the bottom, both edges at once */

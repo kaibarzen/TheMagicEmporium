@@ -17,12 +17,15 @@ import {
 	rareBloodEdgeFixture,
 	rareDarkIceEdgeFixture,
 	rareDarkTentaclesEdgeFixture,
+	rareDesperationEdgeFixture,
 	rareDestructionEdgeFixture,
+	rareEyeballsEdgeFixture,
 	rareIceEdgeFixture,
 	rareMistRuinsEdgeFixture,
 	rareParallaxEdgesFixture,
 	rareSkullsEdgeFixture,
 	rareTentaclesEdgeFixture,
+	rareWhiteSkullsEdgeFixture,
 } from "../../fixtures/items/rareEdgeFixtures";
 import { rareFixture } from "../../fixtures/items/rareFixture";
 import {
@@ -187,6 +190,21 @@ export const RareDestructionEdge: Story = {
 /** Edge: ruins sinking into violet mist along the bottom. */
 export const RareMistRuinsEdge: Story = {
 	args: { item: rareMistRuinsEdgeFixture },
+};
+
+/** Edge: two huge, bloodshot eyes staring over the bottom at the viewer. */
+export const RareDesperationEdge: Story = {
+	args: { item: rareDesperationEdgeFixture },
+};
+
+/** Edge: a mound of bloody eyeballs along the bottom, every one of them staring. */
+export const RareEyeballsEdge: Story = {
+	args: { item: rareEyeballsEdgeFixture },
+};
+
+/** Edge: stark black-and-white skulls piled along the bottom. */
+export const RareWhiteSkullsEdge: Story = {
+	args: { item: rareWhiteSkullsEdgeFixture },
 };
 
 /** Blurred edges in front of parallax art: the art drifts behind them while they stay put. Hover and move around. */
