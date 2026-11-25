@@ -10,6 +10,16 @@ import {
 } from "../../fixtures/items/rareBackgroundEffectFixtures";
 import { rareCustomAppearanceFixture } from "../../fixtures/items/rareCustomAppearanceFixture";
 import { rareFixture } from "../../fixtures/items/rareFixture";
+import {
+	rareBlackEmbersFixture,
+	rareBlackSmokeFixture,
+	rareBrightEmbersFixture,
+	rareFireEmbersFixture,
+	rareGoldenEmbersFixture,
+	rareHoloFixture,
+	rareWhiteSmokeFixture,
+	rareWispEmbersFixture,
+} from "../../fixtures/items/rareParticleFixtures";
 import { rareShatteredFixture } from "../../fixtures/items/rareShatteredFixture";
 import { uncommonFixture } from "../../fixtures/items/uncommonFixture";
 import { veryRareFixture } from "../../fixtures/items/veryRareFixture";
@@ -100,6 +110,46 @@ export const RareParallaxBackground: Story = {
 /** Background art breaking up like a corrupted signal: split colour, jolting bands, scanlines. */
 export const RareGlitchBackground: Story = {
 	args: { item: rareGlitchFixture },
+};
+
+/** Rainbow holo foil over the art that shifts with the pointer. */
+export const RareHoloFoil: Story = {
+	args: { item: rareHoloFixture },
+};
+
+/** BRIGHT embers: white-hot to orange to a dull red, like a campfire. */
+export const RareBrightEmbers: Story = {
+	args: { item: rareBrightEmbersFixture },
+};
+
+/** FIRE embers: a deeper, angrier red. */
+export const RareFireEmbers: Story = {
+	args: { item: rareFireEmbersFixture },
+};
+
+/** GOLDEN embers: pale gold to amber. */
+export const RareGoldenEmbers: Story = {
+	args: { item: rareGoldenEmbersFixture },
+};
+
+/** BLACK embers: void-black specks in a cold violet glow. */
+export const RareBlackEmbers: Story = {
+	args: { item: rareBlackEmbersFixture },
+};
+
+/** WISPS embers: every colour, each slowly shifting hue. */
+export const RareWispEmbers: Story = {
+	args: { item: rareWispEmbersFixture },
+};
+
+/** WHITE smoke: pale, ghostly violet-grey curling up behind the text. */
+export const RareWhiteSmoke: Story = {
+	args: { item: rareWhiteSmokeFixture },
+};
+
+/** BLACK smoke: a thick, near-black haze curling up behind the text. */
+export const RareBlackSmoke: Story = {
+	args: { item: rareBlackSmokeFixture },
 };
 
 /** An uncommon item. */

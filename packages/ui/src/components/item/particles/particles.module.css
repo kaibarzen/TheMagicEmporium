@@ -1,0 +1,48 @@
+/* Embers sit above the text like the sparkles; they are small enough not to hide it */
+.embers {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 20;
+	border-radius: 4px;
+}
+
+/*
+ * Smoke sits behind the text and fade out toward the top, so the smoke gathers
+ * around the bottom of the card and never clouds the header.
+ */
+.smoke {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	pointer-events: none;
+	border-radius: 4px;
+	mask-image: linear-gradient(
+		0deg,
+		#000 15%,
+		rgb(0 0 0 / 0.7) 45%,
+		transparent 85%
+	);
+}
+
+.canvas {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* Overhangs the clipped container, so the displacement never pulls empty space in at the edges */
+.smokeCanvas {
+	position: absolute;
+	inset: -48px;
+	width: calc(100% + 96px);
+	height: calc(100% + 96px);
+	filter: var(--smoke-filter);
+}
+
+.filterDefs {
+	position: absolute;
+	width: 0;
+	height: 0;
+}

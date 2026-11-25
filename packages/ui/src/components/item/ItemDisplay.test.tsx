@@ -325,4 +325,41 @@ describe("ItemDisplay", () => {
 		expect(surface.hasAttribute("data-tilting")).toBe(true);
 		expect(view.container.querySelector("[data-tilt]")).toBeNull();
 	});
+
+	it("lays holo foil over a card whose gleam is HOLO", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { effects: { gleam: "HOLO" } };
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(view.container.querySelector('[data-gleam="HOLO"]')).not.toBeNull();
+		expect(view.container.querySelector('[data-gleam="SWEEP"]')).toBeNull();
+	});
+
+	it("sends embers of the chosen colour up the card", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { effects: { embers: "FIRE" } };
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(view.container.querySelector('[data-embers="FIRE"]')).not.toBeNull();
+	});
+
+	it("curls smoke of the chosen colour up the card", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { effects: { smoke: "BLACK" } };
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(view.container.querySelector('[data-smoke="BLACK"]')).not.toBeNull();
+	});
 });

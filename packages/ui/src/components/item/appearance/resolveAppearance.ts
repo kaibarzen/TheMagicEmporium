@@ -4,16 +4,19 @@ import type {
 	AppearanceImage,
 	BackgroundBlur,
 	CornerStyle,
+	EmberStyle,
 	GleamStyle,
 	HeaderDeco,
 	Intensity,
 	RevealStyle,
+	SmokeStyle,
 } from "@tme/shared/src/types/itemAppearance";
 import { getCutoutUrl } from "../breakout/cutoutUrl";
 import { autoCloud } from "../clouds/autoCloud";
 import { CloudVariant } from "../clouds/CloudDecoration";
 import { CornerVariant, DEFAULT_CORNER_VARIANT } from "../corners/CardCorners";
 import { CornerDetail, RARITY_CORNER_DETAIL } from "../corners/cornerDetail";
+import { emberAmount, SMOKE_AMOUNT } from "../particles/particleAmount";
 import { sparkleAmount } from "../sparkles/sparkleDensity";
 import { autoGleam, autoTilt } from "../tilt/tilt";
 
@@ -44,6 +47,16 @@ export interface ResolvedAppearance {
 		sparkles: number | null;
 		/** Light that plays across the card on hover, or null for none */
 		gleam: Exclude<GleamStyle, "NONE"> | null;
+		/** Smoke curling up from the bottom edge, or null for none */
+		smoke: {
+			style: SmokeStyle;
+			amount: number;
+		} | null;
+		/** Embers rising from the bottom edge, or null for none */
+		embers: {
+			style: EmberStyle;
+			amount: number;
+		} | null;
 		/** Reveal animation, or null for none */
 		reveal: Exclude<RevealStyle, "NONE"> | null;
 	};
@@ -145,6 +158,34 @@ const resolveGleam = (
 	return style;
 };
 
+const resolveSmoke = (
+	item: AbstractItem,
+): ResolvedAppearance["effects"]["smoke"] => {
+	const smoke = item.appearance.effects?.smoke;
+	// AUTO has nothing to go on yet; it will read the modifiers' elements later
+	if (smoke === undefined || smoke === "AUTO" || smoke === "NONE") {
+		return null;
+	}
+	return {
+		style: smoke,
+		amount: SMOKE_AMOUNT,
+	};
+};
+
+const resolveEmbers = (
+	item: AbstractItem,
+): ResolvedAppearance["effects"]["embers"] => {
+	const embers = item.appearance.effects?.embers;
+	// AUTO has nothing to go on yet; it will read the modifiers' elements later
+	if (embers === undefined || embers === "AUTO" || embers === "NONE") {
+		return null;
+	}
+	return {
+		style: embers,
+		amount: emberAmount(item.getModifiers().length),
+	};
+};
+
 const resolveReveal = (
 	reveal: "AUTO" | RevealStyle | undefined,
 	sparkles: number | null,
@@ -180,6 +221,8 @@ export const resolveAppearance = (item: AbstractItem): ResolvedAppearance => {
 				tilt === undefined || tilt === "AUTO" ? autoTilt(item.rarity) : tilt,
 			sparkles,
 			gleam: resolveGleam(item),
+			smoke: resolveSmoke(item),
+			embers: resolveEmbers(item),
 			reveal: resolveReveal(reveal, sparkles),
 		},
 	};

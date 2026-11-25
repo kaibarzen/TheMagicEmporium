@@ -36,8 +36,30 @@ export type CornerStyle =
 /** Animation that uncovers the card when it appears; NONE shows it straight away */
 export type RevealStyle = "CIRCLE" | "NONE";
 
-/** Light that plays across the card when the pointer enters it; NONE keeps the card unlit */
-export type GleamStyle = "SWEEP" | "NONE";
+/**
+ * Light that plays across the card under the pointer.
+ * - SWEEP sends one band of light across the card when the pointer enters
+ * - HOLO lays a rainbow foil over the art that shifts as the pointer moves
+ * - NONE keeps the card unlit
+ */
+export type GleamStyle = "SWEEP" | "HOLO" | "NONE";
+
+/**
+ * Colour of the smoke that curls up from the bottom edge behind the text.
+ * - WHITE is a pale, ghostly violet-grey
+ * - BLACK is a thick, near-black haze
+ */
+export type SmokeStyle = "WHITE" | "BLACK";
+
+/**
+ * Colour of the embers that rise from the bottom edge, flicker and burn out.
+ * - BRIGHT burns white-hot to orange to a dull red, like embers off a campfire
+ * - FIRE burns a deeper, angrier red
+ * - GOLDEN glitters pale gold to amber
+ * - BLACK drifts up as void-black specks in a cold violet glow
+ * - WISPS glow in every colour, each one slowly shifting hue
+ */
+export type EmberStyle = "BRIGHT" | "FIRE" | "GOLDEN" | "BLACK" | "WISPS";
 
 /**
  * How the background art is treated.
@@ -85,8 +107,12 @@ export interface ItemAppearance {
 		 * when every modifier rolled its highest breakpoint. Defaults to AUTO
 		 */
 		sparkles?: "AUTO" | "NONE" | Intensity;
-		/** SWEEP sends one band of light across the card on hover. AUTO sweeps very rare and legendary cards. Defaults to AUTO */
+		/** AUTO sweeps very rare and legendary cards. Defaults to AUTO */
 		gleam?: "AUTO" | GleamStyle;
+		/** AUTO shows no smoke for now. Defaults to AUTO */
+		smoke?: "AUTO" | "NONE" | SmokeStyle;
+		/** AUTO shows no embers for now. Defaults to AUTO */
+		embers?: "AUTO" | "NONE" | EmberStyle;
 		/** CIRCLE opens the card in a widening circle. AUTO uses CIRCLE whenever the card sparkles. Defaults to AUTO */
 		reveal?: "AUTO" | RevealStyle;
 	};

@@ -19,6 +19,8 @@ import { CardFooter } from "./footer/CardFooter";
 import { Header, RARITY_COLOR } from "./header/Header";
 import styles from "./ItemDisplay.module.css";
 import { metalStyle } from "./metal/metal";
+import { Embers } from "./particles/Embers";
+import { Smoke } from "./particles/Smoke";
 import { Section } from "./section/Section";
 import { SectionTier } from "./section/tier";
 import { Sparkles } from "./sparkles/Sparkles";
@@ -117,9 +119,12 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 	const tilt = appearance.effects.tilt;
 	const tilts = tilt !== "NONE";
 	const sweeps = appearance.effects.gleam === "SWEEP";
-	// A parallax background follows the pointer too, even on a card that does not tilt
+	// A parallax background and a holo foil follow the pointer too, even on a card that does not tilt
 	const parallax = appearance.background.blur === "PARALLAX";
-	useCardTilt(tilts || parallax, sweeps, tiltRef, glintRef);
+	const holo = appearance.effects.gleam === "HOLO";
+	useCardTilt(tilts || parallax || holo, sweeps, tiltRef, glintRef);
+	const smoke = appearance.effects.smoke;
+	const embers = appearance.effects.embers;
 
 	// Header art only shows once its image has loaded (AUTO cut-outs often do not exist)
 	const headerImage = appearance.header.image;
@@ -203,8 +208,21 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 						>
 							{background}
 							<div className={styles.texture} />
+							{holo && (
+								<div
+									className={styles.holo}
+									data-gleam="HOLO"
+									aria-hidden="true"
+								/>
+							)}
+							{smoke !== null && (
+								<Smoke style={smoke.style} amount={smoke.amount} />
+							)}
 						</div>
 						{sparkles !== null && <Sparkles amount={sparkles} />}
+						{embers !== null && (
+							<Embers style={embers.style} amount={embers.amount} />
+						)}
 						<div className={`${styles.edge} ${depth.front}`} aria-hidden="true">
 							{appearance.corners !== null && (
 								<CardCorners

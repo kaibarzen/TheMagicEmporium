@@ -376,3 +376,106 @@
 		transparent 62%
 	);
 }
+
+/*
+ * Holo foil, behind the text, reading --tilt-x/--tilt-y (-1..1) from the
+ * pointer tracking. Two layers:
+ * - ::before is the foil. Soft rainbow bands, a fine diagonal metallic sheen
+ *   and a vignette are mixed with background-blend-mode, then the result is
+ *   colour-dodged onto the art, so the rainbow only blooms where there is light
+ *   to catch. Both band layers slide against the pointer at different rates,
+ *   so the colours drift across the sheen as the card moves.
+ * - ::after is the glare: a soft light that follows the pointer.
+ * The foil is strongest around the light and barely there at rest; it comes
+ * alive while the pointer is on the card.
+ */
+.holo {
+	--mx: calc(50% + var(--tilt-x, 0) * 50%);
+	--my: calc(50% + var(--tilt-y, 0) * 50%);
+	--bgx: calc(50% + var(--tilt-x, 0) * 22%);
+	--bgy: calc(50% + var(--tilt-y, 0) * 22%);
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	border-radius: 4px;
+	pointer-events: none;
+	opacity: 0.1;
+	transition: opacity 500ms ease-out;
+}
+
+.holo::before,
+.holo::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+}
+
+.holo::before {
+	background-image:
+		repeating-linear-gradient(
+			0deg,
+			hsl(2 100% 73%) 5%,
+			hsl(53 100% 69%) 10%,
+			hsl(93 100% 69%) 15%,
+			hsl(176 100% 76%) 20%,
+			hsl(228 100% 74%) 25%,
+			hsl(283 100% 73%) 30%,
+			hsl(2 100% 73%) 35%
+		),
+		repeating-linear-gradient(
+			133deg,
+			#0e152e 0%,
+			hsl(180 10% 60%) 3.8%,
+			hsl(180 29% 66%) 4.5%,
+			hsl(180 10% 60%) 5.2%,
+			#0e152e 10%,
+			#0e152e 12%
+		),
+		radial-gradient(
+			farthest-corner circle at var(--mx) var(--my),
+			rgb(0 0 0 / 0.1) 12%,
+			rgb(0 0 0 / 0.15) 20%,
+			rgb(0 0 0 / 0.25) 120%
+		);
+	background-size:
+		200% 700%,
+		300% 100%,
+		200% 100%;
+	background-position:
+		0% var(--bgy),
+		var(--bgx) var(--bgy),
+		center;
+	background-blend-mode: screen, hue, hard-light;
+	filter: brightness(0.75) contrast(1.6) saturate(0.85);
+	mix-blend-mode: color-dodge;
+	opacity: 0.62;
+	/* Strongest where the light falls, a faint film everywhere else */
+	mask-image: radial-gradient(
+		farthest-corner circle at var(--mx) var(--my),
+		#000 0%,
+		rgb(0 0 0 / 0.5) 30%,
+		rgb(0 0 0 / 0.1) 75%
+	);
+}
+
+.holo::after {
+	background: radial-gradient(
+		farthest-corner circle at var(--mx) var(--my),
+		rgb(255 255 255 / 0.3) 6%,
+		rgb(255 255 255 / 0.1) 25%,
+		rgb(0 0 0 / 0.25) 90%
+	);
+	mix-blend-mode: overlay;
+	opacity: 0.5;
+}
+
+[data-tilting] .holo {
+	opacity: 0.25;
+	transition-duration: 200ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.holo {
+		opacity: 0.1;
+	}
+}

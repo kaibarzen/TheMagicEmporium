@@ -7,6 +7,7 @@ import { veryRarePerfectFixture } from "../../../fixtures/items/veryRarePerfectF
 import { CloudVariant } from "../clouds/CloudDecoration";
 import { CornerVariant } from "../corners/CardCorners";
 import { CornerDetail } from "../corners/cornerDetail";
+import { emberAmount, SMOKE_AMOUNT } from "../particles/particleAmount";
 import { sparkleAmount } from "../sparkles/sparkleDensity";
 import { resolveAppearance } from "./resolveAppearance";
 
@@ -298,5 +299,88 @@ describe("resolveAppearance", () => {
 		// ASSERT
 		expect(appearance.effects.sparkles).not.toBeNull();
 		expect(appearance.effects.reveal).toBeNull();
+	});
+
+	it("shows no smoke when left on AUTO", () => {
+		// ARRANGE & ACT
+		const appearance = resolveAppearance(new AbstractItem());
+
+		// ASSERT
+		expect(appearance.effects.smoke).toBeNull();
+	});
+
+	it("shows no smoke when it is NONE", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { effects: { smoke: "NONE" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.effects.smoke).toBeNull();
+	});
+
+	it("fills the bottom of the card with smoke of the chosen colour", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { effects: { smoke: "WHITE" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.effects.smoke).toEqual({
+			style: "WHITE",
+			amount: SMOKE_AMOUNT,
+		});
+	});
+
+	it("shows no embers when left on AUTO", () => {
+		// ARRANGE & ACT
+		const appearance = resolveAppearance(new AbstractItem());
+
+		// ASSERT
+		expect(appearance.effects.embers).toBeNull();
+	});
+
+	it("shows no embers when they are NONE", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { effects: { embers: "NONE" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.effects.embers).toBeNull();
+	});
+
+	it("sends up embers of the chosen colour, more on longer cards", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.primary = veryRarePerfectFixture.primary;
+		item.appearance = { effects: { embers: "GOLDEN" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.effects.embers).toEqual({
+			style: "GOLDEN",
+			amount: emberAmount(item.primary.length),
+		});
+	});
+
+	it("keeps a holo gleam as chosen", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { effects: { gleam: "HOLO" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.effects.gleam).toBe("HOLO");
 	});
 });
