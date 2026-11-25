@@ -1,4 +1,5 @@
 import type { AbstractItem } from "@tme/library/src/item/AbstractItem";
+import type { BackgroundBlur } from "@tme/shared/src/types/itemAppearance";
 import { animate } from "animejs";
 import { motion } from "framer-motion";
 import { type CSSProperties, useEffect, useMemo, useRef } from "react";
@@ -25,16 +26,22 @@ interface BlurStep {
 }
 
 /**
- * Background art blur, lightest behind the header and strongest behind the
- * modifiers. The first step has no fade, so it is the base layer.
+ * Layers of background art for each blur setting. The first step has no fade,
+ * so it is the base layer. PARTIAL is lightest behind the header and strongest
+ * behind the modifiers; LIGHT and FULL blur the whole card evenly.
  */
-const BACKGROUND_BLUR_STEPS: BlurStep[] = [
-	{ blur: 1, fadeStart: -1, fadeEnd: 0 },
-	{ blur: 2, fadeStart: 80, fadeEnd: 220 },
-	{ blur: 4, fadeStart: 160, fadeEnd: 340 },
-	{ blur: 8, fadeStart: 260, fadeEnd: 480 },
-	{ blur: 16, fadeStart: 380, fadeEnd: 680 },
-];
+const BACKGROUND_BLUR_STEPS: Record<BackgroundBlur, BlurStep[]> = {
+	PARTIAL: [
+		{ blur: 1, fadeStart: -1, fadeEnd: 0 },
+		{ blur: 2, fadeStart: 80, fadeEnd: 220 },
+		{ blur: 4, fadeStart: 160, fadeEnd: 340 },
+		{ blur: 8, fadeStart: 260, fadeEnd: 480 },
+		{ blur: 16, fadeStart: 380, fadeEnd: 680 },
+	],
+	LIGHT: [{ blur: 4, fadeStart: -1, fadeEnd: 0 }],
+	FULL: [{ blur: 16, fadeStart: -1, fadeEnd: 0 }],
+	NONE: [{ blur: 0, fadeStart: -1, fadeEnd: 0 }],
+};
 
 export interface ItemDisplayProps {
 	item: AbstractItem;
@@ -87,14 +94,15 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 	}, [reveal]);
 
 	const background = useMemo(() => {
-		const bg = appearance.background;
+		const bg = appearance.background.image;
 		if (!bg) {
 			return null;
 		}
+		const blur = appearance.background.blur;
 
 		return (
-			<div className={styles.background}>
-				{BACKGROUND_BLUR_STEPS.map((step) => (
+			<div className={styles.background} data-blur={blur}>
+				{BACKGROUND_BLUR_STEPS[blur].map((step) => (
 					<div
 						key={step.blur}
 						className={styles.backgroundLayer}

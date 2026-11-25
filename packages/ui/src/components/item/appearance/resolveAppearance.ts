@@ -2,6 +2,7 @@ import type { AbstractItem } from "@tme/library/src/item/AbstractItem";
 import { equipmentDetails } from "@tme/library/src/item/equipment/equipment.details";
 import type {
 	AppearanceImage,
+	BackgroundBlur,
 	CornerStyle,
 	GleamStyle,
 	HeaderDeco,
@@ -18,8 +19,11 @@ import { autoGleam, autoTilt } from "../tilt/tilt";
 
 /** An item's appearance with every AUTO and missing field turned into a concrete value */
 export interface ResolvedAppearance {
-	/** Background art URL, or null for the plain rarity frame */
-	background: string | null;
+	background: {
+		/** Background art URL, or null for the plain rarity frame */
+		image: string | null;
+		blur: BackgroundBlur;
+	};
 	header: {
 		/**
 		 * Header art URL, or null for none. The file may not exist (an AUTO
@@ -90,6 +94,15 @@ const resolveCorners = (item: AbstractItem): ResolvedCorners => {
 	return STYLE_CORNERS[corners];
 };
 
+const resolveBlur = (
+	blur: "AUTO" | BackgroundBlur | undefined,
+): BackgroundBlur => {
+	if (blur === undefined || blur === "AUTO") {
+		return "PARTIAL";
+	}
+	return blur;
+};
+
 const resolveImage = (image: AppearanceImage | undefined): string | null => {
 	if (image === undefined || image === "NONE") {
 		return null;
@@ -153,7 +166,10 @@ export const resolveAppearance = (item: AbstractItem): ResolvedAppearance => {
 	const reveal = appearance.effects?.reveal;
 
 	return {
-		background: resolveImage(appearance.background?.image),
+		background: {
+			image: resolveImage(appearance.background?.image),
+			blur: resolveBlur(appearance.background?.blur),
+		},
 		header: {
 			image: resolveHeaderImage(item),
 			deco: resolveDeco(item),

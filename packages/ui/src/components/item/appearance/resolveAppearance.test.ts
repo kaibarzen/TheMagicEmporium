@@ -16,7 +16,7 @@ describe("resolveAppearance", () => {
 		const appearance = resolveAppearance(legendarySkulltakerFixture);
 
 		// ASSERT
-		expect(appearance.background).toBeNull();
+		expect(appearance.background.image).toBeNull();
 	});
 
 	it("uses an explicit background URL", () => {
@@ -28,7 +28,7 @@ describe("resolveAppearance", () => {
 		const appearance = resolveAppearance(item);
 
 		// ASSERT
-		expect(appearance.background).toBe("art/custom.jpg");
+		expect(appearance.background.image).toBe("art/custom.jpg");
 	});
 
 	it("hides the background when set to NONE", () => {
@@ -40,7 +40,27 @@ describe("resolveAppearance", () => {
 		const appearance = resolveAppearance(item);
 
 		// ASSERT
-		expect(appearance.background).toBeNull();
+		expect(appearance.background.image).toBeNull();
+	});
+
+	it("blurs the background partially by default", () => {
+		// ARRANGE & ACT
+		const appearance = resolveAppearance(new AbstractItem());
+
+		// ASSERT
+		expect(appearance.background.blur).toBe("PARTIAL");
+	});
+
+	it("uses the chosen background blur", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { background: { blur: "FULL" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.background.blur).toBe("FULL");
 	});
 
 	it("looks for a cut-out of the base icon as header art by default", () => {

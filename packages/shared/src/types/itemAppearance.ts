@@ -39,6 +39,14 @@ export type RevealStyle = "CIRCLE" | "NONE";
 /** Light that plays across the card when the pointer enters it; NONE keeps the card unlit */
 export type GleamStyle = "SWEEP" | "NONE";
 
+/**
+ * How the background art is blurred. LIGHT softens the whole card evenly;
+ * PARTIAL stays sharp behind the header and blurs progressively toward the
+ * modifiers; FULL blurs the whole card evenly and strongly; NONE keeps the
+ * art sharp everywhere.
+ */
+export type BackgroundBlur = "LIGHT" | "PARTIAL" | "FULL" | "NONE";
+
 /** Strength of an effect, from barely there to over the top */
 export type Intensity = "MILD" | "MEDIUM" | "STRONG" | "EXTREME";
 
@@ -46,6 +54,8 @@ export interface ItemAppearance {
 	background?: {
 		/** Defaults to NONE */
 		image?: AppearanceImage;
+		/** AUTO uses PARTIAL. Defaults to AUTO */
+		blur?: "AUTO" | BackgroundBlur;
 	};
 	header?: {
 		/** AUTO looks for a *.cutout.png next to the base item's icon. Defaults to AUTO */

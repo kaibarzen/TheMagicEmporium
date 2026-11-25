@@ -246,4 +246,33 @@ describe("ItemDisplay", () => {
 		expect(view.container.querySelector("[data-gleam]")).toBeNull();
 		expect(view.container.querySelector("[data-tilt]")).not.toBeNull();
 	});
+
+	it("blurs the background art progressively by default", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { background: { image: "art/custom.jpg" } };
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		const background = view.container.querySelector("[data-blur]");
+		expect(background?.getAttribute("data-blur")).toBe("PARTIAL");
+		expect(background?.children.length).toBeGreaterThan(2);
+	});
+
+	it("keeps the background art sharp when its blur is NONE", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { background: { image: "art/custom.jpg", blur: "NONE" } };
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		const layer = view.container.querySelector(
+			'[data-blur="NONE"] > [style]',
+		) as HTMLElement;
+		expect(layer.style.getPropertyValue("--blur")).toBe("0px");
+	});
 });

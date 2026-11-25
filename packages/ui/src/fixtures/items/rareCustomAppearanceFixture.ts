@@ -13,7 +13,7 @@ rareCustomAppearanceFixture.rarity = Rarity.Rare;
 rareCustomAppearanceFixture.base = Equipment.RoyalClothes;
 rareCustomAppearanceFixture.currency = 500;
 rareCustomAppearanceFixture.appearance = {
-	background: { image: boundlessSpirit },
+	background: { image: boundlessSpirit, blur: "FULL" },
 	header: { deco: "STARS" },
 	corners: "ORNATE",
 	effects: { tilt: "EXTREME", sparkles: "STRONG" },
