@@ -145,7 +145,7 @@ describe("resolveAppearance", () => {
 
 		// ASSERT
 		expect(appearance.effects.sparkles).toBe(sparkleAmount("MEDIUM", 4));
-		expect(appearance.effects.reveal).toBe(true);
+		expect(appearance.effects.reveal).toBe("CIRCLE");
 	});
 
 	it("keeps an ordinary roll free of sparkles and reveal", () => {
@@ -154,7 +154,7 @@ describe("resolveAppearance", () => {
 
 		// ASSERT
 		expect(appearance.effects.sparkles).toBeNull();
-		expect(appearance.effects.reveal).toBe(false);
+		expect(appearance.effects.reveal).toBeNull();
 	});
 
 	it("sparkles at the chosen intensity and reveals along with it", () => {
@@ -170,7 +170,7 @@ describe("resolveAppearance", () => {
 		expect(appearance.effects.sparkles).toBe(
 			sparkleAmount("STRONG", item.primary.length),
 		);
-		expect(appearance.effects.reveal).toBe(true);
+		expect(appearance.effects.reveal).toBe("CIRCLE");
 	});
 
 	it("silences a perfect roll when sparkles are NONE", () => {
@@ -186,20 +186,20 @@ describe("resolveAppearance", () => {
 
 		// ASSERT
 		expect(appearance.effects.sparkles).toBeNull();
-		expect(appearance.effects.reveal).toBe(false);
+		expect(appearance.effects.reveal).toBeNull();
 	});
 
-	it("reveals without sparkles when reveal is forced on", () => {
+	it("reveals without sparkles when a reveal is chosen", () => {
 		// ARRANGE
 		const item = new AbstractItem();
-		item.appearance = { effects: { reveal: true } };
+		item.appearance = { effects: { reveal: "CIRCLE" } };
 
 		// ACT
 		const appearance = resolveAppearance(item);
 
 		// ASSERT
 		expect(appearance.effects.sparkles).toBeNull();
-		expect(appearance.effects.reveal).toBe(true);
+		expect(appearance.effects.reveal).toBe("CIRCLE");
 	});
 
 	it("uses fret corners that grow more elaborate with rarity when left on AUTO", () => {
@@ -262,5 +262,21 @@ describe("resolveAppearance", () => {
 
 		// ASSERT
 		expect(appearance.corners).toBeNull();
+	});
+
+	it("skips the reveal of a perfect roll when set to NONE", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.primary = veryRarePerfectFixture.primary;
+		item.secondary = veryRarePerfectFixture.secondary;
+		item.tertiary = veryRarePerfectFixture.tertiary;
+		item.appearance = { effects: { reveal: "NONE" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.effects.sparkles).not.toBeNull();
+		expect(appearance.effects.reveal).toBeNull();
 	});
 });

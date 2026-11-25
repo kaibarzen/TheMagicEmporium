@@ -5,6 +5,7 @@ import type {
 	CornerStyle,
 	HeaderDeco,
 	Intensity,
+	RevealStyle,
 } from "@tme/shared/src/types/itemAppearance";
 import { getCutoutUrl } from "../breakout/cutoutUrl";
 import { autoCloud } from "../clouds/autoCloud";
@@ -36,7 +37,8 @@ export interface ResolvedAppearance {
 		tilt: Intensity | "NONE";
 		/** Number of sparkles, or null for none */
 		sparkles: number | null;
-		reveal: boolean;
+		/** Reveal animation, or null for none */
+		reveal: Exclude<RevealStyle, "NONE"> | null;
 	};
 }
 
@@ -115,6 +117,19 @@ const resolveSparkles = (item: AbstractItem): number | null => {
 	return sparkleAmount(sparkles, modifierCount);
 };
 
+const resolveReveal = (
+	reveal: "AUTO" | RevealStyle | undefined,
+	sparkles: number | null,
+): ResolvedAppearance["effects"]["reveal"] => {
+	if (reveal === undefined || reveal === "AUTO") {
+		return sparkles !== null ? "CIRCLE" : null;
+	}
+	if (reveal === "NONE") {
+		return null;
+	}
+	return reveal;
+};
+
 export const resolveAppearance = (item: AbstractItem): ResolvedAppearance => {
 	const appearance = item.appearance;
 
@@ -133,8 +148,7 @@ export const resolveAppearance = (item: AbstractItem): ResolvedAppearance => {
 			tilt:
 				tilt === undefined || tilt === "AUTO" ? autoTilt(item.rarity) : tilt,
 			sparkles,
-			reveal:
-				reveal === undefined || reveal === "AUTO" ? sparkles !== null : reveal,
+			reveal: resolveReveal(reveal, sparkles),
 		},
 	};
 };

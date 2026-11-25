@@ -33,6 +33,9 @@ export type CornerStyle =
 	| "DIAMOND"
 	| "NONE";
 
+/** Animation that uncovers the card when it appears; NONE shows it straight away */
+export type RevealStyle = "CIRCLE" | "NONE";
+
 /** Strength of an effect, from barely there to over the top */
 export type Intensity = "MILD" | "MEDIUM" | "STRONG" | "EXTREME";
 
@@ -58,7 +61,7 @@ export interface ItemAppearance {
 		 * when every modifier rolled its highest breakpoint. Defaults to AUTO
 		 */
 		sparkles?: "AUTO" | "NONE" | Intensity;
-		/** Iris reveal when the card appears. AUTO reveals whenever the card sparkles. Defaults to AUTO */
-		reveal?: "AUTO" | boolean;
+		/** CIRCLE opens the card in a widening circle. AUTO uses CIRCLE whenever the card sparkles. Defaults to AUTO */
+		reveal?: "AUTO" | RevealStyle;
 	};
 }

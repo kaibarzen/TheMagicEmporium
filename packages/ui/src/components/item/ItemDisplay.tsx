@@ -64,10 +64,10 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 	const headerImage = appearance.header.image;
 	const hasHeaderImage = useImageExists(headerImage);
 
-	// Clip-path Iris reveal
+	// CIRCLE reveal: the card opens in a widening clip-path circle
 	useEffect(() => {
 		const card = cardRef.current;
-		if (!reveal || !card) {
+		if (reveal !== "CIRCLE" || !card) {
 			return;
 		}
 		const anim = animate(card, {
