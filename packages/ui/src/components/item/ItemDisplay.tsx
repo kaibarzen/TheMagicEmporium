@@ -9,6 +9,7 @@ import {
 	useMemo,
 	useRef,
 } from "react";
+import { colorStyle } from "./appearance/colors";
 import { resolveAppearance } from "./appearance/resolveAppearance";
 import { GlitchBackground } from "./background/GlitchBackground";
 import { ShatteredBackground } from "./background/ShatteredBackground";
@@ -16,9 +17,8 @@ import { ItemBreakout } from "./breakout/ItemBreakout";
 import { useImageExists } from "./breakout/useImageExists";
 import { CardCorners } from "./corners/CardCorners";
 import { CardFooter } from "./footer/CardFooter";
-import { Header, RARITY_COLOR } from "./header/Header";
+import { Header } from "./header/Header";
 import styles from "./ItemDisplay.module.css";
-import { metalStyle } from "./metal/metal";
 import { Embers } from "./particles/Embers";
 import { Smoke } from "./particles/Smoke";
 import { Section } from "./section/Section";
@@ -102,13 +102,10 @@ export interface ItemDisplayProps {
 }
 
 export const ItemDisplay = (props: ItemDisplayProps) => {
-	const rarityColor = RARITY_COLOR[props.item.rarity];
-	// The rarity colour is the accent; the metal (iron, bronze, silver, gold) is the structure
-	const rarityStyle = {
-		...metalStyle(props.item.rarity),
-		"--rarity-color": rarityColor,
-	} as CSSProperties;
 	const appearance = useMemo(() => resolveAppearance(props.item), [props.item]);
+	// The accent marks the rarity; the metal (iron, bronze, silver, gold) is the structure
+	const rarityColor = appearance.colors.accent;
+	const rarityStyle = colorStyle(appearance.colors);
 	const sparkles = appearance.effects.sparkles;
 	const reveal = appearance.effects.reveal;
 	const cardRef = useRef<HTMLDivElement | null>(null);
@@ -236,6 +233,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 							rarity={props.item.rarity}
 							base={props.item.base}
 							currency={props.item.currency}
+							colors={appearance.colors}
 						/>
 						<Section tier={SectionTier.Mortal} modifiers={props.item.primary} />
 						<Section

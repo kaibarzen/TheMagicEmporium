@@ -74,6 +74,21 @@ export const RARITY_METAL: Record<Rarity, Metal> = {
 	[Rarity.Legendary]: GOLD,
 };
 
+/**
+ * A metal mixed from a single colour: lifted toward white for the highlights,
+ * sunk toward black for the shades, and greyed for the quiet lines and text.
+ */
+export const metalFromColor = (color: string): Metal => {
+	return {
+		pale: `color-mix(in srgb, ${color}, #fff 55%)`,
+		hi: `color-mix(in srgb, ${color}, #fff 25%)`,
+		base: color,
+		dim: `color-mix(in srgb, ${color}, #000 40%)`,
+		lo: `color-mix(in srgb, ${color} 35%, #2b2b2b)`,
+		text: `color-mix(in srgb, ${color} 55%, #7a7a7a)`,
+	};
+};
+
 /** Glow that legendary cards smoulder with on top of their gold */
 export const EMBER = "#ee7e3e";
 

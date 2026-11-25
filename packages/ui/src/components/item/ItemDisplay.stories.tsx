@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { commonFixture } from "../../fixtures/items/commonFixture";
+import { legendaryCustomColorsFixture } from "../../fixtures/items/legendaryCustomColorsFixture";
 import { legendaryItemArtFixture } from "../../fixtures/items/legendaryItemArtFixture";
 import { legendaryNoBackgroundFixture } from "../../fixtures/items/legendaryNoBackgroundFixture";
 import { legendaryOverrideBackgroundFixture } from "../../fixtures/items/legendaryOverrideBackgroundFixture";
@@ -75,6 +76,11 @@ export const LegendaryNoBackground: Story = {
 /** Legendary whose background is set via an explicit override. */
 export const LegendaryOverrideBackground: Story = {
 	args: { item: legendaryOverrideBackgroundFixture },
+};
+
+/** Legendary recoloured through its appearance: teal accent on a steel-blue metal. */
+export const LegendaryCustomColors: Story = {
+	args: { item: legendaryCustomColorsFixture },
 };
 
 /** A very rare item. */

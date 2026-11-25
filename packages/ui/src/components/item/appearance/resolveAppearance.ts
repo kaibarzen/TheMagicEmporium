@@ -16,12 +16,15 @@ import { autoCloud } from "../clouds/autoCloud";
 import { CloudVariant } from "../clouds/CloudDecoration";
 import { CornerVariant, DEFAULT_CORNER_VARIANT } from "../corners/CardCorners";
 import { CornerDetail, RARITY_CORNER_DETAIL } from "../corners/cornerDetail";
+import { metalFromColor } from "../metal/metal";
 import { emberAmount, SMOKE_AMOUNT } from "../particles/particleAmount";
 import { sparkleAmount } from "../sparkles/sparkleDensity";
 import { autoGleam, autoTilt } from "../tilt/tilt";
+import { type CardColors, rarityColors } from "./colors";
 
 /** An item's appearance with every AUTO and missing field turned into a concrete value */
 export interface ResolvedAppearance {
+	colors: CardColors;
 	background: {
 		/** Background art URL, or null for the plain rarity frame */
 		image: string | null;
@@ -61,6 +64,19 @@ export interface ResolvedAppearance {
 		reveal: Exclude<RevealStyle, "NONE"> | null;
 	};
 }
+
+const resolveColors = (item: AbstractItem): CardColors => {
+	const colors = rarityColors(item.rarity);
+	const accent = item.appearance.colors?.accent;
+	const metal = item.appearance.colors?.metal;
+	return {
+		accent: accent === undefined || accent === "AUTO" ? colors.accent : accent,
+		metal:
+			metal === undefined || metal === "AUTO"
+				? colors.metal
+				: metalFromColor(metal),
+	};
+};
 
 const DECO_CLOUD: Record<HeaderDeco, CloudVariant | null> = {
 	PUFFY: CloudVariant.Puffy,
@@ -207,6 +223,7 @@ export const resolveAppearance = (item: AbstractItem): ResolvedAppearance => {
 	const reveal = appearance.effects?.reveal;
 
 	return {
+		colors: resolveColors(item),
 		background: {
 			image: resolveImage(appearance.background?.image),
 			blur: resolveBlur(appearance.background?.blur),

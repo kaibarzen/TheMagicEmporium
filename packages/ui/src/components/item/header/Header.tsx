@@ -2,7 +2,12 @@ import { equipmentDetails } from "@tme/library/src/item/equipment/equipment.deta
 import type { Equipment } from "@tme/library/src/item/equipment/equipment.types";
 import { Rarity } from "@tme/library/src/item/item.types";
 import { type CSSProperties, type ReactElement, useMemo } from "react";
-import { METAL, metalStyle } from "../metal/metal";
+import {
+	type CardColors,
+	colorStyle,
+	rarityColors,
+} from "../appearance/colors";
+import { METAL } from "../metal/metal";
 import depth from "../tilt/depth.module.css";
 import styles from "./Header.module.css";
 
@@ -11,31 +16,17 @@ export interface HeaderProps {
 	rarity: Rarity;
 	base: Equipment;
 	currency: number;
+	/** Overrides the rarity's accent and metal */
+	colors?: CardColors;
 }
 
-export const RARITY_COLOR: Record<Rarity, string> = {
-	[Rarity.Common]: "#9d9d9d",
-	[Rarity.Uncommon]: "#4fc978",
-	[Rarity.Rare]: "#5b9de8",
-	[Rarity.VeryRare]: "#b88ce8",
-	[Rarity.Legendary]: "#ee7e3e",
-};
-
-const RARITY_SHADOW: Record<Rarity, string> = {
-	[Rarity.Common]: "rgba(157,157,157,.4)",
-	[Rarity.Uncommon]: "rgba(79,201,120,.4)",
-	[Rarity.Rare]: "rgba(91,157,232,.4)",
-	[Rarity.VeryRare]: "rgba(184,140,232,.4)",
-	[Rarity.Legendary]: "rgba(238,126,62,.4)",
-};
-
-/** Background glow behind the header; null means no glow for that rarity. */
-const RARITY_HALO: Record<Rarity, string | null> = {
+/** How strongly the halo glows behind the header, in percent; null means no halo. */
+const RARITY_HALO: Record<Rarity, number | null> = {
 	[Rarity.Common]: null,
 	[Rarity.Uncommon]: null,
-	[Rarity.Rare]: "rgba(91,157,232,.10)",
-	[Rarity.VeryRare]: "rgba(184,140,232,.14)",
-	[Rarity.Legendary]: "rgba(238,126,62,.18)",
+	[Rarity.Rare]: 10,
+	[Rarity.VeryRare]: 14,
+	[Rarity.Legendary]: 18,
 };
 
 const RARITY_LABEL: Record<Rarity, string> = {
@@ -164,7 +155,8 @@ const Divider = (props: DividerProps): ReactElement => {
 };
 
 export const Header = (props: HeaderProps): ReactElement => {
-	const color = RARITY_COLOR[props.rarity];
+	const colors = props.colors ?? rarityColors(props.rarity);
+	const color = colors.accent;
 	const halo = RARITY_HALO[props.rarity];
 	const isLegendary = props.rarity === Rarity.Legendary;
 
@@ -176,10 +168,12 @@ export const Header = (props: HeaderProps): ReactElement => {
 	const nameClass = RARITY_NAME_CLASS[props.rarity];
 
 	const style = {
-		...metalStyle(props.rarity),
-		"--rarity-color": color,
-		"--rarity-shadow": RARITY_SHADOW[props.rarity],
-		"--rarity-halo": halo ?? "transparent",
+		...colorStyle(colors),
+		"--rarity-shadow": `color-mix(in srgb, ${color} 40%, transparent)`,
+		"--rarity-halo":
+			halo === null
+				? "transparent"
+				: `color-mix(in srgb, ${color} ${halo}%, transparent)`,
 	} as CSSProperties;
 
 	return (
@@ -193,7 +187,7 @@ export const Header = (props: HeaderProps): ReactElement => {
 			</div>
 
 			<div className={styles.nameWrap}>
-				{halo && <div className={styles.halo} aria-hidden="true" />}
+				{halo !== null && <div className={styles.halo} aria-hidden="true" />}
 				<div
 					className={nameClass ? `${styles.name} ${nameClass}` : styles.name}
 				>

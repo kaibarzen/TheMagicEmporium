@@ -2,7 +2,7 @@ import { describe, expect, it } from "bun:test";
 import { render, screen } from "@testing-library/react";
 import { Equipment } from "@tme/library/src/item/equipment/equipment.types";
 import { Rarity } from "@tme/library/src/item/item.types";
-import { RARITY_METAL } from "../metal/metal";
+import { metalFromColor, RARITY_METAL } from "../metal/metal";
 import { Header } from "./Header";
 
 describe("Header", () => {
@@ -112,5 +112,26 @@ describe("Header", () => {
 		expect(root.style.getPropertyValue("--metal")).toBe(
 			RARITY_METAL[Rarity.Uncommon].base,
 		);
+	});
+
+	it("wears the colours it is given instead of its rarity's", () => {
+		// ARRANGE
+		const colors = { accent: "#3fd0c9", metal: metalFromColor("#7f9bb8") };
+
+		// ACT
+		const view = render(
+			<Header
+				name="Ring"
+				rarity={Rarity.Legendary}
+				base={Equipment.Relic}
+				currency={0}
+				colors={colors}
+			/>,
+		);
+
+		// ASSERT
+		const root = view.container.firstElementChild as HTMLElement;
+		expect(root.style.getPropertyValue("--rarity-color")).toBe("#3fd0c9");
+		expect(root.style.getPropertyValue("--metal")).toBe("#7f9bb8");
 	});
 });

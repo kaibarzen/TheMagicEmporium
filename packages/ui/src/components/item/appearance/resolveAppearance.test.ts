@@ -7,8 +7,10 @@ import { veryRarePerfectFixture } from "../../../fixtures/items/veryRarePerfectF
 import { CloudVariant } from "../clouds/CloudDecoration";
 import { CornerVariant } from "../corners/CardCorners";
 import { CornerDetail } from "../corners/cornerDetail";
+import { metalFromColor, RARITY_METAL } from "../metal/metal";
 import { emberAmount, SMOKE_AMOUNT } from "../particles/particleAmount";
 import { sparkleAmount } from "../sparkles/sparkleDensity";
+import { RARITY_COLOR } from "./colors";
 import { resolveAppearance } from "./resolveAppearance";
 
 describe("resolveAppearance", () => {
@@ -382,5 +384,48 @@ describe("resolveAppearance", () => {
 
 		// ASSERT
 		expect(appearance.effects.gleam).toBe("HOLO");
+	});
+
+	it("colours the card by its rarity by default", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.VeryRare;
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.colors).toEqual({
+			accent: RARITY_COLOR[Rarity.VeryRare],
+			metal: RARITY_METAL[Rarity.VeryRare],
+		});
+	});
+
+	it("uses the chosen accent colour", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Legendary;
+		item.appearance = { colors: { accent: "#3fd0c9" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.colors.accent).toBe("#3fd0c9");
+		expect(appearance.colors.metal).toBe(RARITY_METAL[Rarity.Legendary]);
+	});
+
+	it("mixes the metal from the chosen metal colour", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Common;
+		item.appearance = { colors: { accent: "AUTO", metal: "#7f9bb8" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.colors.accent).toBe(RARITY_COLOR[Rarity.Common]);
+		expect(appearance.colors.metal).toEqual(metalFromColor("#7f9bb8"));
 	});
 });

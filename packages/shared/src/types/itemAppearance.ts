@@ -7,6 +7,9 @@
 /** "NONE" hides the image, anything else is an image URL */
 export type AppearanceImage = "NONE" | (string & {});
 
+/** A CSS colour such as "#3fd0c9" */
+export type AppearanceColor = string & {};
+
 /**
  * Cloud design on the golden line under the header art; only visible when the
  * header has an image. NONE leaves the line bare.
@@ -84,6 +87,19 @@ export type BackgroundBlur =
 export type Intensity = "MILD" | "MEDIUM" | "STRONG" | "EXTREME";
 
 export interface ItemAppearance {
+	colors?: {
+		/**
+		 * Accent for the rarity label, pips, seal, glows and the legendary
+		 * ember. AUTO uses the rarity colour. Defaults to AUTO
+		 */
+		accent?: "AUTO" | AppearanceColor;
+		/**
+		 * Metal of the frame, corners, rules, dividers, footer and clouds; its
+		 * lighter and darker shades are mixed from this one colour. AUTO uses
+		 * the rarity's metal (iron, bronze, silver, amethyst, gold). Defaults to AUTO
+		 */
+		metal?: "AUTO" | AppearanceColor;
+	};
 	background?: {
 		/** Defaults to NONE */
 		image?: AppearanceImage;
