@@ -13,11 +13,13 @@ import { rareCustomAppearanceFixture } from "../../fixtures/items/rareCustomAppe
 import { rareFixture } from "../../fixtures/items/rareFixture";
 import {
 	rareBlackEmbersFixture,
+	rareBlackFullSmokeFixture,
 	rareBlackSmokeFixture,
 	rareBrightEmbersFixture,
 	rareFireEmbersFixture,
 	rareGoldenEmbersFixture,
 	rareHoloFixture,
+	rareWhiteFullSmokeFixture,
 	rareWhiteSmokeFixture,
 	rareWispEmbersFixture,
 } from "../../fixtures/items/rareParticleFixtures";
@@ -156,6 +158,16 @@ export const RareWhiteSmoke: Story = {
 /** BLACK smoke: a thick, near-black haze curling up behind the text. */
 export const RareBlackSmoke: Story = {
 	args: { item: rareBlackSmokeFixture },
+};
+
+/** WHITE_FULL smoke: a thin violet-grey mist drifting over the whole card. */
+export const RareWhiteFullSmoke: Story = {
+	args: { item: rareWhiteFullSmokeFixture },
+};
+
+/** BLACK_FULL smoke: a dark haze drifting over the whole card. */
+export const RareBlackFullSmoke: Story = {
+	args: { item: rareBlackFullSmokeFixture },
 };
 
 /** An uncommon item. */

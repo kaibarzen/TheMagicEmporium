@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Smoke, type SmokeProps } from "./Smoke";
 
-/** Smoke curling up from the bottom edge. `style` picks the colour, `amount` the number of puffs. */
+/** Smoke curling up from the bottom edge, or drifting over the whole card for the _FULL styles. `style` picks the colour and spread, `amount` the number of puffs. */
 const meta = {
 	title: "Components/Item/Particles/Smoke",
 	component: Smoke,
@@ -41,6 +41,16 @@ export const Default: Story = {};
 /** Near-black smoke with a cold blue cast. */
 export const Black: Story = {
 	args: { style: "BLACK" },
+};
+
+/** Thin violet-grey mist drifting over the whole card. */
+export const WhiteFull: Story = {
+	args: { style: "WHITE_FULL", amount: 36 },
+};
+
+/** Dark haze drifting over the whole card. */
+export const BlackFull: Story = {
+	args: { style: "BLACK_FULL", amount: 36 },
 };
 
 /** Sparse — only a handful of puffs. */

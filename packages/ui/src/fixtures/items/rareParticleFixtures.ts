@@ -75,3 +75,13 @@ export const rareBlackSmokeFixture = withEffect(
 	{ smoke: "BLACK" },
 	"Rare Robes of the Smothered Court",
 );
+
+export const rareWhiteFullSmokeFixture = withEffect(
+	{ smoke: "WHITE_FULL" },
+	"Rare Robes of the Misted Court",
+);
+
+export const rareBlackFullSmokeFixture = withEffect(
+	{ smoke: "BLACK_FULL" },
+	"Rare Robes of the Shrouded Court",
+);

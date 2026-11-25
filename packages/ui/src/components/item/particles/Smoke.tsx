@@ -1,7 +1,7 @@
 import type { SmokeStyle } from "@tme/shared/src/types/itemAppearance";
 import { type CSSProperties, useId, useRef } from "react";
 import styles from "./particles.module.css";
-import { SMOKE_SYSTEMS } from "./smokeSystem";
+import { isFullSmoke, SMOKE_SYSTEMS } from "./smokeSystem";
 import { useParticleCanvas } from "./useParticleCanvas";
 
 export interface SmokeProps {
@@ -10,8 +10,9 @@ export interface SmokeProps {
 }
 
 /**
- * Smoke that curls up from the bottom edge of its container. The puffs are
- * soft circles; a slowly churning noise displacement twists them into wisps.
+ * Smoke that curls up from the bottom edge of its container, or for the _FULL
+ * styles drifts over all of it. The puffs are soft circles; a slowly churning
+ * noise displacement twists them into wisps.
  */
 export const Smoke = (props: SmokeProps) => {
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -20,7 +21,11 @@ export const Smoke = (props: SmokeProps) => {
 	useParticleCanvas(canvasRef, SMOKE_SYSTEMS[props.style], props.amount);
 
 	return (
-		<div className={styles.smoke} data-smoke={props.style} aria-hidden="true">
+		<div
+			className={isFullSmoke(props.style) ? styles.smokeFull : styles.smoke}
+			data-smoke={props.style}
+			aria-hidden="true"
+		>
 			<svg
 				className={styles.filterDefs}
 				width="0"

@@ -48,11 +48,12 @@ export type RevealStyle = "CIRCLE" | "NONE";
 export type GleamStyle = "SWEEP" | "HOLO" | "NONE";
 
 /**
- * Colour of the smoke that curls up from the bottom edge behind the text.
+ * Smoke behind the text. The colour comes in two spreads: the plain style
+ * curls up from the bottom edge, the _FULL style drifts over the whole card.
  * - WHITE is a pale, ghostly violet-grey
  * - BLACK is a thick, near-black haze
  */
-export type SmokeStyle = "WHITE" | "BLACK";
+export type SmokeStyle = "WHITE" | "BLACK" | "WHITE_FULL" | "BLACK_FULL";
 
 /**
  * Colour of the embers that rise from the bottom edge, flicker and burn out.

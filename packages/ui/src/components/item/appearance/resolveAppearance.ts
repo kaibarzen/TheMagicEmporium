@@ -17,7 +17,12 @@ import { CloudVariant } from "../clouds/CloudDecoration";
 import { CornerVariant, DEFAULT_CORNER_VARIANT } from "../corners/CardCorners";
 import { CornerDetail, RARITY_CORNER_DETAIL } from "../corners/cornerDetail";
 import { metalFromColor } from "../metal/metal";
-import { emberAmount, SMOKE_AMOUNT } from "../particles/particleAmount";
+import {
+	emberAmount,
+	fullSmokeAmount,
+	SMOKE_AMOUNT,
+} from "../particles/particleAmount";
+import { isFullSmoke } from "../particles/smokeSystem";
 import { sparkleAmount } from "../sparkles/sparkleDensity";
 import { autoGleam, autoTilt } from "../tilt/tilt";
 import { type CardColors, rarityColors } from "./colors";
@@ -50,7 +55,7 @@ export interface ResolvedAppearance {
 		sparkles: number | null;
 		/** Light that plays across the card on hover, or null for none */
 		gleam: Exclude<GleamStyle, "NONE"> | null;
-		/** Smoke curling up from the bottom edge, or null for none */
+		/** Smoke curling up from the bottom edge or drifting over the whole card, or null for none */
 		smoke: {
 			style: SmokeStyle;
 			amount: number;
@@ -184,7 +189,9 @@ const resolveSmoke = (
 	}
 	return {
 		style: smoke,
-		amount: SMOKE_AMOUNT,
+		amount: isFullSmoke(smoke)
+			? fullSmokeAmount(item.getModifiers().length)
+			: SMOKE_AMOUNT,
 	};
 };
 

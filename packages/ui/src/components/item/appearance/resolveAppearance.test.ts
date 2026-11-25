@@ -8,7 +8,11 @@ import { CloudVariant } from "../clouds/CloudDecoration";
 import { CornerVariant } from "../corners/CardCorners";
 import { CornerDetail } from "../corners/cornerDetail";
 import { metalFromColor, RARITY_METAL } from "../metal/metal";
-import { emberAmount, SMOKE_AMOUNT } from "../particles/particleAmount";
+import {
+	emberAmount,
+	fullSmokeAmount,
+	SMOKE_AMOUNT,
+} from "../particles/particleAmount";
 import { sparkleAmount } from "../sparkles/sparkleDensity";
 import { RARITY_COLOR } from "./colors";
 import { resolveAppearance } from "./resolveAppearance";
@@ -335,6 +339,21 @@ describe("resolveAppearance", () => {
 		expect(appearance.effects.smoke).toEqual({
 			style: "WHITE",
 			amount: SMOKE_AMOUNT,
+		});
+	});
+
+	it("fills the whole card with smoke that grows with the card", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { effects: { smoke: "BLACK_FULL" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.effects.smoke).toEqual({
+			style: "BLACK_FULL",
+			amount: fullSmokeAmount(item.getModifiers().length),
 		});
 	});
 

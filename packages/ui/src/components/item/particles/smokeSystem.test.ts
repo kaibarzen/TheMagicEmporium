@@ -1,10 +1,17 @@
 import { describe, expect, it } from "bun:test";
-import { puffDensity, SMOKE_SHADES, spawnPuff, stepPuff } from "./smokeSystem";
+import {
+	isFullSmoke,
+	puffDensity,
+	SMOKE_SHADES,
+	spawnDriftingPuff,
+	spawnRisingPuff,
+	stepPuff,
+} from "./smokeSystem";
 
 describe("smoke", () => {
 	it("is born below the bottom edge", () => {
 		// ARRANGE & ACT
-		const puff = spawnPuff(400, 600, false);
+		const puff = spawnRisingPuff(400, 600, false);
 
 		// ASSERT
 		expect(puff.y).toBeGreaterThan(600);
@@ -12,7 +19,7 @@ describe("smoke", () => {
 
 	it("rises and spreads as it drifts", () => {
 		// ARRANGE
-		const puff = spawnPuff(400, 600, false);
+		const puff = spawnRisingPuff(400, 600, false);
 		const startY = puff.y;
 		const startRadius = puff.radius;
 
@@ -26,7 +33,7 @@ describe("smoke", () => {
 
 	it("is faintest at birth and thickest midway", () => {
 		// ARRANGE
-		const puff = spawnPuff(400, 600, false);
+		const puff = spawnRisingPuff(400, 600, false);
 		const born = puffDensity(puff);
 
 		// ACT
@@ -40,7 +47,7 @@ describe("smoke", () => {
 
 	it("vanishes once its lifespan is spent", () => {
 		// ARRANGE
-		const puff = spawnPuff(400, 600, false);
+		const puff = spawnRisingPuff(400, 600, false);
 
 		// ACT
 		const alive = stepPuff(puff, puff.lifespan);
@@ -56,5 +63,46 @@ describe("smoke", () => {
 
 		// ASSERT
 		expect(black).toBeGreaterThan(white);
+	});
+
+	it("drifts in anywhere on the card when it covers the whole card", () => {
+		// ARRANGE & ACT
+		const puffs = Array.from({ length: 50 }, () =>
+			spawnDriftingPuff(400, 600, false),
+		);
+
+		// ASSERT
+		for (const puff of puffs) {
+			expect(puff.y).toBeGreaterThanOrEqual(0);
+			expect(puff.y).toBeLessThanOrEqual(600);
+		}
+	});
+
+	it("drifts up more lazily than rising smoke", () => {
+		// ARRANGE & ACT
+		const drifting = spawnDriftingPuff(400, 600, false);
+		const rising = spawnRisingPuff(400, 600, false);
+
+		// ASSERT
+		expect(Math.abs(drifting.vy)).toBeLessThan(Math.abs(rising.vy));
+	});
+
+	it("thins full-card smoke so the header art still shows through", () => {
+		// ARRANGE & ACT
+		const full = SMOKE_SHADES.BLACK_FULL.peakAlpha;
+		const rising = SMOKE_SHADES.BLACK.peakAlpha;
+
+		// ASSERT
+		expect(full).toBeLessThan(rising);
+	});
+
+	it("tells full-card smoke apart from rising smoke", () => {
+		// ARRANGE & ACT
+		const full = isFullSmoke("WHITE_FULL");
+		const rising = isFullSmoke("WHITE");
+
+		// ASSERT
+		expect(full).toBe(true);
+		expect(rising).toBe(false);
 	});
 });
