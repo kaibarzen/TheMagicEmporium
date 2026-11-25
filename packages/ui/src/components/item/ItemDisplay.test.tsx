@@ -131,7 +131,7 @@ describe("ItemDisplay", () => {
 		expect(view.container.querySelector("[data-tilt]")).toBeNull();
 	});
 
-	it("tilts a very rare card lightly and a legendary card heavily", () => {
+	it("tilts a very rare card moderately and a legendary card strongly", () => {
 		// ARRANGE
 		const veryRare = new AbstractItem();
 		veryRare.rarity = Rarity.VeryRare;
@@ -144,10 +144,10 @@ describe("ItemDisplay", () => {
 
 		// ASSERT
 		expect(
-			veryRareView.container.querySelector('[data-tilt="LIGHT"]'),
+			veryRareView.container.querySelector('[data-tilt="MEDIUM"]'),
 		).not.toBeNull();
 		expect(
-			legendaryView.container.querySelector('[data-tilt="HEAVY"]'),
+			legendaryView.container.querySelector('[data-tilt="STRONG"]'),
 		).not.toBeNull();
 	});
 
@@ -155,13 +155,15 @@ describe("ItemDisplay", () => {
 		// ARRANGE
 		const item = new AbstractItem();
 		item.rarity = Rarity.Common;
-		item.appearance = { effects: { tilt: "HEAVY" } };
+		item.appearance = { effects: { tilt: "EXTREME" } };
 
 		// ACT
 		const view = render(<ItemDisplay item={item} hideFrame />);
 
 		// ASSERT
-		expect(view.container.querySelector('[data-tilt="HEAVY"]')).not.toBeNull();
+		expect(
+			view.container.querySelector('[data-tilt="EXTREME"]'),
+		).not.toBeNull();
 	});
 
 	it("keeps a legendary card still when its tilt is NONE", () => {

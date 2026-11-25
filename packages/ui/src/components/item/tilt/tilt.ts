@@ -1,16 +1,16 @@
 import { Rarity } from "@tme/library/src/item/item.types";
-import type { TiltMode } from "@tme/shared/src/types/itemAppearance";
+import type { Intensity } from "@tme/shared/src/types/itemAppearance";
 
 /** How each rarity tilts when the appearance leaves tilt on AUTO */
-const RARITY_TILT: Record<Rarity, TiltMode> = {
+const RARITY_TILT: Record<Rarity, Intensity | "NONE"> = {
 	[Rarity.Common]: "NONE",
 	[Rarity.Uncommon]: "NONE",
 	[Rarity.Rare]: "NONE",
-	[Rarity.VeryRare]: "LIGHT",
-	[Rarity.Legendary]: "HEAVY",
+	[Rarity.VeryRare]: "MEDIUM",
+	[Rarity.Legendary]: "STRONG",
 };
 
-export const autoTilt = (rarity: Rarity): TiltMode => {
+export const autoTilt = (rarity: Rarity): Intensity | "NONE" => {
 	return RARITY_TILT[rarity];
 };
 

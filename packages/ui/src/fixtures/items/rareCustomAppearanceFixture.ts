@@ -15,7 +15,7 @@ rareCustomAppearanceFixture.currency = 500;
 rareCustomAppearanceFixture.appearance = {
 	background: { image: boundlessSpirit },
 	header: { deco: "STARS" },
-	effects: { tilt: "HEAVY", sparkles: 18 },
+	effects: { tilt: "EXTREME", sparkles: "STRONG" },
 };
 rareCustomAppearanceFixture.primary = [
 	{ modifier: uniqueVenomousFixture, float: 0.4 },

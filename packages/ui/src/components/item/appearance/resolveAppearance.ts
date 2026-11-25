@@ -3,11 +3,12 @@ import { equipmentDetails } from "@tme/library/src/item/equipment/equipment.deta
 import type {
 	AppearanceImage,
 	HeaderDeco,
-	TiltMode,
+	Intensity,
 } from "@tme/shared/src/types/itemAppearance";
 import { getCutoutUrl } from "../breakout/cutoutUrl";
 import { autoCloud } from "../clouds/autoCloud";
 import { CloudVariant } from "../clouds/CloudDecoration";
+import { sparkleAmount } from "../sparkles/sparkleDensity";
 import { autoTilt } from "../tilt/tilt";
 
 /** An item's appearance with every AUTO and missing field turned into a concrete value */
@@ -24,7 +25,7 @@ export interface ResolvedAppearance {
 		deco: CloudVariant | null;
 	};
 	effects: {
-		tilt: TiltMode;
+		tilt: Intensity | "NONE";
 		/** Number of sparkles, or null for none */
 		sparkles: number | null;
 		reveal: boolean;
@@ -66,13 +67,17 @@ const resolveHeaderImage = (item: AbstractItem): string | null => {
 
 const resolveSparkles = (item: AbstractItem): number | null => {
 	const sparkles = item.appearance.effects?.sparkles;
+	const modifierCount = item.getModifiers().length;
 	if (sparkles === undefined || sparkles === "AUTO") {
-		return item.getPerfectRollSparkles();
+		if (!item.isPerfectRoll()) {
+			return null;
+		}
+		return sparkleAmount("MEDIUM", modifierCount);
 	}
-	if (sparkles === "NONE" || sparkles <= 0) {
+	if (sparkles === "NONE") {
 		return null;
 	}
-	return sparkles;
+	return sparkleAmount(sparkles, modifierCount);
 };
 
 export const resolveAppearance = (item: AbstractItem): ResolvedAppearance => {

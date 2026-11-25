@@ -20,8 +20,8 @@ export type HeaderDeco =
 	| "STARS"
 	| "NONE";
 
-/** How far the card tips toward the cursor on hover */
-export type TiltMode = "NONE" | "LIGHT" | "HEAVY";
+/** Strength of an effect, from barely there to over the top */
+export type Intensity = "MILD" | "MEDIUM" | "STRONG" | "EXTREME";
 
 export interface ItemAppearance {
 	background?: {
@@ -35,10 +35,14 @@ export interface ItemAppearance {
 		deco?: "AUTO" | HeaderDeco;
 	};
 	effects?: {
-		/** AUTO tilts very rare cards lightly and legendary cards heavily. Defaults to AUTO */
-		tilt?: "AUTO" | TiltMode;
-		/** Number of sparkles. AUTO sparkles when every modifier rolled its highest breakpoint. Defaults to AUTO */
-		sparkles?: "AUTO" | "NONE" | number;
+		/** AUTO tilts very rare cards MEDIUM and legendary cards STRONG. Defaults to AUTO */
+		tilt?: "AUTO" | "NONE" | Intensity;
+		/**
+		 * Sparkle density; the amount scales with the number of modifiers, so
+		 * longer cards sparkle as densely as short ones. AUTO sparkles MEDIUM
+		 * when every modifier rolled its highest breakpoint. Defaults to AUTO
+		 */
+		sparkles?: "AUTO" | "NONE" | Intensity;
 		/** Iris reveal when the card appears. AUTO reveals whenever the card sparkles. Defaults to AUTO */
 		reveal?: "AUTO" | boolean;
 	};

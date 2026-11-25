@@ -5,6 +5,7 @@ import { Rarity } from "@tme/library/src/item/item.types";
 import { legendarySkulltakerFixture } from "../../../fixtures/items/legendarySkulltakerFixture";
 import { veryRarePerfectFixture } from "../../../fixtures/items/veryRarePerfectFixture";
 import { CloudVariant } from "../clouds/CloudDecoration";
+import { sparkleAmount } from "../sparkles/sparkleDensity";
 import { resolveAppearance } from "./resolveAppearance";
 
 describe("resolveAppearance", () => {
@@ -114,20 +115,20 @@ describe("resolveAppearance", () => {
 		const appearance = resolveAppearance(item);
 
 		// ASSERT
-		expect(appearance.effects.tilt).toBe("HEAVY");
+		expect(appearance.effects.tilt).toBe("STRONG");
 	});
 
 	it("tilts a common card when told to", () => {
 		// ARRANGE
 		const item = new AbstractItem();
 		item.rarity = Rarity.Common;
-		item.appearance = { effects: { tilt: "LIGHT" } };
+		item.appearance = { effects: { tilt: "MILD" } };
 
 		// ACT
 		const appearance = resolveAppearance(item);
 
 		// ASSERT
-		expect(appearance.effects.tilt).toBe("LIGHT");
+		expect(appearance.effects.tilt).toBe("MILD");
 	});
 
 	it("sparkles and reveals a perfect roll when left on AUTO", () => {
@@ -141,7 +142,7 @@ describe("resolveAppearance", () => {
 		const appearance = resolveAppearance(item);
 
 		// ASSERT
-		expect(appearance.effects.sparkles).toBe(24);
+		expect(appearance.effects.sparkles).toBe(sparkleAmount("MEDIUM", 4));
 		expect(appearance.effects.reveal).toBe(true);
 	});
 
@@ -154,16 +155,19 @@ describe("resolveAppearance", () => {
 		expect(appearance.effects.reveal).toBe(false);
 	});
 
-	it("uses an explicit sparkle count and reveals along with it", () => {
+	it("sparkles at the chosen intensity and reveals along with it", () => {
 		// ARRANGE
 		const item = new AbstractItem();
-		item.appearance = { effects: { sparkles: 12 } };
+		item.primary = veryRarePerfectFixture.primary;
+		item.appearance = { effects: { sparkles: "STRONG" } };
 
 		// ACT
 		const appearance = resolveAppearance(item);
 
 		// ASSERT
-		expect(appearance.effects.sparkles).toBe(12);
+		expect(appearance.effects.sparkles).toBe(
+			sparkleAmount("STRONG", item.primary.length),
+		);
 		expect(appearance.effects.reveal).toBe(true);
 	});
 

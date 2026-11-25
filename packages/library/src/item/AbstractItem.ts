@@ -96,21 +96,20 @@ export class AbstractItem {
 	};
 
 	/**
-	 * Sparkles earned by a perfect roll, used when the appearance sparkles are
-	 * AUTO: at least three modifiers, all at their highest breakpoint.
-	 * Returns the amount, or null when the item does not sparkle.
+	 * Whether the item rolled perfectly: at least three modifiers, all at their
+	 * highest breakpoint
 	 */
-	public getPerfectRollSparkles = (): number | null => {
-		const all = [...this.primary, ...this.secondary, ...this.tertiary];
+	public isPerfectRoll = (): boolean => {
+		const all = this.getModifiers();
 		if (all.length < 3) {
-			return null;
+			return false;
 		}
-		const perfect = all.every((applied) =>
+		return all.every((applied) =>
 			applied.modifier.isHighestPossibleBreakpoint(applied.float),
 		);
-		if (!perfect) {
-			return null;
-		}
-		return all.length * 6;
+	};
+
+	public getModifiers = (): AppliedModifier[] => {
+		return [...this.primary, ...this.secondary, ...this.tertiary];
 	};
 }
