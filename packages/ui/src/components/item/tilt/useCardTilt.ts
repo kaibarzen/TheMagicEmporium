@@ -7,24 +7,24 @@ const clamp = (value: number): number => {
 };
 
 /**
- * Hover effects on the card. With `tilt` it tips `surfaceRef` toward the
- * pointer while hovered; with `sweep` it sends `glintRef` across the card once
- * each time the pointer enters.
+ * Hover effects on the card. With `track` it follows the pointer over
+ * `surfaceRef`; with `sweep` it sends `glintRef` across the card once each
+ * time the pointer enters.
  *
- * The tilt writes `--tilt-x` / `--tilt-y` (each -1..1, 0 at the centre) and a
- * `data-tilting` attribute on the surface; the CSS turns those into the
- * rotation, so pointer moves never re-render React. Does nothing when both
- * are off or when the viewer prefers reduced motion.
+ * Tracking writes `--tilt-x` / `--tilt-y` (each -1..1, 0 at the centre) and a
+ * `data-tilting` attribute on the surface; the CSS turns those into the tilt
+ * and the parallax background, so pointer moves never re-render React. Does
+ * nothing when both are off or when the viewer prefers reduced motion.
  */
 export const useCardTilt = (
-	tilt: boolean,
+	track: boolean,
 	sweep: boolean,
 	surfaceRef: RefObject<HTMLDivElement | null>,
 	glintRef: RefObject<HTMLDivElement | null>,
 ): void => {
 	useEffect(() => {
 		const surface = surfaceRef.current;
-		if ((!tilt && !sweep) || !surface) {
+		if ((!track && !sweep) || !surface) {
 			return;
 		}
 		if (window.matchMedia(REDUCED_MOTION_QUERY).matches) {
@@ -40,7 +40,7 @@ export const useCardTilt = (
 		};
 
 		const onEnter = (): void => {
-			if (tilt) {
+			if (track) {
 				surface.dataset.tilting = "";
 			}
 			const glint = glintRef.current;
@@ -56,7 +56,7 @@ export const useCardTilt = (
 		};
 
 		const onMove = (event: PointerEvent): void => {
-			if (!tilt) {
+			if (!track) {
 				return;
 			}
 			cancelAnimationFrame(frame);
@@ -70,7 +70,7 @@ export const useCardTilt = (
 		};
 
 		const onLeave = (): void => {
-			if (!tilt) {
+			if (!track) {
 				return;
 			}
 			cancelAnimationFrame(frame);
@@ -89,5 +89,5 @@ export const useCardTilt = (
 			sweepAnimation?.pause();
 			onLeave();
 		};
-	}, [tilt, sweep, surfaceRef, glintRef]);
+	}, [track, sweep, surfaceRef, glintRef]);
 };

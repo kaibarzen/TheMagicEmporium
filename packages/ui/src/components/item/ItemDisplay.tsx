@@ -2,8 +2,15 @@ import type { AbstractItem } from "@tme/library/src/item/AbstractItem";
 import type { BackgroundBlur } from "@tme/shared/src/types/itemAppearance";
 import { animate } from "animejs";
 import { motion } from "framer-motion";
-import { type CSSProperties, useEffect, useMemo, useRef } from "react";
+import {
+	type CSSProperties,
+	type JSX,
+	useEffect,
+	useMemo,
+	useRef,
+} from "react";
 import { resolveAppearance } from "./appearance/resolveAppearance";
+import { GlitchBackground } from "./background/GlitchBackground";
 import { ShatteredBackground } from "./background/ShatteredBackground";
 import { ItemBreakout } from "./breakout/ItemBreakout";
 import { useImageExists } from "./breakout/useImageExists";
@@ -32,7 +39,7 @@ interface BlurStep {
  * behind the modifiers; LIGHT and FULL blur the whole card evenly.
  */
 const BACKGROUND_BLUR_STEPS: Record<
-	Exclude<BackgroundBlur, "SHATTERED">,
+	"PARTIAL" | "LIGHT" | "FULL" | "NONE",
 	BlurStep[]
 > = {
 	PARTIAL: [
@@ -45,6 +52,46 @@ const BACKGROUND_BLUR_STEPS: Record<
 	LIGHT: [{ blur: 4, fadeStart: -1, fadeEnd: 0 }],
 	FULL: [{ blur: 16, fadeStart: -1, fadeEnd: 0 }],
 	NONE: [{ blur: 0, fadeStart: -1, fadeEnd: 0 }],
+};
+
+const blurLayers = (steps: BlurStep[], image: string): JSX.Element[] => {
+	return steps.map((step) => (
+		<div
+			key={step.blur}
+			className={styles.backgroundLayer}
+			style={
+				{
+					backgroundImage: `url(${image})`,
+					"--blur": `${step.blur}px`,
+					"--fade-start": `${step.fadeStart}px`,
+					"--fade-end": `${step.fadeEnd}px`,
+				} as CSSProperties
+			}
+		/>
+	));
+};
+
+/** The background art in the given treatment; `seed` keeps seeded patterns stable per item */
+const backgroundArt = (
+	blur: BackgroundBlur,
+	image: string,
+	seed: string,
+): JSX.Element | JSX.Element[] => {
+	switch (blur) {
+		case "SHATTERED":
+			return <ShatteredBackground image={image} seed={seed} />;
+		case "PARALLAX":
+			// Reads --tilt-x/--tilt-y, which the pointer tracking writes on the tilt surface
+			return (
+				<div className={styles.parallax}>
+					{blurLayers(BACKGROUND_BLUR_STEPS.PARTIAL, image)}
+				</div>
+			);
+		case "GLITCH":
+			return <GlitchBackground image={image} seed={seed} />;
+		default:
+			return blurLayers(BACKGROUND_BLUR_STEPS[blur], image);
+	}
 };
 
 export interface ItemDisplayProps {
@@ -70,7 +117,9 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 	const tilt = appearance.effects.tilt;
 	const tilts = tilt !== "NONE";
 	const sweeps = appearance.effects.gleam === "SWEEP";
-	useCardTilt(tilts, sweeps, tiltRef, glintRef);
+	// A parallax background follows the pointer too, even on a card that does not tilt
+	const parallax = appearance.background.blur === "PARALLAX";
+	useCardTilt(tilts || parallax, sweeps, tiltRef, glintRef);
 
 	// Header art only shows once its image has loaded (AUTO cut-outs often do not exist)
 	const headerImage = appearance.header.image;
@@ -106,24 +155,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 
 		return (
 			<div className={styles.background} data-blur={blur}>
-				{blur === "SHATTERED" ? (
-					<ShatteredBackground image={bg} seed={props.item.name} />
-				) : (
-					BACKGROUND_BLUR_STEPS[blur].map((step) => (
-						<div
-							key={step.blur}
-							className={styles.backgroundLayer}
-							style={
-								{
-									backgroundImage: `url(${bg})`,
-									"--blur": `${step.blur}px`,
-									"--fade-start": `${step.fadeStart}px`,
-									"--fade-end": `${step.fadeEnd}px`,
-								} as CSSProperties
-							}
-						/>
-					))
-				)}
+				{backgroundArt(blur, bg, props.item.name)}
 				<div className={styles.backgroundFilter} />
 			</div>
 		);

@@ -1,0 +1,108 @@
+.root {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	isolation: isolate;
+}
+
+.art {
+	position: absolute;
+	inset: -32px;
+	background-position: center center;
+	background-size: cover;
+	filter: blur(2px);
+}
+
+/*
+ * A channel is the art multiplied by a pure colour, which keeps only that
+ * colour's part of the picture. Each channel is isolated, so the multiply
+ * only sees its own tint.
+ */
+.channel {
+	position: absolute;
+	inset: 0;
+	isolation: isolate;
+}
+
+.channel .art {
+	mix-blend-mode: multiply;
+}
+
+.cyan {
+	background: #00ffff;
+}
+
+/* Screening red over cyan rebuilds the full colour, with the red slipped aside */
+.red {
+	background: #ff0000;
+	mix-blend-mode: screen;
+	animation: glitch-slip 3.2s steps(1, end) infinite;
+}
+
+/* Bands of the untouched art that sit in place, then jolt sideways for a moment */
+.slice {
+	position: absolute;
+	inset: 0;
+	animation: glitch-jolt 4s steps(1, end) infinite;
+}
+
+.scanlines {
+	position: absolute;
+	inset: 0;
+	background: repeating-linear-gradient(
+		180deg,
+		rgb(0 0 0 / 0.2) 0,
+		rgb(0 0 0 / 0.2) 1px,
+		transparent 1px,
+		transparent 3px
+	);
+	pointer-events: none;
+}
+
+@keyframes glitch-slip {
+	0% {
+		transform: translateX(5px);
+	}
+	46% {
+		transform: translateX(9px) translateY(-1px);
+	}
+	48% {
+		transform: translateX(3px);
+	}
+	82% {
+		transform: translateX(12px);
+	}
+	84% {
+		transform: translateX(5px);
+	}
+}
+
+@keyframes glitch-jolt {
+	0% {
+		transform: translateX(0);
+		opacity: 0;
+	}
+	88% {
+		transform: translateX(var(--shift));
+		opacity: 1;
+	}
+	91% {
+		transform: translateX(calc(var(--shift) * -0.4));
+	}
+	93% {
+		transform: translateX(0);
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.red {
+		animation: none;
+		transform: translateX(5px);
+	}
+
+	.slice {
+		animation: none;
+		opacity: 0;
+	}
+}

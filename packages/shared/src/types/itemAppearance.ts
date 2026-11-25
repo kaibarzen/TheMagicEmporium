@@ -40,16 +40,22 @@ export type RevealStyle = "CIRCLE" | "NONE";
 export type GleamStyle = "SWEEP" | "NONE";
 
 /**
- * How the background art is blurred. LIGHT softens the whole card evenly;
- * PARTIAL stays sharp behind the header and blurs progressively toward the
- * modifiers; FULL blurs the whole card evenly and strongly; SHATTERED shows
- * the art through broken glass; NONE keeps the art sharp everywhere.
+ * How the background art is treated.
+ * - LIGHT softens the whole card evenly
+ * - PARTIAL stays sharp behind the header and blurs progressively toward the modifiers
+ * - FULL blurs the whole card evenly and strongly
+ * - SHATTERED shows the art through broken glass
+ * - PARALLAX is PARTIAL, drifting against the pointer as if seen through a window
+ * - GLITCH splits the colour channels and jolts bands of the art sideways
+ * - NONE keeps the art sharp everywhere
  */
 export type BackgroundBlur =
 	| "LIGHT"
 	| "PARTIAL"
 	| "FULL"
 	| "SHATTERED"
+	| "PARALLAX"
+	| "GLITCH"
 	| "NONE";
 
 /** Strength of an effect, from barely there to over the top */

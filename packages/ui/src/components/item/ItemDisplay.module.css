@@ -101,6 +101,26 @@
 	);
 }
 
+/*
+ * Parallax: the art drifts against the pointer, as if it sat deeper behind
+ * the card. Follows --tilt-x/--tilt-y (each -1..1) from the pointer tracking;
+ * the blur layers overhang by 32px, so the 14px drift never shows an edge.
+ */
+.parallax {
+	position: absolute;
+	inset: 0;
+	transform: translate(
+			calc(var(--tilt-x, 0) * -14px),
+			calc(var(--tilt-y, 0) * -14px)
+		)
+		scale(1.04);
+	transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+[data-tilting] .parallax {
+	transition-duration: 150ms;
+}
+
 .backgroundFilter {
 	position: absolute;
 	inset: 0;

@@ -291,4 +291,38 @@ describe("ItemDisplay", () => {
 			view.container.querySelector('[data-blur="SHATTERED"] [data-shards]'),
 		).not.toBeNull();
 	});
+
+	for (const blur of ["PARALLAX", "GLITCH"] as const) {
+		it(`renders the ${blur} background treatment`, () => {
+			// ARRANGE
+			const item = new AbstractItem();
+			item.appearance = { background: { image: "art/custom.jpg", blur } };
+
+			// ACT
+			const view = render(<ItemDisplay item={item} hideFrame />);
+
+			// ASSERT
+			const background = view.container.querySelector(`[data-blur="${blur}"]`);
+			expect(background?.innerHTML).toContain("art/custom.jpg");
+		});
+	}
+
+	it("follows the pointer for a parallax background on a card that does not tilt", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Common;
+		item.appearance = {
+			background: { image: "art/custom.jpg", blur: "PARALLAX" },
+		};
+		const view = render(<ItemDisplay item={item} hideFrame />);
+		const card = view.container.querySelector('[data-rarity="common"]');
+		const surface = card?.parentElement?.parentElement as HTMLElement;
+
+		// ACT
+		fireEvent.pointerEnter(surface);
+
+		// ASSERT
+		expect(surface.hasAttribute("data-tilting")).toBe(true);
+		expect(view.container.querySelector("[data-tilt]")).toBeNull();
+	});
 });

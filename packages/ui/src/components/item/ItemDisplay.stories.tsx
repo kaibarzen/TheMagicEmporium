@@ -4,6 +4,10 @@ import { legendaryItemArtFixture } from "../../fixtures/items/legendaryItemArtFi
 import { legendaryNoBackgroundFixture } from "../../fixtures/items/legendaryNoBackgroundFixture";
 import { legendaryOverrideBackgroundFixture } from "../../fixtures/items/legendaryOverrideBackgroundFixture";
 import { legendaryWarhammerArtFixture } from "../../fixtures/items/legendaryWarhammerArtFixture";
+import {
+	rareGlitchFixture,
+	rareParallaxFixture,
+} from "../../fixtures/items/rareBackgroundEffectFixtures";
 import { rareCustomAppearanceFixture } from "../../fixtures/items/rareCustomAppearanceFixture";
 import { rareFixture } from "../../fixtures/items/rareFixture";
 import { rareShatteredFixture } from "../../fixtures/items/rareShatteredFixture";
@@ -86,6 +90,16 @@ export const RareCustomAppearance: Story = {
 /** The custom appearance rare item, with its background art seen through broken glass. */
 export const RareShatteredBackground: Story = {
 	args: { item: rareShatteredFixture },
+};
+
+/** Background art drifting against the pointer, as if seen through a window. Hover and move around. */
+export const RareParallaxBackground: Story = {
+	args: { item: rareParallaxFixture },
+};
+
+/** Background art breaking up like a corrupted signal: split colour, jolting bands, scanlines. */
+export const RareGlitchBackground: Story = {
+	args: { item: rareGlitchFixture },
 };
 
 /** An uncommon item. */
