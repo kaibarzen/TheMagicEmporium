@@ -86,6 +86,32 @@ export type BackgroundBlur =
 	| "WOBBLE"
 	| "NONE";
 
+/**
+ * How an edge image is softened.
+ * - LIGHT takes the edge off it, barely softer than sharp
+ * - MEDIUM softens it noticeably, as if slightly out of focus
+ * - NONE keeps it sharp
+ */
+export type EdgeBlur = "LIGHT" | "MEDIUM" | "NONE";
+
+/**
+ * An image pinned to the top or bottom edge of the card, in front of the
+ * background art. It spans the card's width and keeps its own proportions,
+ * so a strip looks the same on short and tall cards. Its inner side fades
+ * out on its own, and it stays put while the art behind it moves.
+ */
+export interface BackgroundEdge {
+	/**
+	 * AUTO looks for a *.top.png or *.bottom.png next to the background image
+	 * (`cave.jpg` → `cave.top.png`) and shows it if it exists; without a
+	 * background image there is nothing to look for. NONE turns the edge off.
+	 * Defaults to AUTO
+	 */
+	image?: "AUTO" | AppearanceImage;
+	/** AUTO softens the image LIGHT. Defaults to AUTO */
+	blur?: "AUTO" | EdgeBlur;
+}
+
 /** Strength of an effect, from barely there to over the top */
 export type Intensity = "MILD" | "MEDIUM" | "STRONG" | "EXTREME";
 
@@ -108,6 +134,10 @@ export interface ItemAppearance {
 		image?: AppearanceImage;
 		/** AUTO uses PARTIAL. Defaults to AUTO */
 		blur?: "AUTO" | BackgroundBlur;
+		/** Image along the top edge, such as a cave ceiling or hanging roots */
+		top?: BackgroundEdge;
+		/** Image along the bottom edge, such as rubble, mist or a dark ground */
+		bottom?: BackgroundEdge;
 	};
 	header?: {
 		/** AUTO looks for a *.cutout.png next to the base item's icon. Defaults to AUTO */

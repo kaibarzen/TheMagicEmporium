@@ -1,0 +1,30 @@
+/*
+ * An edge image spans the card's width at its own proportions, so a strip
+ * keeps its look on short and tall cards. It overhangs the sides and its
+ * outer edge by --overhang so a blurred rim falls outside the clipped card.
+ * Tall images are cropped to 60% of the card, anchored at their outer edge,
+ * and the inner side fades out so any image blends into the art behind it.
+ */
+.edge {
+	position: absolute;
+	left: calc(var(--overhang) * -1);
+	width: calc(100% + var(--overhang) * 2);
+	height: auto;
+	max-height: 60%;
+	object-fit: cover;
+	filter: blur(var(--blur));
+	pointer-events: none;
+	user-select: none;
+}
+
+.edge[data-edge="TOP"] {
+	top: calc(var(--overhang) * -1);
+	object-position: top center;
+	mask-image: linear-gradient(180deg, #000 55%, transparent);
+}
+
+.edge[data-edge="BOTTOM"] {
+	bottom: calc(var(--overhang) * -1);
+	object-position: bottom center;
+	mask-image: linear-gradient(0deg, #000 55%, transparent);
+}

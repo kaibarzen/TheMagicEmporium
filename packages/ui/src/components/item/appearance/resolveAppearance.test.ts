@@ -70,6 +70,140 @@ describe("resolveAppearance", () => {
 		expect(appearance.background.blur).toBe("FULL");
 	});
 
+	it("shows no edge images by default", () => {
+		// ARRANGE & ACT
+		const appearance = resolveAppearance(new AbstractItem());
+
+		// ASSERT
+		expect(appearance.background.top).toBeNull();
+		expect(appearance.background.bottom).toBeNull();
+	});
+
+	it("softens an edge image LIGHT unless it asks for another blur", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = {
+			background: {
+				top: { image: "art/roots.png" },
+				bottom: { image: "art/rubble.png", blur: "MEDIUM" },
+			},
+		};
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.background.top).toEqual({
+			image: "art/roots.png",
+			blur: "LIGHT",
+			guess: false,
+		});
+		expect(appearance.background.bottom).toEqual({
+			image: "art/rubble.png",
+			blur: "MEDIUM",
+			guess: false,
+		});
+	});
+
+	it("looks for no AUTO edge images without background art", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = {
+			background: { top: { image: "AUTO" }, bottom: { image: "AUTO" } },
+		};
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.background.top).toBeNull();
+		expect(appearance.background.bottom).toBeNull();
+	});
+
+	it("looks for AUTO edge images next to the background art", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { background: { image: "backgrounds/cave.jpg" } };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.background.top).toEqual({
+			image: "backgrounds/cave.top.png",
+			blur: "LIGHT",
+			guess: true,
+		});
+		expect(appearance.background.bottom).toEqual({
+			image: "backgrounds/cave.bottom.png",
+			blur: "LIGHT",
+			guess: true,
+		});
+	});
+
+	it("turns an edge off when its image is NONE, even with background art", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = {
+			background: { image: "backgrounds/cave.jpg", top: { image: "NONE" } },
+		};
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.background.top).toBeNull();
+		expect(appearance.background.bottom?.image).toBe(
+			"backgrounds/cave.bottom.png",
+		);
+	});
+
+	it("prefers an explicit edge image over the one next to the background art", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = {
+			background: {
+				image: "backgrounds/cave.jpg",
+				top: { image: "art/roots.png" },
+			},
+		};
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.background.top?.image).toBe("art/roots.png");
+		expect(appearance.background.top?.guess).toBe(false);
+	});
+
+	it("softens an edge image LIGHT when its blur is AUTO", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = {
+			background: { top: { image: "art/roots.png", blur: "AUTO" } },
+		};
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.background.top?.blur).toBe("LIGHT");
+	});
+
+	it("hides an edge whose image is NONE, whatever its blur", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = {
+			background: { top: { image: "NONE", blur: "LIGHT" } },
+		};
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.background.top).toBeNull();
+	});
+
 	it("looks for a cut-out of the base icon as header art by default", () => {
 		// ARRANGE
 		const item = new AbstractItem();

@@ -3,7 +3,9 @@ import { equipmentDetails } from "@tme/library/src/item/equipment/equipment.deta
 import type {
 	AppearanceImage,
 	BackgroundBlur,
+	BackgroundEdge,
 	CornerStyle,
+	EdgeBlur,
 	EmberStyle,
 	GleamStyle,
 	HeaderDeco,
@@ -11,6 +13,7 @@ import type {
 	RevealStyle,
 	SmokeStyle,
 } from "@tme/shared/src/types/itemAppearance";
+import { type EdgeFile, getEdgeUrl } from "../background/edgeUrl";
 import { getCutoutUrl } from "../breakout/cutoutUrl";
 import { autoCloud } from "../clouds/autoCloud";
 import { CloudVariant } from "../clouds/CloudDecoration";
@@ -27,6 +30,16 @@ import { sparkleAmount } from "../sparkles/sparkleDensity";
 import { autoGleam, autoTilt } from "../tilt/tilt";
 import { type CardColors, rarityColors } from "./colors";
 
+export interface ResolvedEdge {
+	image: string;
+	blur: EdgeBlur;
+	/**
+	 * True when the image is only a guess (AUTO looks next to the background
+	 * art), so check it loads before showing it.
+	 */
+	guess: boolean;
+}
+
 /** An item's appearance with every AUTO and missing field turned into a concrete value */
 export interface ResolvedAppearance {
 	colors: CardColors;
@@ -34,6 +47,10 @@ export interface ResolvedAppearance {
 		/** Background art URL, or null for the plain rarity frame */
 		image: string | null;
 		blur: BackgroundBlur;
+		/** Image along the top edge, or null for none */
+		top: ResolvedEdge | null;
+		/** Image along the bottom edge, or null for none */
+		bottom: ResolvedEdge | null;
 	};
 	header: {
 		/**
@@ -144,6 +161,28 @@ const resolveImage = (image: AppearanceImage | undefined): string | null => {
 	return image;
 };
 
+const resolveEdge = (
+	edge: BackgroundEdge | undefined,
+	file: EdgeFile,
+	background: string | null,
+): ResolvedEdge | null => {
+	const image = edge?.image;
+	const blur =
+		edge?.blur === undefined || edge.blur === "AUTO" ? "LIGHT" : edge.blur;
+	if (image === undefined || image === "AUTO") {
+		// AUTO looks for a matching edge next to the background art
+		if (background === null) {
+			return null;
+		}
+		return { image: getEdgeUrl(background, file), blur, guess: true };
+	}
+	const resolved = resolveImage(image);
+	if (resolved === null) {
+		return null;
+	}
+	return { image: resolved, blur, guess: false };
+};
+
 const resolveHeaderImage = (item: AbstractItem): string | null => {
 	const image = item.appearance.header?.image;
 	if (image === undefined || image === "AUTO") {
@@ -228,12 +267,19 @@ export const resolveAppearance = (item: AbstractItem): ResolvedAppearance => {
 	const tilt = appearance.effects?.tilt;
 	const sparkles = resolveSparkles(item);
 	const reveal = appearance.effects?.reveal;
+	const backgroundImage = resolveImage(appearance.background?.image);
 
 	return {
 		colors: resolveColors(item),
 		background: {
-			image: resolveImage(appearance.background?.image),
+			image: backgroundImage,
 			blur: resolveBlur(appearance.background?.blur),
+			top: resolveEdge(appearance.background?.top, "top", backgroundImage),
+			bottom: resolveEdge(
+				appearance.background?.bottom,
+				"bottom",
+				backgroundImage,
+			),
 		},
 		header: {
 			image: resolveHeaderImage(item),

@@ -10,7 +10,11 @@ import {
 	useRef,
 } from "react";
 import { colorStyle } from "./appearance/colors";
-import { resolveAppearance } from "./appearance/resolveAppearance";
+import {
+	type ResolvedEdge,
+	resolveAppearance,
+} from "./appearance/resolveAppearance";
+import { BackgroundEdge } from "./background/BackgroundEdge";
 import { GlitchBackground } from "./background/GlitchBackground";
 import { ShatteredBackground } from "./background/ShatteredBackground";
 import { WobbleBackground } from "./background/WobbleBackground";
@@ -104,6 +108,15 @@ const backgroundArt = (
 	}
 };
 
+/** The edge, or null while an AUTO guess has not loaded (or never will) */
+const useShownEdge = (edge: ResolvedEdge | null): ResolvedEdge | null => {
+	const exists = useImageExists(edge?.guess ? edge.image : null);
+	if (edge === null || (edge.guess && !exists)) {
+		return null;
+	}
+	return edge;
+};
+
 export interface ItemDisplayProps {
 	item: AbstractItem;
 	hideFrame?: boolean;
@@ -135,6 +148,10 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 	const headerImage = appearance.header.image;
 	const hasHeaderImage = useImageExists(headerImage);
 
+	// AUTO edges are guesses next to the background art; only show them once they load
+	const top = useShownEdge(appearance.background.top);
+	const bottom = useShownEdge(appearance.background.bottom);
+
 	// CIRCLE reveal: the card opens in a widening clip-path circle
 	useEffect(() => {
 		const card = cardRef.current;
@@ -158,18 +175,30 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 
 	const background = useMemo(() => {
 		const bg = appearance.background.image;
-		if (!bg) {
+		if (!bg && top === null && bottom === null) {
 			return null;
 		}
 		const blur = appearance.background.blur;
 
+		// The edges sit in front of the art but under the filter, so they take
+		// the same dimming; as siblings of the art they stay put while it moves
 		return (
-			<div className={styles.background} data-blur={blur}>
-				{backgroundArt(blur, bg, props.item.name)}
-				<div className={styles.backgroundFilter} />
+			<div className={styles.background} data-blur={bg ? blur : undefined}>
+				{bg && backgroundArt(blur, bg, props.item.name)}
+				{top !== null && (
+					<BackgroundEdge side="TOP" image={top.image} blur={top.blur} />
+				)}
+				{bottom !== null && (
+					<BackgroundEdge
+						side="BOTTOM"
+						image={bottom.image}
+						blur={bottom.blur}
+					/>
+				)}
+				{bg && <div className={styles.backgroundFilter} />}
 			</div>
 		);
-	}, [appearance.background, props.item.name]);
+	}, [appearance.background, top, bottom, props.item.name]);
 
 	const card = (
 		<motion.div

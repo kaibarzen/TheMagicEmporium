@@ -307,6 +307,79 @@ describe("ItemDisplay", () => {
 		});
 	}
 
+	it("lays edge images in front of the art and under its dimming", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = {
+			background: {
+				image: "art/custom.jpg",
+				top: { image: "art/roots.png" },
+				bottom: { image: "art/rubble.png" },
+			},
+		};
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		const layers = Array.from(
+			view.container.querySelector("[data-blur]")?.children ?? [],
+		);
+		const top = layers.findIndex((layer) => layer.matches('[data-edge="TOP"]'));
+		const bottom = layers.findIndex((layer) =>
+			layer.matches('[data-edge="BOTTOM"]'),
+		);
+		expect(top).toBeGreaterThan(0);
+		expect(bottom).toBeGreaterThan(top);
+		expect(bottom).toBe(layers.length - 2);
+	});
+
+	it("keeps edge images still in front of a moving background", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = {
+			background: {
+				image: "art/custom.jpg",
+				blur: "WOBBLE",
+				top: { image: "art/roots.png" },
+			},
+		};
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(
+			view.container.querySelector("[data-wobble] [data-edge]"),
+		).toBeNull();
+		expect(view.container.querySelector('[data-edge="TOP"]')).not.toBeNull();
+	});
+
+	it("shows no AUTO edge image until it has loaded", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { background: { image: "art/custom.jpg" } };
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(view.container.querySelector("[data-edge]")).toBeNull();
+	});
+
+	it("shows edge images on a card without background art", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { background: { bottom: { image: "art/rubble.png" } } };
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(view.container.querySelector('[data-edge="BOTTOM"]')).not.toBeNull();
+		expect(view.container.querySelector("[data-blur]")).toBeNull();
+	});
+
 	it("follows the pointer for a parallax background on a card that does not tilt", () => {
 		// ARRANGE
 		const item = new AbstractItem();

@@ -11,6 +11,19 @@ import {
 	rareWobbleFixture,
 } from "../../fixtures/items/rareBackgroundEffectFixtures";
 import { rareCustomAppearanceFixture } from "../../fixtures/items/rareCustomAppearanceFixture";
+import {
+	rareAutoEdgesFixture,
+	rareBloodAndSkullsEdgesFixture,
+	rareBloodEdgeFixture,
+	rareDarkIceEdgeFixture,
+	rareDarkTentaclesEdgeFixture,
+	rareDestructionEdgeFixture,
+	rareIceEdgeFixture,
+	rareMistRuinsEdgeFixture,
+	rareParallaxEdgesFixture,
+	rareSkullsEdgeFixture,
+	rareTentaclesEdgeFixture,
+} from "../../fixtures/items/rareEdgeFixtures";
 import { rareFixture } from "../../fixtures/items/rareFixture";
 import {
 	rareBlackEmbersFixture,
@@ -124,6 +137,61 @@ export const RareGlitchBackground: Story = {
 /** Background art wobbling like something alive: a jelly-like warp that breathes, colours drifting off true. */
 export const RareWobbleBackground: Story = {
 	args: { item: rareWobbleFixture },
+};
+
+/** Blood running down from the top edge and a heap of skulls along the bottom, both edges at once. */
+export const RareBackgroundEdges: Story = {
+	args: { item: rareBloodAndSkullsEdgesFixture },
+};
+
+/** Edges left on AUTO: the card finds redBloodSkull.top.png and redBloodSkull.bottom.png next to its background art. */
+export const RareAutoEdges: Story = {
+	args: { item: rareAutoEdgesFixture },
+};
+
+/** Edge: blood running down from the top in long drips. */
+export const RareBloodEdge: Story = {
+	args: { item: rareBloodEdgeFixture },
+};
+
+/** Edge: a heap of skulls along the bottom. */
+export const RareSkullsEdge: Story = {
+	args: { item: rareSkullsEdgeFixture },
+};
+
+/** Edge: bright, icy blue ice breaking apart along the bottom. */
+export const RareIceEdge: Story = {
+	args: { item: rareIceEdgeFixture },
+};
+
+/** Edge: dark ice breaking apart along the bottom. */
+export const RareDarkIceEdge: Story = {
+	args: { item: rareDarkIceEdgeFixture },
+};
+
+/** Edge: bright purple octopus arms curling up from the bottom. */
+export const RareTentaclesEdge: Story = {
+	args: { item: rareTentaclesEdgeFixture },
+};
+
+/** Edge: dark octopus arms curling up from the bottom. */
+export const RareDarkTentaclesEdge: Story = {
+	args: { item: rareDarkTentaclesEdgeFixture },
+};
+
+/** Edge: rubble and broken pillars along the bottom. */
+export const RareDestructionEdge: Story = {
+	args: { item: rareDestructionEdgeFixture },
+};
+
+/** Edge: ruins sinking into violet mist along the bottom. */
+export const RareMistRuinsEdge: Story = {
+	args: { item: rareMistRuinsEdgeFixture },
+};
+
+/** Blurred edges in front of parallax art: the art drifts behind them while they stay put. Hover and move around. */
+export const RareParallaxBackgroundEdges: Story = {
+	args: { item: rareParallaxEdgesFixture },
 };
 
 /** Rainbow holo foil over the art that shifts with the pointer. */
