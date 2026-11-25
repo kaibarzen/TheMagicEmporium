@@ -11,7 +11,7 @@ import { CornerDetail } from "./cornerDetail";
  * Switches between the corner ornaments of the item card.
  */
 const meta = {
-	title: "Components/Item/Corners/CardCorners",
+	title: "Components/Item/Parts/Corners/CardCorners",
 	component: CardCorners,
 	parameters: {
 		layout: "centered",
@@ -35,7 +35,5 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-/** The default corners used on item cards */
+/** The default corners used on item cards; pick another from the variant and detail controls */
 export const Default: Story = {};
-
-export const Diamond: Story = { args: { variant: CornerVariant.Diamond } };

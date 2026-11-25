@@ -6,7 +6,7 @@ import { PuffyClouds } from "./PuffyClouds";
  * Filled navy clouds with gold outlines, three per side.
  */
 const meta = {
-	title: "Components/Item/Clouds/PuffyClouds",
+	title: "Components/Item/Parts/Clouds/Variants/Puffy",
 	component: PuffyClouds,
 	parameters: {
 		layout: "centered",

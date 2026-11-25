@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import boundlessSpirit from "../../../fixtures/items/BoundlessSpirit.jpg";
-import { edgeImages } from "../../../fixtures/items/rareEdgeFixtures";
+import { edgeImages } from "../../../fixtures/items/edges/edgeImages";
 import { BackgroundEdge, type BackgroundEdgeProps } from "./BackgroundEdge";
 
 /**
@@ -9,7 +9,7 @@ import { BackgroundEdge, type BackgroundEdgeProps } from "./BackgroundEdge";
  * strips from the image control.
  */
 const meta = {
-	title: "Components/Item/Background/BackgroundEdge",
+	title: "Components/Item/Parts/Background/Edge",
 	component: BackgroundEdge,
 	parameters: {
 		layout: "centered",

@@ -5,7 +5,7 @@ import { CardFooter, type CardFooterProps } from "./CardFooter";
 
 /** Closing ornament at the bottom of an item card, sealed in the rarity colour. */
 const meta = {
-	title: "Components/Item/CardFooter",
+	title: "Components/Item/Parts/Footer",
 	component: CardFooter,
 	parameters: {
 		layout: "centered",

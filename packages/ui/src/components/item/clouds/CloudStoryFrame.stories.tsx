@@ -5,7 +5,7 @@ import { CloudStoryFrame } from "./CloudStoryFrame";
  * Story backdrop for the cloud decorations: a dark strip with the golden line.
  */
 const meta = {
-	title: "Components/Item/Clouds/CloudStoryFrame",
+	title: "Components/Item/Parts/Clouds/StoryFrame",
 	component: CloudStoryFrame,
 	parameters: {
 		layout: "centered",

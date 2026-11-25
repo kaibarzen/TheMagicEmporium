@@ -6,7 +6,7 @@ import { WindStreaks } from "./WindStreaks";
  * Thin drifting lines ending in small curls.
  */
 const meta = {
-	title: "Components/Item/Clouds/WindStreaks",
+	title: "Components/Item/Parts/Clouds/Variants/Wind",
 	component: WindStreaks,
 	parameters: {
 		layout: "centered",

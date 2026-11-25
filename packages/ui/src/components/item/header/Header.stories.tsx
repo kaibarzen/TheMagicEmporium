@@ -6,7 +6,7 @@ import { Header, type HeaderProps } from "./Header";
 
 /** The item card header: name, rarity, base equipment type, and price. */
 const meta = {
-	title: "Components/Item/Header",
+	title: "Components/Item/Parts/Header",
 	component: Header,
 	parameters: {
 		layout: "centered",

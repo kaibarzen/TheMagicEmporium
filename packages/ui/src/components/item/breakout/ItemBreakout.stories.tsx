@@ -11,7 +11,7 @@ import { ItemBreakout } from "./ItemBreakout";
  * with a cloud decoration.
  */
 const meta = {
-	title: "Components/Item/ItemBreakout",
+	title: "Components/Item/Parts/Breakout",
 	component: ItemBreakout,
 	parameters: {
 		layout: "centered",

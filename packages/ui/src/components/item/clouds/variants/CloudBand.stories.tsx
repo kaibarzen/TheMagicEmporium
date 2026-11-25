@@ -6,7 +6,7 @@ import { CloudBand } from "./CloudBand";
  * Stacked half-round lobes with concentric lines.
  */
 const meta = {
-	title: "Components/Item/Clouds/CloudBand",
+	title: "Components/Item/Parts/Clouds/Variants/Band",
 	component: CloudBand,
 	parameters: {
 		layout: "centered",

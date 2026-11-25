@@ -6,7 +6,7 @@ import { DiamondTrail } from "./DiamondTrail";
  * A trail of diamonds shrinking toward the item, with a few loose ones floating above.
  */
 const meta = {
-	title: "Components/Item/Clouds/DiamondTrail",
+	title: "Components/Item/Parts/Clouds/Variants/Diamonds",
 	component: DiamondTrail,
 	parameters: {
 		layout: "centered",

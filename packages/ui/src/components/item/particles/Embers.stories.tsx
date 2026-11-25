@@ -3,7 +3,7 @@ import { Embers, type EmbersProps } from "./Embers";
 
 /** Sparks that rise from the bottom edge, flicker and burn out. `style` picks the colour, `amount` the number of particles. */
 const meta = {
-	title: "Components/Item/Particles/Embers",
+	title: "Components/Item/Parts/Effects/Embers",
 	component: Embers,
 	parameters: {
 		layout: "centered",

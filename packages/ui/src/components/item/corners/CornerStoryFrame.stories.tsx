@@ -5,7 +5,7 @@ import { CornerStoryFrame } from "./CornerStoryFrame";
  * Story backdrop for the corner ornaments: an empty item card.
  */
 const meta = {
-	title: "Components/Item/Corners/CornerStoryFrame",
+	title: "Components/Item/Parts/Corners/StoryFrame",
 	component: CornerStoryFrame,
 	parameters: {
 		layout: "centered",

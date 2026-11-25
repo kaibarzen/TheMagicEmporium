@@ -3,7 +3,7 @@ import { Smoke, type SmokeProps } from "./Smoke";
 
 /** Smoke curling up from the bottom edge, or drifting over the whole card for the _FULL styles. `style` picks the colour and spread, `amount` the number of puffs. */
 const meta = {
-	title: "Components/Item/Particles/Smoke",
+	title: "Components/Item/Parts/Effects/Smoke",
 	component: Smoke,
 	parameters: {
 		layout: "centered",

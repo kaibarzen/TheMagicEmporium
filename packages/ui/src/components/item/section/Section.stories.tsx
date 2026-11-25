@@ -11,7 +11,7 @@ import { SectionTier } from "./tier";
  * three sections read as a progression from mortal to immortal.
  */
 const meta = {
-	title: "Components/Item/Section",
+	title: "Components/Item/Parts/Section",
 	component: Section,
 	parameters: {
 		layout: "centered",

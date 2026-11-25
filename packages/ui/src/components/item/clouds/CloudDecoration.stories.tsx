@@ -11,7 +11,7 @@ import { CloudStoryFrame } from "./CloudStoryFrame";
  * the item art.
  */
 const meta = {
-	title: "Components/Item/Clouds/CloudDecoration",
+	title: "Components/Item/Parts/Clouds/CloudDecoration",
 	component: CloudDecoration,
 	parameters: {
 		layout: "centered",
@@ -33,15 +33,5 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-/** The default decoration used on item cards */
+/** The default decoration used on item cards; pick another from the variant control */
 export const Default: Story = {};
-
-export const Ruyi: Story = { args: { variant: CloudVariant.Ruyi } };
-
-export const Band: Story = { args: { variant: CloudVariant.Band } };
-
-export const Wind: Story = { args: { variant: CloudVariant.Wind } };
-
-export const Diamonds: Story = { args: { variant: CloudVariant.Diamonds } };
-
-export const Stars: Story = { args: { variant: CloudVariant.Stars } };

@@ -8,7 +8,7 @@ import { FretCorners } from "./FretCorners";
  * level grows with rarity, from a bare bracket to ornate.
  */
 const meta = {
-	title: "Components/Item/Corners/FretCorners",
+	title: "Components/Item/Parts/Corners/Variants/Fret",
 	component: FretCorners,
 	parameters: {
 		layout: "centered",

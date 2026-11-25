@@ -6,7 +6,7 @@ import { StarScatter } from "./StarScatter";
  * Four-pointed stars joined by faint constellation lines, twinkling out of step.
  */
 const meta = {
-	title: "Components/Item/Clouds/StarScatter",
+	title: "Components/Item/Parts/Clouds/Variants/Stars",
 	component: StarScatter,
 	parameters: {
 		layout: "centered",

@@ -6,7 +6,7 @@ import { RuyiScrolls } from "./RuyiScrolls";
  * Gold line art curling up into spiral ruyi scrolls.
  */
 const meta = {
-	title: "Components/Item/Clouds/RuyiScrolls",
+	title: "Components/Item/Parts/Clouds/Variants/Ruyi",
 	component: RuyiScrolls,
 	parameters: {
 		layout: "centered",

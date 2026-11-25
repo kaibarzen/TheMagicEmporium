@@ -29,6 +29,63 @@ void registry.registerPacks([
 const preview: Preview = {
 	tags: ["autodocs"],
 	parameters: {
+		options: {
+			storySort: {
+				order: [
+					"Components",
+					[
+						"Item",
+						[
+							"ItemDisplay",
+							[
+								"Base",
+								"Rarity",
+								"Colors",
+								"Header",
+								["Image", "Deco"],
+								"Corners",
+								"Background",
+								[
+									"Image",
+									"Blur",
+									"Shattered",
+									"Parallax",
+									"Glitch",
+									"Wobble",
+									"Edges",
+									["Placement", "Images", "Blur"],
+								],
+								"Effects",
+								["Tilt", "Gleam", "Sparkles", "Reveal", "Embers", "Smoke"],
+							],
+							"Parts",
+							[
+								"Header",
+								"Breakout",
+								"Section",
+								"Footer",
+								"Clouds",
+								[
+									"CloudDecoration",
+									"Variants",
+									["Puffy", "Ruyi", "Band", "Wind", "Diamonds", "Stars"],
+									"StoryFrame",
+								],
+								"Corners",
+								["CardCorners", "Variants", ["Fret", "Diamond"], "StoryFrame"],
+								"Background",
+								["Edge", "Shattered", "Glitch", "Wobble"],
+								"Effects",
+								["Sparkles", "Embers", "Smoke"],
+							],
+							"FoundryIcon",
+						],
+						"*",
+					],
+					"*",
+				],
+			},
+		},
 		backgrounds: {
 			options: {
 				dark: { name: "Dark", value: "#333" },

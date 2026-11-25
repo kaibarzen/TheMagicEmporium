@@ -10,7 +10,7 @@ import {
  * pattern, so each item shatters its own way.
  */
 const meta = {
-	title: "Components/Item/Background/ShatteredBackground",
+	title: "Components/Item/Parts/Background/Shattered",
 	component: ShatteredBackground,
 	parameters: {
 		layout: "centered",

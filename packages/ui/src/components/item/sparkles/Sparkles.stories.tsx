@@ -6,7 +6,7 @@ import { Sparkles } from "./Sparkles";
  * number of particles.
  */
 const meta = {
-	title: "Components/Item/Sparkles",
+	title: "Components/Item/Parts/Effects/Sparkles",
 	component: Sparkles,
 	parameters: {
 		layout: "centered",

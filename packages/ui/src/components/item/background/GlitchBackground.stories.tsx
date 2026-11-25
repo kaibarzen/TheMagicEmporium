@@ -10,7 +10,7 @@ import {
  * which bands of the art jolt sideways.
  */
 const meta = {
-	title: "Components/Item/Background/GlitchBackground",
+	title: "Components/Item/Parts/Background/Glitch",
 	component: GlitchBackground,
 	parameters: {
 		layout: "centered",

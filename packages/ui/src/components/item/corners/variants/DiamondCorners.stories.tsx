@@ -6,7 +6,7 @@ import { DiamondCorners } from "./DiamondCorners";
  * A diamond on each corner with gold lines fading along the edges.
  */
 const meta = {
-	title: "Components/Item/Corners/DiamondCorners",
+	title: "Components/Item/Parts/Corners/Variants/Diamond",
 	component: DiamondCorners,
 	parameters: {
 		layout: "centered",

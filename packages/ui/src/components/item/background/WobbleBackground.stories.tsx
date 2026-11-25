@@ -10,7 +10,7 @@ import {
  * breathes, and its colours drift faintly off true.
  */
 const meta = {
-	title: "Components/Item/Background/WobbleBackground",
+	title: "Components/Item/Parts/Background/Wobble",
 	component: WobbleBackground,
 	parameters: {
 		layout: "centered",
