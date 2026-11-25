@@ -1,0 +1,81 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "morningstar.jpg"
+    },
+    "_meta": {
+      "title": "Style reference"
+    }
+  },
+  "2": {
+    "class_type": "GeminiNanoBanana2V2",
+    "inputs": {
+      "prompt": "Using the reference images only as a STYLE guide, paint a single full weapon: a steel battle axe with a double-bladed head on a wooden haft. Show the ENTIRE weapon, fully inside the frame with margin on all sides, nothing cropped, diagonal composition like the references. Painterly digital illustration with bold, loose gouache/dry-brush strokes, visible bristle texture, chunky angular brushwork, dramatic lighting, limited saturated palette, same style as the reference images. The weapon must sit on a perfectly flat, uniform, deep crimson (#5A0A14) background, matching the dark red of the reference's backdrop with NO brushstrokes, NO texture, NO shadow, NO gradient and NO glow on the background, so it can be cut out cleanly. No text, no hands, no other objects.",
+      "model": "Gemini Nano Banana 2.1",
+      "model.aspect_ratio": "1:1",
+      "model.resolution": "1K",
+      "model.thinking_level": "MEDIUM",
+      "model.images.image_1": [
+        "1",
+        0
+      ],
+      "model.images.image_2": [
+        "14",
+        0
+      ],
+      "model.images.image_3": [
+        "15",
+        0
+      ],
+      "seed": 42,
+      "response_modalities": "IMAGE"
+    },
+    "_meta": {
+      "title": "Weapon (Nano Banana 2.1, on flat crimson)"
+    }
+  },
+  "5": {
+    "class_type": "RecraftRemoveBackgroundNode",
+    "inputs": {
+      "image": [
+        "2",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Recraft Remove Background (weapon)"
+    }
+  },
+  "7": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "5",
+        0
+      ],
+      "filename_prefix": "tme/weapon"
+    },
+    "_meta": {
+      "title": "Save weapon (transparent PNG)"
+    }
+  },
+  "14": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "warhammer.jpg"
+    },
+    "_meta": {
+      "title": "Style reference 2"
+    }
+  },
+  "15": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "flail.jpg"
+    },
+    "_meta": {
+      "title": "Style reference 3"
+    }
+  }
+}

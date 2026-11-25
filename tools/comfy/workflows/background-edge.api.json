@@ -1,0 +1,55 @@
+{
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "rough-brush.jpg"
+    },
+    "_meta": {
+      "title": "Style reference"
+    }
+  },
+  "4": {
+    "class_type": "GeminiNanoBanana2V2",
+    "inputs": {
+      "prompt": "Using the reference image only as a STYLE reference, apply its material rendering, lighting, and painterly treatment. Do not copy its subject, composition or background. The art style should be rough concept art sketches without much detail: bold, loose dry-brush strokes, visible bristle texture, chunky angular brushwork, scattered paint specks.\n\nThis is a decorative edge strip, layered along one edge of a card in front of a painted background.\nEdge: bottom\nThe subject grows from that edge of the image and spans its full width, cut off by the left border, the right border and that edge. It fills at most half of the image's height; the rest of the image stays empty. The subject is a dark, mostly flat silhouette with little interior detail and a ragged, irregular silhouette line, never a straight horizon.\n\nDescription: Jagged rubble, broken stones and a few cracked pillar fragments, half swallowed by low, creeping mist\nUse following color palette: near-black blue-violet, faint cold violet rim light\n\nMood: dark and mysterious. The silhouette sinks into deep shadow, as if at the edge of torchlight, with only a faint, eerie glow catching its rim. Ominous and secretive, never cheerful or bright.\n\nThe empty area is a flat, pure white background with no texture, no strokes and no gradient. Keep all paint specks and splatter attached to the subject, never loose on the white.\nNo text, no border, no frame.",
+      "model": "Gemini Nano Banana 2.1",
+      "model.aspect_ratio": "21:9",
+      "model.resolution": "1K",
+      "model.thinking_level": "MEDIUM",
+      "model.images.image_1": [
+        "2",
+        0
+      ],
+      "seed": 42,
+      "response_modalities": "IMAGE"
+    },
+    "_meta": {
+      "title": "Background edge (Nano Banana 2.1)"
+    }
+  },
+  "5": {
+    "class_type": "RecraftRemoveBackgroundNode",
+    "inputs": {
+      "image": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Recraft Remove Background"
+    }
+  },
+  "6": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "5",
+        0
+      ],
+      "filename_prefix": "tme/edge"
+    },
+    "_meta": {
+      "title": "Save background edge (transparent PNG)"
+    }
+  }
+}

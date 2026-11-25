@@ -1,0 +1,43 @@
+{
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "rough-brush.jpg"
+    },
+    "_meta": {
+      "title": "Style reference"
+    }
+  },
+  "4": {
+    "class_type": "GeminiNanoBanana2V2",
+    "inputs": {
+      "prompt": "Using the reference image only as a STYLE reference, apply its material rendering, lighting, and painterly treatment. Do not copy its subject or composition. The art style should be rough concept art sketches without much detail: bold, loose dry-brush strokes, visible bristle texture, chunky angular brushwork, scattered paint specks.\n\nDescription: A silhouette of a breastplate, 45 degree angle, close up\nUse following color palette: mystical bright gold, mystic blood red background\n\nNo text, no border, no frame.",
+      "model": "Gemini Nano Banana 2.1",
+      "model.aspect_ratio": "1:1",
+      "model.resolution": "1K",
+      "model.thinking_level": "MEDIUM",
+      "model.images.image_1": [
+        "2",
+        0
+      ],
+      "seed": 42,
+      "response_modalities": "IMAGE"
+    },
+    "_meta": {
+      "title": "Armor background (Nano Banana 2.1)"
+    }
+  },
+  "5": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "4",
+        0
+      ],
+      "filename_prefix": "tme/armor"
+    },
+    "_meta": {
+      "title": "Save armor background"
+    }
+  }
+}

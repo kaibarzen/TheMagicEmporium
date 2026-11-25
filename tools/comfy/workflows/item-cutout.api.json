@@ -1,0 +1,36 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "handaxe.jpg"
+    },
+    "_meta": {
+      "title": "Item image (from apps/core/public/icons/)"
+    }
+  },
+  "2": {
+    "class_type": "RecraftRemoveBackgroundNode",
+    "inputs": {
+      "image": [
+        "1",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Recraft Remove Background"
+    }
+  },
+  "3": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "2",
+        0
+      ],
+      "filename_prefix": "tme/cutout"
+    },
+    "_meta": {
+      "title": "Save cutout (transparent PNG)"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "royal.jpg"
+    },
+    "_meta": {
+      "title": "Item image (from apps/core/public/icons/)"
+    }
+  },
+  "2": {
+    "class_type": "GeminiNanoBanana2V2",
+    "inputs": {
+      "prompt": "Repaint this exact item illustration. Keep the item's design, shape, colours, angle, painterly brushwork and its warm rim strokes exactly as they are.\n\nWherever the item runs into or is cut off by the image border, it must not touch the border. Instead, end it with a short, rough dry-brush edge: ragged bristle marks right at the end of the item and a few small paint splatters just past it, as if the painter stopped there. Keep this fraying narrow and only at that edge; the rest of the item stays fully and solidly painted.\n\nRemove the painted background completely. Place the item on a perfectly flat, uniform, pure white (#FFFFFF) background with NO texture, NO shadow, NO gradient and NO glow, so it can be cut out cleanly. Keep a clear empty margin on every side: nothing may touch or be cut off by the frame.\n\nNo text, no border, no frame, no extra objects.",
+      "model": "Gemini Nano Banana 2.1",
+      "model.aspect_ratio": "1:1",
+      "model.resolution": "1K",
+      "model.thinking_level": "MEDIUM",
+      "model.images.image_1": [
+        "1",
+        0
+      ],
+      "seed": 42,
+      "response_modalities": "IMAGE"
+    },
+    "_meta": {
+      "title": "Ink-wash dissolve (Nano Banana 2.1, on flat white)"
+    }
+  },
+  "3": {
+    "class_type": "RecraftRemoveBackgroundNode",
+    "inputs": {
+      "image": [
+        "2",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Recraft Remove Background"
+    }
+  },
+  "4": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "3",
+        0
+      ],
+      "filename_prefix": "tme/dissolve"
+    },
+    "_meta": {
+      "title": "Save dissolved item (transparent PNG)"
+    }
+  }
+}
