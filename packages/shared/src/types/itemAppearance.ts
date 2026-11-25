@@ -42,10 +42,15 @@ export type GleamStyle = "SWEEP" | "NONE";
 /**
  * How the background art is blurred. LIGHT softens the whole card evenly;
  * PARTIAL stays sharp behind the header and blurs progressively toward the
- * modifiers; FULL blurs the whole card evenly and strongly; NONE keeps the
- * art sharp everywhere.
+ * modifiers; FULL blurs the whole card evenly and strongly; SHATTERED shows
+ * the art through broken glass; NONE keeps the art sharp everywhere.
  */
-export type BackgroundBlur = "LIGHT" | "PARTIAL" | "FULL" | "NONE";
+export type BackgroundBlur =
+	| "LIGHT"
+	| "PARTIAL"
+	| "FULL"
+	| "SHATTERED"
+	| "NONE";
 
 /** Strength of an effect, from barely there to over the top */
 export type Intensity = "MILD" | "MEDIUM" | "STRONG" | "EXTREME";

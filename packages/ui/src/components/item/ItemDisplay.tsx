@@ -4,6 +4,7 @@ import { animate } from "animejs";
 import { motion } from "framer-motion";
 import { type CSSProperties, useEffect, useMemo, useRef } from "react";
 import { resolveAppearance } from "./appearance/resolveAppearance";
+import { ShatteredBackground } from "./background/ShatteredBackground";
 import { ItemBreakout } from "./breakout/ItemBreakout";
 import { useImageExists } from "./breakout/useImageExists";
 import { CardCorners } from "./corners/CardCorners";
@@ -30,7 +31,10 @@ interface BlurStep {
  * so it is the base layer. PARTIAL is lightest behind the header and strongest
  * behind the modifiers; LIGHT and FULL blur the whole card evenly.
  */
-const BACKGROUND_BLUR_STEPS: Record<BackgroundBlur, BlurStep[]> = {
+const BACKGROUND_BLUR_STEPS: Record<
+	Exclude<BackgroundBlur, "SHATTERED">,
+	BlurStep[]
+> = {
 	PARTIAL: [
 		{ blur: 1, fadeStart: -1, fadeEnd: 0 },
 		{ blur: 2, fadeStart: 80, fadeEnd: 220 },
@@ -102,24 +106,28 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 
 		return (
 			<div className={styles.background} data-blur={blur}>
-				{BACKGROUND_BLUR_STEPS[blur].map((step) => (
-					<div
-						key={step.blur}
-						className={styles.backgroundLayer}
-						style={
-							{
-								backgroundImage: `url(${bg})`,
-								"--blur": `${step.blur}px`,
-								"--fade-start": `${step.fadeStart}px`,
-								"--fade-end": `${step.fadeEnd}px`,
-							} as CSSProperties
-						}
-					/>
-				))}
+				{blur === "SHATTERED" ? (
+					<ShatteredBackground image={bg} seed={props.item.name} />
+				) : (
+					BACKGROUND_BLUR_STEPS[blur].map((step) => (
+						<div
+							key={step.blur}
+							className={styles.backgroundLayer}
+							style={
+								{
+									backgroundImage: `url(${bg})`,
+									"--blur": `${step.blur}px`,
+									"--fade-start": `${step.fadeStart}px`,
+									"--fade-end": `${step.fadeEnd}px`,
+								} as CSSProperties
+							}
+						/>
+					))
+				)}
 				<div className={styles.backgroundFilter} />
 			</div>
 		);
-	}, [appearance.background]);
+	}, [appearance.background, props.item.name]);
 
 	const card = (
 		<motion.div

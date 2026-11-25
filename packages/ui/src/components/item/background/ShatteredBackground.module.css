@@ -1,0 +1,71 @@
+.root {
+	position: absolute;
+	inset: 0;
+}
+
+/* One pane of glass, clipped to its polygon; the clip never moves, so the panes always fit together */
+.shard {
+	position: absolute;
+	inset: 0;
+}
+
+/*
+ * The art behind a pane, bent out of line with its neighbours by the
+ * transform. It overhangs the card so neither the blur nor the shift ever
+ * shows a transparent rim inside the pane.
+ */
+.art {
+	position: absolute;
+	inset: -32px;
+	background-position: center center;
+	background-size: cover;
+	filter: blur(var(--blur)) brightness(var(--brightness)) saturate(0.9);
+}
+
+/* Light catching the face of the pane */
+.sheen {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		var(--sheen-angle),
+		rgb(255 255 255 / var(--sheen-opacity)),
+		transparent 60%
+	);
+	mix-blend-mode: screen;
+}
+
+/*
+ * Rainbow foil: one broad, soft wash of colour per shard, so a shard shows a
+ * single colour at a time, and its hue turns through the whole spectrum.
+ * Each shard starts at its own point in the cycle (a negative delay), so
+ * neighbouring panes always disagree, like light splitting in separate glass.
+ */
+.holo {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		var(--holo-angle),
+		#ff4f8b 0%,
+		color-mix(in srgb, #ff4f8b 70%, #ffcf4f) 100%
+	);
+	opacity: var(--holo-opacity);
+	mix-blend-mode: screen;
+	filter: hue-rotate(var(--holo-hue));
+	/* Keep the duration in step with HOLO_CYCLE in ShatteredBackground.tsx */
+	animation: holo-cycle 9s linear infinite;
+}
+
+@keyframes holo-cycle {
+	from {
+		filter: hue-rotate(0deg);
+	}
+	to {
+		filter: hue-rotate(360deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.holo {
+		animation: none;
+	}
+}

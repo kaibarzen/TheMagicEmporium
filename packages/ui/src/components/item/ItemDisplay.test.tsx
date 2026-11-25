@@ -275,4 +275,20 @@ describe("ItemDisplay", () => {
 		) as HTMLElement;
 		expect(layer.style.getPropertyValue("--blur")).toBe("0px");
 	});
+
+	it("shows the background art through broken glass when its blur is SHATTERED", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = {
+			background: { image: "art/custom.jpg", blur: "SHATTERED" },
+		};
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(
+			view.container.querySelector('[data-blur="SHATTERED"] [data-shards]'),
+		).not.toBeNull();
+	});
 });

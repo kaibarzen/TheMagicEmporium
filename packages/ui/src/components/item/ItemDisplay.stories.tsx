@@ -6,6 +6,7 @@ import { legendaryOverrideBackgroundFixture } from "../../fixtures/items/legenda
 import { legendaryWarhammerArtFixture } from "../../fixtures/items/legendaryWarhammerArtFixture";
 import { rareCustomAppearanceFixture } from "../../fixtures/items/rareCustomAppearanceFixture";
 import { rareFixture } from "../../fixtures/items/rareFixture";
+import { rareShatteredFixture } from "../../fixtures/items/rareShatteredFixture";
 import { uncommonFixture } from "../../fixtures/items/uncommonFixture";
 import { veryRareFixture } from "../../fixtures/items/veryRareFixture";
 import { veryRarePerfectFixture } from "../../fixtures/items/veryRarePerfectFixture";
@@ -80,6 +81,11 @@ export const Rare: Story = {
 /** A rare item whose appearance sets a fully blurred background, sparkles, extreme tilt, ornate corners and star decoration. */
 export const RareCustomAppearance: Story = {
 	args: { item: rareCustomAppearanceFixture },
+};
+
+/** The custom appearance rare item, with its background art seen through broken glass. */
+export const RareShatteredBackground: Story = {
+	args: { item: rareShatteredFixture },
 };
 
 /** An uncommon item. */
