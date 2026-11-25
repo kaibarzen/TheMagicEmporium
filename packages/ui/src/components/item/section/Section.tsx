@@ -2,6 +2,7 @@ import type { AppliedModifier } from "@tme/library/src/modifiers/Modifier";
 import type { JSX } from "react";
 import { ModifierDisplay } from "../../modifiers/ModifierDisplay";
 import { METAL, metalVars } from "../metal/metal";
+import depth from "../tilt/depth.module.css";
 import styles from "./Section.module.css";
 import { SectionTier, TIER_LABEL, TIER_METAL } from "./tier";
 
@@ -74,9 +75,9 @@ export const Section = (props: SectionProps) => {
 	const label = TIER_LABEL[props.tier];
 
 	return (
-		<div>
+		<div className={depth.preserve}>
 			<div
-				className={styles.header}
+				className={`${styles.header} ${depth.front}`}
 				data-tier={props.tier}
 				style={metalVars(TIER_METAL[props.tier])}
 			>
@@ -100,8 +101,8 @@ export const Section = (props: SectionProps) => {
 				</div>
 			</div>
 			{props.modifiers.map((applied, i) => (
-				<div key={i} className={styles.item}>
-					{i > 0 && <div className={styles.divider} />}
+				<div key={i} className={`${styles.item} ${depth.preserve}`}>
+					{i > 0 && <div className={`${styles.divider} ${depth.front}`} />}
 					<ModifierDisplay modifier={applied.modifier} float={applied.float} />
 				</div>
 			))}

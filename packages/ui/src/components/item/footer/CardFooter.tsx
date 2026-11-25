@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactElement } from "react";
 import { METAL } from "../metal/metal";
+import depth from "../tilt/depth.module.css";
 import styles from "./CardFooter.module.css";
 
 export interface CardFooterProps {
@@ -17,7 +18,11 @@ export const CardFooter = (props: CardFooterProps): ReactElement => {
 	const style = { "--rarity-color": props.rarityColor } as CSSProperties;
 
 	return (
-		<div className={styles.root} style={style} data-testid="card-footer">
+		<div
+			className={`${styles.root} ${depth.front}`}
+			style={style}
+			data-testid="card-footer"
+		>
 			<svg
 				aria-hidden="true"
 				width={WIDTH}

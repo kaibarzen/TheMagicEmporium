@@ -15,6 +15,9 @@ import { metalStyle } from "./metal/metal";
 import { Section } from "./section/Section";
 import { SectionTier } from "./section/tier";
 import { Sparkles } from "./sparkles/Sparkles";
+import depth from "./tilt/depth.module.css";
+import { tiltsOnHover } from "./tilt/tilt";
+import { useCardTilt } from "./tilt/useCardTilt";
 
 interface BlurStep {
 	blur: number;
@@ -50,6 +53,12 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 	} as CSSProperties;
 	const sparkles = props.item.getSparkles();
 	const cardRef = useRef<HTMLDivElement | null>(null);
+	const tiltRef = useRef<HTMLDivElement | null>(null);
+	const glintRef = useRef<HTMLDivElement | null>(null);
+
+	// Very rare and legendary cards tilt toward the cursor and catch a light sweep
+	const tilts = tiltsOnHover(props.item.rarity);
+	useCardTilt(tilts, tiltRef, glintRef);
 
 	// Item art only shows when a *.cutout.png exists next to the base item's icon
 	const cutoutUrl = getCutoutUrl(equipmentDetails[props.item.base].icon);
@@ -57,12 +66,19 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 
 	// Clip-path Iris reveal
 	useEffect(() => {
-		if (!sparkles.enabled || !cardRef.current) return;
-		const anim = animate(cardRef.current, {
+		const card = cardRef.current;
+		if (!sparkles.enabled || !card) {
+			return;
+		}
+		const anim = animate(card, {
 			clipPath: ["circle(0% at 50% 50%)", "circle(150% at 50% 50%)"],
 			scale: [0.94, 1],
 			duration: 1100,
 			ease: "outQuart",
+			// A leftover clip-path would flatten the card's depth layers
+			onComplete: (): void => {
+				card.style.removeProperty("clip-path");
+			},
 		});
 		return () => {
 			anim.pause();
@@ -71,10 +87,12 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 
 	const background = useMemo(() => {
 		const bg = props.item.getBackground();
-		if (!bg) return null;
+		if (!bg) {
+			return null;
+		}
 
 		return (
-			<div className={styles.background} aria-hidden="true">
+			<div className={styles.background}>
 				{BACKGROUND_BLUR_STEPS.map((step) => (
 					<div
 						key={step.blur}
@@ -103,41 +121,70 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 			className={hasCutout ? styles.withArt : undefined}
 			style={rarityStyle}
 		>
-			{hasCutout && (
-				<ItemBreakout
-					src={cutoutUrl}
-					alt={props.item.name}
-					rarityColor={rarityColor}
-				/>
-			)}
-			<div className={styles.cardWrap}>
-				{!props.hideFrame && (
-					<div className={styles.titleGlow} aria-hidden="true" />
+			<div
+				ref={tiltRef}
+				className={tilts ? `${styles.tilt} ${depth.preserve}` : undefined}
+				data-tilt={tilts ? "" : undefined}
+			>
+				{hasCutout && (
+					<div className={depth.preserve}>
+						<ItemBreakout
+							src={cutoutUrl}
+							alt={props.item.name}
+							rarityColor={rarityColor}
+						/>
+					</div>
 				)}
-				<div
-					ref={cardRef}
-					className={styles.card}
-					data-rarity={props.item.rarity}
-				>
-					{background}
-					{sparkles.enabled && <Sparkles amount={sparkles.amount} />}
-					<CardCorners
-						variant={DEFAULT_CORNER_VARIANT}
-						detail={RARITY_CORNER_DETAIL[props.item.rarity]}
-					/>
-					<Header
-						name={props.item.name}
-						rarity={props.item.rarity}
-						base={props.item.base}
-						currency={props.item.currency}
-					/>
-					<Section tier={SectionTier.Mortal} modifiers={props.item.primary} />
-					<Section tier={SectionTier.Spirit} modifiers={props.item.secondary} />
-					<Section
-						tier={SectionTier.Immortal}
-						modifiers={props.item.tertiary}
-					/>
-					<CardFooter rarityColor={rarityColor} />
+				<div className={`${styles.cardWrap} ${depth.preserve}`}>
+					{!props.hideFrame && (
+						<div
+							className={`${styles.titleGlow} ${depth.deep}`}
+							aria-hidden="true"
+						/>
+					)}
+					<div
+						ref={cardRef}
+						className={`${styles.card} ${depth.preserve}`}
+						data-rarity={props.item.rarity}
+					>
+						<div
+							className={`${styles.backdrop} ${depth.back}`}
+							aria-hidden="true"
+						>
+							{background}
+						</div>
+						{sparkles.enabled && <Sparkles amount={sparkles.amount} />}
+						<div className={`${styles.edge} ${depth.front}`} aria-hidden="true">
+							<CardCorners
+								variant={DEFAULT_CORNER_VARIANT}
+								detail={RARITY_CORNER_DETAIL[props.item.rarity]}
+							/>
+						</div>
+						<Header
+							name={props.item.name}
+							rarity={props.item.rarity}
+							base={props.item.base}
+							currency={props.item.currency}
+						/>
+						<Section tier={SectionTier.Mortal} modifiers={props.item.primary} />
+						<Section
+							tier={SectionTier.Spirit}
+							modifiers={props.item.secondary}
+						/>
+						<Section
+							tier={SectionTier.Immortal}
+							modifiers={props.item.tertiary}
+						/>
+						<CardFooter rarityColor={rarityColor} />
+						{tilts && (
+							<div
+								className={`${styles.sweep} ${depth.front}`}
+								aria-hidden="true"
+							>
+								<div ref={glintRef} className={styles.glint} />
+							</div>
+						)}
+					</div>
 				</div>
 			</div>
 		</motion.div>

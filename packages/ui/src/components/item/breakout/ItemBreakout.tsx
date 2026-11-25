@@ -4,6 +4,7 @@ import {
 	type CloudVariant,
 	DEFAULT_CLOUD_VARIANT,
 } from "../clouds/CloudDecoration";
+import depth from "../tilt/depth.module.css";
 import styles from "./ItemBreakout.module.css";
 
 export interface ItemBreakoutProps {
@@ -25,7 +26,7 @@ export const ItemBreakout = (props: ItemBreakoutProps): JSX.Element => {
 
 	return (
 		<div
-			className={styles.root}
+			className={`${styles.root} ${depth.front}`}
 			style={{ "--rarity-color": props.rarityColor } as CSSProperties}
 		>
 			<div className={styles.halo} />

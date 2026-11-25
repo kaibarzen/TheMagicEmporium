@@ -1,0 +1,31 @@
+/*
+ * Depth planes for the hover tilt. The tilt surface sets --depth-front,
+ * --depth-back and --depth-deep (translateZ values) only while tilting, so at
+ * rest none of these layers carries a transform and text stays crisp.
+ *
+ * Every element between the tilt surface and a layer must be .preserve, or
+ * the browser flattens the layers back onto one plane. Flattening is also
+ * caused by overflow, opacity, filter, clip-path, mask and isolation on those
+ * in-between elements (not on the layers themselves).
+ */
+.preserve {
+	transform-style: preserve-3d;
+}
+
+/* Gold structure, header, clouds: floats toward the viewer */
+.front {
+	transform: var(--depth-front, none);
+	transition: transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Card background and item art: sinks away from the viewer */
+.back {
+	transform: var(--depth-back, none);
+	transition: transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Glows that sit behind the card background */
+.deep {
+	transform: var(--depth-deep, none);
+	transition: transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}

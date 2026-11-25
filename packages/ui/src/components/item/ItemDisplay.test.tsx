@@ -1,5 +1,5 @@
 import { describe, expect, it } from "bun:test";
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import { AbstractItem } from "@tme/library/src/item/AbstractItem";
 import { Rarity } from "@tme/library/src/item/item.types";
 import { ItemDisplay } from "./ItemDisplay";
@@ -90,5 +90,44 @@ describe("ItemDisplay", () => {
 		expect(
 			view.container.querySelector('[data-detail="ornate"]'),
 		).not.toBeNull();
+	});
+	it("tilts a legendary card while the pointer is over it", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Legendary;
+		const view = render(<ItemDisplay item={item} hideFrame />);
+		const surface = view.container.querySelector("[data-tilt]") as HTMLElement;
+
+		// ACT
+		fireEvent.pointerEnter(surface);
+
+		// ASSERT
+		expect(surface.hasAttribute("data-tilting")).toBe(true);
+	});
+
+	it("settles a tilted card back when the pointer leaves", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.VeryRare;
+		const view = render(<ItemDisplay item={item} hideFrame />);
+		const surface = view.container.querySelector("[data-tilt]") as HTMLElement;
+		fireEvent.pointerEnter(surface);
+
+		// ACT
+		fireEvent.pointerLeave(surface);
+
+		// ASSERT
+		expect(surface.hasAttribute("data-tilting")).toBe(false);
+		expect(surface.style.getPropertyValue("--tilt-x")).toBe("0.000");
+	});
+
+	it("keeps a common card still", () => {
+		// ARRANGE & ACT
+		const item = new AbstractItem();
+		item.rarity = Rarity.Common;
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(view.container.querySelector("[data-tilt]")).toBeNull();
 	});
 });

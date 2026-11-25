@@ -50,17 +50,26 @@
 	);
 }
 
+/*
+ * The card itself only lays out its content. What it looks like is split into
+ * depth layers for the hover tilt: .backdrop (background, art, rarity wash)
+ * at the back, .edge (border, hairline, corners) at the front, the modifier
+ * text in between. No isolation here: it would flatten those layers.
+ */
 .card {
 	position: relative;
-	isolation: isolate;
 	width: 460px;
 	box-sizing: border-box;
 	padding: 28px;
-	background: linear-gradient(180deg, #0e1124 0%, #07091a 100%);
 	border-radius: 4px;
+}
+
+.backdrop {
+	position: absolute;
+	inset: 0;
+	border-radius: 4px;
+	background: linear-gradient(180deg, #0e1124 0%, #07091a 100%);
 	box-shadow:
-		inset 0 0 0 1px color-mix(in srgb, var(--metal) 35%, transparent),
-		inset 0 0 60px color-mix(in srgb, var(--metal) 6%, transparent),
 		0 0 32px rgba(0, 0, 0, 0.5),
 		0 0 0 1px rgba(0, 0, 0, 0.5);
 }
@@ -70,7 +79,6 @@
 	inset: 0;
 	overflow: hidden;
 	border-radius: 4px;
-	z-index: -1;
 }
 
 /*
@@ -133,7 +141,17 @@
  * double rules used in the section headers. Each side fades out before the
  * corner ornaments so it never crosses the fret.
  */
-.card::before {
+.edge {
+	position: absolute;
+	inset: 0;
+	border-radius: 4px;
+	pointer-events: none;
+	box-shadow:
+		inset 0 0 0 1px color-mix(in srgb, var(--metal) 35%, transparent),
+		inset 0 0 60px color-mix(in srgb, var(--metal) 6%, transparent);
+}
+
+.edge::before {
 	content: "";
 	position: absolute;
 	inset: 8px;
@@ -163,11 +181,10 @@
  * Rarity light: the top edge catches the rarity colour and spills a soft wash
  * down into the header, tying the rarity label to the card itself.
  */
-.card::after {
+.backdrop::after {
 	content: "";
 	position: absolute;
 	inset: 0;
-	z-index: -1;
 	pointer-events: none;
 	border-radius: 4px;
 	background:
@@ -189,14 +206,16 @@
  * Legendary: the gold frame smoulders. An ember glow breathes around the
  * border, on top of the usual frame shadows.
  */
-.card[data-rarity="legendary"] {
+.card[data-rarity="legendary"] .edge {
 	box-shadow:
 		inset 0 0 0 1px color-mix(in srgb, var(--metal) 50%, transparent),
 		inset 0 0 60px color-mix(in srgb, var(--ember) 10%, transparent),
 		0 0 0 1px color-mix(in srgb, var(--ember) 25%, transparent),
-		0 0 28px color-mix(in srgb, var(--ember) 22%, transparent),
-		0 0 32px rgba(0, 0, 0, 0.5);
+		0 0 28px color-mix(in srgb, var(--ember) 22%, transparent);
 	animation: smoulder 5s ease-in-out infinite;
+	transition:
+		box-shadow 400ms ease-out,
+		transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 @keyframes smoulder {
@@ -212,7 +231,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.card[data-rarity="legendary"] {
+	.card[data-rarity="legendary"] .edge {
 		animation: none;
 	}
 }
@@ -220,4 +239,92 @@
 /* Room above the card for item art that breaks out of its top edge */
 .withArt {
 	padding-top: 190px;
+}
+
+/*
+ * Hover tilt (very rare and legendary). useCardTilt writes --tilt-x/--tilt-y
+ * (-1..1) and data-tilting; the hovered side lifts toward the viewer, like
+ * tipping a card up to the light. At rest there is no transform at all, so
+ * text stays crisp.
+ */
+.tilt {
+	--tilt-max: 3deg;
+	transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tilt[data-tilting] {
+	/* Depth planes, see tilt/depth.module.css */
+	--depth-front: translateZ(10px);
+	--depth-back: translateZ(-12px);
+	--depth-deep: translateZ(-24px);
+	transform: perspective(1000px)
+		rotateX(calc(var(--tilt-y, 0) * var(--tilt-max)))
+		rotateY(calc(var(--tilt-x, 0) * var(--tilt-max) * -1));
+	transition-duration: 150ms;
+}
+
+/* Legendary embers flare up while the card is held */
+.tilt[data-tilting] .card[data-rarity="legendary"] .edge {
+	box-shadow:
+		inset 0 0 0 1px color-mix(in srgb, var(--metal) 60%, transparent),
+		inset 0 0 60px color-mix(in srgb, var(--ember) 14%, transparent),
+		0 0 0 1px color-mix(in srgb, var(--ember) 35%, transparent),
+		0 0 40px color-mix(in srgb, var(--ember) 32%, transparent);
+}
+
+/*
+ * Light sweep: one diagonal band of pale metal that crosses the card once on
+ * hover-enter (useCardTilt animates .glint). The mask keeps it bright along
+ * the frame and corner ornaments and only a faint wash over the text.
+ */
+.sweep {
+	--glint: color-mix(in srgb, var(--metal-pale) 55%, transparent);
+	--edge: 20px;
+	--corner: 72px;
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	border-radius: 4px;
+	pointer-events: none;
+	mix-blend-mode: screen;
+	mask-image:
+		linear-gradient(rgb(0 0 0 / 0.22), rgb(0 0 0 / 0.22)),
+		linear-gradient(
+			90deg,
+			#000 var(--edge),
+			transparent var(--edge),
+			transparent calc(100% - var(--edge)),
+			#000 calc(100% - var(--edge))
+		),
+		linear-gradient(
+			180deg,
+			#000 var(--edge),
+			transparent var(--edge),
+			transparent calc(100% - var(--edge)),
+			#000 calc(100% - var(--edge))
+		),
+		radial-gradient(circle at 0 0, #000, transparent var(--corner)),
+		radial-gradient(circle at 100% 0, #000, transparent var(--corner)),
+		radial-gradient(circle at 0 100%, #000, transparent var(--corner)),
+		radial-gradient(circle at 100% 100%, #000, transparent var(--corner));
+}
+
+.card[data-rarity="legendary"] .sweep {
+	--glint: color-mix(
+		in srgb,
+		color-mix(in srgb, var(--metal-pale) 75%, var(--ember)) 70%,
+		transparent
+	);
+}
+
+.glint {
+	position: absolute;
+	inset: 0;
+	transform: translateX(-130%);
+	background: linear-gradient(
+		105deg,
+		transparent 38%,
+		var(--glint) 50%,
+		transparent 62%
+	);
 }

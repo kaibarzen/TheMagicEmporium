@@ -3,6 +3,7 @@ import type { Equipment } from "@tme/library/src/item/equipment/equipment.types"
 import { Rarity } from "@tme/library/src/item/item.types";
 import { type CSSProperties, type ReactElement, useMemo } from "react";
 import { METAL, metalStyle } from "../metal/metal";
+import depth from "../tilt/depth.module.css";
 import styles from "./Header.module.css";
 
 export interface HeaderProps {
@@ -182,7 +183,7 @@ export const Header = (props: HeaderProps): ReactElement => {
 	} as CSSProperties;
 
 	return (
-		<div className={styles.root} style={style}>
+		<div className={`${styles.root} ${depth.front}`} style={style}>
 			<div className={styles.rarityRow}>
 				<span className={`${styles.rule} ${styles.ruleLeft}`} />
 				<Diamond size={6} fill={color} />
