@@ -292,7 +292,7 @@ describe("ItemDisplay", () => {
 		).not.toBeNull();
 	});
 
-	for (const blur of ["PARALLAX", "GLITCH"] as const) {
+	for (const blur of ["PARALLAX", "GLITCH", "WOBBLE"] as const) {
 		it(`renders the ${blur} background treatment`, () => {
 			// ARRANGE
 			const item = new AbstractItem();

@@ -8,6 +8,7 @@ import { legendaryWarhammerArtFixture } from "../../fixtures/items/legendaryWarh
 import {
 	rareGlitchFixture,
 	rareParallaxFixture,
+	rareWobbleFixture,
 } from "../../fixtures/items/rareBackgroundEffectFixtures";
 import { rareCustomAppearanceFixture } from "../../fixtures/items/rareCustomAppearanceFixture";
 import { rareFixture } from "../../fixtures/items/rareFixture";
@@ -118,6 +119,11 @@ export const RareParallaxBackground: Story = {
 /** Background art breaking up like a corrupted signal: split colour, jolting bands, scanlines. */
 export const RareGlitchBackground: Story = {
 	args: { item: rareGlitchFixture },
+};
+
+/** Background art wobbling like something alive: a jelly-like warp that breathes, colours drifting off true. */
+export const RareWobbleBackground: Story = {
+	args: { item: rareWobbleFixture },
 };
 
 /** Rainbow holo foil over the art that shifts with the pointer. */

@@ -31,3 +31,8 @@ export const rareGlitchFixture = withBackground(
 	"GLITCH",
 	"Rare Robes of the Void Court",
 );
+
+export const rareWobbleFixture = withBackground(
+	"WOBBLE",
+	"Rare Robes of the Far Star",
+);

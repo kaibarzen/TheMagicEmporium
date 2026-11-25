@@ -1,0 +1,55 @@
+.root {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+}
+
+/* The colours drift slightly off true and back, which makes the art feel strange rather than just wavy */
+.tint {
+	position: absolute;
+	inset: 0;
+	animation: wobble-tint 11s ease-in-out infinite;
+}
+
+/* Swells and shrinks a little out of step with the warp, so the art seems to breathe */
+.warp {
+	position: absolute;
+	inset: 0;
+	animation: wobble-breathe 9s ease-in-out infinite;
+}
+
+.filterDefs {
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+@keyframes wobble-tint {
+	0%,
+	100% {
+		filter: hue-rotate(0deg) saturate(1);
+	}
+	50% {
+		filter: hue-rotate(-14deg) saturate(1.15);
+	}
+}
+
+@keyframes wobble-breathe {
+	0%,
+	100% {
+		transform: scale(1.02) rotate(0deg);
+	}
+	35% {
+		transform: scale(1.045) rotate(0.4deg);
+	}
+	70% {
+		transform: scale(1.03) rotate(-0.3deg);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.tint,
+	.warp {
+		animation: none;
+	}
+}

@@ -73,6 +73,7 @@ export type EmberStyle = "BRIGHT" | "FIRE" | "GOLDEN" | "BLACK" | "WISPS";
  * - SHATTERED shows the art through broken glass
  * - PARALLAX is PARTIAL, drifting against the pointer as if seen through a window
  * - GLITCH splits the colour channels and jolts bands of the art sideways
+ * - WOBBLE is PARTIAL, warping and breathing like something alive
  * - NONE keeps the art sharp everywhere
  */
 export type BackgroundBlur =
@@ -82,6 +83,7 @@ export type BackgroundBlur =
 	| "SHATTERED"
 	| "PARALLAX"
 	| "GLITCH"
+	| "WOBBLE"
 	| "NONE";
 
 /** Strength of an effect, from barely there to over the top */

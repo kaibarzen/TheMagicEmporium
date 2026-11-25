@@ -13,6 +13,7 @@ import { colorStyle } from "./appearance/colors";
 import { resolveAppearance } from "./appearance/resolveAppearance";
 import { GlitchBackground } from "./background/GlitchBackground";
 import { ShatteredBackground } from "./background/ShatteredBackground";
+import { WobbleBackground } from "./background/WobbleBackground";
 import { ItemBreakout } from "./breakout/ItemBreakout";
 import { useImageExists } from "./breakout/useImageExists";
 import { CardCorners } from "./corners/CardCorners";
@@ -91,6 +92,13 @@ const backgroundArt = (
 			);
 		case "GLITCH":
 			return <GlitchBackground image={image} seed={seed} />;
+		case "WOBBLE":
+			// The blur layers overhang by 32px, so the warp never pulls in an empty edge
+			return (
+				<WobbleBackground>
+					{blurLayers(BACKGROUND_BLUR_STEPS.PARTIAL, image)}
+				</WobbleBackground>
+			);
 		default:
 			return blurLayers(BACKGROUND_BLUR_STEPS[blur], image);
 	}
