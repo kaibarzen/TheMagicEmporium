@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;1,400&display=swap");
+
 .grid {
 	display: grid;
 	grid-template-columns: 22px 1fr auto;
@@ -23,17 +25,19 @@
 }
 
 .description {
-	font-size: 12.5px;
-	line-height: 1.55;
+	font-family: "Crimson Pro", serif;
+	font-size: 14px;
+	line-height: 1.5;
 	color: #a89e84;
-	font-weight: 300;
+	font-weight: 400;
 }
 
 .disclaimer {
-	font-size: 11px;
-	line-height: 1.5;
+	font-family: "Crimson Pro", serif;
+	font-size: 12.5px;
+	line-height: 1.45;
 	color: #6e6757;
 	font-style: italic;
 	margin-top: 6px;
-	font-weight: 300;
+	font-weight: 400;
 }
