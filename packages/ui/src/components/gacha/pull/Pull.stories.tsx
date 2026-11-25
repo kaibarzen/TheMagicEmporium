@@ -6,7 +6,7 @@ import { GachaContext } from "../../../context/gacha/GachaContextProvider";
 import { Gacha } from "../../../context/gacha/library/Gacha";
 import { envelopeOfGoldenBlessingFixture } from "../../../fixtures/gacha/envelopes/EnvelopeOfGoldenBlessing";
 import { commonFixture } from "../../../fixtures/items/commonFixture";
-import { legendaryModifierBackgroundFixture } from "../../../fixtures/items/legendaryModifierBackgroundFixture";
+import { legendarySkulltakerFixture } from "../../../fixtures/items/legendarySkulltakerFixture";
 import { rareFixture } from "../../../fixtures/items/rareFixture";
 import { uncommonFixture } from "../../../fixtures/items/uncommonFixture";
 import { veryRareFixture } from "../../../fixtures/items/veryRareFixture";
@@ -17,7 +17,7 @@ const fiveItems = [
 	uncommonFixture,
 	rareFixture,
 	veryRareFixture,
-	legendaryModifierBackgroundFixture,
+	legendarySkulltakerFixture,
 ];
 
 /**

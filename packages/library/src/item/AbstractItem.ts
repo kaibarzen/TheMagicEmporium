@@ -1,7 +1,6 @@
 import { namespace } from "@tme/shared/src/namespaceConfig";
 import { type Item5e, ItemType } from "@tme/shared/src/types/item5e";
 import type { ItemAppearance } from "@tme/shared/src/types/itemAppearance";
-import { generateBackgroundUrl } from "../misc/generateBackgroundUrl";
 import type { AppliedModifier } from "../modifiers/Modifier";
 import { registry } from "../registry/Registry";
 import { equipmentDetails } from "./equipment/equipment.details";
@@ -94,24 +93,6 @@ export class AbstractItem {
 
 	public getEquipmentLabel = (): string => {
 		return equipmentDetails[this.base].title;
-	};
-
-	/**
-	 * Background art provided by the item's modifiers, used when the
-	 * appearance background is AUTO. Later modifiers win.
-	 */
-	public getModifierBackground = (): string | null => {
-		for (const applied of [
-			...this.primary,
-			...this.secondary,
-			...this.tertiary,
-		].reverse()) {
-			const background = applied.modifier.getBackground(applied.float);
-			if (background) {
-				return generateBackgroundUrl(background);
-			}
-		}
-		return null;
 	};
 
 	/**

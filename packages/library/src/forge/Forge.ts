@@ -3,6 +3,7 @@ import { equipmentDetails } from "../item/equipment/equipment.details";
 import { Equipment } from "../item/equipment/equipment.types";
 import { Rarity } from "../item/item.types";
 import { logger } from "../logger";
+import { generateBackgroundUrl } from "../misc/generateBackgroundUrl";
 import type { Modifier } from "../modifiers/Modifier";
 import type { Restriction } from "../modifiers/modifier.schema";
 import { registry } from "../registry/Registry";
@@ -30,11 +31,10 @@ export class Forge {
 		const template = Forge.getTemplate(luck, rarity);
 		const process = new ForgeProcess();
 
-		Forge.applyBackgroundEligibility(process, template);
-
 		process.setBase(equipment ?? Forge.pickRandomEquipment());
 		Forge.generateGoldValue(process, template);
 		Forge.generateModifiers(process, template);
+		Forge.generateBackground(process, template);
 		process.setRarity(template.rarity);
 		Forge.generateName(process);
 
@@ -49,7 +49,6 @@ export class Forge {
 			luck: template.luck + props.modifierLuck,
 		};
 
-		Forge.applyBackgroundEligibility(process, internalTemplate);
 		process.setBase(
 			props.equipmentWhitelist[
 				Math.floor(Math.random() * props.equipmentWhitelist.length)
@@ -57,6 +56,7 @@ export class Forge {
 		);
 		Forge.generateGoldValue(process, internalTemplate);
 		Forge.generateModifiers(process, internalTemplate);
+		Forge.generateBackground(process, internalTemplate);
 		process.setRarity(internalTemplate.rarity);
 		Forge.generateName(process);
 
@@ -64,20 +64,31 @@ export class Forge {
 	};
 
 	/**
-	 * Templates that may not carry a modifier background switch it off, so
-	 * the item's AUTO background stays empty
+	 * Gives the item the background of its rolled modifiers when the template
+	 * allows one. Later modifiers win.
 	 */
-	private static applyBackgroundEligibility = (
+	private static generateBackground = (
 		process: ForgeProcess,
 		template: Template,
 	): void => {
-		if (template.backgroundEligible) {
+		if (!template.addBackground) {
 			return;
 		}
-		process.abstractItem.appearance = {
-			...process.abstractItem.appearance,
-			background: { image: "NONE" },
-		};
+		const item = process.abstractItem;
+		for (const applied of [
+			...item.primary,
+			...item.secondary,
+			...item.tertiary,
+		].reverse()) {
+			const background = applied.modifier.getBackground(applied.float);
+			if (background) {
+				item.appearance = {
+					...item.appearance,
+					background: { image: generateBackgroundUrl(background) },
+				};
+				return;
+			}
+		}
 	};
 
 	private static rarityOrder = [

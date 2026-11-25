@@ -21,9 +21,9 @@ export interface Template {
 	points: number;
 
 	/**
-	 * Allows the item to have a background provided by a modifier
+	 * Whether the forge gives the item the background of its rolled modifiers
 	 */
-	backgroundEligible: boolean;
+	addBackground: boolean;
 	/**
 	 * Luck of the rolled floats, supports decimals
 	 * @example 0 = neutral

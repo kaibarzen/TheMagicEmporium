@@ -7,7 +7,6 @@ import { tieredStealthFixture } from "../modifiers/tiered/tieredStealth";
 import { uniqueVenomousFixture } from "../modifiers/unique/uniqueVenomous";
 
 export const veryRareFixture = new AbstractItem();
-veryRareFixture.appearance = { background: { image: "NONE" } };
 veryRareFixture.name = "Very Rare Wraithblade";
 veryRareFixture.rarity = Rarity.VeryRare;
 veryRareFixture.base = Equipment.Shortsword;

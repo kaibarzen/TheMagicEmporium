@@ -28,17 +28,19 @@ export interface ResolvedAppearance {
 	};
 }
 
-const resolveImage = (
-	image: AppearanceImage | undefined,
-	auto: () => string | null,
-): string | null => {
-	if (image === undefined || image === "AUTO") {
-		return auto();
-	}
-	if (image === "NONE") {
+const resolveImage = (image: AppearanceImage | undefined): string | null => {
+	if (image === undefined || image === "NONE") {
 		return null;
 	}
 	return image;
+};
+
+const resolveHeaderImage = (item: AbstractItem): string | null => {
+	const image = item.appearance.header?.image;
+	if (image === undefined || image === "AUTO") {
+		return getCutoutUrl(equipmentDetails[item.base].icon);
+	}
+	return resolveImage(image);
 };
 
 const resolveSparkles = (item: AbstractItem): number | null => {
@@ -60,13 +62,9 @@ export const resolveAppearance = (item: AbstractItem): ResolvedAppearance => {
 	const reveal = appearance.effects?.reveal;
 
 	return {
-		background: resolveImage(appearance.background?.image, () =>
-			item.getModifierBackground(),
-		),
+		background: resolveImage(appearance.background?.image),
 		header: {
-			image: resolveImage(appearance.header?.image, () =>
-				getCutoutUrl(equipmentDetails[item.base].icon),
-			),
+			image: resolveHeaderImage(item),
 			deco: appearance.header?.deco ?? "CLOUDS",
 		},
 		effects: {

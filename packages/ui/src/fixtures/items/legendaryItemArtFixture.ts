@@ -6,7 +6,6 @@ import { uniqueBloodthirstyFixture } from "../modifiers/unique/uniqueBloodthirst
 
 /** Royal clothes have a cut-out (clothes/royal.cutout.png), so the card shows item art */
 export const legendaryItemArtFixture = new AbstractItem();
-legendaryItemArtFixture.appearance = { background: { image: "NONE" } };
 legendaryItemArtFixture.name = "Legendary Regalia of the Jade Throne";
 legendaryItemArtFixture.rarity = Rarity.Legendary;
 legendaryItemArtFixture.base = Equipment.RoyalClothes;

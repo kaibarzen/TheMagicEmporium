@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { commonFixture } from "../../fixtures/items/commonFixture";
 import { legendaryItemArtFixture } from "../../fixtures/items/legendaryItemArtFixture";
-import { legendaryModifierBackgroundFixture } from "../../fixtures/items/legendaryModifierBackgroundFixture";
 import { legendaryNoBackgroundFixture } from "../../fixtures/items/legendaryNoBackgroundFixture";
 import { legendaryOverrideBackgroundFixture } from "../../fixtures/items/legendaryOverrideBackgroundFixture";
 import { legendaryWarhammerArtFixture } from "../../fixtures/items/legendaryWarhammerArtFixture";
@@ -61,11 +60,6 @@ export const LegendaryNoBackground: Story = {
 /** Legendary whose background is set via an explicit override. */
 export const LegendaryOverrideBackground: Story = {
 	args: { item: legendaryOverrideBackgroundFixture },
-};
-
-/** Legendary whose background is supplied by one of its modifiers. */
-export const LegendaryModifierBackground: Story = {
-	args: { item: legendaryModifierBackgroundFixture },
 };
 
 /** A very rare item. */

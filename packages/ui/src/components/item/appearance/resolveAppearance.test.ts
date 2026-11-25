@@ -2,23 +2,20 @@ import { describe, expect, it } from "bun:test";
 import { AbstractItem } from "@tme/library/src/item/AbstractItem";
 import { Equipment } from "@tme/library/src/item/equipment/equipment.types";
 import { Rarity } from "@tme/library/src/item/item.types";
-import { legendaryModifierBackgroundFixture } from "../../../fixtures/items/legendaryModifierBackgroundFixture";
+import { legendarySkulltakerFixture } from "../../../fixtures/items/legendarySkulltakerFixture";
 import { veryRarePerfectFixture } from "../../../fixtures/items/veryRarePerfectFixture";
 import { resolveAppearance } from "./resolveAppearance";
 
 describe("resolveAppearance", () => {
-	it("takes the background from the modifiers when left on AUTO", () => {
+	it("shows no background by default, whatever the modifiers", () => {
 		// ARRANGE & ACT
-		const appearance = resolveAppearance(legendaryModifierBackgroundFixture);
+		const appearance = resolveAppearance(legendarySkulltakerFixture);
 
 		// ASSERT
-		expect(appearance.background).toBe(
-			legendaryModifierBackgroundFixture.getModifierBackground(),
-		);
-		expect(appearance.background).not.toBeNull();
+		expect(appearance.background).toBeNull();
 	});
 
-	it("uses an explicit background URL over the modifiers", () => {
+	it("uses an explicit background URL", () => {
 		// ARRANGE
 		const item = new AbstractItem();
 		item.appearance = { background: { image: "art/custom.jpg" } };
@@ -33,9 +30,6 @@ describe("resolveAppearance", () => {
 	it("hides the background when set to NONE", () => {
 		// ARRANGE
 		const item = new AbstractItem();
-		item.primary = legendaryModifierBackgroundFixture.primary;
-		item.secondary = legendaryModifierBackgroundFixture.secondary;
-		item.tertiary = legendaryModifierBackgroundFixture.tertiary;
 		item.appearance = { background: { image: "NONE" } };
 
 		// ACT

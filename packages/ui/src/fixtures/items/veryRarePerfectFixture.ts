@@ -11,7 +11,6 @@ veryRarePerfectFixture.name = "Crimson Fang";
 veryRarePerfectFixture.rarity = Rarity.VeryRare;
 veryRarePerfectFixture.base = Equipment.Rapier;
 veryRarePerfectFixture.currency = 1800;
-veryRarePerfectFixture.appearance = { background: { image: "AUTO" } };
 veryRarePerfectFixture.primary = [
 	{ modifier: uniqueVenomousFixture, float: 1 },
 	{ modifier: tieredFuryFixture, float: 1 },
@@ -19,7 +18,6 @@ veryRarePerfectFixture.primary = [
 veryRarePerfectFixture.secondary = [
 	{ modifier: linearFortitudeFixture, float: 1 },
 ];
-// Last in array → first after .reverse() → provides the RedSkull background
 veryRarePerfectFixture.tertiary = [
 	{ modifier: uniqueBloodthirstyFixture, float: 1 },
 ];

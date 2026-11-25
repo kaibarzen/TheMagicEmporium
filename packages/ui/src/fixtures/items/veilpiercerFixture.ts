@@ -9,7 +9,6 @@ import { uniqueVenomousFixture } from "../modifiers/unique/uniqueVenomous";
 import { uniqueWrathfulFixture } from "../modifiers/unique/uniqueWrathful";
 
 export const veilpiercerFixture = new AbstractItem();
-veilpiercerFixture.appearance = { background: { image: "NONE" } };
 veilpiercerFixture.name = "Legendary Veilpiercer";
 veilpiercerFixture.rarity = Rarity.Legendary;
 veilpiercerFixture.base = Equipment.Longsword;

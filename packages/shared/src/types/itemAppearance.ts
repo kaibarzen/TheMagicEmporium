@@ -1,11 +1,11 @@
 /**
  * Visual customisation of a magic item card, stored on the item's flags.
- * Every field is optional: a missing field behaves like "AUTO", which derives
- * the value from the item itself (rarity, modifiers, base icon).
+ * Every field is optional: a missing field takes its documented default,
+ * where "AUTO" derives the value from the item itself (rarity, modifiers, base icon).
  */
 
-/** "AUTO" derives the image, "NONE" hides it, anything else is an image URL */
-export type AppearanceImage = "AUTO" | "NONE" | (string & {});
+/** "NONE" hides the image, anything else is an image URL */
+export type AppearanceImage = "NONE" | (string & {});
 
 /** Decoration under the header art; only visible when the header has an image */
 export type HeaderDeco = "CLOUDS" | "NONE";
@@ -15,12 +15,12 @@ export type TiltMode = "NONE" | "LIGHT" | "HEAVY";
 
 export interface ItemAppearance {
 	background?: {
-		/** AUTO takes the background from the item's modifiers. Defaults to AUTO */
+		/** Defaults to NONE */
 		image?: AppearanceImage;
 	};
 	header?: {
 		/** AUTO looks for a *.cutout.png next to the base item's icon. Defaults to AUTO */
-		image?: AppearanceImage;
+		image?: "AUTO" | AppearanceImage;
 		/** Defaults to CLOUDS */
 		deco?: HeaderDeco;
 	};

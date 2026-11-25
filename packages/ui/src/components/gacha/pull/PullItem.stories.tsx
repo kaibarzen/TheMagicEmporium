@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { commonFixture } from "../../../fixtures/items/commonFixture";
-import { legendaryModifierBackgroundFixture } from "../../../fixtures/items/legendaryModifierBackgroundFixture";
+import { legendarySkulltakerFixture } from "../../../fixtures/items/legendarySkulltakerFixture";
 import { rareFixture } from "../../../fixtures/items/rareFixture";
 import type { VignetteStage } from "../content/Vignette";
 import { PullItem } from "./PullItem";
@@ -74,10 +74,7 @@ export const AllStages: Story = {
 							gap: "10px",
 						}}
 					>
-						<PullItem
-							item={legendaryModifierBackgroundFixture}
-							visibility={stage}
-						/>
+						<PullItem item={legendarySkulltakerFixture} visibility={stage} />
 						<span
 							style={{
 								fontFamily: "Cinzel Decorative, serif",
@@ -109,7 +106,7 @@ export const Common: Story = {
 export const Legendary: Story = {
 	render: () => (
 		<div className="dark" style={{ padding: "40px", background: "#07091a" }}>
-			<PullItem item={legendaryModifierBackgroundFixture} visibility={4} />
+			<PullItem item={legendarySkulltakerFixture} visibility={4} />
 		</div>
 	),
 };
@@ -128,7 +125,7 @@ export const Revealed: Story = {
 		>
 			<PullItem item={rareFixture} visibility={4} revealed={true} />
 			<PullItem
-				item={legendaryModifierBackgroundFixture}
+				item={legendarySkulltakerFixture}
 				visibility={4}
 				revealed={true}
 				revealDelay={0.15}

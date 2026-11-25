@@ -4,7 +4,6 @@ import { Rarity } from "@tme/library/src/item/item.types";
 import { uniqueVenomousFixture } from "../modifiers/unique/uniqueVenomous";
 
 export const commonFixture = new AbstractItem();
-commonFixture.appearance = { background: { image: "NONE" } };
 commonFixture.name = "Common Iron Dagger";
 commonFixture.rarity = Rarity.Common;
 commonFixture.base = Equipment.Dagger;
