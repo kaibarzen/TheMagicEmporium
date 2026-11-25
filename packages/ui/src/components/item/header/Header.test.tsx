@@ -50,6 +50,36 @@ describe("Header", () => {
 		expect(screen.getByText("12,500 gp")).toBeInTheDocument();
 	});
 
+	it("shows one divider diamond for common items", () => {
+		// ARRANGE & ACT
+		render(
+			<Header
+				name="Ring"
+				rarity={Rarity.Common}
+				base={Equipment.Relic}
+				currency={0}
+			/>,
+		);
+
+		// ASSERT
+		expect(screen.getAllByTestId("rarity-pip")).toHaveLength(1);
+	});
+
+	it("shows five divider diamonds for legendary items", () => {
+		// ARRANGE & ACT
+		render(
+			<Header
+				name="Ring"
+				rarity={Rarity.Legendary}
+				base={Equipment.Relic}
+				currency={0}
+			/>,
+		);
+
+		// ASSERT
+		expect(screen.getAllByTestId("rarity-pip")).toHaveLength(5);
+	});
+
 	it("renders the base equipment title", () => {
 		// ARRANGE & ACT
 		render(

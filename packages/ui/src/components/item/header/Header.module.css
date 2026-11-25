@@ -1,6 +1,59 @@
 .root {
+	position: relative;
+	isolation: isolate;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
 	text-align: center;
 	padding: 4px 0 8px;
+}
+
+/* Positions the glow so it is centred on the name, not the whole header */
+.nameWrap {
+	position: relative;
+	align-self: stretch;
+	display: flex;
+	justify-content: center;
+}
+
+/* Rarity glow behind the name (Rare and above) */
+.halo {
+	position: absolute;
+	top: 50%;
+	left: -16px;
+	right: -16px;
+	height: 160px;
+	margin-top: -80px;
+	z-index: -1;
+	pointer-events: none;
+	background: radial-gradient(
+		ellipse 65% 55% at 50% 50%,
+		var(--rarity-halo),
+		transparent 70%
+	);
+	animation: breathe 4s ease-in-out infinite;
+}
+
+.rarityRow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	width: 100%;
+}
+
+.rule {
+	height: 1px;
+	flex: 0 1 80px;
+}
+
+.ruleLeft {
+	background: linear-gradient(to left, var(--rarity-color), transparent);
+}
+
+.ruleRight {
+	background: linear-gradient(to right, var(--rarity-color), transparent);
 }
 
 .rarity {
@@ -9,7 +62,6 @@
 	letter-spacing: 0.38em;
 	color: var(--rarity-color);
 	text-shadow: 0 0 10px var(--rarity-shadow);
-	margin-bottom: 8px;
 }
 
 .name {
@@ -18,10 +70,30 @@
 	font-size: 30px;
 	line-height: 1.05;
 	color: #ece4cf;
-	margin: 0 0 10px;
 	text-shadow:
-		0 2px 24px rgba(243, 220, 160, 0.35),
+		0 0 24px rgba(243, 220, 160, 0.35),
 		0 0 8px rgba(243, 220, 160, 0.15);
+}
+
+/* Legendary: gold name with a periodic light sweep */
+.nameShimmer {
+	font-weight: 600;
+	font-size: 34px;
+	text-shadow: none;
+	background: linear-gradient(
+		100deg,
+		#c99a4a 0%,
+		#ecd396 38%,
+		#fff8e6 50%,
+		#ecd396 62%,
+		#c99a4a 100%
+	);
+	background-size: 250% 100%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	filter: drop-shadow(0 0 16px rgba(243, 200, 120, 0.35));
+	animation: sweep 4.5s ease-in-out infinite;
 }
 
 .meta {
@@ -30,9 +102,46 @@
 	gap: 10px;
 }
 
+.price {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
 .metaText {
 	font-family: "Cinzel", serif;
 	font-size: 9px;
 	letter-spacing: 0.3em;
 	color: #a89468;
+}
+
+.metaGold {
+	color: #e8cd82;
+}
+
+@keyframes sweep {
+	0% {
+		background-position: 120% 0;
+	}
+	55%,
+	100% {
+		background-position: -20% 0;
+	}
+}
+
+@keyframes breathe {
+	0%,
+	100% {
+		opacity: 0.75;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.halo,
+	.nameShimmer {
+		animation: none;
+	}
 }

@@ -50,6 +50,16 @@ export const Common: Story = {
 	},
 };
 
+/** Uncommon equipment: no background glow. */
+export const Uncommon: Story = {
+	args: {
+		name: "Thornwhisper",
+		rarity: Rarity.Uncommon,
+		base: Equipment.Rapier,
+		currency: 250,
+	},
+};
+
 /** Mid-tier rare equipment. */
 export const Rare: Story = {
 	args: {
@@ -60,7 +70,17 @@ export const Rare: Story = {
 	},
 };
 
-/** High-value legendary equipment. */
+/** Very rare equipment: stronger glow, no shimmer yet. */
+export const VeryRare: Story = {
+	args: {
+		name: "Gloamweave Cloak",
+		rarity: Rarity.VeryRare,
+		base: Equipment.Relic,
+		currency: 8000,
+	},
+};
+
+/** High-value legendary equipment: shimmering gold name and price. */
 export const Legendary: Story = {
 	args: {
 		name: "Dawnbreaker",
