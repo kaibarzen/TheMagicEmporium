@@ -153,9 +153,9 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 					base={props.item.base}
 					currency={props.item.currency}
 				/>
-				<Section title="PRIMARY" modifiers={props.item.primary} />
-				<Section title="SECONDARY" modifiers={props.item.secondary} />
-				<Section title="TERTIARY" modifiers={props.item.tertiary} />
+				<Section kanji="凡" title="FAN" modifiers={props.item.primary} />
+				<Section kanji="灵" title="LING" modifiers={props.item.secondary} />
+				<Section kanji="仙" title="XIAN" modifiers={props.item.tertiary} />
 			</div>
 		</motion.div>
 	);

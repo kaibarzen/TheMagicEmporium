@@ -6,7 +6,7 @@ import { Section } from "./Section";
 describe("Section", () => {
 	it("renders nothing when there are no modifiers", () => {
 		// ARRANGE & ACT
-		const view = render(<Section title="PRIMARY" modifiers={[]} />);
+		const view = render(<Section kanji="凡" title="FAN" modifiers={[]} />);
 
 		// ASSERT
 		expect(view.container.firstChild).toBeNull();
@@ -21,9 +21,22 @@ describe("Section", () => {
 		] as unknown as AppliedModifier[];
 
 		// ACT
-		render(<Section title="SECONDARY" modifiers={modifiers} />);
+		render(<Section kanji="灵" title="LING" modifiers={modifiers} />);
 
 		// ASSERT
-		expect(screen.getByText("SECONDARY")).toBeInTheDocument();
+		expect(screen.getByText("LING")).toBeInTheDocument();
+	});
+
+	it("renders the tier kanji above the title", () => {
+		// ARRANGE
+		const modifiers = [
+			{ modifier: {}, float: 0 },
+		] as unknown as AppliedModifier[];
+
+		// ACT
+		render(<Section kanji="灵" title="LING" modifiers={modifiers} />);
+
+		// ASSERT
+		expect(screen.getByText("灵")).toBeInTheDocument();
 	});
 });

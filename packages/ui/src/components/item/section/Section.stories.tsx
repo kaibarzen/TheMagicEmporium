@@ -18,7 +18,11 @@ const meta = {
 	},
 	render: (props: SectionProps) => (
 		<div style={{ background: "#040510", width: "460px", padding: "16px" }}>
-			<Section title={props.title} modifiers={props.modifiers} />
+			<Section
+				kanji={props.kanji}
+				title={props.title}
+				modifiers={props.modifiers}
+			/>
 		</div>
 	),
 } satisfies Meta<typeof Section>;
@@ -27,17 +31,17 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-/** The primary modifier slot. */
+/** The primary modifier slot — 凡 fán (Mortal), the weakest tier. */
 export const Default: Story = {
-	args: { title: "PRIMARY", modifiers: veilpiercerFixture.primary },
+	args: { kanji: "凡", title: "FAN", modifiers: veilpiercerFixture.primary },
 };
 
-/** The secondary modifier slot. */
+/** The secondary modifier slot — 灵 líng (Spiritual). */
 export const Secondary: Story = {
-	args: { title: "SECONDARY", modifiers: veilpiercerFixture.secondary },
+	args: { kanji: "灵", title: "LING", modifiers: veilpiercerFixture.secondary },
 };
 
-/** The tertiary modifier slot. */
+/** The tertiary modifier slot — 仙 xiān (Immortal), the strongest tier. */
 export const Tertiary: Story = {
-	args: { title: "TERTIARY", modifiers: veilpiercerFixture.tertiary },
+	args: { kanji: "仙", title: "XIAN", modifiers: veilpiercerFixture.tertiary },
 };

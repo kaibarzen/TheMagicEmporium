@@ -24,8 +24,9 @@ describe("ItemDisplay", () => {
 		const view = render(<ItemDisplay item={item} hideFrame />);
 
 		// ASSERT
-		expect(view.container.textContent).not.toContain("PRIMARY");
-		expect(view.container.textContent).not.toContain("SECONDARY");
+		expect(view.container.textContent).not.toContain("仙");
+		expect(view.container.textContent).not.toContain("灵");
+		expect(view.container.textContent).not.toContain("凡");
 	});
 
 	it("mounts without throwing when the full frame is shown", () => {
