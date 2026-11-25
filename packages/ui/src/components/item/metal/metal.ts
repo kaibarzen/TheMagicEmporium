@@ -48,6 +48,15 @@ const SILVER: Metal = {
 	text: "#9aa3b0",
 };
 
+const AMETHYST: Metal = {
+	pale: "#eedcff",
+	hi: "#cfa8f5",
+	base: "#9f72d6",
+	dim: "#5f3f8a",
+	lo: "#433258",
+	text: "#9a86b4",
+};
+
 const GOLD: Metal = {
 	pale: "#f3dca0",
 	hi: "#e8c87a",
@@ -61,7 +70,7 @@ export const RARITY_METAL: Record<Rarity, Metal> = {
 	[Rarity.Common]: IRON,
 	[Rarity.Uncommon]: BRONZE,
 	[Rarity.Rare]: SILVER,
-	[Rarity.VeryRare]: GOLD,
+	[Rarity.VeryRare]: AMETHYST,
 	[Rarity.Legendary]: GOLD,
 };
 

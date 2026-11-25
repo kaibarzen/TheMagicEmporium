@@ -21,13 +21,11 @@ describe("metal", () => {
 		expect(new Set(bases).size).toBe(ladder.length);
 	});
 
-	it("wears gold on very rare and legendary cards", () => {
+	it("wears gold on legendary cards", () => {
 		// ARRANGE & ACT
-		const veryRare = RARITY_METAL[Rarity.VeryRare];
 		const legendary = RARITY_METAL[Rarity.Legendary];
 
 		// ASSERT
-		expect(legendary).toBe(veryRare);
 		expect(legendary.base).toBe("#d4a64a");
 	});
 
