@@ -13,6 +13,7 @@ import { Header, RARITY_COLOR } from "./header/Header";
 import styles from "./ItemDisplay.module.css";
 import { metalStyle } from "./metal/metal";
 import { Section } from "./section/Section";
+import { SectionTier } from "./section/tier";
 import { Sparkles } from "./sparkles/Sparkles";
 
 export interface ItemDisplayProps {
@@ -99,9 +100,12 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 						base={props.item.base}
 						currency={props.item.currency}
 					/>
-					<Section kanji="凡" title="FAN" modifiers={props.item.primary} />
-					<Section kanji="灵" title="LING" modifiers={props.item.secondary} />
-					<Section kanji="仙" title="XIAN" modifiers={props.item.tertiary} />
+					<Section tier={SectionTier.Mortal} modifiers={props.item.primary} />
+					<Section tier={SectionTier.Spirit} modifiers={props.item.secondary} />
+					<Section
+						tier={SectionTier.Immortal}
+						modifiers={props.item.tertiary}
+					/>
 					<CardFooter rarityColor={rarityColor} />
 				</div>
 			</div>

@@ -91,9 +91,8 @@ export const METAL: Metal = {
 	text: "var(--metal-text)",
 };
 
-/** Custom properties that make everything below wear the rarity's metal. */
-export const metalStyle = (rarity: Rarity): CSSProperties => {
-	const metal = RARITY_METAL[rarity];
+/** Custom properties that make everything below wear the given metal. */
+export const metalVars = (metal: Metal): CSSProperties => {
 	return {
 		"--metal-pale": metal.pale,
 		"--metal-hi": metal.hi,
@@ -101,6 +100,13 @@ export const metalStyle = (rarity: Rarity): CSSProperties => {
 		"--metal-dim": metal.dim,
 		"--metal-lo": metal.lo,
 		"--metal-text": metal.text,
+	} as CSSProperties;
+};
+
+/** Custom properties that make everything below wear the rarity's metal. */
+export const metalStyle = (rarity: Rarity): CSSProperties => {
+	return {
+		...metalVars(RARITY_METAL[rarity]),
 		"--ember": EMBER,
 	} as CSSProperties;
 };

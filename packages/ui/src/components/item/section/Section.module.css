@@ -77,6 +77,47 @@
 	text-shadow: 0 0 14px color-mix(in srgb, var(--metal) 55%, transparent);
 }
 
+.flipped {
+	transform: scaleX(-1);
+}
+
+/* 凡 Mortal: dull and unlit, the rules barely there */
+.header[data-tier="mortal"] .kanji,
+.header[data-tier="mortal"] .title {
+	text-shadow: none;
+}
+
+.header[data-tier="mortal"] .rule {
+	opacity: 0.7;
+}
+
+/* 灵 Spirit: a faint cool glow */
+.header[data-tier="spirit"] .kanji {
+	text-shadow: 0 0 12px color-mix(in srgb, var(--metal) 60%, transparent);
+}
+
+/* 仙 Immortal: bright and haloed */
+.header[data-tier="immortal"] .kanji {
+	font-size: 24px;
+	text-shadow:
+		0 0 6px color-mix(in srgb, var(--metal-hi) 70%, transparent),
+		0 0 22px color-mix(in srgb, var(--metal) 70%, transparent);
+}
+
+.header[data-tier="immortal"] .title {
+	text-shadow: 0 0 10px color-mix(in srgb, var(--metal) 80%, transparent);
+}
+
+.header[data-tier="immortal"] .ruleLine {
+	box-shadow: 0 0 6px color-mix(in srgb, var(--metal) 70%, transparent);
+}
+
+.header[data-tier="immortal"] svg {
+	filter: drop-shadow(
+		0 0 3px color-mix(in srgb, var(--metal) 80%, transparent)
+	);
+}
+
 .item {
 	position: relative;
 }
