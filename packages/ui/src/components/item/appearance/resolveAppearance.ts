@@ -3,6 +3,7 @@ import { equipmentDetails } from "@tme/library/src/item/equipment/equipment.deta
 import type {
 	AppearanceImage,
 	CornerStyle,
+	GleamStyle,
 	HeaderDeco,
 	Intensity,
 	RevealStyle,
@@ -13,7 +14,7 @@ import { CloudVariant } from "../clouds/CloudDecoration";
 import { CornerVariant, DEFAULT_CORNER_VARIANT } from "../corners/CardCorners";
 import { CornerDetail, RARITY_CORNER_DETAIL } from "../corners/cornerDetail";
 import { sparkleAmount } from "../sparkles/sparkleDensity";
-import { autoTilt } from "../tilt/tilt";
+import { autoGleam, autoTilt } from "../tilt/tilt";
 
 /** An item's appearance with every AUTO and missing field turned into a concrete value */
 export interface ResolvedAppearance {
@@ -37,6 +38,8 @@ export interface ResolvedAppearance {
 		tilt: Intensity | "NONE";
 		/** Number of sparkles, or null for none */
 		sparkles: number | null;
+		/** Light that plays across the card on hover, or null for none */
+		gleam: Exclude<GleamStyle, "NONE"> | null;
 		/** Reveal animation, or null for none */
 		reveal: Exclude<RevealStyle, "NONE"> | null;
 	};
@@ -117,6 +120,18 @@ const resolveSparkles = (item: AbstractItem): number | null => {
 	return sparkleAmount(sparkles, modifierCount);
 };
 
+const resolveGleam = (
+	item: AbstractItem,
+): ResolvedAppearance["effects"]["gleam"] => {
+	const gleam = item.appearance.effects?.gleam;
+	const style =
+		gleam === undefined || gleam === "AUTO" ? autoGleam(item.rarity) : gleam;
+	if (style === "NONE") {
+		return null;
+	}
+	return style;
+};
+
 const resolveReveal = (
 	reveal: "AUTO" | RevealStyle | undefined,
 	sparkles: number | null,
@@ -148,6 +163,7 @@ export const resolveAppearance = (item: AbstractItem): ResolvedAppearance => {
 			tilt:
 				tilt === undefined || tilt === "AUTO" ? autoTilt(item.rarity) : tilt,
 			sparkles,
+			gleam: resolveGleam(item),
 			reveal: resolveReveal(reveal, sparkles),
 		},
 	};

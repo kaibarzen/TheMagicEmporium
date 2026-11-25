@@ -302,7 +302,7 @@
 
 /*
  * Light sweep: one diagonal band of pale metal that crosses the card once on
- * hover-enter (useCardTilt animates .glint). The mask keeps it bright along
+ * hover-enter when the gleam is SWEEP (useCardTilt animates .glint). The mask keeps it bright along
  * the frame and corner ornaments and only a faint wash over the text.
  */
 .sweep {

@@ -55,10 +55,11 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 	const tiltRef = useRef<HTMLDivElement | null>(null);
 	const glintRef = useRef<HTMLDivElement | null>(null);
 
-	// Tilting cards tip toward the cursor and catch a light sweep
+	// Tilting cards tip toward the cursor; gleaming cards catch a light sweep
 	const tilt = appearance.effects.tilt;
 	const tilts = tilt !== "NONE";
-	useCardTilt(tilts, tiltRef, glintRef);
+	const sweeps = appearance.effects.gleam === "SWEEP";
+	useCardTilt(tilts, sweeps, tiltRef, glintRef);
 
 	// Header art only shows once its image has loaded (AUTO cut-outs often do not exist)
 	const headerImage = appearance.header.image;
@@ -180,9 +181,10 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 							modifiers={props.item.tertiary}
 						/>
 						<CardFooter rarityColor={rarityColor} />
-						{tilts && (
+						{sweeps && (
 							<div
 								className={`${styles.sweep} ${depth.front}`}
+								data-gleam="SWEEP"
 								aria-hidden="true"
 							>
 								<div ref={glintRef} className={styles.glint} />

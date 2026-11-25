@@ -36,6 +36,9 @@ export type CornerStyle =
 /** Animation that uncovers the card when it appears; NONE shows it straight away */
 export type RevealStyle = "CIRCLE" | "NONE";
 
+/** Light that plays across the card when the pointer enters it; NONE keeps the card unlit */
+export type GleamStyle = "SWEEP" | "NONE";
+
 /** Strength of an effect, from barely there to over the top */
 export type Intensity = "MILD" | "MEDIUM" | "STRONG" | "EXTREME";
 
@@ -61,6 +64,8 @@ export interface ItemAppearance {
 		 * when every modifier rolled its highest breakpoint. Defaults to AUTO
 		 */
 		sparkles?: "AUTO" | "NONE" | Intensity;
+		/** SWEEP sends one band of light across the card on hover. AUTO sweeps very rare and legendary cards. Defaults to AUTO */
+		gleam?: "AUTO" | GleamStyle;
 		/** CIRCLE opens the card in a widening circle. AUTO uses CIRCLE whenever the card sparkles. Defaults to AUTO */
 		reveal?: "AUTO" | RevealStyle;
 	};

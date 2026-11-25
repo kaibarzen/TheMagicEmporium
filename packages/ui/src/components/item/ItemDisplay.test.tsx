@@ -206,4 +206,44 @@ describe("ItemDisplay", () => {
 		// ASSERT
 		expect(view.container.querySelector("[data-detail]")).toBeNull();
 	});
+
+	it("sweeps light across a legendary card by default", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Legendary;
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(view.container.querySelector('[data-gleam="SWEEP"]')).not.toBeNull();
+	});
+
+	it("sweeps light across a card that does not tilt when asked to", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Common;
+		item.appearance = { effects: { gleam: "SWEEP" } };
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(view.container.querySelector('[data-gleam="SWEEP"]')).not.toBeNull();
+		expect(view.container.querySelector("[data-tilt]")).toBeNull();
+	});
+
+	it("keeps a legendary card tilting but unlit when its gleam is NONE", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Legendary;
+		item.appearance = { effects: { gleam: "NONE" } };
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(view.container.querySelector("[data-gleam]")).toBeNull();
+		expect(view.container.querySelector("[data-tilt]")).not.toBeNull();
+	});
 });

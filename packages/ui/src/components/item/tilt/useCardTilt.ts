@@ -7,22 +7,24 @@ const clamp = (value: number): number => {
 };
 
 /**
- * Tilts `surfaceRef` toward the pointer while hovered and sweeps `glintRef`
- * across the card once each time the pointer enters.
+ * Hover effects on the card. With `tilt` it tips `surfaceRef` toward the
+ * pointer while hovered; with `sweep` it sends `glintRef` across the card once
+ * each time the pointer enters.
  *
- * Writes `--tilt-x` / `--tilt-y` (each -1..1, 0 at the centre) and a
+ * The tilt writes `--tilt-x` / `--tilt-y` (each -1..1, 0 at the centre) and a
  * `data-tilting` attribute on the surface; the CSS turns those into the
- * rotation, so pointer moves never re-render React. Does nothing when
- * disabled or when the viewer prefers reduced motion.
+ * rotation, so pointer moves never re-render React. Does nothing when both
+ * are off or when the viewer prefers reduced motion.
  */
 export const useCardTilt = (
-	enabled: boolean,
+	tilt: boolean,
+	sweep: boolean,
 	surfaceRef: RefObject<HTMLDivElement | null>,
 	glintRef: RefObject<HTMLDivElement | null>,
 ): void => {
 	useEffect(() => {
 		const surface = surfaceRef.current;
-		if (!enabled || !surface) {
+		if ((!tilt && !sweep) || !surface) {
 			return;
 		}
 		if (window.matchMedia(REDUCED_MOTION_QUERY).matches) {
@@ -30,7 +32,7 @@ export const useCardTilt = (
 		}
 
 		let frame = 0;
-		let sweep: JSAnimation | null = null;
+		let sweepAnimation: JSAnimation | null = null;
 
 		const tiltTo = (x: number, y: number): void => {
 			surface.style.setProperty("--tilt-x", x.toFixed(3));
@@ -38,13 +40,15 @@ export const useCardTilt = (
 		};
 
 		const onEnter = (): void => {
-			surface.dataset.tilting = "";
+			if (tilt) {
+				surface.dataset.tilting = "";
+			}
 			const glint = glintRef.current;
-			if (!glint) {
+			if (!sweep || !glint) {
 				return;
 			}
-			sweep?.pause();
-			sweep = animate(glint, {
+			sweepAnimation?.pause();
+			sweepAnimation = animate(glint, {
 				translateX: ["-130%", "130%"],
 				duration: SWEEP_DURATION,
 				ease: "inOutSine",
@@ -52,6 +56,9 @@ export const useCardTilt = (
 		};
 
 		const onMove = (event: PointerEvent): void => {
+			if (!tilt) {
+				return;
+			}
 			cancelAnimationFrame(frame);
 			frame = requestAnimationFrame(() => {
 				const rect = surface.getBoundingClientRect();
@@ -63,6 +70,9 @@ export const useCardTilt = (
 		};
 
 		const onLeave = (): void => {
+			if (!tilt) {
+				return;
+			}
 			cancelAnimationFrame(frame);
 			delete surface.dataset.tilting;
 			tiltTo(0, 0);
@@ -76,8 +86,8 @@ export const useCardTilt = (
 			surface.removeEventListener("pointerenter", onEnter);
 			surface.removeEventListener("pointermove", onMove);
 			surface.removeEventListener("pointerleave", onLeave);
-			sweep?.pause();
+			sweepAnimation?.pause();
 			onLeave();
 		};
-	}, [enabled, surfaceRef, glintRef]);
+	}, [tilt, sweep, surfaceRef, glintRef]);
 };
