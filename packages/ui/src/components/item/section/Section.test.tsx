@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
-import type { AppliedModifier } from "@tme/library/src/modifiers/Modifier";
 import { render, screen } from "@testing-library/react";
+import type { AppliedModifier } from "@tme/library/src/modifiers/Modifier";
 import { Section } from "./Section";
 
 describe("Section", () => {

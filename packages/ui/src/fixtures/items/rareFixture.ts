@@ -14,6 +14,4 @@ rareFixture.primary = [
 	{ modifier: uniqueVenomousFixture, float: 0.4 },
 	{ modifier: tieredFuryFixture, float: 0.3 },
 ];
-rareFixture.secondary = [
-	{ modifier: tieredStealthFixture, float: 0.3 },
-];
+rareFixture.secondary = [{ modifier: tieredStealthFixture, float: 0.3 }];

@@ -107,3 +107,8 @@
 	overflow: visible;
 	transform: rotate(var(--rotation));
 }
+
+/* Room above the card for item art that breaks out of its top edge */
+.withArt {
+	padding-top: 250px;
+}

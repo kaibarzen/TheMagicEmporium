@@ -1,8 +1,12 @@
 import type { AbstractItem } from "@tme/library/src/item/AbstractItem";
+import { equipmentDetails } from "@tme/library/src/item/equipment/equipment.details";
 import { animate } from "animejs";
 import { motion } from "framer-motion";
 import { type CSSProperties, useEffect, useMemo, useRef } from "react";
-import { Header } from "./header/Header";
+import { getCutoutUrl } from "./breakout/cutoutUrl";
+import { ItemBreakout } from "./breakout/ItemBreakout";
+import { useImageExists } from "./breakout/useImageExists";
+import { Header, RARITY_COLOR } from "./header/Header";
 import styles from "./ItemDisplay.module.css";
 import { Section } from "./section/Section";
 import { Sparkles } from "./sparkles/Sparkles";
@@ -105,6 +109,10 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 	const sparkles = props.item.getSparkles();
 	const cardRef = useRef<HTMLDivElement | null>(null);
 
+	// Item art only shows when a *.cutout.png exists next to the base item's icon
+	const cutoutUrl = getCutoutUrl(equipmentDetails[props.item.base].icon);
+	const hasCutout = useImageExists(cutoutUrl);
+
 	// Clip-path Iris reveal
 	useEffect(() => {
 		if (!sparkles.enabled || !cardRef.current) return;
@@ -139,6 +147,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.2, ease: "easeOut" }}
+			className={hasCutout ? styles.withArt : undefined}
 		>
 			<div ref={cardRef} className={styles.card}>
 				{background}
@@ -147,6 +156,13 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 				<Corner rotation={90} className={styles.cornerTR} />
 				<Corner rotation={180} className={styles.cornerBR} />
 				<Corner rotation={270} className={styles.cornerBL} />
+				{hasCutout && (
+					<ItemBreakout
+						src={cutoutUrl}
+						alt={props.item.name}
+						rarityColor={RARITY_COLOR[props.item.rarity]}
+					/>
+				)}
 				<Header
 					name={props.item.name}
 					rarity={props.item.rarity}

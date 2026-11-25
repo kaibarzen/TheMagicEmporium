@@ -1,0 +1,30 @@
+.root {
+	display: block;
+	width: 100%;
+	height: auto;
+	overflow: visible;
+	pointer-events: none;
+}
+
+.drift {
+	animation: drift 16s ease-in-out infinite alternate;
+}
+
+.driftFast {
+	animation-duration: 9s;
+}
+
+@keyframes drift {
+	from {
+		transform: translateX(-6px);
+	}
+	to {
+		transform: translateX(6px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.drift {
+		animation: none;
+	}
+}

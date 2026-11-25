@@ -11,7 +11,7 @@ export interface HeaderProps {
 	currency: number;
 }
 
-const RARITY_COLOR: Record<Rarity, string> = {
+export const RARITY_COLOR: Record<Rarity, string> = {
 	[Rarity.Common]: "#9d9d9d",
 	[Rarity.Uncommon]: "#4fc978",
 	[Rarity.Rare]: "#5b9de8",

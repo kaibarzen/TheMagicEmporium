@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { commonFixture } from "../../fixtures/items/commonFixture";
+import { legendaryItemArtFixture } from "../../fixtures/items/legendaryItemArtFixture";
 import { legendaryModifierBackgroundFixture } from "../../fixtures/items/legendaryModifierBackgroundFixture";
 import { legendaryNoBackgroundFixture } from "../../fixtures/items/legendaryNoBackgroundFixture";
 import { legendaryOverrideBackgroundFixture } from "../../fixtures/items/legendaryOverrideBackgroundFixture";
@@ -38,6 +39,11 @@ type Story = StoryObj<typeof meta>;
 /** A legendary item using an explicit background override. */
 export const Default: Story = {
 	args: { item: legendaryOverrideBackgroundFixture },
+};
+
+/** Legendary whose base item has a cut-out, so the item art breaks out above the card. */
+export const LegendaryItemArt: Story = {
+	args: { item: legendaryItemArtFixture },
 };
 
 /** Legendary with no background — falls back to the plain rarity frame. */

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
-import { AbstractItem } from "@tme/library/src/item/AbstractItem";
 import { render } from "@testing-library/react";
+import { AbstractItem } from "@tme/library/src/item/AbstractItem";
 import { ItemDisplay } from "./ItemDisplay";
 
 describe("ItemDisplay", () => {
@@ -35,5 +35,17 @@ describe("ItemDisplay", () => {
 
 		// ACT & ASSERT
 		expect(() => render(<ItemDisplay item={item} />)).not.toThrow();
+	});
+
+	it("shows no item art while no cut-out has loaded", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.name = "Plain Relic";
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(view.container.querySelector('img[alt="Plain Relic"]')).toBeNull();
 	});
 });

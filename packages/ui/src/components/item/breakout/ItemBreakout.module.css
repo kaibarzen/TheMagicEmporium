@@ -1,0 +1,86 @@
+/*
+ * Sits at the very top of the card. The negative margin cancels the card's
+ * padding so the golden line spans the full card width. The item rises 250px
+ * above the card; ItemDisplay reserves that space.
+ */
+.root {
+	position: relative;
+	height: 104px;
+	margin: -28px -28px 0;
+	pointer-events: none;
+}
+
+.halo {
+	position: absolute;
+	left: 50%;
+	top: -150px;
+	width: 360px;
+	height: 220px;
+	translate: -50% 0;
+	z-index: 1;
+	background: radial-gradient(
+		closest-side,
+		color-mix(in srgb, var(--rarity-color) 18%, transparent),
+		transparent
+	);
+	filter: blur(10px);
+}
+
+/* The cut-out's bottom edge rests exactly on the golden line */
+.item {
+	position: absolute;
+	left: 50%;
+	top: -250px;
+	width: 340px;
+	height: 340px;
+	translate: -50% 0;
+	z-index: 2;
+	filter: drop-shadow(
+		0 0 30px color-mix(in srgb, var(--rarity-color) 12%, transparent)
+	);
+}
+
+.baseline {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 89px;
+	z-index: 4;
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+.baselineLine {
+	height: 1.5px;
+	background: linear-gradient(
+		90deg,
+		rgba(212, 166, 74, 0),
+		#8a6a2c 18%,
+		#e8c87a 50%,
+		#8a6a2c 82%,
+		rgba(212, 166, 74, 0)
+	);
+	box-shadow: 0 0 8px rgba(232, 200, 122, 0.35);
+}
+
+.baselineFaint {
+	height: 1px;
+	opacity: 0.4;
+	background: linear-gradient(
+		90deg,
+		rgba(212, 166, 74, 0),
+		#8a6a2c 18%,
+		#e8c87a 50%,
+		#8a6a2c 82%,
+		rgba(212, 166, 74, 0)
+	);
+}
+
+.clouds {
+	position: absolute;
+	left: -14px;
+	right: -14px;
+	top: -6px;
+	z-index: 3;
+}

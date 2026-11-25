@@ -1,7 +1,7 @@
 import { describe, expect, it } from "bun:test";
+import { render, screen } from "@testing-library/react";
 import { Equipment } from "@tme/library/src/item/equipment/equipment.types";
 import { Rarity } from "@tme/library/src/item/item.types";
-import { render, screen } from "@testing-library/react";
 import { Header } from "./Header";
 
 describe("Header", () => {

@@ -8,6 +8,4 @@ commonFixture.name = "Common Iron Dagger";
 commonFixture.rarity = Rarity.Common;
 commonFixture.base = Equipment.Dagger;
 commonFixture.currency = 5;
-commonFixture.primary = [
-	{ modifier: uniqueVenomousFixture, float: 0.1 },
-];
+commonFixture.primary = [{ modifier: uniqueVenomousFixture, float: 0.1 }];
