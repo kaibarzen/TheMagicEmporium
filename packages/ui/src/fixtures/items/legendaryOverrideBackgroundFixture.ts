@@ -14,7 +14,9 @@ legendaryOverrideBackgroundFixture.name = "Legendary Veilpiercer";
 legendaryOverrideBackgroundFixture.rarity = Rarity.Legendary;
 legendaryOverrideBackgroundFixture.base = Equipment.Longsword;
 legendaryOverrideBackgroundFixture.currency = 2500;
-legendaryOverrideBackgroundFixture.backgroundOverride = boundlessSpirit;
+legendaryOverrideBackgroundFixture.appearance = {
+	background: { image: boundlessSpirit },
+};
 legendaryOverrideBackgroundFixture.primary = [
 	{ modifier: uniqueVenomousFixture, float: 0.6 },
 	{ modifier: tieredFuryFixture, float: 0.6 },

@@ -55,3 +55,8 @@ export const Default: Story = {};
 export const Ember: Story = {
 	args: { cloudVariant: CloudVariant.Ember },
 };
+
+/** No cloud decoration, just the golden line */
+export const WithoutClouds: Story = {
+	args: { cloudVariant: null },
+};

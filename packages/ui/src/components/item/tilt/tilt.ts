@@ -1,13 +1,17 @@
 import { Rarity } from "@tme/library/src/item/item.types";
+import type { TiltMode } from "@tme/shared/src/types/itemAppearance";
 
-/** Rarities whose cards tilt toward the cursor and catch a light sweep on hover */
-const TILT_RARITIES: ReadonlySet<Rarity> = new Set([
-	Rarity.VeryRare,
-	Rarity.Legendary,
-]);
+/** How each rarity tilts when the appearance leaves tilt on AUTO */
+const RARITY_TILT: Record<Rarity, TiltMode> = {
+	[Rarity.Common]: "NONE",
+	[Rarity.Uncommon]: "NONE",
+	[Rarity.Rare]: "NONE",
+	[Rarity.VeryRare]: "LIGHT",
+	[Rarity.Legendary]: "HEAVY",
+};
 
-export const tiltsOnHover = (rarity: Rarity): boolean => {
-	return TILT_RARITIES.has(rarity);
+export const autoTilt = (rarity: Rarity): TiltMode => {
+	return RARITY_TILT[rarity];
 };
 
 /** How long the light takes to sweep across the card once (ms) */

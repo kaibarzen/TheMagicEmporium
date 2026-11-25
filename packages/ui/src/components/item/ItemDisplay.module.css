@@ -258,7 +258,7 @@
 }
 
 /*
- * Hover tilt (very rare and legendary, very rare at half the angle). useCardTilt writes --tilt-x/--tilt-y
+ * Hover tilt (HEAVY, or LIGHT at half the angle). useCardTilt writes --tilt-x/--tilt-y
  * (-1..1) and data-tilting; the hovered side lifts toward the viewer, like
  * tipping a card up to the light. At rest there is no transform at all, so
  * text stays crisp.
@@ -268,8 +268,8 @@
 	transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* Very rare tips half as far as legendary */
-.tilt[data-tilt="veryRare"] {
+/* Light tilt tips half as far as heavy */
+.tilt[data-tilt="LIGHT"] {
 	--tilt-max: 1.5deg;
 }
 

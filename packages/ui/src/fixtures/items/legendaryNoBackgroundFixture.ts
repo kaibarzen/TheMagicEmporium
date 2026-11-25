@@ -9,6 +9,7 @@ import { uniqueVenomousFixture } from "../modifiers/unique/uniqueVenomous";
 import { uniqueWrathfulFixture } from "../modifiers/unique/uniqueWrathful";
 
 export const legendaryNoBackgroundFixture = new AbstractItem();
+legendaryNoBackgroundFixture.appearance = { background: { image: "NONE" } };
 legendaryNoBackgroundFixture.name = "Legendary Ashenfall";
 legendaryNoBackgroundFixture.rarity = Rarity.Legendary;
 legendaryNoBackgroundFixture.base = Equipment.Greatsword;

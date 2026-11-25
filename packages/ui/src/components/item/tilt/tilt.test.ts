@@ -1,23 +1,21 @@
 import { describe, expect, it } from "bun:test";
 import { Rarity } from "@tme/library/src/item/item.types";
-import { tiltsOnHover } from "./tilt";
+import { autoTilt } from "./tilt";
 
-describe("tiltsOnHover", () => {
-	it("tilts very rare and legendary cards", () => {
+describe("autoTilt", () => {
+	it("tilts very rare cards lightly and legendary cards heavily", () => {
 		// ARRANGE & ACT
-		const tilting = [Rarity.VeryRare, Rarity.Legendary].map(tiltsOnHover);
+		const tilting = [Rarity.VeryRare, Rarity.Legendary].map(autoTilt);
 
 		// ASSERT
-		expect(tilting).toEqual([true, true]);
+		expect(tilting).toEqual(["LIGHT", "HEAVY"]);
 	});
 
 	it("keeps common through rare cards still", () => {
 		// ARRANGE & ACT
-		const tilting = [Rarity.Common, Rarity.Uncommon, Rarity.Rare].map(
-			tiltsOnHover,
-		);
+		const tilting = [Rarity.Common, Rarity.Uncommon, Rarity.Rare].map(autoTilt);
 
 		// ASSERT
-		expect(tilting).toEqual([false, false, false]);
+		expect(tilting).toEqual(["NONE", "NONE", "NONE"]);
 	});
 });

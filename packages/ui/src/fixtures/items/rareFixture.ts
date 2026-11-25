@@ -6,6 +6,7 @@ import { tieredStealthFixture } from "../modifiers/tiered/tieredStealth";
 import { uniqueVenomousFixture } from "../modifiers/unique/uniqueVenomous";
 
 export const rareFixture = new AbstractItem();
+rareFixture.appearance = { background: { image: "NONE" } };
 rareFixture.name = "Rare Emberbrand";
 rareFixture.rarity = Rarity.Rare;
 rareFixture.base = Equipment.Longsword;

@@ -1,5 +1,6 @@
 import { namespace } from "@tme/shared/src/namespaceConfig";
 import { type Item5e, ItemType } from "@tme/shared/src/types/item5e";
+import type { ItemAppearance } from "@tme/shared/src/types/itemAppearance";
 import { generateBackgroundUrl } from "../misc/generateBackgroundUrl";
 import type { AppliedModifier } from "../modifiers/Modifier";
 import { registry } from "../registry/Registry";
@@ -27,8 +28,8 @@ export class AbstractItem {
 
 	public currency = 0;
 
-	public backgroundOverride: string | null = null;
-	public backgroundEligible = false;
+	/** Card customization; anything left out is derived from the item */
+	public appearance: ItemAppearance = {};
 
 	public primary: AppliedModifier[] = [];
 	public secondary: AppliedModifier[] = [];
@@ -55,8 +56,7 @@ export class AbstractItem {
 		const item = new AbstractItem();
 		item.base = data.base as Equipment;
 		item.name = document.name;
-		item.backgroundOverride = data.backgroundOverride;
-		item.backgroundEligible = data.backgroundEligible;
+		item.appearance = data.appearance ?? {};
 		item.rarity = document.system.rarity as Rarity;
 
 		if (document.system.price.denomination === "gp") {
@@ -97,47 +97,39 @@ export class AbstractItem {
 	};
 
 	/**
-	 * Returns an optional item background and not the icon of the equipment itself
+	 * Background art provided by the item's modifiers, used when the
+	 * appearance background is AUTO. Later modifiers win.
 	 */
-	public getBackground = (): string | null => {
-		if (this.backgroundOverride) {
-			return this.backgroundOverride;
-		}
-		if (!this.backgroundEligible) {
-			return null;
-		}
-		const background = (() => {
-			for (const applied of [
-				...this.primary,
-				...this.secondary,
-				...this.tertiary,
-			].reverse()) {
-				const backgroundOverride = applied.modifier.getBackground(
-					applied.float,
-				);
-				if (backgroundOverride) {
-					return backgroundOverride;
-				}
+	public getModifierBackground = (): string | null => {
+		for (const applied of [
+			...this.primary,
+			...this.secondary,
+			...this.tertiary,
+		].reverse()) {
+			const background = applied.modifier.getBackground(applied.float);
+			if (background) {
+				return generateBackgroundUrl(background);
 			}
-			return null;
-		})();
-
-		if (background) {
-			return generateBackgroundUrl(background);
 		}
 		return null;
 	};
 
-	public getSparkles = (): { enabled: boolean; amount: number } => {
+	/**
+	 * Sparkles earned by a perfect roll, used when the appearance sparkles are
+	 * AUTO: at least three modifiers, all at their highest breakpoint.
+	 * Returns the amount, or null when the item does not sparkle.
+	 */
+	public getPerfectRollSparkles = (): number | null => {
 		const all = [...this.primary, ...this.secondary, ...this.tertiary];
-		if (all.length < 3) return { enabled: false, amount: 30 };
-		if (
-			all.every(({ modifier, float }) =>
-				modifier.isHighestPossibleBreakpoint(float),
-			)
-		) {
-			return { enabled: true, amount: all.length * 6 };
+		if (all.length < 3) {
+			return null;
 		}
-		return { enabled: false, amount: 0 };
+		const perfect = all.every((applied) =>
+			applied.modifier.isHighestPossibleBreakpoint(applied.float),
+		);
+		if (!perfect) {
+			return null;
+		}
+		return all.length * 6;
 	};
 }

@@ -13,16 +13,20 @@ export interface ItemBreakoutProps {
 	alt: string;
 	/** Rarity colour for the glow behind the item and the ember clouds */
 	rarityColor: string;
-	cloudVariant?: CloudVariant;
+	/** Cloud design on the golden line; null leaves the line bare */
+	cloudVariant?: CloudVariant | null;
 }
 
 /**
  * Item art that breaks out above the top of the card. The cut-out's bottom
  * edge rests on a golden line, with a mirrored cloud decoration on both ends.
- * Only shown for items that have a cut-out.
+ * Only shown for items that have header art.
  */
 export const ItemBreakout = (props: ItemBreakoutProps): JSX.Element => {
-	const variant = props.cloudVariant ?? DEFAULT_CLOUD_VARIANT;
+	const variant =
+		props.cloudVariant === undefined
+			? DEFAULT_CLOUD_VARIANT
+			: props.cloudVariant;
 
 	return (
 		<div
@@ -35,9 +39,11 @@ export const ItemBreakout = (props: ItemBreakoutProps): JSX.Element => {
 				<div className={styles.baselineLine} />
 				<div className={styles.baselineFaint} />
 			</div>
-			<div className={styles.clouds}>
-				<CloudDecoration variant={variant} rarityColor={props.rarityColor} />
-			</div>
+			{variant !== null && (
+				<div className={styles.clouds}>
+					<CloudDecoration variant={variant} rarityColor={props.rarityColor} />
+				</div>
+			)}
 		</div>
 	);
 };

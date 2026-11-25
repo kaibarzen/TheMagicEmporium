@@ -21,14 +21,17 @@ const probe = (url: string): Promise<boolean> => {
 
 /**
  * Whether the image at `url` can be loaded. `false` until the check finishes,
- * so nothing that depends on it flashes in and out.
+ * so nothing that depends on it flashes in and out, and always `false` for no url.
  */
-export const useImageExists = (url: string): boolean => {
+export const useImageExists = (url: string | null): boolean => {
 	const [exists, setExists] = useState(false);
 
 	useEffect(() => {
 		let active = true;
 		setExists(false);
+		if (url === null) {
+			return;
+		}
 		void probe(url).then((result) => {
 			if (active) {
 				setExists(result);

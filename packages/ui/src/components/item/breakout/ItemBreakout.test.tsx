@@ -38,4 +38,19 @@ describe("ItemBreakout", () => {
 		// ASSERT
 		expect(view.container.querySelector('[data-side="left"]')).not.toBeNull();
 	});
+
+	it("leaves the golden line bare without a cloud variant", () => {
+		// ARRANGE & ACT
+		const view = render(
+			<ItemBreakout
+				src="cutout.png"
+				alt="Item"
+				rarityColor="#b88ce8"
+				cloudVariant={null}
+			/>,
+		);
+
+		// ASSERT
+		expect(view.container.querySelector('[data-side="left"]')).toBeNull();
+	});
 });

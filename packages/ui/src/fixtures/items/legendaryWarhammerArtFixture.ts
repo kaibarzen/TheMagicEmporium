@@ -6,6 +6,7 @@ import { uniqueWrathfulFixture } from "../modifiers/unique/uniqueWrathful";
 
 /** Warhammers have a cut-out (melee/martial/warhammer.cutout.png), so the card shows item art */
 export const legendaryWarhammerArtFixture = new AbstractItem();
+legendaryWarhammerArtFixture.appearance = { background: { image: "NONE" } };
 legendaryWarhammerArtFixture.name = "Legendary Thunderfall Maul";
 legendaryWarhammerArtFixture.rarity = Rarity.Legendary;
 legendaryWarhammerArtFixture.base = Equipment.Warhammer;

@@ -5,6 +5,7 @@ import { tieredFuryFixture } from "../modifiers/tiered/tieredFury";
 import { uniqueVenomousFixture } from "../modifiers/unique/uniqueVenomous";
 
 export const uncommonFixture = new AbstractItem();
+uncommonFixture.appearance = { background: { image: "NONE" } };
 uncommonFixture.name = "Uncommon Thornwood Bow";
 uncommonFixture.rarity = Rarity.Uncommon;
 uncommonFixture.base = Equipment.Longbow;

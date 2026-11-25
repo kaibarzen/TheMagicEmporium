@@ -11,7 +11,9 @@ legendaryModifierBackgroundFixture.name = "Legendary Skulltaker";
 legendaryModifierBackgroundFixture.rarity = Rarity.Legendary;
 legendaryModifierBackgroundFixture.base = Equipment.Handaxe;
 legendaryModifierBackgroundFixture.currency = 3200;
-legendaryModifierBackgroundFixture.backgroundEligible = true;
+legendaryModifierBackgroundFixture.appearance = {
+	background: { image: "AUTO" },
+};
 legendaryModifierBackgroundFixture.primary = [
 	{ modifier: uniqueBloodthirstyFixture, float: 0.5 },
 	{ modifier: tieredFuryFixture, float: 0.7 },

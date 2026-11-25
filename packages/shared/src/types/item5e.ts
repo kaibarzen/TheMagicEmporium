@@ -1,6 +1,7 @@
 import type { DeepPartial } from "../helpers/deepPartial.types";
 import { namespace } from "../namespaceConfig";
 import type { Actor5e } from "./actor5e";
+import type { ItemAppearance } from "./itemAppearance";
 
 export type Type =
 	| "background"
@@ -29,11 +30,10 @@ export interface SubItem {
 export interface BaseItem {
 	type: ItemType.MagicItem;
 	base: string;
-	backgroundEligible: boolean;
-	backgroundOverride: string | null;
-	primary: { identifier: string, float: number }[];
-	secondary: { identifier: string, float: number }[];
-	tertiary: { identifier: string, float: number }[];
+	appearance?: ItemAppearance;
+	primary: { identifier: string; float: number }[];
+	secondary: { identifier: string; float: number }[];
+	tertiary: { identifier: string; float: number }[];
 }
 
 export interface Item5e<Flag = SubItem | BaseItem> {

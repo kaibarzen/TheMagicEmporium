@@ -1,11 +1,11 @@
 import type { AbstractItem } from "@tme/library/src/item/AbstractItem";
-import { equipmentDetails } from "@tme/library/src/item/equipment/equipment.details";
 import { animate } from "animejs";
 import { motion } from "framer-motion";
 import { type CSSProperties, useEffect, useMemo, useRef } from "react";
-import { getCutoutUrl } from "./breakout/cutoutUrl";
+import { resolveAppearance } from "./appearance/resolveAppearance";
 import { ItemBreakout } from "./breakout/ItemBreakout";
 import { useImageExists } from "./breakout/useImageExists";
+import { DEFAULT_CLOUD_VARIANT } from "./clouds/CloudDecoration";
 import { CardCorners, DEFAULT_CORNER_VARIANT } from "./corners/CardCorners";
 import { RARITY_CORNER_DETAIL } from "./corners/cornerDetail";
 import { CardFooter } from "./footer/CardFooter";
@@ -16,7 +16,6 @@ import { Section } from "./section/Section";
 import { SectionTier } from "./section/tier";
 import { Sparkles } from "./sparkles/Sparkles";
 import depth from "./tilt/depth.module.css";
-import { tiltsOnHover } from "./tilt/tilt";
 import { useCardTilt } from "./tilt/useCardTilt";
 
 interface BlurStep {
@@ -51,23 +50,26 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 		...metalStyle(props.item.rarity),
 		"--rarity-color": rarityColor,
 	} as CSSProperties;
-	const sparkles = props.item.getSparkles();
+	const appearance = useMemo(() => resolveAppearance(props.item), [props.item]);
+	const sparkles = appearance.effects.sparkles;
+	const reveal = appearance.effects.reveal;
 	const cardRef = useRef<HTMLDivElement | null>(null);
 	const tiltRef = useRef<HTMLDivElement | null>(null);
 	const glintRef = useRef<HTMLDivElement | null>(null);
 
-	// Very rare and legendary cards tilt toward the cursor and catch a light sweep
-	const tilts = tiltsOnHover(props.item.rarity);
+	// Tilting cards tip toward the cursor and catch a light sweep
+	const tilt = appearance.effects.tilt;
+	const tilts = tilt !== "NONE";
 	useCardTilt(tilts, tiltRef, glintRef);
 
-	// Item art only shows when a *.cutout.png exists next to the base item's icon
-	const cutoutUrl = getCutoutUrl(equipmentDetails[props.item.base].icon);
-	const hasCutout = useImageExists(cutoutUrl);
+	// Header art only shows once its image has loaded (AUTO cut-outs often do not exist)
+	const headerImage = appearance.header.image;
+	const hasHeaderImage = useImageExists(headerImage);
 
 	// Clip-path Iris reveal
 	useEffect(() => {
 		const card = cardRef.current;
-		if (!sparkles.enabled || !card) {
+		if (!reveal || !card) {
 			return;
 		}
 		const anim = animate(card, {
@@ -83,10 +85,10 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 		return () => {
 			anim.pause();
 		};
-	}, [sparkles.enabled]);
+	}, [reveal]);
 
 	const background = useMemo(() => {
-		const bg = props.item.getBackground();
+		const bg = appearance.background;
 		if (!bg) {
 			return null;
 		}
@@ -110,7 +112,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 				<div className={styles.backgroundFilter} />
 			</div>
 		);
-	}, [props.item]);
+	}, [appearance.background]);
 
 	const card = (
 		<motion.div
@@ -118,20 +120,25 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ duration: 0.2, ease: "easeOut" }}
-			className={hasCutout ? styles.withArt : undefined}
+			className={hasHeaderImage ? styles.withArt : undefined}
 			style={rarityStyle}
 		>
 			<div
 				ref={tiltRef}
 				className={tilts ? `${styles.tilt} ${depth.preserve}` : undefined}
-				data-tilt={tilts ? props.item.rarity : undefined}
+				data-tilt={tilts ? tilt : undefined}
 			>
-				{hasCutout && (
+				{hasHeaderImage && headerImage !== null && (
 					<div className={depth.preserve}>
 						<ItemBreakout
-							src={cutoutUrl}
+							src={headerImage}
 							alt={props.item.name}
 							rarityColor={rarityColor}
+							cloudVariant={
+								appearance.header.deco === "CLOUDS"
+									? DEFAULT_CLOUD_VARIANT
+									: null
+							}
 						/>
 					</div>
 				)}
@@ -154,7 +161,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 							{background}
 							<div className={styles.texture} />
 						</div>
-						{sparkles.enabled && <Sparkles amount={sparkles.amount} />}
+						{sparkles !== null && <Sparkles amount={sparkles} />}
 						<div className={`${styles.edge} ${depth.front}`} aria-hidden="true">
 							<CardCorners
 								variant={DEFAULT_CORNER_VARIANT}

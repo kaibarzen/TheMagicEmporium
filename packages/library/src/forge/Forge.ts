@@ -1,14 +1,14 @@
-import {equipmentRarity} from "../item/equipment/equipment.adjectives";
-import {equipmentDetails} from "../item/equipment/equipment.details";
-import {Equipment} from "../item/equipment/equipment.types";
-import {Rarity} from "../item/item.types";
-import {logger} from "../logger";
-import type {Modifier} from "../modifiers/Modifier";
-import type {Restriction} from "../modifiers/modifier.schema";
-import {registry} from "../registry/Registry";
-import {ForgeProcess} from "./ForgeProcess";
-import {getRandomTemplate} from "./forge.templates";
-import type {Template} from "./forge.types";
+import { equipmentRarity } from "../item/equipment/equipment.adjectives";
+import { equipmentDetails } from "../item/equipment/equipment.details";
+import { Equipment } from "../item/equipment/equipment.types";
+import { Rarity } from "../item/item.types";
+import { logger } from "../logger";
+import type { Modifier } from "../modifiers/Modifier";
+import type { Restriction } from "../modifiers/modifier.schema";
+import { registry } from "../registry/Registry";
+import { ForgeProcess } from "./ForgeProcess";
+import { getRandomTemplate } from "./forge.templates";
+import type { Template } from "./forge.types";
 
 export interface GachaRevealProps {
 	equipmentWhitelist: Equipment[];
@@ -30,7 +30,7 @@ export class Forge {
 		const template = Forge.getTemplate(luck, rarity);
 		const process = new ForgeProcess();
 
-		process.abstractItem.backgroundEligible = template.backgroundEligible;
+		Forge.applyBackgroundEligibility(process, template);
 
 		process.setBase(equipment ?? Forge.pickRandomEquipment());
 		Forge.generateGoldValue(process, template);
@@ -49,12 +49,11 @@ export class Forge {
 			luck: template.luck + props.modifierLuck,
 		};
 
-		process.abstractItem.backgroundEligible =
-			internalTemplate.backgroundEligible;
+		Forge.applyBackgroundEligibility(process, internalTemplate);
 		process.setBase(
 			props.equipmentWhitelist[
 				Math.floor(Math.random() * props.equipmentWhitelist.length)
-				],
+			],
 		);
 		Forge.generateGoldValue(process, internalTemplate);
 		Forge.generateModifiers(process, internalTemplate);
@@ -62,6 +61,23 @@ export class Forge {
 		Forge.generateName(process);
 
 		return process.abstractItem;
+	};
+
+	/**
+	 * Templates that may not carry a modifier background switch it off, so
+	 * the item's AUTO background stays empty
+	 */
+	private static applyBackgroundEligibility = (
+		process: ForgeProcess,
+		template: Template,
+	): void => {
+		if (template.backgroundEligible) {
+			return;
+		}
+		process.abstractItem.appearance = {
+			...process.abstractItem.appearance,
+			background: { image: "NONE" },
+		};
 	};
 
 	private static rarityOrder = [
@@ -82,7 +98,7 @@ export class Forge {
 		const extraRolls = Math.random() < fraction ? floor + 1 : floor;
 		const count = extraRolls + 1;
 
-		const candidates = Array.from({length: count}, () =>
+		const candidates = Array.from({ length: count }, () =>
 			getRandomTemplate(forcedRarity),
 		);
 
@@ -118,7 +134,7 @@ export class Forge {
 			slots.splice(index, 1);
 
 			const modifier = Forge.getRandomModifier(process, slot);
-			const float = Forge.generateFloat(template.luck)
+			const float = Forge.generateFloat(template.luck);
 
 			process.addModifier(slot, modifier, float);
 
@@ -166,7 +182,7 @@ export class Forge {
 			return Math.random();
 		}
 		const rolls = Array.from(
-			{length: Math.abs(amountRolled) + 1},
+			{ length: Math.abs(amountRolled) + 1 },
 			Math.random,
 		);
 		return amountRolled > 0 ? Math.max(...rolls) : Math.min(...rolls);
@@ -179,8 +195,8 @@ export class Forge {
 		const equipmentValue = equipmentDetails[process.abstractItem.base].value;
 		process.abstractItem.currency = Math.floor(
 			template.gold.min +
-			Math.random() * template.gold.additional +
-			equipmentValue * template.gold.equipmentValueImpact,
+				Math.random() * template.gold.additional +
+				equipmentValue * template.gold.equipmentValueImpact,
 		);
 	};
 
@@ -191,7 +207,7 @@ export class Forge {
 			: details.title;
 		const adjective = details.adjectives?.length
 			? details.adjectives[
-				Math.floor(Math.random() * details.adjectives.length)
+					Math.floor(Math.random() * details.adjectives.length)
 				]
 			: "";
 		const rarity = equipmentRarity[process.abstractItem.rarity];

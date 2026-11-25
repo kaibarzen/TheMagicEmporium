@@ -5,6 +5,7 @@ import { legendaryModifierBackgroundFixture } from "../../fixtures/items/legenda
 import { legendaryNoBackgroundFixture } from "../../fixtures/items/legendaryNoBackgroundFixture";
 import { legendaryOverrideBackgroundFixture } from "../../fixtures/items/legendaryOverrideBackgroundFixture";
 import { legendaryWarhammerArtFixture } from "../../fixtures/items/legendaryWarhammerArtFixture";
+import { rareCustomAppearanceFixture } from "../../fixtures/items/rareCustomAppearanceFixture";
 import { rareFixture } from "../../fixtures/items/rareFixture";
 import { uncommonFixture } from "../../fixtures/items/uncommonFixture";
 import { veryRareFixture } from "../../fixtures/items/veryRareFixture";
@@ -80,6 +81,11 @@ export const VeryRarePerfect: Story = {
 /** A rare item. */
 export const Rare: Story = {
 	args: { item: rareFixture },
+};
+
+/** A rare item whose appearance sets its background, sparkles and heavy tilt, and drops the clouds. */
+export const RareCustomAppearance: Story = {
+	args: { item: rareCustomAppearanceFixture },
 };
 
 /** An uncommon item. */
