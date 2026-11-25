@@ -1,21 +1,21 @@
 /*
- * Sits at the very top of the card. The negative margin cancels the card's
- * padding so the golden line spans the full card width. The item rises 250px
- * above the card; ItemDisplay reserves that space.
+ * Sits just above the card, as wide as the card. The golden line is the
+ * bottom of this block, followed by a small gap before the card's top border.
+ * The item rises 190px above it; ItemDisplay reserves that space.
  */
 .root {
 	position: relative;
-	height: 104px;
-	margin: -28px -28px 0;
+	height: 92px;
+	margin-bottom: 12px;
 	pointer-events: none;
 }
 
 .halo {
 	position: absolute;
 	left: 50%;
-	top: -150px;
-	width: 360px;
-	height: 220px;
+	top: -120px;
+	width: 300px;
+	height: 190px;
 	translate: -50% 0;
 	z-index: 1;
 	background: radial-gradient(
@@ -30,9 +30,9 @@
 .item {
 	position: absolute;
 	left: 50%;
-	top: -250px;
-	width: 340px;
-	height: 340px;
+	top: -190px;
+	width: 280px;
+	height: 280px;
 	translate: -50% 0;
 	z-index: 2;
 	filter: drop-shadow(

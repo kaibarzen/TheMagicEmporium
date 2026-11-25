@@ -77,37 +77,7 @@
 		0 0 0 1px rgba(0, 0, 0, 0.5);
 }
 
-.cornerTL {
-	position: absolute;
-	top: -4px;
-	left: -4px;
-}
-
-.cornerTR {
-	position: absolute;
-	top: -4px;
-	right: -4px;
-}
-
-.cornerBR {
-	position: absolute;
-	bottom: -4px;
-	right: -4px;
-}
-
-.cornerBL {
-	position: absolute;
-	bottom: -4px;
-	left: -4px;
-}
-
-.corner {
-	display: block;
-	overflow: visible;
-	transform: rotate(var(--rotation));
-}
-
 /* Room above the card for item art that breaks out of its top edge */
 .withArt {
-	padding-top: 250px;
+	padding-top: 190px;
 }

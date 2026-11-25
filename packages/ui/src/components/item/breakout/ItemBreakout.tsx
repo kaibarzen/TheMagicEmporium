@@ -18,6 +18,7 @@ export interface ItemBreakoutProps {
 /**
  * Item art that breaks out above the top of the card. The cut-out's bottom
  * edge rests on a golden line, with a mirrored cloud decoration on both ends.
+ * Only shown for items that have a cut-out.
  */
 export const ItemBreakout = (props: ItemBreakoutProps): JSX.Element => {
 	const variant = props.cloudVariant ?? DEFAULT_CLOUD_VARIANT;
