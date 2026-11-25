@@ -1,5 +1,6 @@
 import type { AppliedModifier } from "@tme/library/src/modifiers/Modifier";
 import { ModifierDisplay } from "../../modifiers/ModifierDisplay";
+import { METAL } from "../metal/metal";
 import styles from "./Section.module.css";
 
 export interface SectionProps {
@@ -20,7 +21,7 @@ export const Section = (props: SectionProps) => {
 				</div>
 				<div className={styles.titleWrapper}>
 					<svg aria-hidden="true" width="10" height="10" viewBox="0 0 10 10">
-						<polygon points="5,0 10,5 5,10 0,5" fill="#d4a64a" />
+						<polygon points="5,0 10,5 5,10 0,5" style={{ fill: METAL.base }} />
 					</svg>
 					<div className={styles.titleStack}>
 						<span className={styles.kanji} lang="zh">
@@ -29,7 +30,7 @@ export const Section = (props: SectionProps) => {
 						<span className={styles.title}>{props.title}</span>
 					</div>
 					<svg aria-hidden="true" width="10" height="10" viewBox="0 0 10 10">
-						<polygon points="5,0 10,5 5,10 0,5" fill="#d4a64a" />
+						<polygon points="5,0 10,5 5,10 0,5" style={{ fill: METAL.base }} />
 					</svg>
 				</div>
 				<div className={styles.rule}>

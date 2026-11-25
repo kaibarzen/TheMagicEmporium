@@ -2,6 +2,7 @@ import { equipmentDetails } from "@tme/library/src/item/equipment/equipment.deta
 import type { Equipment } from "@tme/library/src/item/equipment/equipment.types";
 import { Rarity } from "@tme/library/src/item/item.types";
 import { type CSSProperties, type ReactElement, useMemo } from "react";
+import { METAL, metalStyle } from "../metal/metal";
 import styles from "./Header.module.css";
 
 export interface HeaderProps {
@@ -53,6 +54,15 @@ const RARITY_RANK: Record<Rarity, number> = {
 	[Rarity.Legendary]: 5,
 };
 
+/** Extra class for the item name: plain ink at the bottom, gilded at the top. */
+const RARITY_NAME_CLASS: Record<Rarity, string | null> = {
+	[Rarity.Common]: styles.nameInk,
+	[Rarity.Uncommon]: null,
+	[Rarity.Rare]: null,
+	[Rarity.VeryRare]: styles.nameGilded,
+	[Rarity.Legendary]: `${styles.nameGilded} ${styles.nameShimmer}`,
+};
+
 const formatCurrency = (gp: number): string =>
 	`${gp.toLocaleString("en-US")} gp`;
 
@@ -69,7 +79,7 @@ const Diamond = (props: DiamondProps): ReactElement => {
 			height={props.size}
 			viewBox="0 0 6 6"
 		>
-			<path d="M3 0 L6 3 L3 6 L0 3 Z" fill={props.fill} />
+			<path d="M3 0 L6 3 L3 6 L0 3 Z" style={{ fill: props.fill }} />
 		</svg>
 	);
 };
@@ -104,18 +114,33 @@ const Divider = (props: DividerProps): ReactElement => {
 		>
 			<path
 				d={`M6 7 H${leftEdge - PIP_GAP * 2}`}
-				stroke="#5a4e32"
+				style={{ stroke: METAL.lo }}
 				strokeWidth="1"
 			/>
 			<path
 				d={`M${rightEdge + PIP_GAP * 2} 7 H${DIVIDER_WIDTH - 6}`}
-				stroke="#5a4e32"
+				style={{ stroke: METAL.lo }}
 				strokeWidth="1"
 			/>
-			<circle cx="3" cy="7" r="1.3" fill="#5a4e32" />
-			<circle cx={DIVIDER_WIDTH - 3} cy="7" r="1.3" fill="#5a4e32" />
-			<circle cx={leftEdge - PIP_GAP} cy="7" r="1.3" fill="#a89468" />
-			<circle cx={rightEdge + PIP_GAP} cy="7" r="1.3" fill="#a89468" />
+			<circle cx="3" cy="7" r="1.3" style={{ fill: METAL.lo }} />
+			<circle
+				cx={DIVIDER_WIDTH - 3}
+				cy="7"
+				r="1.3"
+				style={{ fill: METAL.lo }}
+			/>
+			<circle
+				cx={leftEdge - PIP_GAP}
+				cy="7"
+				r="1.3"
+				style={{ fill: METAL.text }}
+			/>
+			<circle
+				cx={rightEdge + PIP_GAP}
+				cy="7"
+				r="1.3"
+				style={{ fill: METAL.text }}
+			/>
 			{Array.from({ length: props.count }, (_, index: number): ReactElement => {
 				const cx = firstCenter + index * PIP_STEP;
 				return (
@@ -123,7 +148,7 @@ const Divider = (props: DividerProps): ReactElement => {
 						<path
 							d={`M${cx} 1 L${cx + 6} 7 L${cx} 13 L${cx - 6} 7 Z`}
 							fill="none"
-							stroke="#a89468"
+							style={{ stroke: METAL.text }}
 							strokeWidth="1"
 						/>
 						<path
@@ -147,7 +172,10 @@ export const Header = (props: HeaderProps): ReactElement => {
 		return props.name.replace(prefix, "").trim();
 	}, [props.name, props.rarity]);
 
+	const nameClass = RARITY_NAME_CLASS[props.rarity];
+
 	const style = {
+		...metalStyle(props.rarity),
 		"--rarity-color": color,
 		"--rarity-shadow": RARITY_SHADOW[props.rarity],
 		"--rarity-halo": halo ?? "transparent",
@@ -166,9 +194,7 @@ export const Header = (props: HeaderProps): ReactElement => {
 			<div className={styles.nameWrap}>
 				{halo && <div className={styles.halo} aria-hidden="true" />}
 				<div
-					className={
-						isLegendary ? `${styles.name} ${styles.nameShimmer}` : styles.name
-					}
+					className={nameClass ? `${styles.name} ${nameClass}` : styles.name}
 				>
 					{strippedName}
 				</div>
@@ -180,7 +206,7 @@ export const Header = (props: HeaderProps): ReactElement => {
 				<span className={styles.metaText}>
 					{equipmentDetails[props.base].title}
 				</span>
-				<Diamond size={5} fill="#5a4e32" />
+				<Diamond size={5} fill={METAL.lo} />
 				<span className={styles.price}>
 					<svg aria-hidden="true" width="11" height="11" viewBox="0 0 12 12">
 						<circle

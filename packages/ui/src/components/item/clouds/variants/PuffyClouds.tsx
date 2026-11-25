@@ -1,5 +1,6 @@
 import { type JSX, useId } from "react";
-import { cloudShape, drift, GOLD, mirrored, svgId } from "../cloudParts";
+import { METAL } from "../../metal/metal";
+import { cloudShape, drift, mirrored, svgId } from "../cloudParts";
 
 /**
  * Filled navy clouds with gold outlines and curls, three per side.
@@ -23,8 +24,8 @@ export const PuffyClouds = (): JSX.Element => {
 			width: 84,
 			height: 32,
 			fill,
-			stroke: GOLD,
-			curlStroke: GOLD,
+			stroke: METAL.base,
+			curlStroke: METAL.base,
 			opacity: 0.75,
 		}),
 		cloudShape({
@@ -34,8 +35,8 @@ export const PuffyClouds = (): JSX.Element => {
 			width: 130,
 			height: 50,
 			fill,
-			stroke: GOLD,
-			curlStroke: GOLD,
+			stroke: METAL.base,
+			curlStroke: METAL.base,
 		}),
 		cloudShape({
 			key: "small",
@@ -44,8 +45,8 @@ export const PuffyClouds = (): JSX.Element => {
 			width: 96,
 			height: 37,
 			fill,
-			stroke: GOLD,
-			curlStroke: GOLD,
+			stroke: METAL.base,
+			curlStroke: METAL.base,
 		}),
 	]);
 

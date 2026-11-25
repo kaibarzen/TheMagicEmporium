@@ -1,7 +1,11 @@
+import { Rarity } from "@tme/library/src/item/item.types";
 import type { JSX, ReactNode } from "react";
+import { metalStyle } from "../metal/metal";
 
 export interface CloudStoryFrameProps {
 	children: ReactNode;
+	/** Metal of the line and decoration; gold when omitted */
+	rarity?: Rarity;
 }
 
 /**
@@ -12,6 +16,7 @@ export const CloudStoryFrame = (props: CloudStoryFrameProps): JSX.Element => {
 	return (
 		<div
 			style={{
+				...metalStyle(props.rarity ?? Rarity.VeryRare),
 				position: "relative",
 				width: "488px",
 				padding: "24px 0",
@@ -27,8 +32,9 @@ export const CloudStoryFrame = (props: CloudStoryFrameProps): JSX.Element => {
 					bottom: "24px",
 					height: "1.5px",
 					background:
-						"linear-gradient(90deg, rgba(212, 166, 74, 0), #8a6a2c 18%, #e8c87a 50%, #8a6a2c 82%, rgba(212, 166, 74, 0))",
-					boxShadow: "0 0 8px rgba(232, 200, 122, 0.35)",
+						"linear-gradient(90deg, transparent, var(--metal-dim) 18%, var(--metal-hi) 50%, var(--metal-dim) 82%, transparent)",
+					boxShadow:
+						"0 0 8px color-mix(in srgb, var(--metal-hi) 35%, transparent)",
 				}}
 			/>
 		</div>

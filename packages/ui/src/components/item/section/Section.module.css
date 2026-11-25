@@ -21,11 +21,11 @@
 	height: 1px;
 	background: linear-gradient(
 		90deg,
-		rgba(212, 166, 74, 0),
-		#8a6a2c 40%,
-		#e8c87a 50%,
-		#8a6a2c 60%,
-		rgba(212, 166, 74, 0)
+		transparent,
+		var(--metal-dim) 40%,
+		var(--metal-hi) 50%,
+		var(--metal-dim) 60%,
+		transparent
 	);
 }
 
@@ -34,11 +34,11 @@
 	opacity: 0.4;
 	background: linear-gradient(
 		90deg,
-		rgba(212, 166, 74, 0),
-		#8a6a2c 40%,
-		#e8c87a 50%,
-		#8a6a2c 60%,
-		rgba(212, 166, 74, 0)
+		transparent,
+		var(--metal-dim) 40%,
+		var(--metal-hi) 50%,
+		var(--metal-dim) 60%,
+		transparent
 	);
 }
 
@@ -62,8 +62,8 @@
 	font-weight: 600;
 	font-size: 22px;
 	line-height: 1;
-	color: #f3dca0;
-	text-shadow: 0 0 14px rgba(212, 166, 74, 0.55);
+	color: var(--metal-pale);
+	text-shadow: 0 0 14px color-mix(in srgb, var(--metal) 55%, transparent);
 }
 
 .title {
@@ -73,8 +73,8 @@
 	letter-spacing: 0.42em;
 	/* Offset trailing letter-spacing so the caption stays centred under the kanji */
 	margin-right: -0.42em;
-	color: #f3dca0;
-	text-shadow: 0 0 14px rgba(212, 166, 74, 0.55);
+	color: var(--metal-pale);
+	text-shadow: 0 0 14px color-mix(in srgb, var(--metal) 55%, transparent);
 }
 
 .item {
@@ -89,9 +89,9 @@
 	height: 1px;
 	background: linear-gradient(
 		90deg,
-		rgba(212, 166, 74, 0),
-		rgba(212, 166, 74, 0.45) 30%,
-		rgba(212, 166, 74, 0.45) 70%,
-		rgba(212, 166, 74, 0)
+		transparent,
+		color-mix(in srgb, var(--metal) 45%, transparent) 30%,
+		color-mix(in srgb, var(--metal) 45%, transparent) 70%,
+		transparent
 	);
 }

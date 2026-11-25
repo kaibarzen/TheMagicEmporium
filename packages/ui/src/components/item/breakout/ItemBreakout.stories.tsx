@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Icon } from "@tme/library/src/item/icon";
+import { Rarity } from "@tme/library/src/item/item.types";
 import { CloudVariant, DEFAULT_CLOUD_VARIANT } from "../clouds/CloudDecoration";
+import { metalStyle } from "../metal/metal";
 import { getCutoutUrl } from "./cutoutUrl";
 import { ItemBreakout } from "./ItemBreakout";
 
@@ -27,6 +29,7 @@ const meta = {
 	render: (args) => (
 		<div
 			style={{
+				...metalStyle(Rarity.VeryRare),
 				width: "460px",
 				padding: "278px 28px 40px",
 				background: "linear-gradient(180deg, #0e1124 0%, #07091a 100%)",

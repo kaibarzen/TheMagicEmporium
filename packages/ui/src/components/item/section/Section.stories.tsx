@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Rarity } from "@tme/library/src/item/item.types";
 import { veilpiercerFixture } from "../../../fixtures/items/veilpiercerFixture";
+import { metalStyle } from "../metal/metal";
 import { Section, type SectionProps } from "./Section";
 
 /**
@@ -17,7 +19,14 @@ const meta = {
 		},
 	},
 	render: (props: SectionProps) => (
-		<div style={{ background: "#040510", width: "460px", padding: "16px" }}>
+		<div
+			style={{
+				...metalStyle(Rarity.VeryRare),
+				background: "#040510",
+				width: "460px",
+				padding: "16px",
+			}}
+		>
 			<Section
 				kanji={props.kanji}
 				title={props.title}

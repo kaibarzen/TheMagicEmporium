@@ -7,9 +7,11 @@ import { getCutoutUrl } from "./breakout/cutoutUrl";
 import { ItemBreakout } from "./breakout/ItemBreakout";
 import { useImageExists } from "./breakout/useImageExists";
 import { CardCorners, DEFAULT_CORNER_VARIANT } from "./corners/CardCorners";
+import { RARITY_CORNER_DETAIL } from "./corners/cornerDetail";
 import { CardFooter } from "./footer/CardFooter";
 import { Header, RARITY_COLOR } from "./header/Header";
 import styles from "./ItemDisplay.module.css";
+import { metalStyle } from "./metal/metal";
 import { Section } from "./section/Section";
 import { Sparkles } from "./sparkles/Sparkles";
 
@@ -20,7 +22,11 @@ export interface ItemDisplayProps {
 
 export const ItemDisplay = (props: ItemDisplayProps) => {
 	const rarityColor = RARITY_COLOR[props.item.rarity];
-	const rarityStyle = { "--rarity-color": rarityColor } as CSSProperties;
+	// The rarity colour is the accent; the metal (iron, bronze, silver, gold) is the structure
+	const rarityStyle = {
+		...metalStyle(props.item.rarity),
+		"--rarity-color": rarityColor,
+	} as CSSProperties;
 	const sparkles = props.item.getSparkles();
 	const cardRef = useRef<HTMLDivElement | null>(null);
 
@@ -72,10 +78,17 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 					rarityColor={rarityColor}
 				/>
 			)}
-			<div ref={cardRef} className={styles.card}>
+			<div
+				ref={cardRef}
+				className={styles.card}
+				data-rarity={props.item.rarity}
+			>
 				{background}
 				{sparkles.enabled && <Sparkles amount={sparkles.amount} />}
-				<CardCorners variant={DEFAULT_CORNER_VARIANT} />
+				<CardCorners
+					variant={DEFAULT_CORNER_VARIANT}
+					detail={RARITY_CORNER_DETAIL[props.item.rarity]}
+				/>
 				<Header
 					name={props.item.name}
 					rarity={props.item.rarity}

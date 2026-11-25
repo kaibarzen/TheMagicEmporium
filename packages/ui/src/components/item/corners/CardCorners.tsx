@@ -1,4 +1,5 @@
 import type { JSX } from "react";
+import { CornerDetail } from "./cornerDetail";
 import { DiamondCorners } from "./variants/DiamondCorners";
 import { FretCorners } from "./variants/FretCorners";
 
@@ -12,6 +13,8 @@ export const DEFAULT_CORNER_VARIANT = CornerVariant.Fret;
 
 export interface CardCornersProps {
 	variant: CornerVariant;
+	/** How elaborate the ornaments are; only the fret corners use it */
+	detail?: CornerDetail;
 }
 
 /**
@@ -21,7 +24,7 @@ export interface CardCornersProps {
 export const CardCorners = (props: CardCornersProps): JSX.Element => {
 	switch (props.variant) {
 		case CornerVariant.Fret:
-			return <FretCorners />;
+			return <FretCorners detail={props.detail ?? CornerDetail.Full} />;
 		case CornerVariant.Diamond:
 			return <DiamondCorners />;
 	}

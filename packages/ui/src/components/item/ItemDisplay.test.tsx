@@ -1,6 +1,7 @@
 import { describe, expect, it } from "bun:test";
 import { render } from "@testing-library/react";
 import { AbstractItem } from "@tme/library/src/item/AbstractItem";
+import { Rarity } from "@tme/library/src/item/item.types";
 import { ItemDisplay } from "./ItemDisplay";
 
 describe("ItemDisplay", () => {
@@ -47,5 +48,47 @@ describe("ItemDisplay", () => {
 
 		// ASSERT
 		expect(view.container.querySelector('img[alt="Plain Relic"]')).toBeNull();
+	});
+
+	it("marks the card with the item's rarity", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Legendary;
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(
+			view.container.querySelector('[data-rarity="legendary"]'),
+		).not.toBeNull();
+	});
+
+	it("gives common items bare bracket corners", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Common;
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(
+			view.container.querySelector('[data-detail="bracket"]'),
+		).not.toBeNull();
+	});
+
+	it("gives legendary items ornate corners", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Legendary;
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(
+			view.container.querySelector('[data-detail="ornate"]'),
+		).not.toBeNull();
 	});
 });

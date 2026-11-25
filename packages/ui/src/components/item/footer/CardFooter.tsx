@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactElement } from "react";
-import { GOLD } from "../clouds/cloudParts";
+import { METAL } from "../metal/metal";
 import styles from "./CardFooter.module.css";
 
 export interface CardFooterProps {
@@ -31,8 +31,16 @@ export const CardFooter = (props: CardFooterProps): ReactElement => {
 						x1="0"
 						x2={CENTER - 26}
 					>
-						<stop offset="0" stopColor={GOLD} stopOpacity="0" />
-						<stop offset="1" stopColor={GOLD} stopOpacity="0.8" />
+						<stop
+							offset="0"
+							style={{ stopColor: METAL.base }}
+							stopOpacity="0"
+						/>
+						<stop
+							offset="1"
+							style={{ stopColor: METAL.base }}
+							stopOpacity="0.8"
+						/>
 					</linearGradient>
 					<linearGradient
 						id="card-footer-right"
@@ -40,8 +48,16 @@ export const CardFooter = (props: CardFooterProps): ReactElement => {
 						x1={CENTER + 26}
 						x2={WIDTH}
 					>
-						<stop offset="0" stopColor={GOLD} stopOpacity="0.8" />
-						<stop offset="1" stopColor={GOLD} stopOpacity="0" />
+						<stop
+							offset="0"
+							style={{ stopColor: METAL.base }}
+							stopOpacity="0.8"
+						/>
+						<stop
+							offset="1"
+							style={{ stopColor: METAL.base }}
+							stopOpacity="0"
+						/>
 					</linearGradient>
 				</defs>
 				<path
@@ -56,18 +72,18 @@ export const CardFooter = (props: CardFooterProps): ReactElement => {
 				/>
 				<path
 					d={`M${CENTER - 20} 9 l3 -3 l3 3 l-3 3 Z`}
-					fill={GOLD}
+					style={{ fill: METAL.base }}
 					opacity="0.7"
 				/>
 				<path
 					d={`M${CENTER + 14} 9 l3 -3 l3 3 l-3 3 Z`}
-					fill={GOLD}
+					style={{ fill: METAL.base }}
 					opacity="0.7"
 				/>
 				<path
 					d={`M${CENTER} 1 L${CENTER + 8} 9 L${CENTER} 17 L${CENTER - 8} 9 Z`}
 					fill="#07091a"
-					stroke={GOLD}
+					style={{ stroke: METAL.base }}
 					strokeWidth="1"
 				/>
 				<path

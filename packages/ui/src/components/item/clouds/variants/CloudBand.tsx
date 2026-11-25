@@ -1,5 +1,6 @@
 import { type JSX, useId } from "react";
-import { drift, GOLD, mirrored, svgId } from "../cloudParts";
+import { METAL } from "../../metal/metal";
+import { drift, mirrored, svgId } from "../cloudParts";
 
 /**
  * Stacked half-round lobes with concentric lines, like the cloud bands on
@@ -17,7 +18,7 @@ export const CloudBand = (): JSX.Element => {
 	);
 
 	const side = (
-		<g stroke={GOLD} strokeWidth={1.2}>
+		<g style={{ stroke: METAL.base }} strokeWidth={1.2}>
 			{drift([
 				<path
 					key="back"

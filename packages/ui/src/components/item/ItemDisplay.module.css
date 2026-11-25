@@ -40,8 +40,8 @@
 	background: linear-gradient(180deg, #0e1124 0%, #07091a 100%);
 	border-radius: 4px;
 	box-shadow:
-		inset 0 0 0 1px rgba(212, 166, 74, 0.35),
-		inset 0 0 60px rgba(212, 166, 74, 0.06),
+		inset 0 0 0 1px color-mix(in srgb, var(--metal) 35%, transparent),
+		inset 0 0 60px color-mix(in srgb, var(--metal) 6%, transparent),
 		0 0 32px rgba(0, 0, 0, 0.5),
 		0 0 0 1px rgba(0, 0, 0, 0.5);
 }
@@ -70,8 +70,8 @@
 	);
 
 	box-shadow:
-		inset 0 0 0 1px rgba(212, 166, 74, 0.35),
-		inset 0 0 60px rgba(212, 166, 74, 0.06),
+		inset 0 0 0 1px color-mix(in srgb, var(--metal) 35%, transparent),
+		inset 0 0 60px color-mix(in srgb, var(--metal) 6%, transparent),
 		inset 0 0 80px rgba(0, 0, 0, 1),
 		0 30px 80px rgba(0, 0, 0, 0.55),
 		0 0 0 1px rgba(0, 0, 0, 0.5);
@@ -90,15 +90,15 @@
 	--hairline-h: linear-gradient(
 		90deg,
 		transparent,
-		rgba(212, 166, 74, 0.28) 14%,
-		rgba(212, 166, 74, 0.28) 86%,
+		color-mix(in srgb, var(--metal) 28%, transparent) 14%,
+		color-mix(in srgb, var(--metal) 28%, transparent) 86%,
 		transparent
 	);
 	--hairline-v: linear-gradient(
 		180deg,
 		transparent,
-		rgba(212, 166, 74, 0.22) 14%,
-		rgba(212, 166, 74, 0.22) 86%,
+		color-mix(in srgb, var(--metal) 22%, transparent) 14%,
+		color-mix(in srgb, var(--metal) 22%, transparent) 86%,
 		transparent
 	);
 	background:
@@ -132,6 +132,38 @@
 			color-mix(in srgb, var(--rarity-color) 14%, transparent),
 			transparent
 		);
+}
+
+/*
+ * Legendary: the gold frame smoulders. An ember glow breathes around the
+ * border, on top of the usual frame shadows.
+ */
+.card[data-rarity="legendary"] {
+	box-shadow:
+		inset 0 0 0 1px color-mix(in srgb, var(--metal) 50%, transparent),
+		inset 0 0 60px color-mix(in srgb, var(--ember) 10%, transparent),
+		0 0 0 1px color-mix(in srgb, var(--ember) 25%, transparent),
+		0 0 28px color-mix(in srgb, var(--ember) 22%, transparent),
+		0 0 32px rgba(0, 0, 0, 0.5);
+	animation: smoulder 5s ease-in-out infinite;
+}
+
+@keyframes smoulder {
+	0%,
+	100% {
+		outline: 1px solid color-mix(in srgb, var(--ember) 0%, transparent);
+		outline-offset: 0;
+	}
+	50% {
+		outline: 1px solid color-mix(in srgb, var(--ember) 18%, transparent);
+		outline-offset: 3px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.card[data-rarity="legendary"] {
+		animation: none;
+	}
 }
 
 /* Room above the card for item art that breaks out of its top edge */

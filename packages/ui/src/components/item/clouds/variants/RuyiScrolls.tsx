@@ -1,5 +1,6 @@
 import type { JSX } from "react";
-import { drift, GOLD, mirrored } from "../cloudParts";
+import { METAL } from "../../metal/metal";
+import { drift, mirrored } from "../cloudParts";
 
 /**
  * Gold line art only: the golden line curls up into spiral cloud scrolls,
@@ -7,7 +8,7 @@ import { drift, GOLD, mirrored } from "../cloudParts";
  */
 export const RuyiScrolls = (): JSX.Element => {
 	const side = (
-		<g fill="none" stroke={GOLD} strokeLinecap="round">
+		<g fill="none" style={{ stroke: METAL.base }} strokeLinecap="round">
 			{drift([
 				<path
 					key="main"

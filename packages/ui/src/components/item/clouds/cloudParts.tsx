@@ -12,9 +12,6 @@ import styles from "./CloudDecoration.module.css";
 export const VIEW_WIDTH = 488;
 export const VIEW_HEIGHT = 96;
 
-export const GOLD = "#d4a64a";
-export const GOLD_PALE = "#f3dca0";
-
 const CLOUD_PATH =
 	"M14 42 C3 42 1 31 8 26 C1 18 10 7 21 12 C23 1 40 -1 46 8 C52 -1 68 -1 72 10 C80 3 95 5 95 16 C107 13 117 22 112 32 C119 38 112 44 103 42 Z";
 
@@ -57,28 +54,28 @@ export const cloudShape = (options: CloudShapeOptions): JSX.Element => {
 			<path
 				d={CLOUD_PATH}
 				fill={options.fill}
-				stroke={options.stroke}
+				style={{ stroke: options.stroke }}
 				strokeWidth={1.3}
 				strokeLinejoin="round"
 			/>
 			<path
 				d="M40 31 c0 -7 9 -9 12 -3 c2 4 -3 7 -6 4"
 				fill="none"
-				stroke={options.curlStroke}
+				style={{ stroke: options.curlStroke }}
 				strokeWidth={1.1}
 				strokeLinecap="round"
 			/>
 			<path
 				d="M72 29 c0 -7 9 -9 12 -3 c2 4 -3 7 -6 4"
 				fill="none"
-				stroke={options.curlStroke}
+				style={{ stroke: options.curlStroke }}
 				strokeWidth={1.1}
 				strokeLinecap="round"
 			/>
 			<path
 				d="M8 26 c-5 -2 -4 -9 2 -9 c3 0 4 3 2 5"
 				fill="none"
-				stroke={options.curlStroke}
+				style={{ stroke: options.curlStroke }}
 				strokeWidth={1.1}
 				strokeLinecap="round"
 			/>

@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Rarity } from "@tme/library/src/item/item.types";
+import { metalStyle } from "../metal/metal";
 import { CardFooter, type CardFooterProps } from "./CardFooter";
 
 /** Closing ornament at the bottom of an item card, sealed in the rarity colour. */
@@ -13,7 +15,14 @@ const meta = {
 		},
 	},
 	render: (props: CardFooterProps) => (
-		<div style={{ background: "#07091a", width: "404px", padding: "24px" }}>
+		<div
+			style={{
+				...metalStyle(Rarity.VeryRare),
+				background: "#07091a",
+				width: "404px",
+				padding: "24px",
+			}}
+		>
 			<CardFooter rarityColor={props.rarityColor} />
 		</div>
 	),

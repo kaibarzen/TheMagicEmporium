@@ -29,3 +29,31 @@
 	left: -5px;
 	transform: rotate(270deg);
 }
+
+/* Ornate corners smoulder with the legendary ember glow */
+.ember {
+	animation: ember 5s ease-in-out infinite;
+}
+
+@keyframes ember {
+	0%,
+	100% {
+		filter: drop-shadow(
+			0 0 2px color-mix(in srgb, var(--ember) 45%, transparent)
+		);
+	}
+	50% {
+		filter: drop-shadow(
+			0 0 5px color-mix(in srgb, var(--ember) 80%, transparent)
+		);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ember {
+		animation: none;
+		filter: drop-shadow(
+			0 0 3px color-mix(in srgb, var(--ember) 60%, transparent)
+		);
+	}
+}

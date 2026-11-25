@@ -1,5 +1,6 @@
 import type { JSX } from "react";
-import { drift, GOLD, mirrored } from "../cloudParts";
+import { METAL } from "../../metal/metal";
+import { drift, mirrored } from "../cloudParts";
 
 /**
  * Thin drifting lines ending in small curls, like wind or mist trailing past
@@ -7,7 +8,7 @@ import { drift, GOLD, mirrored } from "../cloudParts";
  */
 export const WindStreaks = (): JSX.Element => {
 	const side = (
-		<g fill="none" stroke={GOLD} strokeLinecap="round">
+		<g fill="none" style={{ stroke: METAL.base }} strokeLinecap="round">
 			{drift(
 				<path
 					d="M0 88 H86 c9 0 11 -9 4 -11 c-5 -1 -7 4 -3 6"

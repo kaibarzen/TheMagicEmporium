@@ -55,13 +55,13 @@
 	height: 1.5px;
 	background: linear-gradient(
 		90deg,
-		rgba(212, 166, 74, 0),
-		#8a6a2c 18%,
-		#e8c87a 50%,
-		#8a6a2c 82%,
-		rgba(212, 166, 74, 0)
+		transparent,
+		var(--metal-dim) 18%,
+		var(--metal-hi) 50%,
+		var(--metal-dim) 82%,
+		transparent
 	);
-	box-shadow: 0 0 8px rgba(232, 200, 122, 0.35);
+	box-shadow: 0 0 8px color-mix(in srgb, var(--metal-hi) 35%, transparent);
 }
 
 .baselineFaint {
@@ -69,11 +69,11 @@
 	opacity: 0.4;
 	background: linear-gradient(
 		90deg,
-		rgba(212, 166, 74, 0),
-		#8a6a2c 18%,
-		#e8c87a 50%,
-		#8a6a2c 82%,
-		rgba(212, 166, 74, 0)
+		transparent,
+		var(--metal-dim) 18%,
+		var(--metal-hi) 50%,
+		var(--metal-dim) 82%,
+		transparent
 	);
 }
 

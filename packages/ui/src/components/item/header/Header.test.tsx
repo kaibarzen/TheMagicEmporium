@@ -2,6 +2,7 @@ import { describe, expect, it } from "bun:test";
 import { render, screen } from "@testing-library/react";
 import { Equipment } from "@tme/library/src/item/equipment/equipment.types";
 import { Rarity } from "@tme/library/src/item/item.types";
+import { RARITY_METAL } from "../metal/metal";
 import { Header } from "./Header";
 
 describe("Header", () => {
@@ -93,5 +94,23 @@ describe("Header", () => {
 
 		// ASSERT
 		expect(screen.getByText("Relic")).toBeInTheDocument();
+	});
+
+	it("wears the metal of its rarity", () => {
+		// ARRANGE & ACT
+		const view = render(
+			<Header
+				name="Ring"
+				rarity={Rarity.Uncommon}
+				base={Equipment.Relic}
+				currency={0}
+			/>,
+		);
+
+		// ASSERT
+		const root = view.container.firstElementChild as HTMLElement;
+		expect(root.style.getPropertyValue("--metal")).toBe(
+			RARITY_METAL[Rarity.Uncommon].base,
+		);
 	});
 });
