@@ -58,8 +58,8 @@
 
 .rarity {
 	font-family: "Cinzel", serif;
-	font-size: 9px;
-	letter-spacing: 0.38em;
+	font-size: 11px;
+	letter-spacing: 0.32em;
 	color: var(--rarity-color);
 	text-shadow: 0 0 10px var(--rarity-shadow);
 }

@@ -137,6 +137,22 @@
 }
 
 /*
+ * Silk grain over the flat gradients and the art: fractal noise stretched
+ * along the horizontal, like fine woven threads. Kept very faint and blended
+ * in soft-light, so it reads as surface rather than as noise.
+ */
+.texture {
+	position: absolute;
+	inset: 0;
+	border-radius: 4px;
+	pointer-events: none;
+	opacity: 0.08;
+	mix-blend-mode: soft-light;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.22 0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+	background-size: 240px 240px;
+}
+
+/*
  * Inner hairline: a second, fainter frame inset from the border, echoing the
  * double rules used in the section headers. Each side fades out before the
  * corner ornaments so it never crosses the fret.
@@ -242,7 +258,7 @@
 }
 
 /*
- * Hover tilt (very rare and legendary). useCardTilt writes --tilt-x/--tilt-y
+ * Hover tilt (very rare and legendary, very rare at half the angle). useCardTilt writes --tilt-x/--tilt-y
  * (-1..1) and data-tilting; the hovered side lifts toward the viewer, like
  * tipping a card up to the light. At rest there is no transform at all, so
  * text stays crisp.
@@ -250,6 +266,11 @@
 .tilt {
 	--tilt-max: 3deg;
 	transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Very rare tips half as far as legendary */
+.tilt[data-tilt="veryRare"] {
+	--tilt-max: 1.5deg;
 }
 
 .tilt[data-tilting] {

@@ -124,7 +124,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 			<div
 				ref={tiltRef}
 				className={tilts ? `${styles.tilt} ${depth.preserve}` : undefined}
-				data-tilt={tilts ? "" : undefined}
+				data-tilt={tilts ? props.item.rarity : undefined}
 			>
 				{hasCutout && (
 					<div className={depth.preserve}>
@@ -152,6 +152,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 							aria-hidden="true"
 						>
 							{background}
+							<div className={styles.texture} />
 						</div>
 						{sparkles.enabled && <Sparkles amount={sparkles.amount} />}
 						<div className={`${styles.edge} ${depth.front}`} aria-hidden="true">
