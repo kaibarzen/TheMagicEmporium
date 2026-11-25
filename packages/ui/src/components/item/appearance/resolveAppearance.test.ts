@@ -5,6 +5,8 @@ import { Rarity } from "@tme/library/src/item/item.types";
 import { legendarySkulltakerFixture } from "../../../fixtures/items/legendarySkulltakerFixture";
 import { veryRarePerfectFixture } from "../../../fixtures/items/veryRarePerfectFixture";
 import { CloudVariant } from "../clouds/CloudDecoration";
+import { CornerVariant } from "../corners/CardCorners";
+import { CornerDetail } from "../corners/cornerDetail";
 import { sparkleAmount } from "../sparkles/sparkleDensity";
 import { resolveAppearance } from "./resolveAppearance";
 
@@ -198,5 +200,67 @@ describe("resolveAppearance", () => {
 		// ASSERT
 		expect(appearance.effects.sparkles).toBeNull();
 		expect(appearance.effects.reveal).toBe(true);
+	});
+
+	it("uses fret corners that grow more elaborate with rarity when left on AUTO", () => {
+		// ARRANGE
+		const common = new AbstractItem();
+		common.rarity = Rarity.Common;
+		const legendary = new AbstractItem();
+		legendary.rarity = Rarity.Legendary;
+
+		// ACT
+		const commonAppearance = resolveAppearance(common);
+		const legendaryAppearance = resolveAppearance(legendary);
+
+		// ASSERT
+		expect(commonAppearance.corners).toEqual({
+			variant: CornerVariant.Fret,
+			detail: CornerDetail.Bracket,
+		});
+		expect(legendaryAppearance.corners).toEqual({
+			variant: CornerVariant.Fret,
+			detail: CornerDetail.Ornate,
+		});
+	});
+
+	it("uses the chosen fret corners whatever the rarity", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Common;
+		item.appearance = { corners: "ORNATE" };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.corners).toEqual({
+			variant: CornerVariant.Fret,
+			detail: CornerDetail.Ornate,
+		});
+	});
+
+	it("uses the diamond corners when chosen", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { corners: "DIAMOND" };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.corners?.variant).toBe(CornerVariant.Diamond);
+	});
+
+	it("leaves the corners bare when set to NONE", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.appearance = { corners: "NONE" };
+
+		// ACT
+		const appearance = resolveAppearance(item);
+
+		// ASSERT
+		expect(appearance.corners).toBeNull();
 	});
 });

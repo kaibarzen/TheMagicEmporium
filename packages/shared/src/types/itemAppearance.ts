@@ -20,6 +20,19 @@ export type HeaderDeco =
 	| "STARS"
 	| "NONE";
 
+/**
+ * Ornaments on the card's four corners. BRACKET, STUD, FULL and ORNATE are
+ * the fret corners from plainest to most elaborate; DIAMOND is a separate
+ * design; NONE leaves the corners bare.
+ */
+export type CornerStyle =
+	| "BRACKET"
+	| "STUD"
+	| "FULL"
+	| "ORNATE"
+	| "DIAMOND"
+	| "NONE";
+
 /** Strength of an effect, from barely there to over the top */
 export type Intensity = "MILD" | "MEDIUM" | "STRONG" | "EXTREME";
 
@@ -34,6 +47,8 @@ export interface ItemAppearance {
 		/** AUTO shows puffy clouds on rare and better cards and a bare line below. Defaults to AUTO */
 		deco?: "AUTO" | HeaderDeco;
 	};
+	/** AUTO uses fret corners that grow more elaborate with rarity. Defaults to AUTO */
+	corners?: "AUTO" | CornerStyle;
 	effects?: {
 		/** AUTO tilts very rare cards MEDIUM and legendary cards STRONG. Defaults to AUTO */
 		tilt?: "AUTO" | "NONE" | Intensity;

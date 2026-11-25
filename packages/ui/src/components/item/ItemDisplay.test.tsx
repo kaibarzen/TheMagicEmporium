@@ -178,4 +178,32 @@ describe("ItemDisplay", () => {
 		// ASSERT
 		expect(view.container.querySelector("[data-tilt]")).toBeNull();
 	});
+
+	it("gives a common card ornate corners when its appearance asks for them", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Common;
+		item.appearance = { corners: "ORNATE" };
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(
+			view.container.querySelector('[data-detail="ornate"]'),
+		).not.toBeNull();
+	});
+
+	it("draws no corner ornaments when the corners are NONE", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+		item.rarity = Rarity.Legendary;
+		item.appearance = { corners: "NONE" };
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(view.container.querySelector("[data-detail]")).toBeNull();
+	});
 });

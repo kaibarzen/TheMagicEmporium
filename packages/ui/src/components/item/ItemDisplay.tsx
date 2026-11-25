@@ -5,8 +5,7 @@ import { type CSSProperties, useEffect, useMemo, useRef } from "react";
 import { resolveAppearance } from "./appearance/resolveAppearance";
 import { ItemBreakout } from "./breakout/ItemBreakout";
 import { useImageExists } from "./breakout/useImageExists";
-import { CardCorners, DEFAULT_CORNER_VARIANT } from "./corners/CardCorners";
-import { RARITY_CORNER_DETAIL } from "./corners/cornerDetail";
+import { CardCorners } from "./corners/CardCorners";
 import { CardFooter } from "./footer/CardFooter";
 import { Header, RARITY_COLOR } from "./header/Header";
 import styles from "./ItemDisplay.module.css";
@@ -158,10 +157,12 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 						</div>
 						{sparkles !== null && <Sparkles amount={sparkles} />}
 						<div className={`${styles.edge} ${depth.front}`} aria-hidden="true">
-							<CardCorners
-								variant={DEFAULT_CORNER_VARIANT}
-								detail={RARITY_CORNER_DETAIL[props.item.rarity]}
-							/>
+							{appearance.corners !== null && (
+								<CardCorners
+									variant={appearance.corners.variant}
+									detail={appearance.corners.detail}
+								/>
+							)}
 						</div>
 						<Header
 							name={props.item.name}
