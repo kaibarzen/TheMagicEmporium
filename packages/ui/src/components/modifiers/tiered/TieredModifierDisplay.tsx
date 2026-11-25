@@ -1,5 +1,3 @@
-import { Icon } from "@tme/library/src/item/icon";
-import { generateIconUrl } from "@tme/library/src/misc/generateIconUrl";
 import type { TieredModifier } from "@tme/library/src/modifiers/blueprints/TieredModifier";
 import {
 	type Flavor,
@@ -7,6 +5,7 @@ import {
 } from "@tme/library/src/modifiers/modifier.schema";
 import { BreakpointSwap } from "../BreakpointSwap";
 import { DiffText } from "../DiffText";
+import { ModifierMark } from "../mark/ModifierMark";
 import styles from "./TieredModifierDisplay.module.css";
 
 const ROMAN = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
@@ -26,9 +25,7 @@ interface TieredBodyProps {
 const TieredBody = (props: TieredBodyProps) => {
 	return (
 		<div className={styles.grid}>
-			<div className={styles.iconWrapper}>
-				<img src={generateIconUrl(Icon.Tiered)} alt="Icon" />
-			</div>
+			<ModifierMark kanji="阶" color="#b88ce8" />
 			<div>
 				<div className={styles.labelRow}>
 					<div className={styles.label}>TIERED</div>

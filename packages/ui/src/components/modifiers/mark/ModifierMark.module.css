@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&text=%E8%BF%9B%E9%98%B6%E7%8B%AC%E5%94%AF&display=swap");
+
+.mark {
+	align-self: stretch;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 5px;
+	padding-top: 1px;
+}
+
+.kanji {
+	font-family: "Ma Shan Zheng", "KaiTi", "Noto Serif SC", serif;
+	font-size: 21px;
+	line-height: 1;
+	color: var(--mark-color);
+	text-shadow: 0 0 10px color-mix(in srgb, var(--mark-color) 55%, transparent);
+}
+
+.trail {
+	flex: 1;
+	width: 2px;
+	border-radius: 1px;
+	background: linear-gradient(
+		180deg,
+		var(--mark-color),
+		color-mix(in srgb, var(--mark-color) 8%, transparent)
+	);
+	box-shadow: 0 0 8px color-mix(in srgb, var(--mark-color) 60%, transparent);
+}

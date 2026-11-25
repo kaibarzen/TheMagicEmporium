@@ -1,9 +1,8 @@
-import { Icon } from "@tme/library/src/item/icon";
-import { generateIconUrl } from "@tme/library/src/misc/generateIconUrl";
 import type { IndependentModifier } from "@tme/library/src/modifiers/blueprints/IndependentModifier";
 import { ModifierType } from "@tme/library/src/modifiers/modifier.schema";
 import { BreakpointSwap } from "../BreakpointSwap";
 import { DiffText } from "../DiffText";
+import { ModifierMark } from "../mark/ModifierMark";
 import styles from "./IndependentModifierDisplay.module.css";
 
 export interface IndependentModifierDisplayProps {
@@ -26,9 +25,7 @@ const IndependentBody = (props: IndependentBodyProps) => {
 
 	return (
 		<div className={styles.grid}>
-			<div className={styles.iconWrapper}>
-				<img src={generateIconUrl(Icon.Independent)} alt={"Icon"} />
-			</div>
+			<ModifierMark kanji="独" color="#5db4e8" />
 			<div>
 				<div className={styles.label}>INDEPENDENT</div>
 				<div className={styles.title}>

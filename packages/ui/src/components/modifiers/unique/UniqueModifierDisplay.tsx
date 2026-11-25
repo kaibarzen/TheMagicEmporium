@@ -1,9 +1,8 @@
-import { Icon } from "@tme/library/src/item/icon";
-import { generateIconUrl } from "@tme/library/src/misc/generateIconUrl";
 import type { UniqueModifier } from "@tme/library/src/modifiers/blueprints/UniqueModifier";
 import { ModifierType } from "@tme/library/src/modifiers/modifier.schema";
 import { BreakpointSwap } from "../BreakpointSwap";
 import { DiffText } from "../DiffText";
+import { ModifierMark } from "../mark/ModifierMark";
 import styles from "./UniqueModifierDisplay.module.css";
 
 export interface UniqueModifierDisplayProps {
@@ -26,9 +25,7 @@ const UniqueBody = (props: UniqueBodyProps) => {
 
 	return (
 		<div className={styles.grid}>
-			<div className={styles.iconWrapper}>
-				<img src={generateIconUrl(Icon.Unique)} alt="Icon" />
-			</div>
+			<ModifierMark kanji="唯" color="#ee7e3e" />
 			<div>
 				<div className={styles.label}>UNIQUE</div>
 				<div className={styles.title}>

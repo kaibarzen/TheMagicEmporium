@@ -4,19 +4,10 @@
 
 .grid {
 	display: grid;
-	grid-template-columns: 40px 1fr;
-	gap: 14px;
+	grid-template-columns: 22px 1fr;
+	gap: 12px;
 	padding: 14px 4px 16px;
 	align-items: start;
-}
-
-.iconWrapper {
-	padding-top: 6px;
-
-	img {
-		width: 40px;
-		height: 40px;
-	}
 }
 
 .label {

@@ -1,6 +1,5 @@
-import { Icon } from "@tme/library/src/item/icon";
-import { generateIconUrl } from "@tme/library/src/misc/generateIconUrl";
 import type { LinearModifier } from "@tme/library/src/modifiers/blueprints/LinearModifier";
+import { ModifierMark } from "../mark/ModifierMark";
 import styles from "./LinearModifierDisplay.module.css";
 
 export interface LinearModifierDisplayProps {
@@ -18,9 +17,7 @@ export const LinearModifierDisplay = (props: LinearModifierDisplayProps) => {
 	return (
 		<div className={styles.root}>
 			<div className={styles.grid}>
-				<div className={styles.iconWrapper}>
-					<img src={generateIconUrl(Icon.Linear)} alt="Icon" />
-				</div>
+				<ModifierMark kanji="进" color="#5dd49a" />
 				<div>
 					<div className={styles.label}>LINEAR</div>
 					<div className={styles.titleRow}>
