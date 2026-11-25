@@ -78,27 +78,32 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 					rarityColor={rarityColor}
 				/>
 			)}
-			<div
-				ref={cardRef}
-				className={styles.card}
-				data-rarity={props.item.rarity}
-			>
-				{background}
-				{sparkles.enabled && <Sparkles amount={sparkles.amount} />}
-				<CardCorners
-					variant={DEFAULT_CORNER_VARIANT}
-					detail={RARITY_CORNER_DETAIL[props.item.rarity]}
-				/>
-				<Header
-					name={props.item.name}
-					rarity={props.item.rarity}
-					base={props.item.base}
-					currency={props.item.currency}
-				/>
-				<Section kanji="凡" title="FAN" modifiers={props.item.primary} />
-				<Section kanji="灵" title="LING" modifiers={props.item.secondary} />
-				<Section kanji="仙" title="XIAN" modifiers={props.item.tertiary} />
-				<CardFooter rarityColor={rarityColor} />
+			<div className={styles.cardWrap}>
+				{!props.hideFrame && (
+					<div className={styles.titleGlow} aria-hidden="true" />
+				)}
+				<div
+					ref={cardRef}
+					className={styles.card}
+					data-rarity={props.item.rarity}
+				>
+					{background}
+					{sparkles.enabled && <Sparkles amount={sparkles.amount} />}
+					<CardCorners
+						variant={DEFAULT_CORNER_VARIANT}
+						detail={RARITY_CORNER_DETAIL[props.item.rarity]}
+					/>
+					<Header
+						name={props.item.name}
+						rarity={props.item.rarity}
+						base={props.item.base}
+						currency={props.item.currency}
+					/>
+					<Section kanji="凡" title="FAN" modifiers={props.item.primary} />
+					<Section kanji="灵" title="LING" modifiers={props.item.secondary} />
+					<Section kanji="仙" title="XIAN" modifiers={props.item.tertiary} />
+					<CardFooter rarityColor={rarityColor} />
+				</div>
 			</div>
 		</motion.div>
 	);

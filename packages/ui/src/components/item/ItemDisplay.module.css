@@ -17,18 +17,37 @@
 	inset: 0;
 	z-index: -1;
 	pointer-events: none;
-	background:
-		radial-gradient(
-			55% 40% at 50% 28%,
-			color-mix(in srgb, var(--rarity-color) 12%, transparent),
-			transparent 70%
-		),
-		radial-gradient(
-			closest-side,
-			rgba(4, 5, 16, 0.92) 55%,
-			rgba(4, 5, 16, 0.55) 80%,
-			transparent 100%
-		);
+	background: radial-gradient(
+		closest-side,
+		rgba(4, 5, 16, 0.92) 55%,
+		rgba(4, 5, 16, 0.55) 80%,
+		transparent 100%
+	);
+}
+
+/* Positions the title glow relative to the card, whatever sits above it */
+.cardWrap {
+	position: relative;
+}
+
+/*
+ * Rarity glow behind the card, centred on the item name. Anchored to the
+ * card's top edge (card padding + rarity row + half the name) rather than a
+ * percentage of the frame, so card length and item art do not shift it.
+ */
+.titleGlow {
+	position: absolute;
+	top: 72px;
+	left: 50%;
+	width: 568px;
+	height: 480px;
+	translate: -50% -50%;
+	pointer-events: none;
+	background: radial-gradient(
+		closest-side,
+		color-mix(in srgb, var(--rarity-color) 12%, transparent),
+		transparent 70%
+	);
 }
 
 .card {
