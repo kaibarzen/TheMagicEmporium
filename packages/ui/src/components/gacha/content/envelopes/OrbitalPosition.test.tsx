@@ -6,7 +6,7 @@ const renderSvg = (x: number, y: number, id: string) => {
 	// OrbitalPosition returns an SVG <g>; wrap it so the children mount in an
 	// SVG context.
 	return render(
-		<svg>
+		<svg aria-hidden="true">
 			<OrbitalPosition x={x} y={y} id={id} index={0} />
 		</svg>,
 	);

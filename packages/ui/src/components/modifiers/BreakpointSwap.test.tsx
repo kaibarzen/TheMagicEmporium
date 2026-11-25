@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
-import { ModifierType } from "@tme/library/src/modifiers/modifier.schema";
 import { fireEvent, render, screen } from "@testing-library/react";
+import { ModifierType } from "@tme/library/src/modifiers/modifier.schema";
 import { BreakpointSwap } from "./BreakpointSwap";
 
 describe("BreakpointSwap", () => {

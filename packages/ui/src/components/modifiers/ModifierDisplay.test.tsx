@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
-import type { Modifier } from "@tme/library/src/modifiers/Modifier";
 import { render } from "@testing-library/react";
+import type { Modifier } from "@tme/library/src/modifiers/Modifier";
 import { ModifierDisplay } from "./ModifierDisplay";
 
 describe("ModifierDisplay", () => {

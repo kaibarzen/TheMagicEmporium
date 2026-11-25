@@ -3,7 +3,7 @@ import { AbstractItem } from "@tme/library/src/item/AbstractItem";
 import { Rarity } from "@tme/library/src/item/item.types";
 import { Gacha } from "./Gacha";
 import { PullProcess } from "./PullProcess";
-import { PullSelect } from "./PullSelect";
+import { type PullPhase, PullSelect } from "./PullSelect";
 
 const itemWithRarity = (rarity: Rarity): AbstractItem => {
 	const item = new AbstractItem();
@@ -102,7 +102,8 @@ describe("PullSelect", () => {
 	it("opens and resets to summoning when a process starts", () => {
 		// ARRANGE
 		const select = new PullSelect(new Gacha());
-		select.phase = "revealing";
+		// Widen back to PullPhase so the assignment doesn't narrow `phase` to "revealing" for the assertion below.
+		select.phase = "revealing" as PullPhase;
 		// A zero-reveal process keeps populateItems from drawing any items.
 		const process = new PullProcess();
 

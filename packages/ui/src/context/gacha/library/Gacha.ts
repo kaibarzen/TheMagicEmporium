@@ -1,16 +1,16 @@
+import { namespace } from "@tme/shared/src/namespaceConfig";
 import type { Actor5e } from "@tme/shared/src/types/actor5e";
 import {
-	EnvelopeFlag,
-	GachaItem5e,
+	type EnvelopeFlag,
+	type GachaItem5e,
 	GachaItemType,
-	WishFlag,
+	type WishFlag,
 } from "@tme/shared/src/types/GachaItem5e";
 import { makeAutoObservable } from "mobx";
 import { Inventory } from "./Inventory";
 import { Orbiter } from "./Orbiter";
 import { PullProcess } from "./PullProcess";
 import { PullSelect } from "./PullSelect";
-import { namespace } from "@tme/shared/src/namespaceConfig";
 
 export class Gacha {
 	public orbiter: Orbiter = new Orbiter();

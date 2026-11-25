@@ -1,8 +1,5 @@
 import { Equipment } from "@tme/library/src/item/equipment/equipment.types";
-import type {
-	AllArrayOperations,
-	AllOperations,
-} from "@tme/shared/src/types/GachaItem5e";
+import type { AllOperations } from "@tme/shared/src/types/GachaItem5e";
 import {
 	ArrayOperation,
 	LockOperation,
