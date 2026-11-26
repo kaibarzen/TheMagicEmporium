@@ -1,5 +1,14 @@
 # The Magic Emporium — CLAUDE.md
 
+### Implementation & Architecture
+
+- This is a long-term project. Build every feature and fix for the long run, not just to close the current task.
+- No quick, dirty fixes. Don't use workarounds, hacks, special-case patches, `any` casts, or suppressed errors to make a problem go away. Find the root cause and fix it there.
+- If the right fix means refactoring or changing the architecture, do it, or propose it when the change is large, rather than piling a patch on top.
+- Keep abstractions clean and consistent with the existing architecture. Code should stay easy to extend and maintain later.
+
+---
+
 ### Components
 
 - Use named exports with arrow functions:

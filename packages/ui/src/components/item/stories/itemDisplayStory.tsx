@@ -14,7 +14,11 @@ export const itemDisplayParameters = {
 export const renderItemDisplay = (props: ItemDisplayProps): JSX.Element => {
 	return (
 		<div style={{ background: "#040510", padding: "40px" }}>
-			<ItemDisplay item={props.item} hideFrame={props.hideFrame} />
+			<ItemDisplay
+				item={props.item}
+				hideFrame={props.hideFrame}
+				selected={props.selected}
+			/>
 		</div>
 	);
 };

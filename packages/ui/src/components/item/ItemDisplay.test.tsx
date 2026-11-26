@@ -64,6 +64,28 @@ describe("ItemDisplay", () => {
 		).not.toBeNull();
 	});
 
+	it("marks the card as selected when selected", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame selected />);
+
+		// ASSERT
+		expect(view.container.querySelector("[data-selected]")).not.toBeNull();
+	});
+
+	it("leaves the card unmarked when not selected", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+
+		// ACT
+		const view = render(<ItemDisplay item={item} hideFrame />);
+
+		// ASSERT
+		expect(view.container.querySelector("[data-selected]")).toBeNull();
+	});
+
 	it("gives common items bare bracket corners", () => {
 		// ARRANGE
 		const item = new AbstractItem();

@@ -31,3 +31,8 @@ export const Default: Story = {};
 export const HideFrame: Story = {
 	args: { hideFrame: true },
 };
+
+/** Rings the card in its rarity colour, as while the tooltip is pinned. */
+export const Selected: Story = {
+	args: { selected: true },
+};

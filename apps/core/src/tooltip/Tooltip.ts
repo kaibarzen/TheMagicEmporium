@@ -22,6 +22,7 @@ export class Tooltip {
 	private readonly container: HTMLDivElement;
 	private readonly contentDiv: HTMLDivElement;
 	private root: Root | null = null;
+	private item: AbstractItem | null = null;
 
 	constructor() {
 		this.container = document.createElement("div");
@@ -158,10 +159,21 @@ export class Tooltip {
 	};
 
 	public setContent = (item: AbstractItem): void => {
+		this.item = item;
+		this.render();
+	};
+
+	/** Renders the current item; a pinned tooltip shows the card as selected */
+	private render = (): void => {
+		if (this.item === null) {
+			return;
+		}
 		if (!this.root) {
 			this.root = createRoot(this.contentDiv);
 		}
-		this.root.render(createElement(ItemDisplay, { item }));
+		this.root.render(
+			createElement(ItemDisplay, { item: this.item, selected: this.pinned }),
+		);
 	};
 
 	public showNextTo = (e: MouseEvent, item: AbstractItem): void => {
@@ -186,7 +198,7 @@ export class Tooltip {
 		this.pinned = true;
 		this.container.classList.add(styles["pinned"]);
 		this.contentDiv.style.pointerEvents = "auto";
-		this.contentDiv.style.outline = "1px solid rgba(212,166,74,.5)";
+		this.render();
 	};
 
 	public unpin = (): void => {
@@ -194,7 +206,7 @@ export class Tooltip {
 		this.shown = false;
 		this.container.classList.remove(styles["pinned"]);
 		this.contentDiv.style.pointerEvents = "none";
-		this.contentDiv.style.outline = "none";
+		this.render();
 		this.container.style.opacity = "0";
 		this.container.style.visibility = "hidden";
 	};

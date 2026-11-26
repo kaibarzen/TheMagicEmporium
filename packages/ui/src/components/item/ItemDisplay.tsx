@@ -120,6 +120,8 @@ const useShownEdge = (edge: ResolvedEdge | null): ResolvedEdge | null => {
 export interface ItemDisplayProps {
 	item: AbstractItem;
 	hideFrame?: boolean;
+	/** Rings the card in its rarity colour, e.g. while the tooltip is pinned */
+	selected?: boolean;
 }
 
 export const ItemDisplay = (props: ItemDisplayProps) => {
@@ -235,6 +237,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 						ref={cardRef}
 						className={`${styles.card} ${depth.preserve}`}
 						data-rarity={props.item.rarity}
+						data-selected={props.selected ? "" : undefined}
 					>
 						<div
 							className={`${styles.backdrop} ${depth.back}`}
@@ -265,6 +268,10 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 								/>
 							)}
 						</div>
+						<div
+							className={`${styles.selection} ${depth.front}`}
+							aria-hidden="true"
+						/>
 						<Header
 							name={props.item.name}
 							rarity={props.item.rarity}
