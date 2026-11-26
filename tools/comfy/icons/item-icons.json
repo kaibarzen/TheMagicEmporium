@@ -318,5 +318,33 @@
     "item": "Bramble-studded leather armour: a dark brown hardened leather cuirass where every stud is a thick, curved, pale rose thorn growing straight out of the leather, in loose rows across the chest and shoulders. The thorns are big and chunky, clearly part of the armour. Shown like a close-up chestpiece: the upper torso only, from the collar down to the waist, seen at a slight three-quarter angle, filling the frame and cropped only a little, no sleeves, no arms, no head, no legs. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
     "palette": "dark oxblood-brown leather, pale bone-green thorns; background of deep teal and cold turquoise strokes",
     "notes": "First entry; the old icon was in the outdated detailed style."
+  },
+  "accessory/ring": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A ring shown whole and filling the frame, tilted in strong perspective at a steep three-quarter angle so it reads as a solid 3D object, not a flat circle: the ring is a thick, chunky gold serpent coiled around and biting its own tail (an ouroboros). The near side of the band is wide and close to the viewer, the far side narrower, and the shadowed inner surface of the band is clearly visible through the opening. Strong light and shadow: bright highlights on the top of the band, deep warm-brown shadow inside. The serpent's head sits on the near side of the ring, with one bright emerald-green eye. Scales only hinted at with a few strokes. The ring is the only object; no gemstones, no loose sparkles around it. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "gleaming warm gold serpent with one emerald-green eye; background of deep crimson and vivid violet strokes",
+    "notes": "Ouroboros concept chosen 2026-11-26. The first version (seed 42, ring seen face-on) looked too flat; ask for the steep three-quarter tilt with the inner band visible, like the old plain ring icon."
+  },
+  "accessory/amulet": {
+    "method": "generate",
+    "seed": 7,
+    "item": "An amulet pendant shown whole and filling the frame, hanging slightly tilted from a short, thick, chunky gold chain that runs straight up off the top border: a small hourglass with a sturdy gold frame (two round end caps and three thick posts), its glass bulbs are frosted and milky (the background never shows through them), half full of bright, glowing cyan sand trickling from the top bulb into the bottom one. The glow stays inside the glass; no loose sparks or particles around it. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "gleaming gold frame and chain, bright glowing cyan sand in milky frosted glass; background of deep crimson and dark plum strokes, no orange or yellow",
+    "notes": "Hourglass pendant concept chosen 2026-11-26. Seed 42 on a crimson/orange background lost the cutout: gold too close to orange, background visible through clear glass."
+  },
+  "accessory/relic": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A holy relic: a human skull seen at a slight three-quarter angle, filling the frame, completely covered in hammered gold leaf, with two big, solid, blood-red gemstones set in its eye sockets. No jaw, no halo, no candles, nothing around it. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "rich gleaming hammered gold skull with two blood-red gem eyes; background of deep royal blue and teal strokes",
+    "notes": "Gilded saint's skull concept chosen 2026-11-26."
+  },
+  "accessory/ouroboros": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A ring seen at a slight angle, shown whole and filling the frame: a thick gold serpent coiled into a perfect circle, biting its own tail (an ouroboros), its head at the top of the ring with one bright emerald-green eye. Scales only hinted at with a few strokes. The ring is the only object; no gemstones, no loose sparkles around it. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "gleaming warm gold serpent with one emerald-green eye; background of deep crimson and vivid violet strokes",
+    "notes": "First ouroboros ring take (face-on, flat), kept as a spare icon after accessory/ring moved to a tilted 3D version. Not used by any item yet."
   }
 }
