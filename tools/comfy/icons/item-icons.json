@@ -58,9 +58,9 @@
   "armor/medium/chainShirt": {
     "method": "generate",
     "seed": 42,
-    "item": "A short-sleeved chain shirt of fine metal rings ending at the waist, symmetrical, shown upright from the front",
-    "palette": "bright silver rings, royal blue and violet background",
-    "notes": "Made with the older, more detailed whole-item prompt. Rerun to match the rough close-crop style; rewrite the description as a close-up chestpiece first."
+    "item": "Golden serpent chain shirt: a short chain shirt whose links are small gold snakes coiled into rings, each biting its own tail, painted as a simple, even surface of gold rings hinted at with a few strokes. One big, bold golden snake head rests at the collar, lying across the top of the chest with its body curling around the neckline. Smooth rounded shoulders, a simple round neckline. Shown like a close-up chestpiece: the upper torso only, from the collar down to the waist, seen at a slight three-quarter angle, filling the frame and cropped only a little, no sleeves, no arms, no head, no legs. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "gleaming warm gold links and snake, a little dark bronze shadow; background of deep violet and dark indigo strokes",
+    "notes": "Third design. The old whole-shirt icon was too detailed; the black widow hourglass version looked bad."
   },
   "armor/medium/halfPlate": {
     "method": "generate",
@@ -97,9 +97,10 @@
   },
   "melee/martial/battleaxe": {
     "method": "generate",
-    "seed": 42,
-    "item": "A symmetrical double-bladed battle axe head and the top of its dark haft, upright and seen straight from the front, both blades mirror images of each other: two large crescent-moon blades of blackened steel whose edges glow blood red, with a round blood-moon disc set in the center where the blades meet. The red glow stays inside the blades and does not spill out around them",
-    "palette": "blackened steel with glowing blood red edges and a deep red moon; background of cold teal and steel blue strokes"
+    "seed": 7,
+    "item": "Thunder battle axe: a one-handed bearded battle axe, the single wide blade of dark storm-grey steel, and its whole cutting edge is a thick, solid band of bright white-blue lightning that clings tightly to the edge, with a few bold, jagged zig-zag lightning bolts forking across the steel of the blade. Close crop: the axe head fills the upper part of the frame, the top of the dark wooden haft runs diagonally down to the lower left and off the edge. No loose bolts or sparks floating away from the blade. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "dark storm-grey steel, bright white and electric blue lightning edge, dark wood haft; background of burnt orange and rust red strokes",
+    "notes": "Replaces the blood-moon double axe, which looked meh."
   },
   "melee/martial/flail": {
     "method": "generate",
@@ -203,10 +204,10 @@
   },
   "melee/simple/greatclub": {
     "method": "generate",
-    "seed": 42,
-    "item": "A greatclub shaped exactly like a popsicle: a GIANT horned dragon skull of pale bone sitting upright on top of a TINY stick. The skull faces the viewer, seen from the front at a slight angle, with two big horns sweeping up and outward, empty eye sockets and a toothy jaw; it is huge and fills almost the entire upper part of the frame. A short, thin, straight wooden stick, tiny compared to the skull, comes straight down out of the base of the skull where the spine would attach, centered, vertical, wrapped in a strip of dark leather, and runs off the bottom edge of the image. Painted VERY ROUGH and LOW DETAIL: big flat planes of bone colour blocked in with a few chunky dry-brush strokes, no cracks, no fine texture, no small details",
-    "palette": "pale ivory bone, dark leather, brown wood; background of deep blood red and dark crimson strokes",
-    "notes": "Popsicle proportions on purpose: giant skull, tiny stick coming out where the spine would be."
+    "seed": 7,
+    "item": "Geode greatclub: a huge, heavy club carved from one thick, knotty dark oak branch, the head end swollen and split open, and bursting out of the split a big cluster of chunky, solid violet amethyst crystals, like a cracked geode. Close crop: the crystal-filled club head fills the upper right of the frame, the thick wooden shaft runs diagonally down to the lower left and off the edge. The crystals are opaque and solid, clearly part of the club, no glow spilling out, no floating shards. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "dark brown oak, bright violet and lilac amethyst crystals; background of deep emerald and jade green strokes",
+    "notes": "Third design; the dragon-skull popsicle looked weird. Seed 42 left green background in the cutout."
   },
   "melee/simple/handaxe": {
     "method": "generate",
@@ -230,13 +231,9 @@
   "melee/simple/mace": {
     "method": "generate",
     "seed": 42,
-    "item": "A simple mace whose head is ONE GIANT EYEBALL: a perfectly round, smooth ball with no eyelids, no lashes, no flesh around it, just the bare eyeball. Shaped like a plain round-headed mace: the huge eyeball sits at the upper right and fills most of the frame, a short iron collar holds it to a thin, straight, dark handle that runs diagonally down to the lower left corner and off the edge of the image. The eyeball is near-black with a deep purple sheen, its big glowing violet iris and black slit pupil staring straight at the viewer, a few dark purple veins on its surface. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
-    "palette": "near-black and deep purple eyeball with a glowing violet iris, dark iron collar and handle; background of bright acid green and pale lime strokes",
-    "repaint": {
-      "seed": 42,
-      "instruction": "Keep everything exactly as it is (same outline, size, position, handle, iron collar, background). Change only the eyeball: the glowing violet iris now covers the ENTIRE ball, edge to edge, so the whole sphere is one huge glowing purple iris with no black or dark sclera left around it. Keep the black slit pupil in the middle, scaled up to suit the bigger iris, and keep a darker purple rim along the ball's outline so it still reads as a sphere. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture."
-    },
-    "notes": "Inspired by the GW2 Fine Mace (plain round ball on a thin handle). The shipped icon is this generation plus one repaint that made the purple iris cover the whole ball. Tried adding magical floating spikes in a second repaint; the plain ball looked better."
+    "item": "Lantern mace: a classic flanged mace of dark iron whose head is an open cage of six tall, straight flanges, and inside the cage burns a bright, solid blue-white flame, like a lantern. Close crop: the mace head fills the upper right of the frame, the short iron handle wrapped in dark leather runs diagonally down to the lower left and off the edge. The flame stays inside the cage, opaque and solid, no sparks, embers or smoke around it. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "dark iron flanges, bright cyan and white flame, dark leather grip; background of warm crimson and blood orange strokes",
+    "notes": "Replaces the eyeball mace, which didn't fit the weapon."
   },
   "melee/simple/quarterstaff": {
     "method": "generate",
@@ -314,5 +311,12 @@
     "item": "A simple leather sling whose pouch cradles a tiny fallen star: a worn leather pouch at the center of the frame holds a small, blazing white-gold star giving off bright light, the two leather cords swinging up and away from it in a wide loop that runs off the upper edge of the image. The pouch and star fill most of the frame. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
     "palette": "worn brown leather, blazing white and gold starlight; background of deep violet and purple-black strokes",
     "notes": "Redone from scratch with one bold magical twist. The shipped icon is the first generation of this prompt (user favourite); later close-crop and mid-swing variants were worse."
+  },
+  "armor/light/studdedLeather": {
+    "method": "generate",
+    "seed": 42,
+    "item": "Bramble-studded leather armour: a dark brown hardened leather cuirass where every stud is a thick, curved, pale rose thorn growing straight out of the leather, in loose rows across the chest and shoulders. The thorns are big and chunky, clearly part of the armour. Shown like a close-up chestpiece: the upper torso only, from the collar down to the waist, seen at a slight three-quarter angle, filling the frame and cropped only a little, no sleeves, no arms, no head, no legs. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "dark oxblood-brown leather, pale bone-green thorns; background of deep teal and cold turquoise strokes",
+    "notes": "First entry; the old icon was in the outdated detailed style."
   }
 }
