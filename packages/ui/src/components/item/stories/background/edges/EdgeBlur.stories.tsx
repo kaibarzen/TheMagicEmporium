@@ -3,12 +3,12 @@ import {
 	baseRareFixture,
 	withAppearance,
 } from "../../../../../fixtures/items/baseRareFixture";
-import { edgeImages } from "../../../../../fixtures/items/edges/edgeImages";
 import { ItemDisplay } from "../../../ItemDisplay";
 import {
 	itemDisplayParameters,
 	renderItemDisplay,
 } from "../../itemDisplayStory";
+import { edgeImages } from "./edgeImages";
 
 /**
  * background.top.blur / background.bottom.blur: how much an edge strip is softened.
@@ -29,7 +29,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
 	args: {
 		item: withAppearance({
-			background: { bottom: { image: edgeImages.destruction } },
+			background: { bottom: { image: edgeImages.tentacle1x4 } },
 		}),
 	},
 };
@@ -38,7 +38,7 @@ export const Default: Story = {
 export const None: Story = {
 	args: {
 		item: withAppearance({
-			background: { bottom: { image: edgeImages.destruction, blur: "NONE" } },
+			background: { bottom: { image: edgeImages.tentacle1x4, blur: "NONE" } },
 		}),
 	},
 };
@@ -47,7 +47,7 @@ export const None: Story = {
 export const Light: Story = {
 	args: {
 		item: withAppearance({
-			background: { bottom: { image: edgeImages.destruction, blur: "LIGHT" } },
+			background: { bottom: { image: edgeImages.tentacle1x4, blur: "LIGHT" } },
 		}),
 	},
 };
@@ -56,7 +56,7 @@ export const Light: Story = {
 export const Medium: Story = {
 	args: {
 		item: withAppearance({
-			background: { bottom: { image: edgeImages.destruction, blur: "MEDIUM" } },
+			background: { bottom: { image: edgeImages.tentacle1x4, blur: "MEDIUM" } },
 		}),
 	},
 };

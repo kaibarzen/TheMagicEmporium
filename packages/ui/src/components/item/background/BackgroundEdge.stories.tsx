@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import boundlessSpirit from "../../../fixtures/items/BoundlessSpirit.jpg";
-import { edgeImages } from "../../../fixtures/items/edges/edgeImages";
+import { edgeImages } from "../stories/background/edges/edgeImages";
 import { BackgroundEdge, type BackgroundEdgeProps } from "./BackgroundEdge";
 
 /**
  * An image pinned to the top or bottom edge of the card, in front of the
- * background art, fading out toward the middle. Pick any of the example
+ * background art, shown whole without a fade. Pick any of the example
  * strips from the image control.
  */
 const meta = {
@@ -16,7 +16,7 @@ const meta = {
 	},
 	args: {
 		side: "BOTTOM",
-		image: edgeImages.destruction,
+		image: edgeImages.tentacle1x4,
 		blur: "NONE",
 	},
 	argTypes: {
@@ -52,12 +52,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-/** Blood running down from the top edge. */
+/** An edge pinned to the top. */
 export const Top: Story = {
-	args: { side: "TOP", image: edgeImages.blood },
+	args: { side: "TOP", image: edgeImages.tentacle1x1 },
 };
 
 /** A MEDIUM blurred edge, as if slightly out of focus. */
 export const MediumBlur: Story = {
-	args: { image: edgeImages.tentacles, blur: "MEDIUM" },
+	args: { image: edgeImages.tentacle1x4, blur: "MEDIUM" },
 };

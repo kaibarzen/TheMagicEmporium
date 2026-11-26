@@ -97,8 +97,9 @@ export type EdgeBlur = "LIGHT" | "MEDIUM" | "NONE";
 /**
  * An image pinned to the top or bottom edge of the card, in front of the
  * background art. It spans the card's width and keeps its own proportions,
- * so a strip looks the same on short and tall cards. Its inner side fades
- * out on its own, and it stays put while the art behind it moves.
+ * so a strip looks the same on short and tall cards. It is shown whole,
+ * without a fade: only the card clips an image taller than itself. It stays
+ * put while the art behind it moves.
  */
 export interface BackgroundEdge {
 	/**

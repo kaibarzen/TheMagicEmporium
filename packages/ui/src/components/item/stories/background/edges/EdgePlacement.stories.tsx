@@ -3,12 +3,12 @@ import {
 	baseRareFixture,
 	withAppearance,
 } from "../../../../../fixtures/items/baseRareFixture";
-import { edgeImages } from "../../../../../fixtures/items/edges/edgeImages";
 import { ItemDisplay } from "../../../ItemDisplay";
 import {
 	itemDisplayParameters,
 	renderItemDisplay,
 } from "../../itemDisplayStory";
+import { edgeImages } from "./edgeImages";
 
 /**
  * background.top / background.bottom: which edges show and where they come from.
@@ -31,7 +31,9 @@ export const Default: Story = {};
 /** An edge along the top only. */
 export const Top: Story = {
 	args: {
-		item: withAppearance({ background: { top: { image: edgeImages.blood } } }),
+		item: withAppearance({
+			background: { top: { image: edgeImages.tentacle1x1 } },
+		}),
 	},
 };
 
@@ -39,7 +41,7 @@ export const Top: Story = {
 export const Bottom: Story = {
 	args: {
 		item: withAppearance({
-			background: { bottom: { image: edgeImages.skulls } },
+			background: { bottom: { image: edgeImages.tentacle1x4 } },
 		}),
 	},
 };
@@ -49,19 +51,8 @@ export const Both: Story = {
 	args: {
 		item: withAppearance({
 			background: {
-				top: { image: edgeImages.blood },
-				bottom: { image: edgeImages.skulls },
-			},
-		}),
-	},
-};
-
-/** AUTO: redBloodSkull.jpg has a .top.png and .bottom.png next to it, so the card picks both up by itself. */
-export const Auto: Story = {
-	args: {
-		item: withAppearance({
-			background: {
-				image: "modules/the-magic-emporium/backgrounds/redBloodSkull.jpg",
+				top: { image: edgeImages.tentacle1x1 },
+				bottom: { image: edgeImages.tentacle1x4 },
 			},
 		}),
 	},
@@ -73,8 +64,8 @@ export const InFrontOfParallax: Story = {
 		item: withAppearance({
 			background: {
 				blur: "PARALLAX",
-				top: { image: edgeImages.blood },
-				bottom: { image: edgeImages.destruction },
+				top: { image: edgeImages.tentacle1x1 },
+				bottom: { image: edgeImages.tentacle1x4 },
 			},
 		}),
 	},

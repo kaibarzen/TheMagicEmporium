@@ -29,14 +29,7 @@ If no partner node can do a job, ask before reaching for anything else.
 | File | Output | What it does |
 | --- | --- | --- |
 | [`armor-background.api.json`](workflows/armor-background.api.json) | `output/tme/armor_*.png` | Generates a single 1:1 armor background from a text description, styled after the base style. |
-| [`background-edge.api.json`](workflows/background-edge.api.json) | `output/tme/edge_*.png` | Generates a wide strip for the top or bottom edge of an item card (`appearance.background.top`/`bottom`) and cuts it out to a transparent PNG. |
-| [`background-edge-tentacle.api.json`](workflows/background-edge-tentacle.api.json) | `output/tme/edge_tentacle_*.png` | `background-edge` preset: bright purple octopus arms curling up from the bottom edge. |
-| [`background-edge-ice.api.json`](workflows/background-edge-ice.api.json) | `output/tme/edge_ice_*.png` | `background-edge` preset: a sheet of bright, icy blue ice breaking apart along the bottom edge. |
-| [`background-edge-blood.api.json`](workflows/background-edge-blood.api.json) | `output/tme/edge_blood_*.png` | `background-edge` preset: bright red blood running down from the top edge in long drips. |
-| [`background-edge-skulls.api.json`](workflows/background-edge-skulls.api.json) | `output/tme/edge_skulls_*.png` | `background-edge` preset: a heap of bone-ivory skulls piled along the bottom edge. |
-| [`background-edge-eyes.api.json`](workflows/background-edge-eyes.api.json) | `output/tme/edge_eyes_*.png` | `background-edge` preset: two huge, bloodshot eyes staring at the viewer over the bottom edge, in extreme close-up. |
-| [`background-edge-eyes-drained.api.json`](workflows/background-edge-eyes-drained.api.json) | `output/tme/edge_eyes_drained_*.png` | `background-edge` preset: the creepy eyes again, but blank and milky white, with pale wisps of soul pouring out of them. |
-| [`background-edge-eyeballs.api.json`](workflows/background-edge-eyeballs.api.json) | `output/tme/edge_eyeballs_*.png` | `background-edge` preset: cosmic horror, a mound of stacked eyeballs of every size along the bottom edge, all staring at the viewer. |
+| [`background-edge.api.json`](workflows/background-edge.api.json) | `output/tme/edge_*.png`, `output/tme/edge_cutout_*.png` | Paints one big, close-up subject growing out of the top or bottom edge of an item card (`appearance.background.top`/`bottom`), as a rough sketch on flat white, and also saves its transparent cutout. |
 | [`modifier-icon.api.json`](workflows/modifier-icon.api.json) | `output/tme/modifier_*.png` | Repaints an existing modifier icon (linear, unique, …) in the base style, cut out to a transparent PNG. |
 | [`item-icon.api.json`](workflows/item-icon.api.json) | `output/tme/icon_*.png`, `output/tme/icon_cutout_*.png` | Paints a new item icon on a coloured brush-burst background, as a rough, low-detail concept sketch, and also saves its transparent cutout. |
 | [`item-repaint.api.json`](workflows/item-repaint.api.json) | `output/tme/repaint_*.png`, `output/tme/repaint_cutout_*.png` | Edits an existing item icon from a one-line instruction (new material, colours, a fixed part) while keeping its outline and composition, and also saves its transparent cutout. |
@@ -62,34 +55,42 @@ Change the seed to get variations of the same prompt.
 
 ### background-edge
 
-Edge images sit along the top or bottom of an item card, in front of the background art (`appearance.background.top` / `.bottom`). The card stretches them to its width at their own proportions, crops them to 60% of its height and fades their inner side, so the strip only needs a ragged silhouette along one edge.
+Edge images sit along the top or bottom of an item card, in front of the background art (`appearance.background.top` / `.bottom`). The card stretches them to its width (460px) at their own proportions and shows them whole, so the aspect ratio decides how far up the card the subject reaches.
 
-1. **Style reference** loads `rough-brush.jpg`.
-2. **Nano Banana 2.1** generates a 21:9 strip: a dark silhouette growing from one edge, on flat white.
-3. **Recraft Remove Background** (partner node) cuts the white away.
-4. **SaveImage** writes a transparent PNG to `output/tme/edge_*.png`.
+1. **Style references** load the same three images as `item-icon` (`rough-brush.jpg`, `warhammer.jpg`, `greatsword.jpg`), with the same rough, low-detail style wording.
+2. **Nano Banana 2.1** paints ONE subject in extreme close-up, growing out of the edge named in the `Edge:` line, on flat white. Only that edge may cut it; the other three borders stay clear.
+3. **Resize** scales the result to 1000px wide (about twice the card's width). Recraft refuses images over 4096px, and Nano Banana's 1:4 comes out slightly taller than 1:4, so 1024px wide is already too much for it.
+4. **SaveImage** writes the painted image; **Recraft Remove Background** cuts it out and a second **SaveImage** writes the transparent PNG.
 
-For each new strip, edit these lines of the prompt:
+For each new edge, edit these lines of the prompt and the node's aspect ratio:
 
 ```
 Edge: bottom
-Description: Jagged rubble, broken stones and a few cracked pillar fragments, half swallowed by low, creeping mist
-Use following color palette: near-black blue-violet, faint cold violet rim light
+Subject: One single giant octopus tentacle, thick as a tree trunk at its base, rising up and curling over into a loose spiral near its tip, with rows of big round suckers along its inner side
+Use following color palette: deep violet and magenta skin, pale pink suckers, a few dark indigo shadow strokes
 ```
 
-A fixed **Mood** line keeps every strip dark and mysterious: deep shadow, as if at the edge of torchlight, with only a faint, eerie glow on the rim.
+#### Aspect ratio
 
-- **Edge** is `top` or `bottom`. Describe things that belong on that edge: a cave ceiling, stalactites, hanging roots or chains for `top`; rubble, mist, grass, bones or a dark ground for `bottom`. Don't flip a bottom strip to get a top one, because gravity reads wrong.
-- **Palette:** keep the silhouette dark. The card dims its background further, and a bright strip competes with the text. One faint rim-light colour taken from the background art helps the strip sit in front of it.
-- **Seed:** change it to get variations of the same prompt.
+The example tentacles are in [`packages/ui/src/components/item/stories/background/edges/`](../../packages/ui/src/components/item/stories/background/edges), one per ratio, with a story each (**Edges/Tentacle**).
 
-Finished example strips live in [`packages/ui/src/fixtures/items/edges/`](../../packages/ui/src/fixtures/items/edges), where the item card stories use them. To give a background its own edges in the module, save them next to it as `<name>.top.png` / `<name>.bottom.png` (for example `apps/core/public/backgrounds/redBloodSkull.top.png`); cards left on `AUTO` pick them up.
+| Ratio | Height on the card | Use it for |
+| --- | --- | --- |
+| **1:1** | ~460px | **Default for small and medium details.** The level of detail fits well. |
+| **9:16** | ~820px | **Default for large details**, when you want to go big on a theme. Too rough with the base prompt at this size: use the more-detailed style below. |
+| **1:4** | ~1840px | Stretching one subject over the WHOLE card. Needs more detail than the base prompt gives. |
 
-#### Presets
+Don't use **1:8**: the subject turns into a thin, unusable sliver, and Recraft refuses it at 1000px wide.
 
-`background-edge-tentacle`, `background-edge-ice`, `background-edge-blood` and `background-edge-skulls` are copies of `background-edge` with their own description and palette already filled in. Unlike the base workflow they are **bright**: they have no Mood line and paint a brightly coloured shape instead of a dark silhouette.
+#### More detail for large edges
 
-`background-edge-eyes`, `background-edge-eyes-drained` and `background-edge-eyeballs` keep the base workflow's dark look but swap its Mood line for a creepy (eyes) or cosmic horror (eyeballs) one, and let the eyes be the one detailed part of the otherwise flat, shadowed subject. The ice, skulls, eyeballs and drained eyes presets paint on flat **black** instead of white, because pale ice, bone, eyeballs and glowing wisps on white cut out badly. Blood is set to `Edge: top`, so it runs down from the top of the card; the others are set to `Edge: bottom`. Switch the line to put a strip on the other edge. If you improve the shared parts of the prompt (style, layout), copy the change into every `background-edge*` file.
+The base prompt keeps detail LOW, which suits 1:1 but looks a bit too rough on 9:16 and 1:4. For those, replace the prompt's `Keep detail LOW: … no smooth gradients.` sentences with this (the 9:16 and 1:4 tentacle examples use it, seeds 7 and 42):
+
+```
+Keep detail MODERATE, only a little above a quick sketch: big simple shapes and broad planes of colour, blocked in with confident strokes, plus a simple light side and shadow side to give the form some volume. Paint the suckers as simple rings with a dark centre, a few strokes each, and hint at a couple of skin folds with single strokes. Most of the surface stays flat, loose brushwork. Edges may be rough and painterly. No polished rendering, no fine linework, no smooth gradients, no texture covering the whole surface.
+```
+
+The second sentence is about the tentacle; describe the subject's own few details there for other subjects. Only go a little above the base prompt: asking for fully modelled forms, rim light, textured skin and highlights everywhere overshoots into a polished, over-detailed painting that no longer matches the item icons.
 
 ### modifier-icon
 
@@ -199,7 +200,7 @@ Every image uses the same look: **rough, painterly concept art sketches**.
 - Bold, loose dry-brush strokes with visible bristle texture
 - Chunky, angular brushwork that radiates outward in bursts
 - Scattered paint specks and splatter
-- The subject is mostly flat with little interior detail, set inside the strokes (backgrounds and edge strips use a dark silhouette; item icons use the item's own colours, see [Item icons](#item-icons))
+- The subject is mostly flat with little interior detail, set inside the strokes (backgrounds use a dark silhouette; item icons use the item's own colours, see [Item icons](#item-icons))
 - A limited, saturated palette of two or three colours per image, chosen for the item's theme
 - No text, borders or frames
 

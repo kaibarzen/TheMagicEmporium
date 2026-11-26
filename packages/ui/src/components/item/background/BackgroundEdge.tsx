@@ -19,7 +19,7 @@ export interface BackgroundEdgeProps {
 
 /**
  * An image pinned to the top or bottom edge of the card, spanning its width
- * at the image's own proportions and fading out toward the card's middle.
+ * at the image's own proportions and shown whole, without a fade.
  * Must be placed inside a positioned container that clips its overflow: a
  * blurred image overhangs the container so its soft rim never shows.
  */
@@ -37,7 +37,7 @@ export const BackgroundEdge = (props: BackgroundEdgeProps): JSX.Element => {
 			style={
 				{
 					"--blur": `${blur}px`,
-					// Twice the blur radius hides the faded rim outside the card
+					// Twice the blur radius hides the blurred rim outside the card
 					"--overhang": `${blur * 2}px`,
 				} as CSSProperties
 			}
