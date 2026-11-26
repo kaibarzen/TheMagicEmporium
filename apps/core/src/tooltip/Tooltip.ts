@@ -1,11 +1,17 @@
 import type { AbstractItem } from "@tme/library/src/item/AbstractItem";
-import { ItemDisplay } from "@tme/ui/src/components/item/ItemDisplay.tsx";
+import {
+	ITEM_CARD_SELECTOR,
+	ItemDisplay,
+} from "@tme/ui/src/components/item/ItemDisplay.tsx";
 import { createElement } from "react";
 import { createRoot, type Root } from "react-dom/client";
+import { placeCardTop } from "./placement";
 import styles from "./Tooltip.module.css";
 
 const GAP = 20;
 const TOOLTIP_WIDTH = 516;
+/** Space kept free between the card and the top or bottom of the window */
+const EDGE_MARGIN = 12;
 
 export class Tooltip {
 	private pinned: boolean = false;
@@ -23,6 +29,13 @@ export class Tooltip {
 	private readonly contentDiv: HTMLDivElement;
 	private root: Root | null = null;
 	private item: AbstractItem | null = null;
+	private anchorY: number = 0;
+	/**
+	 * Whether the tooltip still places itself. It re-places whenever its
+	 * content changes size (header art loads late), until the user scrolls,
+	 * drags or pins it.
+	 */
+	private autoPlace: boolean = false;
 
 	constructor() {
 		this.container = document.createElement("div");
@@ -33,6 +46,12 @@ export class Tooltip {
 		this.container.appendChild(this.contentDiv);
 
 		document.body.appendChild(this.container);
+
+		new ResizeObserver((): void => {
+			if (this.autoPlace) {
+				this.placeVertically();
+			}
+		}).observe(this.contentDiv);
 
 		let dragPending = false;
 		let dragStartX = 0;
@@ -54,6 +73,7 @@ export class Tooltip {
 					Math.abs(e.clientY - dragStartY) > 4
 				) {
 					this.isDragging = true;
+					this.autoPlace = false;
 					this.container.classList.add(styles["dragging"]);
 				}
 			}
@@ -92,6 +112,7 @@ export class Tooltip {
 					this.container.style.transform = `scale(${this.currentScale})`;
 					return;
 				}
+				this.autoPlace = false;
 				this.container.classList.add(styles["scrolling"]);
 				if (this.scrollTimer) clearTimeout(this.scrollTimer);
 				this.scrollTimer = setTimeout(() => {
@@ -128,16 +149,42 @@ export class Tooltip {
 		});
 	}
 
-	public movePosition = (top: number, left: number): void => {
-		if (this.pinned) return;
-		const x =
-			left + GAP + TOOLTIP_WIDTH <= window.innerWidth
-				? left + GAP
-				: left - TOOLTIP_WIDTH - GAP;
-
-		this.currentTop = top;
-		this.currentLeft = Math.max(0, x);
+	/** Places the tooltip beside the cursor, on whichever side has room */
+	private placeAt = (x: number, y: number): void => {
+		if (this.pinned) {
+			return;
+		}
+		const left =
+			x + GAP + TOOLTIP_WIDTH <= window.innerWidth
+				? x + GAP
+				: x - TOOLTIP_WIDTH - GAP;
+		this.currentLeft = Math.max(0, left);
 		this.container.style.left = `${this.currentLeft}px`;
+		this.anchorY = y;
+		this.autoPlace = true;
+		this.placeVertically();
+	};
+
+	/**
+	 * Centres the card body on the cursor and keeps it readable on screen; see
+	 * placeCardTop. Measures the rendered card, so it works at any zoom.
+	 */
+	private placeVertically = (): void => {
+		const card = this.contentDiv.querySelector(ITEM_CARD_SELECTOR);
+		if (card === null) {
+			return;
+		}
+		const cardRect = card.getBoundingClientRect();
+		const contentRect = this.contentDiv.getBoundingClientRect();
+		const cardTop = placeCardTop({
+			anchorY: this.anchorY,
+			viewportHeight: window.innerHeight,
+			margin: EDGE_MARGIN,
+			above: cardRect.top - contentRect.top,
+			card: cardRect.height,
+			below: contentRect.bottom - cardRect.bottom,
+		});
+		this.currentTop += cardTop - cardRect.top;
 		this.container.style.top = `${this.currentTop}px`;
 	};
 
@@ -180,14 +227,12 @@ export class Tooltip {
 		if (this.showTimer) clearTimeout(this.showTimer);
 		if (this.shown) {
 			this.setContent(item);
-			const height = this.contentDiv.getBoundingClientRect().height;
-			this.movePosition(e.clientY - height / 2, e.clientX);
+			this.placeAt(e.clientX, e.clientY);
 			return;
 		}
 		this.showTimer = setTimeout(() => {
 			this.setContent(item);
-			const height = this.contentDiv.getBoundingClientRect().height;
-			this.movePosition(e.clientY - height / 2, e.clientX);
+			this.placeAt(e.clientX, e.clientY);
 			this.show();
 			this.showTimer = null;
 		}, 400);
@@ -196,6 +241,7 @@ export class Tooltip {
 	public pin = (): void => {
 		if (!this.shown) return;
 		this.pinned = true;
+		this.autoPlace = false;
 		this.container.classList.add(styles["pinned"]);
 		this.contentDiv.style.pointerEvents = "auto";
 		this.render();

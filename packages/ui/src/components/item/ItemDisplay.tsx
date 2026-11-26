@@ -117,6 +117,9 @@ const useShownEdge = (edge: ResolvedEdge | null): ResolvedEdge | null => {
 	return edge;
 };
 
+/** Matches the card body (name and modifiers), without the art above it */
+export const ITEM_CARD_SELECTOR = "[data-item-card]";
+
 export interface ItemDisplayProps {
 	item: AbstractItem;
 	hideFrame?: boolean;
@@ -236,6 +239,7 @@ export const ItemDisplay = (props: ItemDisplayProps) => {
 					<div
 						ref={cardRef}
 						className={`${styles.card} ${depth.preserve}`}
+						data-item-card=""
 						data-rarity={props.item.rarity}
 						data-selected={props.selected ? "" : undefined}
 					>

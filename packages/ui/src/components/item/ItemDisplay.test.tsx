@@ -2,7 +2,7 @@ import { describe, expect, it } from "bun:test";
 import { fireEvent, render } from "@testing-library/react";
 import { AbstractItem } from "@tme/library/src/item/AbstractItem";
 import { Rarity } from "@tme/library/src/item/item.types";
-import { ItemDisplay } from "./ItemDisplay";
+import { ITEM_CARD_SELECTOR, ItemDisplay } from "./ItemDisplay";
 
 describe("ItemDisplay", () => {
 	it("renders the item name through the header", () => {
@@ -62,6 +62,19 @@ describe("ItemDisplay", () => {
 		expect(
 			view.container.querySelector('[data-rarity="legendary"]'),
 		).not.toBeNull();
+	});
+
+	it("marks the card body so it can be found apart from the art", () => {
+		// ARRANGE
+		const item = new AbstractItem();
+
+		// ACT
+		const view = render(<ItemDisplay item={item} />);
+
+		// ASSERT
+		expect(
+			view.container.querySelector(ITEM_CARD_SELECTOR)?.textContent,
+		).toContain(item.name);
 	});
 
 	it("marks the card as selected when selected", () => {
