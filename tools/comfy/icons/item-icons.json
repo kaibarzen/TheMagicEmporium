@@ -2,23 +2,58 @@
   "armor/heavy/chainMail": {
     "method": "generate",
     "seed": 42,
-    "item": "A chain mail chestplate, close up, seen at a slight three-quarter angle: a torso piece of dense chain mail with a riveted steel gorget at the collar, steel plates over the shoulders and a steel band at the waist, no sleeves, no hood",
-    "palette": "cold bright silver steel and chain, deep teal and electric cyan background",
-    "notes": "Made with the older, more detailed whole-item prompt. Rerun to match the rough close-crop style."
+    "item": "Sunken chain mail: a chain mail hauberk chestpiece of old bronze rings pulled up from a shipwreck, covered in sea-green verdigris patina, with a few clusters of barnacles and one big orange starfish clinging to the chest. The chain mail is painted as a simple, even surface of big round rings hinted at with a few strokes, smooth rounded shoulders and a simple round neckline. Shown like a close-up chestpiece: the upper torso only, from the collar down to the waist, seen at a slight three-quarter angle, filling the frame and cropped only a little, no sleeves, no arms, no head, no legs. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, rings, stitches and texture only hinted at with a few strokes, no fine texture, no small details",
+    "palette": "sea-green verdigris and dull bronze rings, pale barnacles, bright orange starfish; background of deep crimson and dark red strokes",
+    "notes": "Second design; the silver starlight-mithril version looked ugly."
+  },
+  "armor/heavy/plate": {
+    "method": "generate",
+    "seed": 42,
+    "item": "Lion plate: a heavy plate cuirass of polished steel whose whole breastplate is sculpted into a huge, roaring golden lion's face, its mane flowing over the chest and shoulders as gold plates, with steel pauldrons. Shown like a close-up chestpiece: the upper torso only, from the collar down to the waist, seen at a slight three-quarter angle, filling the frame and cropped only a little, no sleeves, no arms, no head, no legs. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, rings, stitches and texture only hinted at with a few strokes, no fine texture, no small details",
+    "palette": "bright steel and gleaming warm gold; background of deep teal and dark emerald strokes",
+    "notes": "Plain steel plate. The shipped icon is a generation that had a lion on the chest, plus a repaint that removed it (the lion, realistic or as gold relief, did not work).",
+    "repaint": {
+      "seed": 42,
+      "instruction": "Keep the plate cuirass exactly as it is (same steel plates, pauldrons, shape, outline, angle, background). Remove the lion and all gold decoration completely: the breastplate becomes plain, smooth, unadorned steel plate with the same rough brushwork and steel highlights as the rest of the armour, no emblem, no gold, no engraving."
+    }
+  },
+  "armor/heavy/ringMail": {
+    "method": "generate",
+    "seed": 42,
+    "item": "Ring mail made of old gold coins: a dark leather jerkin covered in rows of big, overlapping gold coins with holes punched through their centres, sewn on like the rings of ring mail, a few coins tarnished, a pirate's hoard turned into armour. Shown like a close-up chestpiece: the upper torso only, from the collar down to the waist, seen at a slight three-quarter angle, filling the frame and cropped only a little, no sleeves, no arms, no head, no legs. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, rings, stitches and texture only hinted at with a few strokes, no fine texture, no small details",
+    "palette": "gleaming old gold coins, dark brown leather; background of deep royal blue and navy strokes",
+    "notes": "Redone from scratch with one bold magical twist."
   },
   "armor/heavy/splint": {
     "method": "generate",
     "seed": 42,
-    "item": "Splint armor: a heavy cuirass made of vertical riveted metal strips on a leather backing, with layered metal pauldrons on both shoulders, shown upright and symmetrical from the front",
-    "palette": "dark iron strips with bronze rivets and edges, burnt orange and ember red background",
-    "notes": "Made with the older, more detailed whole-item prompt. Rerun to match the rough close-crop style; rewrite the description as a close-up chestpiece first."
+    "item": "Bone splint armour: a cuirass made of long, curved rib bones laid vertically side by side like the splints of splint armour, bound onto a dark leather backing with leather cords, a big bone collar plate at the neck. Shown like a close-up chestpiece: the upper torso only, from the collar down to the waist, seen at a slight three-quarter angle, filling the frame and cropped only a little, no sleeves, no arms, no head, no legs. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, rings, stitches and texture only hinted at with a few strokes, no fine texture, no small details",
+    "palette": "pale ivory bone with warm shadows, dark brown leather; background of deep violet and indigo strokes",
+    "notes": "Redone from scratch with one bold magical twist."
   },
   "armor/light/leather": {
     "method": "generate",
     "seed": 42,
-    "item": "Leather armor: a hardened leather cuirass with rounded shoulder guards, laced sides and a belt at the waist, symmetrical, both sides the same length, shown upright from the front",
-    "palette": "warm tan and brown leather, mossy green and pale lime background",
-    "notes": "Made with the older, more detailed whole-item prompt. Rerun to match the rough close-crop style; rewrite the description as a close-up chestpiece first."
+    "item": "Overgrown leather armour: a hardened brown leather cuirass with laced sides and a belt at the waist, reclaimed by the forest, with thick patches of bright green moss growing over the shoulders and a cluster of small glowing mushrooms sprouting from the moss. Shown like a close-up chestpiece: the upper torso only, from the collar down to the waist, seen at a slight three-quarter angle, filling the frame and cropped only a little, no sleeves, no arms, no head, no legs. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, rings, stitches and texture only hinted at with a few strokes, no fine texture, no small details",
+    "palette": "warm brown leather, bright moss green, softly glowing pale mushrooms; background of warm amber and burnt orange strokes",
+    "notes": "Redone from scratch with one bold magical twist. Two repaints: opaque red toadstools (glowing ones dropped out of the cutout), then a teal background so they cut out cleanly.",
+    "repaint": [
+      {
+        "seed": 42,
+        "instruction": "Keep everything exactly as it is (same leather cuirass, moss, outline, background). Change only the small pale mushrooms on the shoulder: make them a cluster of three solid, opaque toadstools with bright red caps and white stems, clearly part of the armour, not glowing, not see-through."
+      },
+      {
+        "seed": 42,
+        "instruction": "Keep the leather cuirass, moss and red toadstools exactly as they are (same shapes, colours, outline, position). Recolour only the whole background: fill the ENTIRE frame edge to edge with a burst of deep teal and cold slate blue brush strokes, no orange or brown left in the background."
+      }
+    ]
+  },
+  "armor/light/padded": {
+    "method": "generate",
+    "seed": 7,
+    "item": "Cloud-padded armour: a medieval quilted gambeson, a long padded cloth jacket with tall vertical quilted channels and a laced front, like a knight's arming doublet, NOT a modern puffer vest. Its stuffing is living cloud: soft white cloud billows out of the collar and the shoulder seams in big puffy wisps, and a few small clouds drift away from it. Shown like a close-up chestpiece: the upper torso only, from the collar down to the waist, seen at a slight three-quarter angle, filling the frame and cropped only a little, no sleeves, no arms, no head, no legs. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, rings, stitches and texture only hinted at with a few strokes, no fine texture, no small details",
+    "palette": "off-white and pale grey quilted cloth, soft white cloud; background of deep sky blue and royal blue strokes",
+    "notes": "Redone from scratch with one bold magical twist. Seed 7 with 'medieval gambeson, NOT a puffer vest'; the first try looked like a modern puffer vest."
   },
   "armor/medium/chainShirt": {
     "method": "generate",
@@ -39,12 +74,19 @@
     "item": "A scale mail chestpiece, close up, seen at a slight three-quarter angle: just the torso, no sleeves, covered in rows of large, gleaming golden dragon scales that overlap like shingles, with broad scaled shoulder guards and dark red leather trim at the collar and edges",
     "palette": "gleaming gold dragon scales with dark red leather trim, deep emerald green and dark teal background"
   },
+  "clothes/common": {
+    "method": "generate",
+    "seed": 42,
+    "item": "Common clothes: a humble, worn tunic of rough undyed linen with a loose hood fallen back on the shoulders, a simple rope belt at the waist, a couple of mismatched sewn-on patches, and a small sprig of fresh lavender tucked into the belt. Shown like a close-up chestpiece: the upper torso only, from the collar down to the waist, seen at a slight three-quarter angle, filling the frame and cropped only a little, no sleeves, no arms, no head, no legs. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, rings, stitches and texture only hinted at with a few strokes, no fine texture, no small details",
+    "palette": "warm undyed oatmeal linen, brown rope, purple lavender; background of deep forest green and moss green strokes",
+    "notes": "Redone from scratch with one bold magical twist."
+  },
   "clothes/fine": {
     "method": "generate",
     "seed": 42,
-    "item": "Fine clothes: an elegant doublet with a high collar, a row of buttons, long sleeves and embroidered trim, the whole garment visible including both sleeves and the hem, symmetrical, shown upright from the front",
-    "palette": "rich burgundy fabric with gold embroidery, warm amber and teal background",
-    "notes": "Made with the older, more detailed whole-item prompt. Rerun to match the rough close-crop style; rewrite the description as an upper-torso crop like clothes/royal first."
+    "item": "Fine clothes: an elegant noble's long coat of deep midnight-black velvet with a high standing collar, silver clasps down the front, and a starry night sky embroidered across the chest and shoulders: scattered bright silver stars and a few thin silver lines joining them into constellations, the stars softly twinkling as if real. Shown like a close-up chestpiece: the upper torso only, from the collar down to the waist, seen at a slight three-quarter angle, filling the frame and cropped only a little, no sleeves, no arms, no head, no legs. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, rings, stitches and texture only hinted at with a few strokes, no fine texture, no small details",
+    "palette": "deep midnight black and navy velvet, bright twinkling silver stars and clasps; background of warm gold and amber strokes",
+    "notes": "Second design; the wine-red peacock doublet was rejected."
   },
   "clothes/royal": {
     "method": "generate",
@@ -90,10 +132,10 @@
   },
   "melee/martial/longsword": {
     "method": "generate",
-    "seed": 7,
-    "item": "The hilt of a golden longsword, close crop, diagonal with the blade pointing to the upper right: the crossguard is a sculpted, roaring golden lion's head with a big flowing mane, the blade emerging from its open jaws, a gold-wrapped grip and a round golden pommel. Only the first part of the blade is visible; it runs off the image border. The blade is a bold, solid, brightly polished white-silver with a gold-edged outline and a gold fuller down its center, clearly part of the sword and never fading into the background",
-    "palette": "gleaming gold and brilliant white-silver; background of deep royal blue strokes with a few crimson red accents",
-    "notes": "Seed 42 gave a plain grey blade that Recraft cut away; the gold-edged white-silver blade fixed it."
+    "seed": 42,
+    "item": "A knight's longsword with a blade of black volcanic obsidian split by a glowing crack of molten gold: a broad, heavy, glassy black blade with sharp faceted edges, a single jagged crack of bright gold-white light running up its whole length and spilling a few sparks, a wide plain steel crossguard and a leather-wrapped grip. Close crop: the hilt and the upper blade, big and bold, diagonal from lower left to upper right, filling 80 to 90 percent of the frame, only the tip touching the upper edge of the image. Grounded and believable in shape, NOT cartoonish, NOT a toy: real weapon proportions, no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "glossy black obsidian with cool grey glints, blazing gold-white crack and sparks, plain steel, dark leather; background of deep royal blue and electric blue strokes",
+    "notes": "Third design: the water blade looked underwhelming. Obsidian blade with a molten gold crack instead."
   },
   "melee/martial/morningstar": {
     "method": "generate",
@@ -109,14 +151,10 @@
   },
   "melee/martial/rapier": {
     "method": "generate",
-    "seed": 7,
-    "item": "A rapier split into three separate, floating parts lined up on a diagonal from lower left to upper right, with clear, empty gaps between them and nothing connecting them: at the lower left a dark leather-wrapped grip with a round gold pommel; in the middle, the largest and most eye-catching part, an extremely ornate, lavish golden swept-hilt guard, much wider than the grip, made of many elegant curling scrolls, spiralling loops, flourishes and filigree rings; at the upper right a long, thin, intact rapier blade that starts just past the guard and runs straight off the top right corner of the image. The blade is bold, solid, brilliant white-silver with a gold-edged outline, clearly part of the item and never fading into the background",
-    "palette": "gleaming gold guard, brilliant white-silver blade, dark leather grip; background of deep crimson and dark wine red strokes",
-    "repaint": {
-      "seed": 42,
-      "instruction": "Replace the short, broken blade piece at the upper right with a long, thin, INTACT rapier blade (no break, no jagged end): it floats just past the guard with a small empty gap, follows the same diagonal, and runs straight off the top right corner of the image. The blade is bold, solid, brilliant white-silver with a gold-edged outline, clearly part of the item. Keep the grip, the ornate guard and the gaps between the parts exactly as they are."
-    },
-    "notes": "The shipped icon is this generation plus one repaint (see repaint) that swapped a snapped blade piece for an intact blade."
+    "seed": 11,
+    "item": "A rapier, the whole weapon shown diagonally from the lower left (pommel) to the upper right (tip), with clear empty space between the weapon and every image border: its swept basket hilt is grown from THICK, bold, smooth green rose stems with a few big thorns, curling around the grip as a guard, with one red rose blooming on the guard, and a long, slender, solid, bright steel blade running straight toward the upper right. The blade and the stems are bold enough to read clearly; no thin wispy tendrils, no loose leaves, nothing floating apart from the sword. Grounded and believable in shape, NOT cartoonish, NOT a toy: real weapon proportions, no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "dark green rose stems, deep red rose, bright steel blade; background of warm gold and pale amber strokes",
+    "notes": "Rose-hilt rapier. Seed 11 on a gold background with thick stems; earlier tries on violet lost the blade or thin stems in the cutout."
   },
   "melee/martial/scimitar": {
     "method": "generate",
@@ -129,7 +167,8 @@
     "method": "generate",
     "seed": 42,
     "item": "A magical shortsword, close crop on the hilt and blade, diagonal with the blade pointing to the upper right: where the blade meets the dark silver crossguard, a small black hole is socketed into the sword, a pitch-black sphere ringed by a thin, bright glowing ring of light. The blade is made of glowing electric blue magical energy that pours out of the black hole and is visibly warped by it: bent, twisted and swirling around the socket before straightening into a short, sharp-pointed blade. Dark wrapped grip and pommel below. The energy blade is bold, solid and opaque like the rest of the sword, with no loose glow or particles around it",
-    "palette": "glowing electric blue and white energy, pitch-black sphere, dark silver hilt; background of deep magenta and hot orange strokes"
+    "palette": "glowing electric blue and white energy, pitch-black sphere, dark silver hilt; background of deep magenta and hot orange strokes",
+    "notes": "The shipped icon is this generation cropped by hand (box 60,264,820,1024 of the 1024px image, scaled back to 1024) so the blade's tip runs off the upper right, then re-cut with item-cutout.api.json. A grounded steel-gladius redesign was worse."
   },
   "melee/martial/trident": {
     "method": "generate",
@@ -142,6 +181,13 @@
     "seed": 42,
     "instruction": "The item is currently a flat black shadow silhouette. Keep its exact outline, but paint it as a real, textured war pick: (1) the long pointed pick spike that reaches to the upper left becomes a glowing magical crystal, faceted and translucent, luminous cyan with bright white highlights along its facets, set into the head with a dark iron collar; (2) the square hammer block on the right becomes textured dark iron with a few bolts, worn edges and cool steel highlights; (3) the handle becomes dark wood wrapped in leather straps. The crystal glow stays inside the crystal and does not spill out around it.",
     "notes": "Repainted from the original warPick.jpg (a flat shadow silhouette with a good outline)."
+  },
+  "melee/martial/whip": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A whip whose lash is a giant scorpion's tail: a short dark leather-wrapped handle at the lower left, and from it a long, segmented lash of glossy black chitin plates curling through the frame in a big S curve, ending in a large curved scorpion stinger at the upper right. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, rings, stitches and texture only hinted at with a few strokes, no fine texture, no small details",
+    "palette": "glossy black and deep red chitin, dark leather; background of bright cyan and teal strokes",
+    "notes": "Redone from scratch with one bold magical twist."
   },
   "melee/simple/club": {
     "method": "repaint",
@@ -177,7 +223,96 @@
   "melee/simple/lightHammer": {
     "method": "generate",
     "seed": 42,
-    "item": "A small one-handed throwing hammer, the whole compact hammer shown diagonally with the head at the upper right and filling most of the frame: a chunky, blocky head of bright steel with two copper bands around it, a flat striking face with a single simple glowing cyan rune carved into its side, and a short handle wrapped in dark leather with a copper pommel cap",
-    "palette": "bright steel, warm copper, glowing cyan rune, dark leather; background of deep crimson and magenta strokes"
+    "item": "A small one-handed blacksmith's hammer pulled straight from the forge, the whole compact hammer shown diagonally with the head at the upper right filling most of the frame: a simple, plain, slightly tapered head of dark hand-forged iron, its striking face and the front half of the head still glowing red-hot, fading from bright yellow-orange at the face through deep orange into dark cooled iron, with a few faint embers drifting off it. A short, plain, worn wooden handle runs down to the lower left. Grounded and realistic in shape, like a real forged tool, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "dark charcoal iron, red-hot glowing yellow-orange and deep orange heat, worn brown wood; background of deep teal and cold slate blue strokes",
+    "notes": "Redone because the old icon (blocky steel head, copper bands, cyan rune, thick ink outlines) looked too comic-like. The prompt explicitly bans outlines and comic style."
+  },
+  "melee/simple/mace": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A simple mace whose head is ONE GIANT EYEBALL: a perfectly round, smooth ball with no eyelids, no lashes, no flesh around it, just the bare eyeball. Shaped like a plain round-headed mace: the huge eyeball sits at the upper right and fills most of the frame, a short iron collar holds it to a thin, straight, dark handle that runs diagonally down to the lower left corner and off the edge of the image. The eyeball is near-black with a deep purple sheen, its big glowing violet iris and black slit pupil staring straight at the viewer, a few dark purple veins on its surface. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "near-black and deep purple eyeball with a glowing violet iris, dark iron collar and handle; background of bright acid green and pale lime strokes",
+    "repaint": {
+      "seed": 42,
+      "instruction": "Keep everything exactly as it is (same outline, size, position, handle, iron collar, background). Change only the eyeball: the glowing violet iris now covers the ENTIRE ball, edge to edge, so the whole sphere is one huge glowing purple iris with no black or dark sclera left around it. Keep the black slit pupil in the middle, scaled up to suit the bigger iris, and keep a darker purple rim along the ball's outline so it still reads as a sphere. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture."
+    },
+    "notes": "Inspired by the GW2 Fine Mace (plain round ball on a thin handle). The shipped icon is this generation plus one repaint that made the purple iris cover the whole ball. Tried adding magical floating spikes in a second repaint; the plain ball looked better."
+  },
+  "melee/simple/quarterstaff": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A golden quarterstaff topped with a statue of an eagle, close crop: the eagle statue is the focus and fills most of the upper part of the frame. A proud eagle of solid polished gold perches upright on the top end of the staff, seen in side profile facing right, wings folded tight against its body, sharp hooked beak, talons gripping a round gold knob on the staff's tip. The eagle is BIG compared to the staff. Below it, a straight golden staff with a couple of simple gold bands runs down diagonally toward the lower left corner and off the edge of the image. Painted VERY ROUGH and LOW DETAIL: big flat planes of gold blocked in with a few chunky dry-brush strokes, feathers only hinted at with a few strokes, no fine texture, no engravings, no small details",
+    "palette": "bright warm gold with deep amber shadows and pale yellow highlights; background of deep royal blue and bright azure strokes",
+    "notes": "Inspired by the GW2 Kaiser Snake Staff (gold eagle perched on top of the staff)."
+  },
+  "melee/simple/sickle": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A sickle whose blade IS a crescent moon: a thick, glowing crescent moon of pale silver-white moonstone, with a soft cold glow around it and a sharp inner edge, curving in a big C-shaped hook that fills most of the frame. Its lower end fits into a short, chunky, dark wooden handle wrapped in a strip of dark leather, which points down toward the lower right corner. The whole small sickle is shown, upright at a slight tilt, filling 80 to 90 percent of the frame. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no craters, no fine texture, no small details",
+    "palette": "pale silver-white glowing moon blade with a cold blue-white glow, dark brown wood and black leather; background of deep indigo and rich violet strokes",
+    "notes": "Redone from scratch: the blade is a crescent moon."
+  },
+  "ranged/martial/blowgun": {
+    "method": "generate",
+    "seed": 7,
+    "item": "A blowgun that is a long, straight, thin tube of polished jade, close crop of its front end, whose muzzle is carved as a SNAKE'S HEAD seen in side profile: a long, flat, wedge-shaped viper head with a slit eye, its jaws gaping wide open with two long curved fangs, the mouth empty. The whole blowgun is ONE STRAIGHT LINE running diagonally from the lower left corner to the upper right: the straight tube flows directly into the back of the head with no bend, no neck curve and no angle at the joint, and the snout points along the same diagonal toward the upper right corner. The head is big and fills the upper right of the frame; the tube runs off the lower left edge of the image. Clearly a snake head, slim and reptilian, not a fist or claw. No dart, no smoke. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "polished deep jade green with pale green highlights, ivory fangs, sickly green smoke; background of hot magenta and deep plum strokes",
+    "notes": "Redone from scratch with one bold magical twist. Say 'snake head in side profile, not a fist or claw'; the first try looked like a green fist."
+  },
+  "ranged/martial/crossbowHand": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A small one-handed hand crossbow whose bow arms are a pair of spread black raven wings, the feathers forming the curved limbs, with a taut string between the wingtips and a short black-feathered bolt loaded on a dark wooden stock with a pistol grip. The whole small crossbow is shown, seen from slightly above at a three-quarter angle, pointing to the upper right and filling 80 to 90 percent of the frame. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "glossy blue-black raven feathers, dark walnut wood, dull iron trigger; background of warm amber and burnt orange strokes",
+    "notes": "Redone from scratch with one bold magical twist."
+  },
+  "ranged/martial/crossbowHeavy": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A heavy crossbow whose huge bow is carved from a single slab of glacier ice, close crop of its front half: the thick, jagged ice bow spans most of the frame, frost and cold mist curling off it, a thick icicle bolt loaded on a massive dark iron and oak stock that runs toward the lower left corner and off the edge of the image. Seen from slightly above at a three-quarter angle. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "pale icy blue and white ice with cold cyan highlights, dark iron and dark oak; background of deep blood red and dark crimson strokes",
+    "notes": "Redone from scratch with one bold magical twist."
+  },
+  "ranged/martial/longbow": {
+    "method": "generate",
+    "seed": 7,
+    "item": "A longbow that is a living branch, the whole tall bow shown upright at a slight tilt, filling the frame from top to bottom: one thick, smoothly curved D-shaped limb of pale living wood with small green leaves sprouting along it and a leather-wrapped grip in the middle. A single thin, taut, glowing golden string of sunlight is tied firmly to BOTH tips of the bow and runs in a straight line between them, clearly attached at each end, so the bow and string form one closed D shape. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "warm pale wood, fresh leaf green, glowing golden-yellow string; background of deep indigo and violet strokes",
+    "notes": "Redone from scratch with one bold magical twist. Say the string is tied to both tips; the first try had a loose string next to the bow."
+  },
+  "ranged/martial/net": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A throwing net woven from thick, glowing strands of spider silk, spread wide open and flying toward the viewer like a giant spider web, with a few heavy dark iron weights tied to its outer corners. The net is the whole image, its open mesh fills 80 to 90 percent of the frame, big simple cells, few strands. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "pale glowing silver-white silk, dark iron weights; background of dark emerald and deep forest green strokes",
+    "notes": "Redone from scratch with one bold magical twist."
+  },
+  "ranged/simple/crossbowLight": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A light crossbow carved entirely from bright living sea coral, close crop of its front: the bow is a single curved branch of red-orange coral with a few short knobbly coral branches sprouting from its arms, a taut pale string between its tips, and a short bolt with a coral tip loaded on a slim coral-and-dark-wood stock that runs toward the lower left corner and off the edge of the image. Seen from slightly above at a three-quarter angle, the bow spanning most of the frame. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "bright coral red-orange and warm pink coral with pale highlights, dark wood; background of deep navy and royal blue strokes",
+    "notes": "Redone again: a lightning-bolt bow did not read well. Coral crossbow instead."
+  },
+  "ranged/simple/dart": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A single throwing dart whose fletching is a burning phoenix feather: a short, sharp steel dart point and slim shaft at the lower left, and a big, long tail feather of living fire at its back end, flickering flames instead of vanes. The whole dart is shown diagonally, point to the lower left, the flaming feather at the upper right filling most of the frame. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "dull steel, bright fire orange, gold and red flame feather; background of deep teal and cyan-blue strokes",
+    "notes": "Redone from scratch with one bold magical twist."
+  },
+  "ranged/simple/shortbow": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A shortbow made from two curling ram horns: the bow's two limbs are big, ridged, pale ivory horns joined at a dark leather-wrapped grip in the middle, a taut string between their tips. The whole compact bow is shown upright at a slight tilt, filling 80 to 90 percent of the frame. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "pale ivory and bone horn with warm brown shadows, dark leather grip; background of burnt orange and rust red strokes",
+    "notes": "Redone from scratch with one bold magical twist."
+  },
+  "ranged/simple/sling": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A simple leather sling whose pouch cradles a tiny fallen star: a worn leather pouch at the center of the frame holds a small, blazing white-gold star giving off bright light, the two leather cords swinging up and away from it in a wide loop that runs off the upper edge of the image. The pouch and star fill most of the frame. Grounded and believable in shape, NOT cartoonish: no thick black ink outlines, no comic-book style, no runes, no decorative bands. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "worn brown leather, blazing white and gold starlight; background of deep violet and purple-black strokes",
+    "notes": "Redone from scratch with one bold magical twist. The shipped icon is the first generation of this prompt (user favourite); later close-crop and mid-swing variants were worse."
   }
 }
