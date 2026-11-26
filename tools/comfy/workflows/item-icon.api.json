@@ -1,0 +1,94 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "rough-brush.jpg"
+    },
+    "_meta": {
+      "title": "Style reference 1 (tools/comfy/styles/rough-brush.jpg)"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "warhammer.jpg"
+    },
+    "_meta": {
+      "title": "Style reference 2 (apps/core/public/icons/melee/martial/warhammer.jpg)"
+    }
+  },
+  "3": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "greatsword.jpg"
+    },
+    "_meta": {
+      "title": "Style reference 3 (apps/core/public/icons/melee/martial/greatsword.jpg)"
+    }
+  },
+  "4": {
+    "class_type": "GeminiNanoBanana2V2",
+    "inputs": {
+      "prompt": "Using the reference images only as a STYLE guide, paint a new item icon. Do not copy their subjects or composition. The style is a ROUGH, QUICK CONCEPT ART SKETCH, like the references: bold, loose dry-brush strokes, visible bristle texture, chunky angular brushwork, scattered paint specks and splatter. Keep detail LOW: big simple shapes and flat planes of colour, blocked in with a few confident strokes. Suggest textures such as chain links, scales, engravings or stitching with a handful of broken strokes instead of drawing every piece. Edges may be rough and painterly. No polished rendering, no fine linework, no smooth gradients.\n\nItem: The double-bladed steel head of a battle axe and the top of its wooden haft, diagonal\nUse following color palette: dark iron and warm wood, burnt orange and deep crimson background\n\nComposition: a CLOSE crop on the most recognisable part of the item (for example a sword's hilt and upper half of the blade, an axe head with the top of the haft, the upper torso of a coat from the collar down to the waist), so it fills most of the frame, roughly 80 to 90 percent. Only crop a little: the item may run slightly off the image border, but enough of it stays visible to read clearly what it is. It must stay readable as a tiny icon: one bold, simple shape with strong value and colour contrast against the background. The background is a burst of saturated brush strokes radiating outward from behind the item and filling all the remaining space edge to edge, with no empty dark or blank areas; the strokes stay behind the item and never cross over it. No hands, no mannequin, no stand, no other objects, no text, no border, no frame.",
+      "model": "Gemini Nano Banana 2.1",
+      "model.aspect_ratio": "1:1",
+      "model.resolution": "1K",
+      "model.thinking_level": "MEDIUM",
+      "model.images.image_1": [
+        "1",
+        0
+      ],
+      "model.images.image_2": [
+        "2",
+        0
+      ],
+      "model.images.image_3": [
+        "3",
+        0
+      ],
+      "seed": 42,
+      "response_modalities": "IMAGE"
+    },
+    "_meta": {
+      "title": "Item icon (Nano Banana 2.1)"
+    }
+  },
+  "5": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "4",
+        0
+      ],
+      "filename_prefix": "tme/icon"
+    },
+    "_meta": {
+      "title": "Save icon"
+    }
+  },
+  "6": {
+    "class_type": "RecraftRemoveBackgroundNode",
+    "inputs": {
+      "image": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Recraft Remove Background"
+    }
+  },
+  "7": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "6",
+        0
+      ],
+      "filename_prefix": "tme/icon_cutout"
+    },
+    "_meta": {
+      "title": "Save cutout (transparent PNG)"
+    }
+  }
+}

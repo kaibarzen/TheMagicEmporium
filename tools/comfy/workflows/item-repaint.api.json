@@ -1,0 +1,81 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "pike.jpg"
+    },
+    "_meta": {
+      "title": "Icon to repaint (apps/core/public/icons/...)"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "rough-brush.jpg"
+    },
+    "_meta": {
+      "title": "Style reference (tools/comfy/styles/rough-brush.jpg)"
+    }
+  },
+  "4": {
+    "class_type": "GeminiNanoBanana2V2",
+    "inputs": {
+      "prompt": "Repaint the FIRST image. Keep its exact composition, crop, item shape, pose, brushwork style and background unchanged. Only change this:\n\nInstruction: repaint the dark brown item as shiny, polished iron metal: cool blue-grey steel tones with bright white highlights along its edges and planes, so it clearly reads as metal and stands out from the orange background.\n\nKeep the rough, loose dry-brush concept art look with low detail, like the second image. The background strokes stay behind the item and never cross over it. No text, no border, no frame.",
+      "model": "Gemini Nano Banana 2.1",
+      "model.aspect_ratio": "1:1",
+      "model.resolution": "1K",
+      "model.thinking_level": "MEDIUM",
+      "model.images.image_1": [
+        "1",
+        0
+      ],
+      "model.images.image_2": [
+        "2",
+        0
+      ],
+      "seed": 42,
+      "response_modalities": "IMAGE"
+    },
+    "_meta": {
+      "title": "Repaint icon (Nano Banana 2.1)"
+    }
+  },
+  "5": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "4",
+        0
+      ],
+      "filename_prefix": "tme/repaint"
+    },
+    "_meta": {
+      "title": "Save icon"
+    }
+  },
+  "6": {
+    "class_type": "RecraftRemoveBackgroundNode",
+    "inputs": {
+      "image": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Recraft Remove Background"
+    }
+  },
+  "7": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "6",
+        0
+      ],
+      "filename_prefix": "tme/repaint_cutout"
+    },
+    "_meta": {
+      "title": "Save cutout (transparent PNG)"
+    }
+  }
+}

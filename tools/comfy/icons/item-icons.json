@@ -1,0 +1,183 @@
+{
+  "armor/heavy/chainMail": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A chain mail chestplate, close up, seen at a slight three-quarter angle: a torso piece of dense chain mail with a riveted steel gorget at the collar, steel plates over the shoulders and a steel band at the waist, no sleeves, no hood",
+    "palette": "cold bright silver steel and chain, deep teal and electric cyan background",
+    "notes": "Made with the older, more detailed whole-item prompt. Rerun to match the rough close-crop style."
+  },
+  "armor/heavy/splint": {
+    "method": "generate",
+    "seed": 42,
+    "item": "Splint armor: a heavy cuirass made of vertical riveted metal strips on a leather backing, with layered metal pauldrons on both shoulders, shown upright and symmetrical from the front",
+    "palette": "dark iron strips with bronze rivets and edges, burnt orange and ember red background",
+    "notes": "Made with the older, more detailed whole-item prompt. Rerun to match the rough close-crop style; rewrite the description as a close-up chestpiece first."
+  },
+  "armor/light/leather": {
+    "method": "generate",
+    "seed": 42,
+    "item": "Leather armor: a hardened leather cuirass with rounded shoulder guards, laced sides and a belt at the waist, symmetrical, both sides the same length, shown upright from the front",
+    "palette": "warm tan and brown leather, mossy green and pale lime background",
+    "notes": "Made with the older, more detailed whole-item prompt. Rerun to match the rough close-crop style; rewrite the description as a close-up chestpiece first."
+  },
+  "armor/medium/chainShirt": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A short-sleeved chain shirt of fine metal rings ending at the waist, symmetrical, shown upright from the front",
+    "palette": "bright silver rings, royal blue and violet background",
+    "notes": "Made with the older, more detailed whole-item prompt. Rerun to match the rough close-crop style; rewrite the description as a close-up chestpiece first."
+  },
+  "armor/medium/halfPlate": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A half plate breastplate, close up, seen at a slight three-quarter angle: just the torso with a sculpted dark steel cuirass, a high gorget and layered pauldrons on both shoulders, edged in gold. Glowing arcane energy flows through engraved channels and seams in the metal like luminous veins, swirling across the chest, with tiny star-like sparks and faint constellation lines inside the glow. The glow stays inside the armor and does not spill out around it",
+    "palette": "midnight navy steel with gold trim and glowing cyan-violet arcane light, burnt orange and molten gold background"
+  },
+  "armor/medium/scaleMail": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A scale mail chestpiece, close up, seen at a slight three-quarter angle: just the torso, no sleeves, covered in rows of large, gleaming golden dragon scales that overlap like shingles, with broad scaled shoulder guards and dark red leather trim at the collar and edges",
+    "palette": "gleaming gold dragon scales with dark red leather trim, deep emerald green and dark teal background"
+  },
+  "clothes/fine": {
+    "method": "generate",
+    "seed": 42,
+    "item": "Fine clothes: an elegant doublet with a high collar, a row of buttons, long sleeves and embroidered trim, the whole garment visible including both sleeves and the hem, symmetrical, shown upright from the front",
+    "palette": "rich burgundy fabric with gold embroidery, warm amber and teal background",
+    "notes": "Made with the older, more detailed whole-item prompt. Rerun to match the rough close-crop style; rewrite the description as an upper-torso crop like clothes/royal first."
+  },
+  "clothes/royal": {
+    "method": "generate",
+    "seed": 7,
+    "item": "Royal clothes: the upper torso of a regal white military coat, seen at a slight three-quarter angle, from the high collar down to a dark navy sash at the waist: one large, ornate, sculpted gold pauldron on the near shoulder, gold trim along the collar and front edge, a few gold buttons on the chest. All the gold belongs to the coat itself; no loose gold strokes or spikes around it",
+    "palette": "brilliant white cloth and gleaming gold; background of vivid violet, cyan and fiery red-orange strokes",
+    "notes": "Reference zoom for the whole set: upper torso from collar to waist, filling the frame, cropped only a little."
+  },
+  "melee/martial/battleaxe": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A symmetrical double-bladed battle axe head and the top of its dark haft, upright and seen straight from the front, both blades mirror images of each other: two large crescent-moon blades of blackened steel whose edges glow blood red, with a round blood-moon disc set in the center where the blades meet. The red glow stays inside the blades and does not spill out around them",
+    "palette": "blackened steel with glowing blood red edges and a deep red moon; background of cold teal and steel blue strokes"
+  },
+  "melee/martial/flail": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A flail whose head is a heavy, blunt skull of dark cast iron, close crop: the iron skull is the focus and fills most of the frame, right side, seen at a slight three-quarter angle, with riveted seams, battered edges, a ring on top of its head and eye sockets glowing cold cyan. A short, thick dark wooden handle sits at the lower left corner, clearly separate from the skull with empty space between them, its top end capped in iron with a ring. One continuous chain of thick iron links runs from the handle's ring in a clean arc up to the ring on top of the skull, so the skull visibly hangs from the chain. Nothing else touches the skull",
+    "palette": "dark cast iron with cool steel highlights, cold cyan glowing eye sockets, dark wood; background of warm amber and burnt orange strokes",
+    "repaint": {
+      "seed": 42,
+      "instruction": "Keep the iron skull exactly as it is (same look, size, position, glowing cyan eyes and the ring on top of its head). Fix how the flail is assembled, which currently makes no sense: (1) remove the handle that runs behind the skull. Instead, a short, thick dark wooden handle sits at the lower left corner, pointing up toward the skull, clearly separate from the skull with empty space between them; its top end has an iron cap with a ring. (2) Redraw the chain as one continuous run of thick iron links that goes from the ring on the handle's cap, sagging in a clean curve through the empty space, up to the ring on top of the skull, so the skull visibly hangs from the chain. Nothing else touches the skull."
+    },
+    "notes": "The shipped icon is this generation plus one repaint (see repaint) that fixed the chain and handle; the first generation put the handle behind the skull."
+  },
+  "melee/martial/glaive": {
+    "method": "generate",
+    "seed": 42,
+    "item": "The head of a glaive and the top of its dark pole, diagonal from lower left to upper right: a long, slightly curved, single-edged steel blade rising out of an ornate golden socket shaped like a pair of swept-back feathered wings that flare out on both sides of the blade's base",
+    "palette": "bright steel blade and gleaming gold wings; background of deep indigo and vivid violet strokes"
+  },
+  "melee/martial/greataxe": {
+    "method": "generate",
+    "seed": 42,
+    "item": "The head of a greataxe and the top of its thick haft, diagonal from lower left to upper right: one huge, squared, cleaver-like blade made of a single slab of pink-violet crystal with flat faceted planes and sharp straight corners, clamped into a heavy, blocky bronze mechanical mount with big bolts, and teal bands wrapped around the haft below it",
+    "palette": "luminous pink-violet crystal, dark bronze mount, teal accents; background of dark teal and deep emerald green strokes"
+  },
+  "melee/martial/lance": {
+    "method": "generate",
+    "seed": 42,
+    "item": "The tip of a lance and the top of its wooden shaft, diagonal from lower left to upper right: a long, wicked, needle-sharp steel spearhead with a raised ridge along its spine and cruel jagged barbs along both edges, mounted on a socket bound tightly with dark leather straps",
+    "palette": "cold bright steel with dark leather; background of blood orange and deep crimson strokes"
+  },
+  "melee/martial/longsword": {
+    "method": "generate",
+    "seed": 7,
+    "item": "The hilt of a golden longsword, close crop, diagonal with the blade pointing to the upper right: the crossguard is a sculpted, roaring golden lion's head with a big flowing mane, the blade emerging from its open jaws, a gold-wrapped grip and a round golden pommel. Only the first part of the blade is visible; it runs off the image border. The blade is a bold, solid, brightly polished white-silver with a gold-edged outline and a gold fuller down its center, clearly part of the sword and never fading into the background",
+    "palette": "gleaming gold and brilliant white-silver; background of deep royal blue strokes with a few crimson red accents",
+    "notes": "Seed 42 gave a plain grey blade that Recraft cut away; the gold-edged white-silver blade fixed it."
+  },
+  "melee/martial/morningstar": {
+    "method": "generate",
+    "seed": 42,
+    "item": "The head of a golden morningstar and the top of its handle, diagonal: a round golden ball studded with a few long, sharp, pointed golden spikes all around it. The spiked head sits near the center of the frame, slightly up and to the right, with ALL of its spikes inside the frame; the handle runs from it toward the lower left corner and off the image border",
+    "palette": "gleaming gold; background of deep crimson and blood red strokes"
+  },
+  "melee/martial/pike": {
+    "method": "repaint",
+    "seed": 42,
+    "instruction": "repaint the dark brown item as shiny, polished iron metal: cool blue-grey steel tones with bright white highlights along its edges and planes, so it clearly reads as metal and stands out from the orange background.",
+    "notes": "Repainted from the original pike.jpg because its outline was good. Note: the shape is a war hammer/pick, not a D&D pike (a long spear)."
+  },
+  "melee/martial/rapier": {
+    "method": "generate",
+    "seed": 7,
+    "item": "A rapier split into three separate, floating parts lined up on a diagonal from lower left to upper right, with clear, empty gaps between them and nothing connecting them: at the lower left a dark leather-wrapped grip with a round gold pommel; in the middle, the largest and most eye-catching part, an extremely ornate, lavish golden swept-hilt guard, much wider than the grip, made of many elegant curling scrolls, spiralling loops, flourishes and filigree rings; at the upper right a long, thin, intact rapier blade that starts just past the guard and runs straight off the top right corner of the image. The blade is bold, solid, brilliant white-silver with a gold-edged outline, clearly part of the item and never fading into the background",
+    "palette": "gleaming gold guard, brilliant white-silver blade, dark leather grip; background of deep crimson and dark wine red strokes",
+    "repaint": {
+      "seed": 42,
+      "instruction": "Replace the short, broken blade piece at the upper right with a long, thin, INTACT rapier blade (no break, no jagged end): it floats just past the guard with a small empty gap, follows the same diagonal, and runs straight off the top right corner of the image. The blade is bold, solid, brilliant white-silver with a gold-edged outline, clearly part of the item. Keep the grip, the ornate guard and the gaps between the parts exactly as they are."
+    },
+    "notes": "The shipped icon is this generation plus one repaint (see repaint) that swapped a snapped blade piece for an intact blade."
+  },
+  "melee/martial/scimitar": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A dark, shadowy scimitar, diagonal with the blade curving up to the upper right: the broad, curved crescent blade is made entirely of many black, shadowy spiders clinging tightly together, their thick, chunky legs locked into each other so the swarm forms the solid shape of a curved scimitar blade with a sharp tip. A few tiny glowing red eyes glint among them. The spider swarm grows out of a dark iron crossguard and a grip wrapped in bone-white cord with a dark pommel. The whole weapon is one bold, solid, compact silhouette with no loose spiders around it",
+    "palette": "shadowy black and deep violet spiders with tiny glowing red eyes, dark iron hilt, bone-white grip; background of acid green and pale sickly lime strokes",
+    "notes": "Wild take: the spiders blur into a dark mass at 40px. A rerun with five or six big spiders and a cleaner curve was suggested but not run yet."
+  },
+  "melee/martial/shortsword": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A magical shortsword, close crop on the hilt and blade, diagonal with the blade pointing to the upper right: where the blade meets the dark silver crossguard, a small black hole is socketed into the sword, a pitch-black sphere ringed by a thin, bright glowing ring of light. The blade is made of glowing electric blue magical energy that pours out of the black hole and is visibly warped by it: bent, twisted and swirling around the socket before straightening into a short, sharp-pointed blade. Dark wrapped grip and pommel below. The energy blade is bold, solid and opaque like the rest of the sword, with no loose glow or particles around it",
+    "palette": "glowing electric blue and white energy, pitch-black sphere, dark silver hilt; background of deep magenta and hot orange strokes"
+  },
+  "melee/martial/trident": {
+    "method": "generate",
+    "seed": 42,
+    "item": "The head of a golden trident and the top of its golden shaft, diagonal with the prongs pointing to the upper right: the middle prong is a long, straight, sharp golden spike; the two outer prongs are shaped like a pair of golden feathered wings sweeping up and outward from the base and ending in sharp, pointed tips. A small glowing pale blue gem is set at the center where the three prongs meet",
+    "palette": "gleaming gold with a small pale blue gem; background of deep teal and turquoise strokes"
+  },
+  "melee/martial/warPick": {
+    "method": "repaint",
+    "seed": 42,
+    "instruction": "The item is currently a flat black shadow silhouette. Keep its exact outline, but paint it as a real, textured war pick: (1) the long pointed pick spike that reaches to the upper left becomes a glowing magical crystal, faceted and translucent, luminous cyan with bright white highlights along its facets, set into the head with a dark iron collar; (2) the square hammer block on the right becomes textured dark iron with a few bolts, worn edges and cool steel highlights; (3) the handle becomes dark wood wrapped in leather straps. The crystal glow stays inside the crystal and does not spill out around it.",
+    "notes": "Repainted from the original warPick.jpg (a flat shadow silhouette with a good outline)."
+  },
+  "melee/simple/club": {
+    "method": "repaint",
+    "seed": 42,
+    "instruction": "(1) Keep the club's exact outline. Paint it in ONLY two materials: the whole head, the spikes, the bands and the two diamond inlays are dark forged iron with a few bold cool steel highlights; the handle is plain dark leather wrap. No wood, no brass, no gold. (2) VERY ROUGH, LOW DETAIL: paint it exactly as loosely as the original, with big flat planes of colour blocked in with a few chunky dry-brush strokes. No wood grain, no fine texture, no small scratches, no rivets, no clean edges, no polished rendering. (3) Recolour the whole background so it contrasts strongly with the dark iron: fill the ENTIRE frame edge to edge with bright mint green and pale teal brush strokes, with NO maroon, purple or dark areas left in the background.",
+    "notes": "Repainted from the original club.jpg. The original's maroon item on a maroon background broke the cutout; the mint background fixed it. A first try with wood and brass came out far too detailed, hence the explicit VERY ROUGH block."
+  },
+  "melee/simple/dagger": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A flame dagger, diagonal with the blade pointing to the upper right: the short blade is made entirely of fire, a solid, opaque blade-shaped flame with a sharp dagger point, hot white-yellow at its core and orange to red at its flickering edges, the flames following the dagger's shape instead of spreading out. It rises from a small dark iron crossguard over a dark leather-wrapped grip with an iron pommel. No loose flames, sparks or smoke around it",
+    "palette": "white-yellow, orange and red fire, dark iron and leather; background of deep blue and indigo strokes"
+  },
+  "melee/simple/greatclub": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A greatclub shaped exactly like a popsicle: a GIANT horned dragon skull of pale bone sitting upright on top of a TINY stick. The skull faces the viewer, seen from the front at a slight angle, with two big horns sweeping up and outward, empty eye sockets and a toothy jaw; it is huge and fills almost the entire upper part of the frame. A short, thin, straight wooden stick, tiny compared to the skull, comes straight down out of the base of the skull where the spine would attach, centered, vertical, wrapped in a strip of dark leather, and runs off the bottom edge of the image. Painted VERY ROUGH and LOW DETAIL: big flat planes of bone colour blocked in with a few chunky dry-brush strokes, no cracks, no fine texture, no small details",
+    "palette": "pale ivory bone, dark leather, brown wood; background of deep blood red and dark crimson strokes",
+    "notes": "Popsicle proportions on purpose: giant skull, tiny stick coming out where the spine would be."
+  },
+  "melee/simple/handaxe": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A small one-handed handaxe, a compact hatchet with a SHORT handle about as long as a forearm, the whole axe shown at a diagonal with the head at the upper right and filling most of the frame. The blade is a compact crescent of frosted ice: pale cyan ice crusted with a thick white frost rim along its edges, a few chunky jagged ice crystals growing from the back and the edge, the frost and crystals painted with a few rough strokes. The ice blade is fixed onto a short, polished steel metal handle with a small spike on top and a wrapped steel grip",
+    "palette": "frosted pale cyan ice with white frost, polished steel; background of deep violet and magenta strokes"
+  },
+  "melee/simple/javelin": {
+    "method": "repaint",
+    "seed": 7,
+    "instruction": "(1) Keep the javelin's exact outline (the big leaf-shaped spearhead pointing to the upper right, the jagged collar and the shaft running to the lower left), but paint it as solid, polished GOLDEN METAL: clear flat planes of bright and dark gold with a few bold white-gold highlights along the edges, so it clearly reads as metal instead of loose paint. (2) Add a fire effect: a thin, tight, solid band of flames in white-yellow, orange and red that clings closely to the edges of the spearhead like a burning outline, with a few short tongues of flame; one compact shape with the javelin, no separate flame wisps, no sparks, no embers flying off. (3) Recolour the whole background so it contrasts with the gold and fire: fill the ENTIRE frame edge to edge with deep blue and dark teal brush strokes. The background strokes stay behind the javelin and its flames and never mix into them.",
+    "notes": "Repainted from the original javelin.jpg. Loose flames (seed 42) left blue background strokes stuck to the cutout; the tight flame band fixed it."
+  },
+  "melee/simple/lightHammer": {
+    "method": "generate",
+    "seed": 42,
+    "item": "A small one-handed throwing hammer, the whole compact hammer shown diagonally with the head at the upper right and filling most of the frame: a chunky, blocky head of bright steel with two copper bands around it, a flat striking face with a single simple glowing cyan rune carved into its side, and a short handle wrapped in dark leather with a copper pommel cap",
+    "palette": "bright steel, warm copper, glowing cyan rune, dark leather; background of deep crimson and magenta strokes"
+  }
+}

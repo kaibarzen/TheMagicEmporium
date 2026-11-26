@@ -8,7 +8,9 @@ All workflows are in ComfyUI's **API format** (`*.api.json`) under [`workflows/`
 tools/comfy/
 ├── workflows/   ComfyUI workflows (*.api.json)
 ├── styles/      style reference images, uploaded to ComfyUI's input folder
-└── icons/       clean source icons and the scripts that render them
+├── icons/       clean source icons, their render scripts, and item-icons.json (every item icon's prompt)
+├── scripts/     item_icon.py: generate or repaint an item icon and its cutout in one command
+└── out/         script output: previews, backups, filled-in workflows (git-ignored)
 ```
 
 ## Partner nodes only
@@ -36,6 +38,8 @@ If no partner node can do a job, ask before reaching for anything else.
 | [`background-edge-eyes-drained.api.json`](workflows/background-edge-eyes-drained.api.json) | `output/tme/edge_eyes_drained_*.png` | `background-edge` preset: the creepy eyes again, but blank and milky white, with pale wisps of soul pouring out of them. |
 | [`background-edge-eyeballs.api.json`](workflows/background-edge-eyeballs.api.json) | `output/tme/edge_eyeballs_*.png` | `background-edge` preset: cosmic horror, a mound of stacked eyeballs of every size along the bottom edge, all staring at the viewer. |
 | [`modifier-icon.api.json`](workflows/modifier-icon.api.json) | `output/tme/modifier_*.png` | Repaints an existing modifier icon (linear, unique, …) in the base style, cut out to a transparent PNG. |
+| [`item-icon.api.json`](workflows/item-icon.api.json) | `output/tme/icon_*.png`, `output/tme/icon_cutout_*.png` | Paints a new item icon on a coloured brush-burst background, as a rough, low-detail concept sketch, and also saves its transparent cutout. |
+| [`item-repaint.api.json`](workflows/item-repaint.api.json) | `output/tme/repaint_*.png`, `output/tme/repaint_cutout_*.png` | Edits an existing item icon from a one-line instruction (new material, colours, a fixed part) while keeping its outline and composition, and also saves its transparent cutout. |
 | [`item-cutout.api.json`](workflows/item-cutout.api.json) | `output/tme/cutout_*.png` | Cuts an existing item image out of its painted background into a transparent PNG with Recraft Remove Background. |
 | [`item-ink-dissolve.api.json`](workflows/item-ink-dissolve.api.json) | `output/tme/dissolve_*.png` | Repaints an existing item so the parts cut off by the image border dissolve into dry-brush strokes and splatter instead, then cuts it out to a transparent PNG. |
 | [`weapon-icon.api.json`](workflows/weapon-icon.api.json) | `output/tme/weapon_*.png` | Generates a weapon icon from three weapon style references and cuts it out to a transparent PNG with Recraft Remove Background. |
@@ -116,6 +120,66 @@ python3 tools/comfy/icons/render_modifier_marks.py <MaShanZheng-Regular.ttf> app
 
 The characters and colours are hard-coded to match `ModifierMark` in the modifier displays, so update the script if those change.
 
+### Item icons
+
+Item icons live in `apps/core/public/icons/` as `<name>.jpg`, with a transparent `<name>.cutout.png` next to each (the item card's breakout art, see `getCutoutUrl`). Every icon's prompt is kept in [`icons/item-icons.json`](icons/item-icons.json), so any icon can be regenerated or tweaked later.
+
+#### Running it
+
+[`scripts/item_icon.py`](scripts/item_icon.py) does the whole loop for one icon: uploads the references, fills in the workflow, runs it on the local ComfyUI, saves `<name>.jpg` and `<name>.cutout.png`, backs up the old files to `out/backups/` and writes a preview sheet to `out/previews/<name>.jpg` (icon, cutout on a checkerboard, 64px and 40px).
+
+```sh
+python3 tools/comfy/scripts/item_icon.py melee/martial/glaive             # rerun from item-icons.json
+python3 tools/comfy/scripts/item_icon.py melee/martial/glaive --seed 7    # same prompt, new variation
+python3 tools/comfy/scripts/item_icon.py melee/martial/pike --repaint "make the head polished gold"
+```
+
+To make a new icon or rework one, edit its entry in `item-icons.json` first, then run the script. Entries use one of two methods:
+
+- **`generate`** ([`item-icon.api.json`](workflows/item-icon.api.json)) paints a brand-new icon from `item` (the prompt's `Item:` line) and `palette`. Use it when the old icon is bad or you want a new design.
+- **`repaint`** ([`item-repaint.api.json`](workflows/item-repaint.api.json)) edits the **current** icon from an `instruction` and keeps its outline, crop and composition. Use it when the shape is good and only the material, colours or one part need to change ("outline is great, texture is terrible"). A `generate` entry can carry a follow-up `repaint` to fix one detail of the generated image.
+
+Always look at the preview sheet: the cutout on the checkerboard and the 40px icon. If a result is clearly bad, change the prompt or seed and run again.
+
+#### item-icon
+
+1. **Style references** load the base style `rough-brush.jpg` (from [`styles/`](styles)) and the two roughest finished icons, `warhammer.jpg` and `greatsword.jpg` (from `apps/core/public/icons/melee/martial/`). Avoid polished icons such as `plate.jpg` as references, because they pull the result towards fine detail.
+2. **Nano Banana 2.1** paints the item as a rough, low-detail concept sketch, as a close crop of its most recognisable part filling 80–90% of the frame, on a burst of saturated strokes that fills the whole background.
+3. **SaveImage** writes the icon; **Recraft Remove Background** cuts the same image out and a second **SaveImage** writes the cutout.
+
+Only the `Item:` and `Use following color palette:` lines change per icon; the rest of the prompt is the approved baseline. Don't loosen its style or composition rules.
+
+#### item-repaint
+
+1. **Icon to repaint** loads the current icon; **Style reference** loads `rough-brush.jpg`.
+2. **Nano Banana 2.1** keeps the composition, crop, outline and background, and only applies the `Instruction:` line.
+3. Same two outputs as `item-icon`.
+
+The repaint keeps the old background unless the instruction says otherwise, so if the old background is the problem (an item the same colour as its background), say so explicitly: "Recolour the whole background … fill the ENTIRE frame edge to edge with …".
+
+#### What makes a good icon
+
+The look the set is going for (see `clothes/royal.jpg`, `melee/martial/glaive.jpg`, `melee/martial/battleaxe.jpg`, `melee/simple/greatclub.jpg`):
+
+- **Rough, not detailed.** Big flat planes of colour, chunky dry-brush strokes; chain links, scales, wood grain and engravings only hinted at. Polished rendering, fine linework and texture detail are the most common failure. If a repaint comes out too clean, add an explicit block: "VERY ROUGH, LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes. No wood grain, no fine texture, no small scratches, no rivets, no polished rendering."
+- **Zoom: close crop, not the whole item.** The icons are shown small, so a whole sword squeezed into the frame is unreadable. Show the most recognisable part filling 80–90% of the frame and let the rest run off the border: a sword's hilt and upper blade, an axe head with the top of the haft, a coat from collar to waist, a chestpiece without sleeves. Don't go further than that (just a shoulder stops reading as a coat). Small items (handaxe, light hammer, dagger) can be shown whole, as long as they fill the frame.
+- **One bold idea per item.** The best icons have a single twist that reads at 40px: a crystal blade, a blood-moon double axe, a black hole warping an energy blade, a giant dragon skull on a tiny stick, an iron skull flail, gold wings as trident prongs. Say the proportions out loud when they matter ("GIANT skull on a TINY stick, like a popsicle; the stick comes out where the spine would be").
+- **Armour:** a close-up chestpiece at a slight three-quarter angle reads much better than a full suit with sleeves and legs.
+- **Inspiration images** (e.g. Guild Wars 2 wiki icons) are for us, not the model: look at them, then describe the shape, materials and colours in words in the `Item:` line. Don't feed them to the workflow.
+
+#### What makes a clean cutout
+
+Recraft decides what is "item" and what is "background" from contrast and shape. Every cutout problem so far came from one of these:
+
+- **Contrast.** Name the item's colours, then two background colours that clearly differ from them (pale bone or ice on deep red/violet; dark iron on mint; gold on blue or teal; red fire on blue). An item in the same hue as its background (a maroon club on maroon) loses half its outline.
+- **Fill the frame with background.** A compact burst floating on black is treated as part of the item and stays in the cutout. The workflow prompt already asks for strokes filling the entire frame; repeat it in a repaint instruction if needed.
+- **Parts running off the border must be bold.** A plain grey blade fading off the edge is cut away as background. Make it bright and outlined: "bold, solid, brilliant white-silver with a gold-edged outline, clearly part of the item".
+- **Keep effects tight and solid.** Glows, flames and magic must hug the item and be opaque ("the glow stays inside the crystal", "a thin, tight, solid band of flames that clings to the edges", "no loose sparks, embers or smoke"). Loose flames drag background strokes into the cutout; faint magic wisps either vanish or turn into a pale haze.
+- **Nothing small and floating.** Floating shards, sparks and particles get dropped. Separate floating parts work only if each one is big and solid (the rapier's grip, guard and blade).
+- **Thin details need weight.** Spider legs, chains and filigree survive when they are thick and chunky; a little background colour inside pierced shapes (filigree holes, between teeth) is fine.
+
+- **Seed:** change it to get variations of the same prompt. The partner models aren't fully deterministic, so a rerun with the same seed can still differ a little.
+
 ## Base style
 
 Every image uses the same look: **rough, painterly concept art sketches**.
@@ -123,7 +187,7 @@ Every image uses the same look: **rough, painterly concept art sketches**.
 - Bold, loose dry-brush strokes with visible bristle texture
 - Chunky, angular brushwork that radiates outward in bursts
 - Scattered paint specks and splatter
-- The subject is a dark, mostly flat silhouette with little interior detail, set inside the strokes
+- The subject is mostly flat with little interior detail, set inside the strokes (backgrounds and edge strips use a dark silhouette; item icons use the item's own colours, see [Item icons](#item-icons))
 - A limited, saturated palette of two or three colours per image, chosen for the item's theme
 - No text, borders or frames
 
@@ -137,12 +201,17 @@ The style reference is only used for rendering. The prompt explicitly tells the 
 
 ## Setup
 
-1. Upload the style references into ComfyUI's `input` folder, keeping their filenames (`LoadImage` looks them up by name):
+1. Install comfy-cli and start the local ComfyUI on `127.0.0.1:8188`. `item_icon.py` finds `comfy` on the `PATH`, in `$COMFY_BIN`, or at `~/.local/share/uv/tools/comfy-mcp/bin/comfy` (where the comfy-mcp tool installs it).
+2. Store a Comfy API key (create one at <https://platform.comfy.org/profile/api-keys>). The Gemini and Recraft nodes are **partner API nodes**, so every run spends Comfy credits:
+   ```sh
+   comfy cloud set-key --key <your-key>
+   ```
+   With a key stored, comfy-cli sends runs to Comfy Cloud by default, which the free tier refuses (`FREE_TIER_NOT_ALLOWED`). Always run with `--where local`; `item_icon.py` already does.
+3. For the other workflows, upload the style references into ComfyUI's `input` folder, keeping their filenames (`LoadImage` looks them up by name). `item_icon.py` uploads its own references.
    ```sh
    comfy upload tools/comfy/styles/*.jpg --overwrite
    ```
-2. For `modifier-icon`, also upload the source icons:
+4. For `modifier-icon`, also upload the source icons:
    ```sh
    comfy upload tools/comfy/icons/modifiers/*.png --overwrite
    ```
-3. Log in to Comfy with an API key. The Gemini nodes are **partner API nodes**, so every run spends Comfy credits.
