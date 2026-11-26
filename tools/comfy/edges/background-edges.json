@@ -1,0 +1,85 @@
+{
+  "tentacle.1x1": {
+    "edge": "bottom",
+    "subject": "One single giant octopus tentacle, thick as a tree trunk at its base, rising up and curling over into a loose spiral near its tip, with rows of big round suckers along its inner side",
+    "palette": "deep violet and magenta skin, pale pink suckers, a few dark indigo shadow strokes",
+    "aspect": "1:1",
+    "resolution": "2K",
+    "seed": 42,
+    "detail": null
+  },
+  "tentacle.9x16": {
+    "edge": "bottom",
+    "subject": "One single giant octopus tentacle, thick as a tree trunk at its base, rising up and curling over into a loose spiral near its tip, with rows of big round suckers along its inner side",
+    "palette": "deep violet and magenta skin, pale pink suckers, a few dark indigo shadow strokes",
+    "aspect": "9:16",
+    "resolution": "2K",
+    "seed": 7,
+    "detail": "Paint the suckers as simple rings with a dark centre, a few strokes each, and hint at a couple of skin folds with single strokes."
+  },
+  "tentacle.1x4": {
+    "edge": "bottom",
+    "subject": "One single giant octopus tentacle, thick as a tree trunk at its base, rising up and curling over into a loose spiral near its tip, with rows of big round suckers along its inner side",
+    "palette": "deep violet and magenta skin, pale pink suckers, a few dark indigo shadow strokes",
+    "aspect": "1:4",
+    "resolution": "2K",
+    "seed": 42,
+    "detail": "Paint the suckers as simple rings with a dark centre, a few strokes each, and hint at a couple of skin folds with single strokes."
+  },
+  "spider.9x16": {
+    "edge": "top",
+    "aspect": "9:16",
+    "resolution": "1K",
+    "seed": 42,
+    "subject": "One single giant spider hanging down from the top border on a thick silk thread, seen close up from the front, its long jointed legs spread wide around its round body, fangs and a cluster of glossy eyes facing the viewer",
+    "palette": "near-black purple body, deep crimson markings, a few glints of acid green in the eyes",
+    "detail": "Paint the legs as chunky jointed segments with a few bristle strokes, and the eyes as simple glossy dots with one highlight each."
+  },
+  "angelWing.9x16": {
+    "edge": "top",
+    "aspect": "9:16",
+    "resolution": "1K",
+    "seed": 42,
+    "subject": "One single huge angel wing draping down from the top border, seen close up, broad layered feathers fanning out and their long tips hanging down",
+    "palette": "warm gold and deep amber feathers, burnt orange shadows, only small touches of pale cream on the highlights",
+    "detail": "Paint the feathers as a few broad overlapping rows, each feather blocked in with one or two strokes and a darker shaft line."
+  },
+  "crystalCluster.9x16": {
+    "edge": "bottom",
+    "aspect": "9:16",
+    "resolution": "1K",
+    "seed": 42,
+    "subject": "One single cluster of huge, jagged arcane crystals bursting upward from the bottom border, a few big angular shards of different heights",
+    "palette": "vivid violet and electric blue crystal, dark indigo facets, a few bright cyan edges",
+    "detail": "Paint each crystal as a few flat facets, a light face and a dark face, with one bright stroke along its sharpest edge.",
+    "postprocess": "Cropped to 1030px tall to cut away the solid mound the crystals stood on."
+  },
+  "thornedVine.9x16": {
+    "edge": "bottom",
+    "aspect": "9:16",
+    "resolution": "1K",
+    "seed": 42,
+    "subject": "One single thick thorned vine climbing up from the bottom border and twisting as it rises, with a few big hooked thorns along its stem, a couple of broad leaves and one closed flower bud near its tip",
+    "palette": "dark forest green stem and leaves, blood red thorns and bud, black-green shadows",
+    "detail": "Paint the thorns as bold hooked shapes and the leaves as simple shapes with one vein stroke."
+  },
+  "ice.9x16": {
+    "edge": "bottom",
+    "aspect": "9:16",
+    "resolution": "1K",
+    "seed": 42,
+    "subject": "One single huge mass of jagged ice shards erupting upward from the bottom border, big angular frozen spikes leaning outward",
+    "palette": "saturated cyan and cobalt blue ice, deep navy shadows, a few strokes of bright aqua on the edges, no white",
+    "detail": "Paint each ice spike as a few flat facets, a light face and a dark face, with one bright stroke along its sharpest edge.",
+    "postprocess": "Cropped to 1226px tall to cut away the solid band the ice stood on."
+  },
+  "fire.9x16": {
+    "edge": "bottom",
+    "aspect": "9:16",
+    "resolution": "1K",
+    "seed": 42,
+    "subject": "One single giant tongue of fire rising up from the bottom border, one bold solid flame shape that splits into two or three big curling flame tips at the top, no loose sparks, no embers, no smoke",
+    "palette": "deep crimson base, burning orange body, bright yellow-orange core",
+    "detail": "Paint the flame as a few big solid curling tongues layered over each other, each with a darker red rim, a hotter orange inner shape and a small bright yellow core, plus a few long strokes following the curve of each tongue to show its flow."
+  }
+}

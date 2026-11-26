@@ -32,7 +32,7 @@
       "prompt": "Using the reference images only as a STYLE guide, paint a new image. Do not copy their subjects, composition or backgrounds. The style is a ROUGH, QUICK CONCEPT ART SKETCH, like the references: bold, loose dry-brush strokes, visible bristle texture, chunky angular brushwork. Keep detail LOW: big simple shapes and flat planes of colour, blocked in with a few confident strokes. Suggest surface details such as suckers, scales, cracks or veins with a handful of broken strokes instead of drawing every one. Edges may be rough and painterly. No polished rendering, no fine linework, no smooth gradients.\n\nEdge: bottom\nSubject: One single giant octopus tentacle, thick as a tree trunk at its base, rising up and curling over into a loose spiral near its tip, with rows of big round suckers along its inner side\nUse following color palette: deep violet and magenta skin, pale pink suckers, a few dark indigo shadow strokes\n\nComposition: this image is a decorative overlay along one edge of a tall, narrow card. Show ONE big, bold subject in extreme CLOSE-UP, as if it were right in front of the viewer: it is huge and fills most of the image width, it is not a small object, a scene or a landscape. The subject grows out of the border named in the Edge line (the bottom border for bottom, the top border for top), where it is cut off wide, solid and fully opaque: its base is ONE single, unbroken mass cut straight across by that border, with no split into strands or strips, no gaps or notches of background between them, and no ragged fringe or brush streaks trailing off at the cut. That is the ONLY border that may cut it: keep a clear margin of background between the subject and the other three borders. Use the whole length of the image: the subject stretches from its border almost all the way to the opposite border, bending and curving so it fills the space instead of standing as a straight column. It must read as one strong silhouette with strong value and colour contrast against the background.\n\nBackground: perfectly flat, plain, solid pure white, with no brush strokes, no texture, no splatter, no paint specks, no shadow, no ground, no horizon. Nothing else in the image: no second subject, no water, no bubbles, no particles, no text, no border, no frame.",
       "model": "Gemini Nano Banana 2.1",
       "model.aspect_ratio": "1:4",
-      "model.resolution": "2K",
+      "model.resolution": "1K",
       "model.thinking_level": "MEDIUM",
       "model.images.image_1": [
         "1",
@@ -53,26 +53,11 @@
       "title": "Edge (Nano Banana 2.1)"
     }
   },
-  "8": {
-    "class_type": "ResizeImageMaskNode",
-    "inputs": {
-      "input": [
-        "4",
-        0
-      ],
-      "resize_type": "scale width",
-      "resize_type.width": 1000,
-      "scale_method": "area"
-    },
-    "_meta": {
-      "title": "Scale to 1000px wide (keeps 1:4 under Recraft's 4096px limit)"
-    }
-  },
   "5": {
     "class_type": "SaveImage",
     "inputs": {
       "images": [
-        "8",
+        "4",
         0
       ],
       "filename_prefix": "tme/edge"
@@ -85,7 +70,7 @@
     "class_type": "RecraftRemoveBackgroundNode",
     "inputs": {
       "image": [
-        "8",
+        "4",
         0
       ]
     },

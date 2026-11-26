@@ -58,9 +58,8 @@ Change the seed to get variations of the same prompt.
 Edge images sit along the top or bottom of an item card, in front of the background art (`appearance.background.top` / `.bottom`). The card stretches them to its width (460px) at their own proportions and shows them whole, so the aspect ratio decides how far up the card the subject reaches.
 
 1. **Style references** load the same three images as `item-icon` (`rough-brush.jpg`, `warhammer.jpg`, `greatsword.jpg`), with the same rough, low-detail style wording.
-2. **Nano Banana 2.1** paints ONE subject in extreme close-up, growing out of the edge named in the `Edge:` line, on flat white. Only that edge may cut it; the other three borders stay clear.
-3. **Resize** scales the result to 1000px wide (about twice the card's width). Recraft refuses images over 4096px, and Nano Banana's 1:4 comes out slightly taller than 1:4, so 1024px wide is already too much for it.
-4. **SaveImage** writes the painted image; **Recraft Remove Background** cuts it out and a second **SaveImage** writes the transparent PNG.
+2. **Nano Banana 2.1** paints at **1K** (cheapest; every result stays under Recraft's 4096px limit, so there's no resize step) ONE subject in extreme close-up, growing out of the edge named in the `Edge:` line, on flat white. Only that edge may cut it; the other three borders stay clear.
+3. **SaveImage** writes the painted image; **Recraft Remove Background** cuts it out and a second **SaveImage** writes the transparent PNG.
 
 For each new edge, edit these lines of the prompt and the node's aspect ratio:
 
@@ -70,9 +69,13 @@ Subject: One single giant octopus tentacle, thick as a tree trunk at its base, r
 Use following color palette: deep violet and magenta skin, pale pink suckers, a few dark indigo shadow strokes
 ```
 
+Every example edge's prompt lines are kept in [`edges/background-edges.json`](edges/background-edges.json), keyed by its file name next to the stories: `edge`, `aspect`, `resolution`, `seed`, `subject`, `palette`, and `detail`, the subject-specific sentence of the moderate-detail block below (`null` for the base, low-detail prompt). A `postprocess` note records any manual fix made after generation.
+
+Rock-like subjects (crystals, ice) tend to grow out of a solid mound or band along the edge, which looks bad on the card. Crop it off so the shards run straight off the border, or add "no ground, no mound, no base" to the subject.
+
 #### Aspect ratio
 
-The example tentacles are in [`packages/ui/src/components/item/stories/background/edges/`](../../packages/ui/src/components/item/stories/background/edges), one per ratio, with a story each (**Edges/Tentacle**).
+The example tentacles are in [`packages/ui/src/components/item/stories/background/edges/`](../../packages/ui/src/components/item/stories/background/edges), one tentacle per ratio (**Edges/Tentacle**) and six 9:16 examples (**Edges/Examples**: spider, angel wing, crystal cluster, thorned vine, ice, fire).
 
 | Ratio | Height on the card | Use it for |
 | --- | --- | --- |
@@ -80,7 +83,7 @@ The example tentacles are in [`packages/ui/src/components/item/stories/backgroun
 | **9:16** | ~820px | **Default for large details**, when you want to go big on a theme. Too rough with the base prompt at this size: use the more-detailed style below. |
 | **1:4** | ~1840px | Stretching one subject over the WHOLE card. Needs more detail than the base prompt gives. |
 
-Don't use **1:8**: the subject turns into a thin, unusable sliver, and Recraft refuses it at 1000px wide.
+Don't use **1:8**: the subject turns into a thin, unusable sliver.
 
 #### More detail for large edges
 
