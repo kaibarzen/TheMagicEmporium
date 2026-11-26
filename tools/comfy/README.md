@@ -11,6 +11,17 @@ tools/comfy/
 └── icons/       clean source icons and the scripts that render them
 ```
 
+## Partner nodes only
+
+Generation runs on **partner API nodes** (Nano Banana, Recraft, …) through the local ComfyUI. Keep the local side lightweight:
+
+- No local checkpoints, diffusion models or LoRAs. Image generation always goes through a partner node.
+- Small local helper models are fine, such as a background remover (BiRefNet `RemoveBackground`). For cutouts, prefer `RecraftRemoveBackgroundNode`, though: it gave much cleaner edges.
+- Don't download large models or install heavy custom node packs to make a workflow run.
+- Don't provision anything that costs money beyond the per-run partner credits: no Comfy Cloud runs, rented GPUs or other hosted compute. Run with `--where local`, since a stored API key otherwise makes comfy-cli send runs to Comfy Cloud.
+
+If no partner node can do a job, ask before reaching for anything else.
+
 ## Workflows
 
 | File | Output | What it does |
