@@ -1,0 +1,81 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "longsword.jpg"
+    },
+    "_meta": {
+      "title": "Icon to recompose (apps/core/public/icons/...)"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "rough-brush.jpg"
+    },
+    "_meta": {
+      "title": "Style reference (tools/comfy/styles/rough-brush.jpg)"
+    }
+  },
+  "4": {
+    "class_type": "GeminiNanoBanana2V2",
+    "inputs": {
+      "prompt": "Redraw the item from the FIRST image in a new pose. Keep the item's exact design, materials, colours, magical effect and proportions, the same rough brushwork and the same background colours and brush-burst style. Only the pose and crop change.\n\nPose: the sword points down, the blade running toward the bottom border; the whole hilt, guard and pommel sit in the upper part of the frame\n\nComposition: the item is big and fills most of the frame. The ENTIRE top part of the item is inside the image with clear empty background between it and the top, left and right image borders: nothing touches or crosses the top, left or right border. The ONLY part allowed to leave the image is the lower end of the item, which runs straight off the BOTTOM border. If the item does not fit this way at its current size, draw it smaller than in the first image rather than letting it touch another border.\n\nKeep the rough, loose dry-brush concept art look with low detail, like the second image. The background is a burst of saturated brush strokes filling the whole frame edge to edge; the strokes stay behind the item and never cross over it. No text, no border, no frame.",
+      "model": "Gemini Nano Banana 2.1",
+      "model.aspect_ratio": "1:1",
+      "model.resolution": "1K",
+      "model.thinking_level": "MEDIUM",
+      "model.images.image_1": [
+        "1",
+        0
+      ],
+      "model.images.image_2": [
+        "2",
+        0
+      ],
+      "seed": 42,
+      "response_modalities": "IMAGE"
+    },
+    "_meta": {
+      "title": "Repaint icon (Nano Banana 2.1)"
+    }
+  },
+  "5": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "4",
+        0
+      ],
+      "filename_prefix": "tme/recompose"
+    },
+    "_meta": {
+      "title": "Save icon"
+    }
+  },
+  "6": {
+    "class_type": "RecraftRemoveBackgroundNode",
+    "inputs": {
+      "image": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Recraft Remove Background"
+    }
+  },
+  "7": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "6",
+        0
+      ],
+      "filename_prefix": "tme/recompose_cutout"
+    },
+    "_meta": {
+      "title": "Save cutout (transparent PNG)"
+    }
+  }
+}

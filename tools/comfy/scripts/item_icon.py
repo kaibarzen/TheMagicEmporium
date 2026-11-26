@@ -8,6 +8,7 @@ path under apps/core/public/icons/ without the extension:
         "seed": 42,
         "item": "...",                   # the prompt's "Item:" line
         "palette": "...",                # the prompt's colour palette line
+        "recompose": {"seed": 42, "pose": "..."},        # optional follow-up recompose
         "repaint": {"seed": 42, "instruction": "..."},   # optional follow-up repaint
         "notes": "..."
     }
@@ -16,12 +17,18 @@ path under apps/core/public/icons/ without the extension:
         "seed": 42,
         "instruction": "..."
     }
+    "melee/martial/greatsword": {
+        "method": "recompose",           # item-recompose.api.json: redraw the current icon in a new pose
+        "seed": 42,
+        "pose": "..."                    # the prompt's "Pose:" line
+    }
 
 Usage (from the repo root, ComfyUI running on 127.0.0.1:8188):
 
     python3 tools/comfy/scripts/item_icon.py melee/martial/glaive
     python3 tools/comfy/scripts/item_icon.py melee/martial/glaive --seed 7
     python3 tools/comfy/scripts/item_icon.py melee/martial/pike --repaint "make the head gold"
+    python3 tools/comfy/scripts/item_icon.py melee/martial/longsword --recompose "the sword points down"
 
 It overwrites <key>.jpg and <key>.cutout.png in apps/core/public/icons/, backs
 up the previous files and writes a preview sheet (icon, cutout on a
@@ -90,18 +97,26 @@ def generate_workflow(flat: str, seed: int, item: str, palette: str) -> dict:
     return wf
 
 
-def repaint_workflow(flat: str, seed: int, source: Path, instruction: str) -> dict:
-    wf = json.loads((COMFY_DIR / "workflows/item-repaint.api.json").read_text())
+# Workflows that edit the current icon: (workflow file, prompt line their payload replaces).
+EDITS = {
+    "repaint": ("item-repaint.api.json", "Instruction:"),
+    "recompose": ("item-recompose.api.json", "Pose:"),
+}
+
+
+def edit_workflow(method: str, flat: str, seed: int, source: Path, value: str) -> dict:
+    workflow, prefix = EDITS[method]
+    wf = json.loads((COMFY_DIR / "workflows" / workflow).read_text())
     src_name = f"tme_src_{flat}.jpg"
     upload(source, src_name)
     style = COMFY_DIR / "styles/rough-brush.jpg"
     upload(style, "tme_ref_" + style.name)
     wf["1"]["inputs"]["image"] = src_name
     wf["2"]["inputs"]["image"] = "tme_ref_" + style.name
-    wf["4"]["inputs"]["prompt"] = replace_line(wf["4"]["inputs"]["prompt"], "Instruction:", instruction)
+    wf["4"]["inputs"]["prompt"] = replace_line(wf["4"]["inputs"]["prompt"], prefix, value)
     wf["4"]["inputs"]["seed"] = seed
-    wf["5"]["inputs"]["filename_prefix"] = f"tme/icons/{flat}_repaint"
-    wf["7"]["inputs"]["filename_prefix"] = f"tme/icons/{flat}_repaint_cutout"
+    wf["5"]["inputs"]["filename_prefix"] = f"tme/icons/{flat}_{method}"
+    wf["7"]["inputs"]["filename_prefix"] = f"tme/icons/{flat}_{method}_cutout"
     return wf
 
 
@@ -169,7 +184,8 @@ def main() -> None:
     parser.add_argument("key", help="icon path under apps/core/public/icons/ without extension, e.g. melee/martial/glaive")
     parser.add_argument("--seed", type=int, help="override the seed from item-icons.json")
     parser.add_argument("--repaint", metavar="INSTRUCTION", help="repaint the current icon with this instruction instead of using item-icons.json")
-    parser.add_argument("--skip-followup", action="store_true", help="for generate entries, skip their follow-up repaint")
+    parser.add_argument("--recompose", metavar="POSE", help="redraw the current icon in this pose instead of using item-icons.json")
+    parser.add_argument("--skip-followup", action="store_true", help="for generate entries, skip their follow-up recompose and repaint")
     args = parser.parse_args()
 
     flat = args.key.replace("/", "_")
@@ -179,20 +195,27 @@ def main() -> None:
 
     if args.repaint:
         steps = [("repaint", args.seed or 42, args.repaint)]
+    elif args.recompose:
+        steps = [("recompose", args.seed or 42, args.recompose)]
     elif entry is None:
         sys.exit(f"No entry for {args.key!r} in {PROMPTS.relative_to(REPO)}; add one first.")
     elif entry["method"] == "repaint":
         steps = [("repaint", args.seed or entry["seed"], entry["instruction"])]
+    elif entry["method"] == "recompose":
+        steps = [("recompose", args.seed or entry["seed"], entry["pose"])]
     else:
         steps = [("generate", args.seed or entry["seed"], (entry["item"], entry["palette"]))]
-        if "repaint" in entry and not args.skip_followup:
-            steps.append(("repaint", entry["repaint"]["seed"], entry["repaint"]["instruction"]))
+        if not args.skip_followup:
+            if "recompose" in entry:
+                steps.append(("recompose", entry["recompose"]["seed"], entry["recompose"]["pose"]))
+            if "repaint" in entry:
+                steps.append(("repaint", entry["repaint"]["seed"], entry["repaint"]["instruction"]))
 
     for method, seed, payload in steps:
         if method == "generate":
             wf = generate_workflow(flat, seed, *payload)
         else:
-            wf = repaint_workflow(flat, seed, current, payload)
+            wf = edit_workflow(method, flat, seed, current, payload)
         icon, cutout = run(wf, flat)
         save(args.key, icon, cutout)
         print(f"{method} ok: {args.key} (seed {seed})")

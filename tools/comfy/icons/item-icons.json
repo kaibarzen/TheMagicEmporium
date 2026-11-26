@@ -125,6 +125,12 @@
     "item": "The head of a greataxe and the top of its thick haft, diagonal from lower left to upper right: one huge, squared, cleaver-like blade made of a single slab of pink-violet crystal with flat faceted planes and sharp straight corners, clamped into a heavy, blocky bronze mechanical mount with big bolts, and teal bands wrapped around the haft below it",
     "palette": "luminous pink-violet crystal, dark bronze mount, teal accents; background of dark teal and deep emerald green strokes"
   },
+  "melee/martial/greatsword": {
+    "method": "recompose",
+    "seed": 42,
+    "pose": "the sword points down, the blade running toward the bottom border; the whole hilt, guard and pommel sit in the upper part of the frame",
+    "notes": "Older icon with no generate prompt on record. Recomposed point-down from the diagonal original so only the blade leaves the image, at the bottom."
+  },
   "melee/martial/lance": {
     "method": "generate",
     "seed": 42,
@@ -134,9 +140,9 @@
   "melee/martial/longsword": {
     "method": "generate",
     "seed": 42,
-    "item": "A knight's longsword with a blade of black volcanic obsidian split by a glowing crack of molten gold: a broad, heavy, glassy black blade with sharp faceted edges, a single jagged crack of bright gold-white light running up its whole length and spilling a few sparks, a wide plain steel crossguard and a leather-wrapped grip. Close crop: the hilt and the upper blade, big and bold, diagonal from lower left to upper right, filling 80 to 90 percent of the frame, only the tip touching the upper edge of the image. Grounded and believable in shape, NOT cartoonish, NOT a toy: real weapon proportions, no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
-    "palette": "glossy black obsidian with cool grey glints, blazing gold-white crack and sparks, plain steel, dark leather; background of deep royal blue and electric blue strokes",
-    "notes": "Third design: the water blade looked underwhelming. Obsidian blade with a molten gold crack instead."
+    "item": "A knight's longsword whose crossguard is a pair of spread raven wings in dark iron: two big, bold, solid wings with a few broad feather shapes sweeping out and slightly up to either side of the grip, a leather-wrapped grip and a pommel set with a round glowing gold gem. A broad, plain, bright steel blade with a bold pale edge. Composition: the sword points DOWN, tilted about 30 degrees from vertical, the hilt in the upper left part of the frame and the blade running down toward the lower right. The WHOLE hilt, both crossguard wing tips and the pommel are inside the image with clear background around them: nothing touches the top, left or right border. The ONLY part leaving the image is the lower blade, which runs off the BOTTOM border. The hilt is the hero: big and bold, the upper third of the frame. Grounded and believable in shape, NOT cartoonish, NOT a toy: real weapon proportions, no thick black ink outlines, no comic-book style, no runes. Painted VERY ROUGH and LOW DETAIL: big flat planes of colour blocked in with a few chunky dry-brush strokes, no fine texture, no small details",
+    "palette": "dark iron wings with cool blue-grey highlights, glowing gold gem, bright white-silver blade, dark leather; background of deep royal blue and electric blue strokes",
+    "notes": "Fourth design: the obsidian blade looked flat when recomposed point-down. Raven-wing crossguard, tilted point-down so only the blade leaves the image, at the bottom. A ram-horn crossguard (same prompt) also looked good but its blade ran off the bottom-right corner."
   },
   "melee/martial/morningstar": {
     "method": "generate",
@@ -169,7 +175,11 @@
     "seed": 42,
     "item": "A magical shortsword, close crop on the hilt and blade, diagonal with the blade pointing to the upper right: where the blade meets the dark silver crossguard, a small black hole is socketed into the sword, a pitch-black sphere ringed by a thin, bright glowing ring of light. The blade is made of glowing electric blue magical energy that pours out of the black hole and is visibly warped by it: bent, twisted and swirling around the socket before straightening into a short, sharp-pointed blade. Dark wrapped grip and pommel below. The energy blade is bold, solid and opaque like the rest of the sword, with no loose glow or particles around it",
     "palette": "glowing electric blue and white energy, pitch-black sphere, dark silver hilt; background of deep magenta and hot orange strokes",
-    "notes": "The shipped icon is this generation cropped by hand (box 60,264,820,1024 of the 1024px image, scaled back to 1024) so the blade's tip runs off the upper right, then re-cut with item-cutout.api.json. A grounded steel-gladius redesign was worse."
+    "notes": "Generated diagonal, then recomposed point-down so only the blade leaves the image, at the bottom (replaces the earlier hand crop). A grounded steel-gladius redesign was worse.",
+    "recompose": {
+      "seed": 42,
+      "pose": "the sword points down, the blade running toward the bottom border; the whole hilt, guard and pommel sit in the upper part of the frame"
+    }
   },
   "melee/martial/trident": {
     "method": "generate",
