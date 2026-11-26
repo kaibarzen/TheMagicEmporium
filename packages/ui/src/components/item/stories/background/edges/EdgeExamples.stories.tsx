@@ -83,3 +83,21 @@ export const Fire: Story = {
 		}),
 	},
 };
+
+/** A swarm of magical eyes, densest along the bottom and thinning out upward. */
+export const Eyes: Story = {
+	args: {
+		item: withAppearance({
+			background: { bottom: { image: edgeImages.eyes9x16 } },
+		}),
+	},
+};
+
+/** A swarm of simple glowing purple eye slits, densest along the bottom. */
+export const EyesPurple: Story = {
+	args: {
+		item: withAppearance({
+			background: { bottom: { image: edgeImages.eyesPurple9x16 } },
+		}),
+	},
+};

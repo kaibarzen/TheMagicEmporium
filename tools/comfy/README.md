@@ -69,13 +69,13 @@ Subject: One single giant octopus tentacle, thick as a tree trunk at its base, r
 Use following color palette: deep violet and magenta skin, pale pink suckers, a few dark indigo shadow strokes
 ```
 
-Every example edge's prompt lines are kept in [`edges/background-edges.json`](edges/background-edges.json), keyed by its file name next to the stories: `edge`, `aspect`, `resolution`, `seed`, `subject`, `palette`, and `detail`, the subject-specific sentence of the moderate-detail block below (`null` for the base, low-detail prompt). A `postprocess` note records any manual fix made after generation.
+Every example edge's prompt lines are kept in [`edges/background-edges.json`](edges/background-edges.json), keyed by its file name next to the stories: `edge`, `aspect`, `resolution`, `seed`, `subject`, `palette`, and `detail`, the subject-specific sentence of the moderate-detail block below (`null` for the base, low-detail prompt). A `postprocess` note records any manual fix made after generation. A `composition` field replaces the prompt's whole `Composition:` paragraph, for subjects that aren't one shape growing from the edge (the eyes swarm: densest along the edge, thinning out, every eye a bold solid shape so Recraft keeps it).
 
 Rock-like subjects (crystals, ice) tend to grow out of a solid mound or band along the edge, which looks bad on the card. Crop it off so the shards run straight off the border, or add "no ground, no mound, no base" to the subject.
 
 #### Aspect ratio
 
-The example tentacles are in [`packages/ui/src/components/item/stories/background/edges/`](../../packages/ui/src/components/item/stories/background/edges), one tentacle per ratio (**Edges/Tentacle**) and six 9:16 examples (**Edges/Examples**: spider, angel wing, crystal cluster, thorned vine, ice, fire).
+The example tentacles are in [`packages/ui/src/components/item/stories/background/edges/`](../../packages/ui/src/components/item/stories/background/edges), one tentacle per ratio (**Edges/Tentacle**) and eight 9:16 examples (**Edges/Examples**: spider, angel wing, crystal cluster, thorned vine, ice, fire, eyes, purple eyes).
 
 | Ratio | Height on the card | Use it for |
 | --- | --- | --- |

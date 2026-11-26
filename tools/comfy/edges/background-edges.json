@@ -81,5 +81,25 @@
     "subject": "One single giant tongue of fire rising up from the bottom border, one bold solid flame shape that splits into two or three big curling flame tips at the top, no loose sparks, no embers, no smoke",
     "palette": "deep crimson base, burning orange body, bright yellow-orange core",
     "detail": "Paint the flame as a few big solid curling tongues layered over each other, each with a darker red rim, a hotter orange inner shape and a small bright yellow core, plus a few long strokes following the curve of each tongue to show its flow."
+  },
+  "eyes.9x16": {
+    "edge": "bottom",
+    "aspect": "9:16",
+    "resolution": "1K",
+    "seed": 42,
+    "subject": "Dozens of magical, stylised floating eyes of different sizes, not realistic: each eye is a simple bold almond or round shape with a thick dark outline, a glowing coloured iris and a black slit or round pupil, some half-closed, some looking in different directions",
+    "palette": "glowing teal and violet irises, gold rims, deep indigo outlines and lids, no white",
+    "detail": "Paint each eye with a few confident strokes: a dark lid shape, a glowing iris with one brighter ring, a pupil and one small highlight.",
+    "composition": "this image is a decorative overlay along the bottom edge of a tall, narrow card. The eyes form a swarm that is densest along the bottom border, packed and overlapping there and cut off by that border, and thins out going up, with fewer and smaller eyes floating higher, the top third of the image almost empty. Every eye is a BOLD, SOLID, opaque shape, even the smallest is still clearly readable, about a tenth of the image width or bigger; no tiny specks, no sparkles, no particles, no glow halos around them. Keep a clear margin of background along the top, left and right borders."
+  },
+  "eyesPurple.9x16": {
+    "edge": "bottom",
+    "aspect": "9:16",
+    "resolution": "1K",
+    "seed": 42,
+    "subject": "Dozens of very simple magical floating eyes of different sizes, not realistic: each eye is just a glowing almond shape that is bright pinkish-white in the centre and turns into saturated magenta and violet towards its edge, with one thin dark vertical slit pupil. No eyelids, no lashes, no eyeballs, no separate iris, no outline drawn around them: the eye IS the glowing almond, like a magical glowing slit",
+    "palette": "ONLY purple tones: bright pinkish-white core, hot magenta, violet, dark plum slit pupils. No other colours",
+    "detail": "Paint each eye with two or three confident strokes: the bright core, the magenta-violet glow around it as a tight, solid band that hugs the almond (no soft halo spreading outside it), and the dark slit.",
+    "composition": "this image is a decorative overlay along the bottom edge of a tall, narrow card. The eyes form a swarm that is densest along the bottom border, packed and overlapping there and cut off by that border, and thins out going up, with fewer and smaller eyes floating higher, the top third of the image almost empty. Every eye is a BOLD, SOLID, opaque shape, even the smallest is still clearly readable, about a tenth of the image width or bigger; no tiny specks, no sparkles, no particles, no glow halos around them. Keep a clear margin of background along the top, left and right borders."
   }
 }

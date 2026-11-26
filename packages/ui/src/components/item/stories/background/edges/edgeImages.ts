@@ -1,5 +1,7 @@
 import angelWing9x16 from "./angelWing.9x16.png";
 import crystalCluster9x16 from "./crystalCluster.9x16.png";
+import eyes9x16 from "./eyes.9x16.png";
+import eyesPurple9x16 from "./eyesPurple.9x16.png";
 import fire9x16 from "./fire.9x16.png";
 import ice9x16 from "./ice.9x16.png";
 import spider9x16 from "./spider.9x16.png";
@@ -19,4 +21,6 @@ export const edgeImages = {
 	thornedVine9x16,
 	ice9x16,
 	fire9x16,
+	eyes9x16,
+	eyesPurple9x16,
 };
